@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-13 18:27:26+0000\n"
+"PO-Revision-Date: 2019-01-07 12:52:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -391,10 +391,6 @@ msgstr "Les abonnements ne sont plus actifs."
 #: templates/default/bbpress/user-details.php:48
 msgid "%s's Favorites"
 msgstr "Les favoris de %s"
-
-#: templates/default/bbpress/form-user-edit.php:39
-msgid "Display Name"
-msgstr "Afficher le nom"
 
 #: includes/users/template.php:507
 msgid "Inactive"
@@ -1792,13 +1788,13 @@ msgstr "<strong>Titre</strong> - Entrez un titre pour votre sujet. Apr&egrave;s 
 msgid "<strong>Topic Editor</strong> - Enter the text for your topic. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your topic text. You can insert media files by clicking the icons above the topic editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular topic editor."
 msgstr "<strong>&eacute;diteur de sujet</strong> - Entrez le texte pour votre sujet. Il y a deux modes d'&eacute;dition : Visuel et HTML. Choisissez le mode en cliquant sur l'onglet correspondant. Le mode Visuel vous donne un &eacute;diteur WYSIWYG. Cliquez sur la derni&egrave;re ic&ocirc;ne de la ligne pour avoir une seconde ligne de commandes. Le mode HTML vous permet d'entrer du HTML avec le texte de votre r&eacute;ponse. Vous pouvez ins&eacute;rer des fichiers m&eacute;dia en cliquant sur les ic&ocirc;nes au dessus de l'&eacute;diteur de r&eacute;ponse et en suivant les instructions. Vous pouvez acc&eacute;der &agrave; l'&eacute;cran d'&eacute;criture sans distraction avec l'ic&ocirc;ne Plein &eacute;cran dans le mode Visuel (avant-dernier dans la ligne du haut) ou avec le bouton Plein &eacute;cran dans le mode HTML (dernier de la ligne). Une fois l&agrave;, vous pouvez rendre les boutons visibles en passant la souris sur la zone du haut. Sortez du Plein &eacute;cran pour retourner &agrave; l'&eacute;diteur de r&eacute;ponse classique."
 
-#: includes/admin/topics.php:210
-msgid "<strong>Publish</strong> - You can set the terms of publishing your topic in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a topic or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a topic to be published in the future or backdate a topic."
-msgstr "<strong>Publier</strong> - Vous pouvez d&eacute;finir les termes de publications de votre sujet dans la boîte Publier. Pour le Statuts, la Visibilit&eacute; et Publier (imm&eacute;diatement), cliquez sur le lien Modifier pour faire apparaître plus d'options. Visibilit&eacute; inclut des options pour prot&eacute;ger un sujet par un mot de passe ou le faire rester en haut de votre blog ind&eacute;finiment (&eacute;pingl&eacute;). Publier (imm&eacute;diatement) vous permet de d&eacute;finir une date et une heure futures ou pass&eacute;es, donc pour pouvez programmer la publication d'un sujet dans le futur ou l'antidater."
-
 #: includes/admin/topics.php:213
 msgid "<strong>Featured Image</strong> - This allows you to associate an image with your topic without inserting it. This is usually useful only if your theme makes use of the featured image as a topic thumbnail on the home page, a custom header, etc."
 msgstr "<strong>Image &agrave; la une</strong> - Cela vous permet d'associer une image &agrave; votre forum sans l'ins&eacute;rer. On l'utilise g&eacute;n&eacute;ralement seulement si votre th&egrave;me utilise l'image &agrave; la une comme une miniature sur la page d'accueil, une en-t&ecirc;te personnalis&eacute;e, etc."
+
+#: includes/admin/topics.php:210
+msgid "<strong>Publish</strong> - You can set the terms of publishing your topic in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a topic or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a topic to be published in the future or backdate a topic."
+msgstr "<strong>Publier</strong> - Vous pouvez d&eacute;finir les termes de publications de votre sujet dans la boîte Publier. Pour le Statuts, la Visibilit&eacute; et Publier (imm&eacute;diatement), cliquez sur le lien Modifier pour faire apparaître plus d'options. Visibilit&eacute; inclut des options pour prot&eacute;ger un sujet par un mot de passe ou le faire rester en haut de votre blog ind&eacute;finiment (&eacute;pingl&eacute;). Publier (imm&eacute;diatement) vous permet de d&eacute;finir une date et une heure futures ou pass&eacute;es, donc pour pouvez programmer la publication d'un sujet dans le futur ou l'antidater."
 
 #: includes/admin/topics.php:220
 msgid "Select the attributes that your topic should have:"
@@ -2856,6 +2852,10 @@ msgid_plural "Viewing %1$s posts"
 msgstr[0] "%1$s message"
 msgstr[1] "%1$s messages"
 
+#: templates/default/bbpress/form-user-edit.php:39
+msgid "Display Name"
+msgstr "Nom affiché"
+
 #: includes/admin/admin.php:630
 msgctxt "admin color scheme"
 msgid "Mint"
@@ -3625,13 +3625,13 @@ msgstr "<a href=\"http://bbpress.org/forums/\" target=\"_blank\">Forums d’aide
 msgid "You can filter the list of replies by reply status using the text links in the upper left to show All, Published, Draft, or Trashed replies. The default view is to show all replies."
 msgstr "Vous pouvez filtre la liste des réponses par statut en utilisant les liens texte en haut à gauche pour afficher Tous, Publiés, Brouillons ou mis à la Corbeille. L’affichage par défaut montre toutes les réponses."
 
-#: includes/admin/replies.php:147
-msgid "You can refine the list to show only replies in a specific category or from a specific month by using the dropdown menus above the replies list. Click the Filter button after making your selection. You also can refine the list by clicking on the reply author, category or tag in the replies list."
-msgstr "Vous pouvez affiner la liste pour montrer seulement les réponses d’une catégorie spécifique ou publiées durant un mois en particulier en utilisant les menus déroulants au-dessus de la liste des réponses. Cliquez sur le bouton Filtrer après avoir fait votre sélection. Vous pouvez aussi affiner la liste en cliquant sur l’auteur, la catégorie ou un mot-clé d’une réponse dans la liste des réponses."
-
 #: includes/admin/settings.php:1551
 msgid "Please see the additional help tabs for more information on each indiviual section."
 msgstr "Voyez les onglets d’aide additionnels pour plus d’information sur chaque section individuelle."
+
+#: includes/admin/replies.php:147
+msgid "You can refine the list to show only replies in a specific category or from a specific month by using the dropdown menus above the replies list. Click the Filter button after making your selection. You also can refine the list by clicking on the reply author, category or tag in the replies list."
+msgstr "Vous pouvez affiner la liste pour montrer seulement les réponses d’une catégorie spécifique ou publiées durant un mois en particulier en utilisant les menus déroulants au-dessus de la liste des réponses. Cliquez sur le bouton Filtrer après avoir fait votre sélection. Vous pouvez aussi affiner la liste en cliquant sur l’auteur, la catégorie ou un mot-clé d’une réponse dans la liste des réponses."
 
 #: includes/admin/converters/AEF.php:688
 #: includes/admin/converters/FluxBB.php:643
@@ -3661,10 +3661,6 @@ msgstr "Supprimer les indésirables"
 msgid "Allow users to subscribe to forums and topics"
 msgstr "Autoriser les utilisateurs à s'abonner à des forums et des sujets"
 
-#: includes/admin/admin.php:809
-msgid "We&#8217;re all abuzz about the hive of new importers, AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo and XMB. Existing importers are now sweeter than honey with improved importing stickies, topic tags, forum categories and the sting is now gone if you need to remove imported users."
-msgstr "Nous sommes tous en effervescence face à l'arrivée des nouveaux outils d'importation : AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo et XMB. Les outils d'importation existants ont été améliorés avec un meilleur support des sujets épinglés, des mots-clés de sujets, des catégories du forum, et il est bien plus facile de supprimer les utilisateurs importés."
-
 #: includes/admin/admin.php:777
 msgid "Thank you for updating! bbPress %s is bundled up and ready to weather the storm of users in your community!"
 msgstr "Merci d'avoir fait cette mise à jour ! bbPress %s est en place et prêt à affronter la tempête d'utilisateurs dans votre communauté !"
@@ -3680,6 +3676,10 @@ msgstr "Vos utilisateurs peuvent gérer tous leurs abonnements d'un seul endroit
 #: includes/admin/admin.php:854
 msgid "Thank you for updating! bbPress %s is waxed, polished, and ready for you to take it for a lap or two around the block!"
 msgstr "Merci d'avoir mis à jour ! bbPress %s est ciré, poli et prêt à faire la course avec autour du pâté de maison !"
+
+#: includes/admin/admin.php:809
+msgid "We&#8217;re all abuzz about the hive of new importers, AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo and XMB. Existing importers are now sweeter than honey with improved importing stickies, topic tags, forum categories and the sting is now gone if you need to remove imported users."
+msgstr "Nous sommes tous en effervescence face à l'arrivée des nouveaux outils d'importation : AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo et XMB. Les outils d'importation existants ont été améliorés avec un meilleur support des sujets épinglés, des mots-clés de sujets, des catégories du forum, et il est bien plus facile de supprimer les utilisateurs importés."
 
 #: includes/admin/metaboxes.php:368
 msgid "Select whether to open or close the topic."
@@ -4030,10 +4030,6 @@ msgstr "Vous pouvez aussi modifier ou d&eacute;placer plusieurs r&eacute;ponses 
 msgid "For more information:"
 msgstr "Pour plus d&#39;informations:"
 
-#: includes/admin/forums.php:179
-msgid "The title field and the big forum editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
-msgstr "Le champ titre et la grande zone d'&eacute;dition du forum sont &agrave; des emplacements fixes, mais vous pouvez d&eacute;placer toutes les autres boîtes en faisant un cliquer-d&eacute;placer, et vous pouvez les r&eacute;duire ou les agrandir en cliquant sur la barre de titre de chaque boîte. Utilisez l'onglet Options d'&eacute;cran pour afficher plus de boîtes (Extrait, Envoyer des trackbacks, Champs personnalis&eacute;s, Identifiant, Auteur) ou pour choisir une pr&eacute;sentation sur 1 ou 2 colonnes pour cet &eacute;cran."
-
 #: includes/admin/forums.php:183 includes/admin/replies.php:197
 #: includes/admin/topics.php:198
 msgid "Customizing This Display"
@@ -4042,6 +4038,10 @@ msgstr "Personnalisation de cet &eacute;cran"
 #: includes/admin/forums.php:189
 msgid "Title and Forum Editor"
 msgstr "&eacute;diteur de titre et de forum"
+
+#: includes/admin/forums.php:179
+msgid "The title field and the big forum editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "Le champ titre et la grande zone d'&eacute;dition du forum sont &agrave; des emplacements fixes, mais vous pouvez d&eacute;placer toutes les autres boîtes en faisant un cliquer-d&eacute;placer, et vous pouvez les r&eacute;duire ou les agrandir en cliquant sur la barre de titre de chaque boîte. Utilisez l'onglet Options d'&eacute;cran pour afficher plus de boîtes (Extrait, Envoyer des trackbacks, Champs personnalis&eacute;s, Identifiant, Auteur) ou pour choisir une pr&eacute;sentation sur 1 ou 2 colonnes pour cet &eacute;cran."
 
 #: includes/admin/forums.php:191
 msgid "<strong>Title</strong> - Enter a title for your forum. After you enter a title, you&#8217;ll see the permalink below, which you can edit."

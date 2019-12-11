@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-07-31 18:14:55+0000\n"
+"PO-Revision-Date: 2019-11-09 17:31:07+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -350,10 +350,6 @@ msgstr "Los administradores de red pueden reconfigurar los foros de este grupo."
 #: includes/extend/buddypress/groups.php:775
 msgid "This group does not currently have a forum."
 msgstr "Este grupo no posee ningún foro propio."
-
-#: templates/default/bbpress/feedback-no-search.php:13
-msgid "Oh bother! No search results were found here!"
-msgstr "¡Vaya, no hay ningún resultados de búsqueda!"
 
 #: includes/admin/tools.php:418
 msgid "group-forums"
@@ -762,10 +758,6 @@ msgctxt "date at time"
 msgid "%1$s at %2$s"
 msgstr "%1$s a las %2$s"
 
-#: templates/default/bbpress/feedback-no-replies.php:13
-msgid "Oh bother! No replies were found here!"
-msgstr "¡Vaya!, no hay respuestas aquí"
-
 #: includes/admin/tools.php:173
 msgid "Count topics for each user"
 msgstr "Contar debates de cada usuario"
@@ -1108,14 +1100,6 @@ msgstr "Elige los atributos que tu debate debería tener:"
 msgid "<strong>Forum</strong> dropdown determines the parent forum that the topic belongs to. Select the forum or category from the dropdown, or leave the default (No Forum) to post the topic without an assigned forum."
 msgstr "El desplegable <strong>Foro</strong> determina el foro superior al que pertenece el debate. Elige el foro o categoría en el desplegable, o deja la opción por defecto (Sin foro) para publicar el debate sin un foro asignado."
 
-#: includes/admin/topics.php:207
-msgid "<strong>Topic Editor</strong> - Enter the text for your topic. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your topic text. You can insert media files by clicking the icons above the topic editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular topic editor."
-msgstr "<strong>Editor de debate</strong> - Introduce el texto de tu debate. Hay dos modos de edición. Visual y HTML. Elige el modo haciendo clic en la pestaña adecuada. El modo visual te ofrece un editor WYSIWYG (lo que ves es lo que tendrás). Haz clic en el último icono de la lista para ver una segunda fila de controles. El modo HTML te permite introducir HTML junto al texto de tu debate. Puedes insertar archivos de medios haciendo clic en el icono sobre el editor de debates y siguiendo las indicaciones. Puedes ir a la pantalla en modo de escritura sin distracciones a través del icono de Pantalla completa del modo visual (el segundo desde el final de la fila superior) o desde el botón Pantalla completa del modo HTML (el último de la fila). Una vez ahí puedes hacer visibles los botones pasando el cursor por la parte superior. Salir de pantalla completa te devuelve al editor de debates normal."
-
-#: includes/admin/topics.php:210
-msgid "<strong>Publish</strong> - You can set the terms of publishing your topic in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a topic or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a topic to be published in the future or backdate a topic."
-msgstr "<strong>Publicar</strong> - Puedes establecer los parámetros de publicación de tu debate en la caja Publicar. En Estado, Visibilidad y Publicar (inmediatamente) haz clic en el enlace Editar para mostrar más opciones. Las opciones de Visibilidad incluyen la protección con contraseña de un debate o hacer que se fije en la parte superior de tu sitio indefinidamente (destacado). Publicar (inmediatamente) te permite establecer una fecha y hora en el futuro o en el pasado, para que puedas programar un debate para que se publique en el futuro o en una fecha anterior. "
-
 #: includes/admin/topics.php:223
 msgid "<strong>Topic Type</strong> dropdown indicates the sticky status of the topic. Selecting the super sticky option would stick the topic to the front of your forums, i.e. the topic index, sticky option would stick the topic to its respective forum. Selecting normal would not stick the topic anywhere."
 msgstr "El desplegable <strong>Tipo de debate</strong> indica el estado destacado del debate. Eligiendo la opción super destacado pegará el debate en la parte superior de tus foros, o sea, en el índice de debates, la opción destacado pegará el debate a su foro respectivo. Eligiendo normal no pega el debate a ninguna parte."
@@ -1124,6 +1108,14 @@ msgstr "El desplegable <strong>Tipo de debate</strong> indica el estado destacad
 msgctxt "Close a Topic"
 msgid "Close"
 msgstr "Cerrar"
+
+#: includes/admin/topics.php:207
+msgid "<strong>Topic Editor</strong> - Enter the text for your topic. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your topic text. You can insert media files by clicking the icons above the topic editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular topic editor."
+msgstr "<strong>Editor de debate</strong> - Introduce el texto de tu debate. Hay dos modos de edición. Visual y HTML. Elige el modo haciendo clic en la pestaña adecuada. El modo visual te ofrece un editor WYSIWYG (lo que ves es lo que tendrás). Haz clic en el último icono de la lista para ver una segunda fila de controles. El modo HTML te permite introducir HTML junto al texto de tu debate. Puedes insertar archivos de medios haciendo clic en el icono sobre el editor de debates y siguiendo las indicaciones. Puedes ir a la pantalla en modo de escritura sin distracciones a través del icono de Pantalla completa del modo visual (el segundo desde el final de la fila superior) o desde el botón Pantalla completa del modo HTML (el último de la fila). Una vez ahí puedes hacer visibles los botones pasando el cursor por la parte superior. Salir de pantalla completa te devuelve al editor de debates normal."
+
+#: includes/admin/topics.php:210
+msgid "<strong>Publish</strong> - You can set the terms of publishing your topic in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a topic or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a topic to be published in the future or backdate a topic."
+msgstr "<strong>Publicar</strong> - Puedes establecer los parámetros de publicación de tu debate en la caja Publicar. En Estado, Visibilidad y Publicar (inmediatamente) haz clic en el enlace Editar para mostrar más opciones. Las opciones de Visibilidad incluyen la protección con contraseña de un debate o hacer que se fije en la parte superior de tu sitio indefinidamente (destacado). Publicar (inmediatamente) te permite establecer una fecha y hora en el futuro o en el pasado, para que puedas programar un debate para que se publique en el futuro o en una fecha anterior. "
 
 #: includes/admin/topics.php:788
 msgctxt "Open a Topic"
@@ -1512,12 +1504,6 @@ msgstr "No estás suscrito a ningún debate."
 msgid "Optional reason for editing:"
 msgstr "Raz&oacute;n opcional para la edición:"
 
-#: includes/common/widgets.php:89 includes/common/widgets.php:110
-#: templates/default/bbpress/form-user-login.php:14
-#: templates/default/bbpress/form-user-login.php:35
-msgid "Log In"
-msgstr "Entrar"
-
 #: includes/common/widgets.php:185 includes/common/widgets.php:337
 #: includes/common/widgets.php:465 includes/common/widgets.php:634
 #: includes/common/widgets.php:876 includes/common/widgets.php:1030
@@ -1602,19 +1588,10 @@ msgstr "Cuenta"
 msgid "Nickname"
 msgstr "Apodo"
 
-#: templates/default/bbpress/form-user-edit.php:49
-#: templates/default/bbpress/form-user-edit.php:52
-msgid "Contact Info"
-msgstr "Informaci&oacute;n de contacto"
-
 #: templates/default/bbpress/form-user-edit.php:74
 #: templates/default/bbpress/form-user-edit.php:77
 msgid "About the user"
 msgstr "Acerca del usuario"
-
-#: templates/default/bbpress/form-user-edit.php:82
-msgid "Biographical Info"
-msgstr "Informaci&oacute;n biogr&aacute;fica"
 
 #: includes/common/template.php:2208
 msgid "(Edit)"
@@ -1664,14 +1641,6 @@ msgstr "Puedes usar las siguientes etiquetas <abbr title=\"HyperText marcado Lan
 #: templates/default/bbpress/form-topic.php:53
 msgid "This forum is marked as closed to new topics, however your posting capabilities still allow you to do so."
 msgstr "Este foro se ha marcado como cerrado para nuevos debates, pero tus permisos de publicación todavía te permiten hacerlo."
-
-#: templates/default/bbpress/feedback-no-forums.php:13
-msgid "Oh bother! No forums were found here!"
-msgstr "Ohh! &#161; No se han encontrado foros aqu&iacute;!"
-
-#: templates/default/bbpress/feedback-no-topics.php:13
-msgid "Oh bother! No topics were found here!"
-msgstr "¡Oh! &#161; No se han encontrado debates aqu&iacute;! "
 
 #: includes/common/widgets.php:896
 #: templates/default/extras/page-forum-statistics.php:34
@@ -2374,21 +2343,6 @@ msgstr "Los favoritos de %s"
 msgid "%s's Replies Created"
 msgstr "Respuestas creadas por %s"
 
-#: includes/extend/buddypress/groups.php:339
-#: includes/extend/buddypress/groups.php:498
-#: includes/extend/buddypress/notifications.php:161
-#: includes/forums/functions.php:118 includes/forums/functions.php:395
-#: includes/replies/functions.php:116 includes/replies/functions.php:516
-#: includes/replies/functions.php:1246 includes/topics/functions.php:122
-#: includes/topics/functions.php:520 includes/topics/functions.php:1153
-#: includes/topics/functions.php:1456 includes/topics/functions.php:1820
-#: includes/topics/functions.php:1859 includes/topics/functions.php:1916
-#: includes/users/functions.php:459 includes/users/functions.php:1174
-#: includes/users/functions.php:1280 includes/users/functions.php:1407
-#: includes/users/functions.php:1413
-msgid "<strong>ERROR</strong>: Are you sure you wanted to do that?"
-msgstr "<strong>ERROR</strong>: ¿Estás seguro de que quieres hacer eso?"
-
 #: includes/admin/tools.php:1364
 msgid "Deleting Settings&hellip; %s"
 msgstr "Borrar ajustes&hellip; %s"
@@ -2413,6 +2367,21 @@ msgstr "Ajustes del foro"
 #: includes/admin/tools.php:1225
 msgid "Forum User Roles"
 msgstr "Roles de usuario en el foro"
+
+#: includes/extend/buddypress/groups.php:339
+#: includes/extend/buddypress/groups.php:498
+#: includes/extend/buddypress/notifications.php:161
+#: includes/forums/functions.php:118 includes/forums/functions.php:395
+#: includes/replies/functions.php:116 includes/replies/functions.php:516
+#: includes/replies/functions.php:1246 includes/topics/functions.php:122
+#: includes/topics/functions.php:520 includes/topics/functions.php:1153
+#: includes/topics/functions.php:1456 includes/topics/functions.php:1820
+#: includes/topics/functions.php:1859 includes/topics/functions.php:1916
+#: includes/users/functions.php:459 includes/users/functions.php:1174
+#: includes/users/functions.php:1280 includes/users/functions.php:1407
+#: includes/users/functions.php:1413
+msgid "<strong>ERROR</strong>: Are you sure you wanted to do that?"
+msgstr "<strong>ERROR</strong>: ¿Estás seguro de que quieres hacer eso?"
 
 #: includes/admin/tools.php:1226
 msgid "Importer Helper Data"
@@ -2855,6 +2824,37 @@ msgstr "Tu nombre de usuario debe ser &uacute;nico y no lo podr&aacute;s cambiar
 #: templates/default/bbpress/form-user-edit.php:77
 msgid "About Yourself"
 msgstr "Acerca de ti mismo"
+
+#: templates/default/bbpress/form-user-edit.php:82
+msgid "Biographical Info"
+msgstr "Información biográfica"
+
+#: templates/default/bbpress/form-user-edit.php:49
+#: templates/default/bbpress/form-user-edit.php:52
+msgid "Contact Info"
+msgstr "Información de contacto"
+
+#: templates/default/bbpress/feedback-no-topics.php:13
+msgid "Oh bother! No topics were found here!"
+msgstr "¡Vaya, no hay debates aquí! "
+
+#: templates/default/bbpress/feedback-no-search.php:13
+msgid "Oh bother! No search results were found here!"
+msgstr "¡Vaya, no hay ningún resultado de búsqueda!"
+
+#: templates/default/bbpress/feedback-no-replies.php:13
+msgid "Oh bother! No replies were found here!"
+msgstr "¡Vaya, no hay respuestas aquí!"
+
+#: templates/default/bbpress/feedback-no-forums.php:13
+msgid "Oh bother! No forums were found here!"
+msgstr "¡Vaya, no hay foros aquí!"
+
+#: includes/common/widgets.php:89 includes/common/widgets.php:110
+#: templates/default/bbpress/form-user-login.php:14
+#: templates/default/bbpress/form-user-login.php:35
+msgid "Log In"
+msgstr "Acceder"
 
 #: includes/admin/admin.php:630
 msgctxt "admin color scheme"
@@ -3319,6 +3319,10 @@ msgstr "Convirtiendo etiquetas de debate (%1$s - %2$s)"
 msgid "Converting replies (%1$s - %2$s)"
 msgstr "Convirtiendo respuestas (%1$s - %2$s)"
 
+#: includes/admin/admin.php:199
+msgid "Forum Repair"
+msgstr "Reparar foro"
+
 #: includes/admin/converters/AEF.php:688
 #: includes/admin/converters/FluxBB.php:643
 #: includes/admin/converters/Invision.php:525
@@ -3338,10 +3342,6 @@ msgstr "Convirtiendo respuestas (%1$s - %2$s)"
 #: includes/admin/converters/vBulletin3.php:652
 msgid "Re: "
 msgstr "Re:"
-
-#: includes/admin/admin.php:199
-msgid "Forum Repair"
-msgstr "Reparar foro"
 
 #: includes/admin/admin.php:209
 msgid "Forum Import"
@@ -3655,6 +3655,10 @@ msgstr "Para más información:"
 msgid "<a href=\"http://bbpress.org/forums/\" target=\"_blank\">bbPress Support Forums</a>"
 msgstr "<a href=\"http://bbpress.org/forums/\" target=\"_blank\">Foros de soporte de bbPress</a>"
 
+#: includes/admin/forums.php:179
+msgid "The title field and the big forum editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "El campo de título y el área grande de edición del foro están fijas, pero puedes cambiar de sitio el resto de cajas arrastrando y soltando, y minimizarlas o expandirlas haciendo clic en la barra de título de cada caja. Usa la pestaña de Ajustes de pantalla para mostrar más cajas (Extracto, Enviar trackbacks, Campos personalizados, Comentarios, Slug, Autor) o elige ver esta pantalla en 1 o 2 columnas."
+
 #: includes/admin/forums.php:183 includes/admin/replies.php:197
 #: includes/admin/topics.php:198
 msgid "Customizing This Display"
@@ -3675,10 +3679,6 @@ msgstr "<strong>Imagen destacada</strong> - Esto te permite asociar una imagen a
 #: includes/admin/forums.php:205
 msgid "Select the attributes that your forum should have:"
 msgstr "Elige los atributos que debería tener tu foro:"
-
-#: includes/admin/forums.php:179
-msgid "The title field and the big forum editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
-msgstr "El campo de título y el área grande de edición del foro están fijas, pero puedes cambiar de sitio el resto de cajas arrastrando y soltando, y minimizarlas o expandirlas haciendo clic en la barra de título de cada caja. Usa la pestaña de Ajustes de pantalla para mostrar más cajas (Extracto, Enviar trackbacks, Campos personalizados, Comentarios, Slug, Autor) o elige ver esta pantalla en 1 o 2 columnas."
 
 #: includes/admin/forums.php:192
 msgid "<strong>Forum Editor</strong> - Enter the text for your forum. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your forum text. You can insert media files by clicking the icons above the forum editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular forum editor."
@@ -3757,6 +3757,10 @@ msgstr "<strong>Título</strong> - Introduce un título para tu respuesta. Despu
 msgid "<strong>Reply Editor</strong> - Enter the text for your reply. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your reply text. You can insert media files by clicking the icons above the reply editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular reply editor."
 msgstr "<strong>Editor de respuesta</strong> - Introduce el texto de tu respuesta. Hay dos modos de edición. Visual y HTML. Elige el modo haciendo clic en la pestaña adecuada. El modo visual te ofrece un editor WYSIWYG (lo que ves es lo que tendrás). Haz clic en el último icono de la lista para ver una segunda fila de controles. El modo HTML te permite introducir HTML junto al texto de tu respuesta. Puedes insertar archivos de medios haciendo clic en el icono sobre el editor de respuestas y siguiendo las indicaciones. Puedes ir a la pantalla en modo de escritura sin distracciones a través del icono de Pantalla completa del modo visual (el segundo desde el final de la fila superior) o desde el botón Pantalla completa del modo HTML (el último de la fila). Una vez ahí puedes hacer visibles los botones pasando el cursor por la parte superior. Salir de pantalla completa te devuelve al editor de respuestas normal."
 
+#: includes/admin/replies.php:209
+msgid "<strong>Publish</strong> - You can set the terms of publishing your reply in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a reply or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a reply to be published in the future or backdate a reply."
+msgstr "<strong>Publicar</strong> - Puedes establecer los parámetros de publicación de tu respuesta en la caja Publicar. En Estado, Visibilidad y Publicar (inmediatamente) haz clic en el enlace Editar para mostrar más opciones. Las opciones de Visibilidad incluyen la protección con contraseña de una respuesta o hacer que se fije en la parte superior de tu sitio indefinidamente (destacado). Publicar (inmediatamente) te permite establecer una fecha y hora en el futuro o en el pasado, para que puedas programar una respuesta para que se publique en el futuro o en una fecha anterior."
+
 #: includes/admin/replies.php:212
 msgid "<strong>Featured Image</strong> - This allows you to associate an image with your reply without inserting it. This is usually useful only if your theme makes use of the featured image as a reply thumbnail on the home page, a custom header, etc."
 msgstr "<strong>Imagen destacada</strong> - Esto te permite asociar una imagen a tu respuesta sin necesidad de insertarla. Esto suele ser útil solo si tu tema usa las imágenes destacadas como miniatura de la respuesta en la página principal, cabecera personalizada, etc."
@@ -3776,10 +3780,6 @@ msgstr "<strong>Debate</strong> determina el debate superior al que pertenece la
 #: includes/admin/settings.php:565
 msgid "Allow users to mark topics as favorites"
 msgstr "Permite a los usuarios marcar debates como favoritos"
-
-#: includes/admin/replies.php:209
-msgid "<strong>Publish</strong> - You can set the terms of publishing your reply in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a reply or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a reply to be published in the future or backdate a reply."
-msgstr "<strong>Publicar</strong> - Puedes establecer los parámetros de publicación de tu respuesta en la caja Publicar. En Estado, Visibilidad y Publicar (inmediatamente) haz clic en el enlace Editar para mostrar más opciones. Las opciones de Visibilidad incluyen la protección con contraseña de una respuesta o hacer que se fije en la parte superior de tu sitio indefinidamente (destacado). Publicar (inmediatamente) te permite establecer una fecha y hora en el futuro o en el pasado, para que puedas programar una respuesta para que se publique en el futuro o en una fecha anterior."
 
 #: includes/admin/settings.php:698
 msgid "How your forum content is displayed within your existing theme."
@@ -4185,12 +4185,6 @@ msgstr "Orden:"
 msgid "Forum Order"
 msgstr "Orden del foro"
 
-#: includes/admin/metaboxes.php:503
-#: templates/default/bbpress/form-user-edit.php:103
-#: templates/default/bbpress/form-user-register.php:28
-msgid "Email"
-msgstr "Correo Electr&oacute;nico"
-
 #: includes/admin/metaboxes.php:525
 msgid "IP Address"
 msgstr "Dirección IP"
@@ -4573,3 +4567,9 @@ msgid "Topic Tag"
 msgid_plural "Topic Tags"
 msgstr[0] "Etiqueta de debate"
 msgstr[1] "Etiquetas de debate"
+
+#: includes/admin/metaboxes.php:503
+#: templates/default/bbpress/form-user-edit.php:103
+#: templates/default/bbpress/form-user-register.php:28
+msgid "Email"
+msgstr "Correo electrónico"

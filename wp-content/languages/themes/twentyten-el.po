@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Ten package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-01-02 11:00:21+0000\n"
+"PO-Revision-Date: 2019-02-22 08:14:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,23 +19,28 @@ msgstr "Ένα μοντέρνο, απλό, ευανάγνωστο και ευέ�
 msgid "Twenty Ten"
 msgstr "Twenty Ten"
 
-#: functions.php:107
+#. translators: %s: The post title.
+#: comments.php:40
+msgid "One Response to %s"
+msgstr "Μία απάντηση στο %s"
+
+#: functions.php:112
 msgid "White"
 msgstr "Λευκό"
 
-#: functions.php:102
+#: functions.php:107
 msgid "Light Gray"
 msgstr "Ανοιχτό γκρι"
 
-#: functions.php:97
+#: functions.php:102
 msgid "Medium Gray"
 msgstr "Μεσαίο γκρι"
 
-#: functions.php:92
+#: functions.php:97
 msgid "Black"
 msgstr "Μαύρο"
 
-#: functions.php:87
+#: functions.php:92
 msgid "Blue"
 msgstr "Μπλε"
 
@@ -43,15 +48,15 @@ msgstr "Μπλε"
 msgid "One column, no sidebar"
 msgstr "Μια στήλη, χωρίς πλευρικό πάνελ"
 
-#: tag.php:16
+#: tag.php:17
 msgid "Tag Archives: %s"
 msgstr "Αρχείο ετικέτας %s"
 
-#: sidebar.php:35
+#: sidebar.php:36
 msgid "Meta"
 msgstr "Μεταστοιχεία"
 
-#: sidebar.php:28
+#: sidebar.php:29
 msgid "Archives"
 msgstr "Αρχείο"
 
@@ -67,54 +72,54 @@ msgstr "Κανένα αποτέλεσμα"
 msgid "Search Results for: %s"
 msgstr "Αποτελέσματα για %s"
 
-#: loop.php:161
+#: loop.php:176
 msgid "<span class=\"%1$s\">Tagged</span> %2$s"
 msgstr "<span class=\"%1$s\">Ετικέτες:</span> %2$s"
 
-#: loop.php:152
+#: loop.php:167
 msgid "<span class=\"%1$s\">Posted in</span> %2$s"
 msgstr "<span class=\"%1$s\">Δημοσιεύθηκε στη</span> %2$s"
 
-#: loop.php:107
+#: loop.php:115
 msgctxt "asides category slug"
 msgid "asides"
 msgstr "μικροάρθρα"
 
-#: loop.php:100 loop.php:123 loop.php:165
+#: loop.php:108 loop.php:131 loop.php:180
 msgid "% Comments"
 msgstr "% σχόλια"
 
-#: loop.php:100 loop.php:123 loop.php:165
+#: loop.php:108 loop.php:131 loop.php:180
 msgid "1 Comment"
 msgstr "1 σχόλιο"
 
-#: loop.php:100 loop.php:123 loop.php:165
+#: loop.php:108 loop.php:131 loop.php:180
 msgid "Leave a comment"
 msgstr "Σχολιάστε"
 
-#: loop.php:97
+#: loop.php:105
 msgid "View posts in the Gallery category"
 msgstr "Προβολή άρθρων στην κατηγορία Συλλογή"
 
-#: loop.php:94 loop.php:97
+#: loop.php:102 loop.php:105
 msgid "More Galleries"
 msgstr "Περισσότερες συλλογές"
 
-#: loop.php:94
+#: loop.php:102
 msgid "View Galleries"
 msgstr "Δείτε συλλογές"
 
-#: loop.php:84
+#: loop.php:90
 msgid "Permalink to %s"
 msgstr "Μόνιμος σύνδεσμος του %s"
 
-#: loop.php:83
+#: loop.php:89
 msgid "This gallery contains <a %1$s>%2$s photo</a>."
 msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
 msgstr[0] "Αυτή η συλλογή περιέχει <a %1$s>%2$s φωτογραφία</a>."
 msgstr[1] "Αυτή η συλλογή περιέχει <a %1$s>%2$s φωτογραφίες</a>."
 
-#: loop.php:62 loop.php:96
+#: loop.php:65 loop.php:104
 msgctxt "gallery category slug"
 msgid "gallery"
 msgstr "συλλογή"
@@ -123,261 +128,260 @@ msgstr "συλλογή"
 msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
 msgstr "Δεν βρέθηκαν αποτελέσματα για το ζητούμενο αρχείο. Αναζητήστε μια σχετική δημοσίευση."
 
-#: loop.php:26 loop.php:180
+#: loop.php:26 loop.php:195
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Επόμενα άρθρα <span class=\"meta-nav\">&rarr;</span>"
 
-#: loop.php:25 loop.php:179
+#: loop.php:25 loop.php:194
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Προηγούμενα άρθρα"
 
-#: loop-single.php:50
+#: loop-single.php:61
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Δείτε όλα τα άρθρα του/της %s <span class=\"meta-nav\">&rarr;</span>"
 
-#: loop-single.php:22 loop-single.php:65
+#: loop-single.php:26 loop-single.php:76
 msgctxt "Next post link"
 msgid "&rarr;"
 msgstr "&rarr;"
 
-#: loop-single.php:21 loop-single.php:64
+#: loop-single.php:25 loop-single.php:75
 msgctxt "Previous post link"
 msgid "&larr;"
 msgstr "&larr;"
 
-#: loop.php:145 loop-attachment.php:120 loop-single.php:34 loop-page.php:29
+#: loop-attachment.php:155 loop.php:156 loop-page.php:36 loop-single.php:41
 msgid "Pages:"
 msgstr "Σελίδες:"
 
-#: loop.php:101 loop.php:124 loop.php:166 loop-attachment.php:63
-#: loop-attachment.php:126 loop-single.php:59 loop-page.php:30
+#: loop-attachment.php:75 loop-attachment.php:165 loop.php:109 loop.php:132
+#: loop.php:181 loop-page.php:41 loop-single.php:70
 msgid "Edit"
 msgstr "Αλλαγή"
 
-#: loop-attachment.php:56
+#: loop-attachment.php:68
 msgid "Link to full-size image"
 msgstr "Σύνδεσμος προς πλήρες μέγεθος εικόνας"
 
-#: loop-attachment.php:53
+#: loop-attachment.php:64
 msgid "Full size is %s pixels"
 msgstr "Το πλήρες μέγεθος είναι %s pixels"
 
-#: loop-attachment.php:43
+#: loop-attachment.php:52
 msgid "<span class=\"%1$s\">Published</span> %2$s"
 msgstr "<span class=\"%1$s\">Δημοσιεύθηκε</span> %2$s"
 
-#: loop-attachment.php:32
+#: loop-attachment.php:39
 msgid "<span class=\"%1$s\">By</span> %2$s"
 msgstr "<span class=\"%1$s\">Από</span> %2$s"
 
 #. translators: %s - title of parent post
-#: loop-attachment.php:23
+#: loop-attachment.php:28
 msgid "<span class=\"meta-nav\">&larr;</span> %s"
 msgstr "<span class=\"meta-nav\">&larr;</span> %s"
 
-#: loop-attachment.php:21
+#: loop-attachment.php:25
 msgid "Return to %s"
 msgstr "Επιστροφή σε %s"
 
-#: header.php:105
+#: header.php:111
 msgid "Skip to content"
 msgstr "Μετάβαση σε περιεχόμενο"
 
-#: header.php:33
+#: header.php:35
 msgid "Page %s"
 msgstr "Σελίδα %s"
 
-#: functions.php:579
+#: functions.php:623
 msgid "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr "<a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Προσθήκη στους σελιδοδείκτες</a>."
 
-#: functions.php:577
+#: functions.php:621
 msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr "Δημοσιεύθηκε στην %1$s. Αποθηκεύστε τον <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">μόνιμο σύνδεσμο</a>."
 
-#: functions.php:575
+#: functions.php:619
 msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr "Δημοσιεύθηκε στην %1$s και χαρακτηρίσθηκε %2$s. Αποθηκεύστε τον <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">μόνιμο σύνδεσμο</a>."
 
-#: loop-attachment.php:36 functions.php:558
+#: loop-attachment.php:44 functions.php:602
 msgid "View all posts by %s"
 msgstr "Δείτε όλα τα άρθρα του/της %s"
 
-#: functions.php:549
+#: functions.php:591
 msgid "<span class=\"%1$s\">Posted on</span> %2$s <span class=\"meta-sep\">by</span> %3$s"
 msgstr "<span class=\"%1$s\">Δημοσιεύθηκε την</span> %2$s <span class=\"meta-sep\">από</span> %3$s"
 
-#: functions.php:513
+#: functions.php:553
 msgid "Fourth Footer Widget Area"
 msgstr "4η περιοχή μικροεφαρμογών υποσέλιδου"
 
-#: functions.php:502
+#: functions.php:540
 msgid "Third Footer Widget Area"
 msgstr "3η περιοχή μικροεφαρμογών υποσέλιδου"
 
-#: functions.php:491
+#: functions.php:527
 msgid "Second Footer Widget Area"
 msgstr "2η περιοχή μικροεφαρμογών υποσέλιδου"
 
-#: functions.php:482 functions.php:493 functions.php:504 functions.php:515
+#: functions.php:516 functions.php:529 functions.php:542 functions.php:555
 msgid "An optional widget area for your site footer."
 msgstr "Προαιρετικό πάνελ μικροεφαρμογών για το υποσέλιδο του ιστοτόπου σας."
 
-#: functions.php:480
+#: functions.php:514
 msgid "First Footer Widget Area"
 msgstr "1η περιοχή μικροεφαρμογών στο υποσέλιδο"
 
-#: functions.php:471
+#: functions.php:503
 msgid "An optional secondary widget area, displays below the primary widget area in your sidebar."
 msgstr "Προαιρετική δευτερεύσουσα περιοχή μικροεφαρμογών. Εμφανίζεται κάτω από τη βασική περιοχή μικροεφαρμογών στην πλευρική στήλη."
 
-#: functions.php:469
+#: functions.php:501
 msgid "Secondary Widget Area"
 msgstr "Δευτερεύουσα περιοχή μικροεφαρμογών"
 
-#: functions.php:460
+#: functions.php:490
 msgid "Add widgets here to appear in your sidebar."
 msgstr "Προσθέστε μικροεφαρμογές εδώ ώστε να εμφανιστούν στην πλευρική στήλη."
 
-#: functions.php:458
+#: functions.php:488
 msgid "Primary Widget Area"
 msgstr "Βασική περιοχή μικροεφαρμογών"
 
-#: functions.php:438
+#: functions.php:467
 msgid "Pingback:"
 msgstr "Πίνγκμπακ:"
 
-#. translators: 1: date, 2: time
-#: functions.php:421 functions.php:438
+#: functions.php:440 functions.php:467
 msgid "(Edit)"
 msgstr "(Αλλαγή)"
 
 #. translators: 1: date, 2: time
-#: functions.php:421
+#: functions.php:436
 msgid "%1$s at %2$s"
 msgstr "%1$s στο %2$s"
 
-#: functions.php:414
+#: functions.php:429
 msgid "Your comment is awaiting moderation."
 msgstr "Το σχόλιό σας αναμένει έγκριση."
 
-#: functions.php:411
+#: functions.php:426
 msgid "%s <span class=\"says\">says:</span>"
 msgstr "Ο/Η %s <span class=\"says\">λέει:</span>"
 
-#: loop.php:116 loop.php:144 loop-attachment.php:119 functions.php:315
+#: loop-attachment.php:151 loop.php:124 loop.php:152 functions.php:329
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Συνέχεια <span class=\"meta-nav\">&rarr;</span>"
 
 #. translators: header image description
-#: functions.php:242
+#: functions.php:254
 msgid "Sunset"
 msgstr "Δύση"
 
 #. translators: header image description
-#: functions.php:236
+#: functions.php:248
 msgid "Path"
 msgstr "Διαδρομή"
 
 #. translators: header image description
-#: functions.php:230
+#: functions.php:242
 msgid "Inkwell"
 msgstr "Μελανοδοχείο"
 
 #. translators: header image description
-#: functions.php:224
+#: functions.php:236
 msgid "Forest Floor"
 msgstr "Πάτωμα Δάσους"
 
 #. translators: header image description
-#: functions.php:218
+#: functions.php:230
 msgid "Fern"
 msgstr "Φτέρη"
 
 #. translators: header image description
-#: functions.php:212
+#: functions.php:224
 msgid "Concave"
 msgstr "Θόλος"
 
 #. translators: header image description
-#: functions.php:206
+#: functions.php:218
 msgid "Cherry Blossoms"
 msgstr "Άνθη κερασιάς"
 
 #. translators: header image description
-#: functions.php:200
+#: functions.php:212
 msgid "Berries"
 msgstr "Μουριά"
 
-#: functions.php:130
+#: functions.php:137
 msgid "Primary Navigation"
 msgstr "Βασική Πλοήγηση"
 
-#: footer.php:46
+#: footer.php:47
 msgid "Proudly powered by %s."
 msgstr "Περήφανα τροφοδοτούμενο από %s."
 
-#: footer.php:45
+#: footer.php:46
 msgid "Semantic Personal Publishing Platform"
 msgstr "Σημασιολογικό σύστημα ιστοδημοσιεύσεων"
 
-#: comments.php:73
+#: comments.php:88
 msgid "Comments are closed."
 msgstr "Τα σχόλια είναι κλειστά."
 
-#: comments.php:43 comments.php:63
+#: comments.php:57 comments.php:77
 msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Επόμενα σχόλια <span class=\"meta-nav\">&rarr;</span>"
 
-#: comments.php:42 comments.php:62
+#: comments.php:56 comments.php:76
 msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
 msgstr "<span class=\"meta-nav\">&larr;</span> Προηγούμενα σχόλια"
 
-#: comments.php:36
-msgid "One Response to %2$s"
+#: comments.php:46
+msgid "%1$s Response to %2$s"
 msgid_plural "%1$s Responses to %2$s"
-msgstr[0] "Μία απάντηση στο %2$s"
+msgstr[0] "%1$s απάντηση στο %2$s"
 msgstr[1] "%1$s απαντήσεις στο %2$s"
 
 #: comments.php:18
 msgid "This post is password protected. Enter the password to view any comments."
 msgstr "Αυτό το άρθρο προστατεύεται με κωδικό. Πληκτρολογήστε τον κωδικό για να δείτε τυχόν σχόλια."
 
-#: category.php:16
+#: category.php:17
 msgid "Category Archives: %s"
 msgstr "Αρχείο κατηγορίας %s"
 
-#: loop-single.php:46 author.php:47
+#: loop-single.php:57 author.php:49
 msgid "About %s"
 msgstr "Σχετικά με %s"
 
-#: author.php:28
+#: author.php:29
 msgid "Author Archives: %s"
 msgstr "Αρχείο συντάκτη %s"
 
-#: archive.php:40
+#: archive.php:41
 msgid "Blog Archives"
 msgstr "Ιστορικό ιστολογίου"
 
-#: archive.php:38
+#: archive.php:39
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: archive.php:38
+#: archive.php:39
 msgid "Yearly Archives: <span>%s</span>"
 msgstr "Αρχεία ανά έτος:<span>%s</span>"
 
-#: archive.php:36
+#: archive.php:37
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: archive.php:36
+#: archive.php:37
 msgid "Monthly Archives: <span>%s</span>"
 msgstr "Μηνιαία Αρχεία: <span>%s</span>"
 
-#: archive.php:34
+#: archive.php:35
 msgid "Daily Archives: <span>%s</span>"
 msgstr "Αρχεία ανά ημέρα: <span>%s</span>"
 
@@ -385,12 +389,12 @@ msgstr "Αρχεία ανά ημέρα: <span>%s</span>"
 msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
 msgstr "Λυπούμαστε, η σελίδα που ζητήσατε δεν ήταν δυνατό να βρεθεί. Ίσως η αναζήτηση θα μπορούσε να σας φανεί χρήσιμη."
 
-#: 404.php:16 loop.php:33
+#: loop.php:33 404.php:16
 msgid "Not Found"
 msgstr "Δεν βρέθηκε"
 
 #. Author URI of the theme
-#: footer.php:45
+#: footer.php:46
 msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 

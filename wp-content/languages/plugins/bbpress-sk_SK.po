@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-01-03 13:11:46+0000\n"
+"PO-Revision-Date: 2019-06-28 13:28:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -896,10 +896,6 @@ msgstr "Používateľské meno alebo mail"
 #: templates/default/bbpress/form-user-lost-pass.php:14
 msgid "Lost Password"
 msgstr "Stratené heslo"
-
-#: templates/default/bbpress/form-reply.php:174
-msgid "You must be logged in to reply to this topic."
-msgstr "Musíte byť prihlásený any ste mohli odpovedať na túto tému"
 
 #: templates/default/bbpress/form-topic-tag.php:101
 msgid "Are you sure you want to delete the \"%s\" tag? This is permanent and cannot be undone."
@@ -2868,6 +2864,10 @@ msgstr "Musíte sa prihlásiť, aby ste mohli vytvoriť novú tému."
 msgid "If you use the existing topic option, replies within both topics will be merged chronologically. The order of the merged replies is based on the time and date they were posted."
 msgstr "Ak použijete existujúcu tému, odpovede v rámci oboch tém budú chronologicky zlúčené. Poradie zlúčených odpovedí záleží od času a dátumu, kedy boli pridané."
 
+#: templates/default/bbpress/form-reply.php:174
+msgid "You must be logged in to reply to this topic."
+msgstr "Musíte byť prihlásený, aby ste mohli odpovedať na túto tému."
+
 #: includes/admin/admin.php:720 includes/admin/admin.php:758
 msgid "%s - %s"
 msgstr "%s - %s"
@@ -4421,10 +4421,6 @@ msgstr "Balíky témy fóra"
 msgid "Topics and Replies Per Page"
 msgstr "Počet príspevkov a odpovedí na jednu stranu"
 
-#: includes/admin/settings.php:613
-msgid "Allow forum wide search"
-msgstr "Umožniť rozšírené vyhľadávanie na fóre"
-
 #: includes/admin/settings.php:913
 msgid "Forum Index"
 msgstr "Index fóra"
@@ -4596,3 +4592,7 @@ msgstr "Počítam množstvo Dôležitých (sticky) v téme (%1$s - %2$s)"
 #: includes/admin/converter.php:470
 msgid "Calculating topic super stickies (%1$s - %2$s)"
 msgstr "Počítam množstvo Veľmi dôležitých (super sticky) v téme (%1$s - %2$s)"
+
+#: includes/admin/settings.php:613
+msgid "Allow forum wide search"
+msgstr "Umožniť vyhľadávanie naprieč fórom"

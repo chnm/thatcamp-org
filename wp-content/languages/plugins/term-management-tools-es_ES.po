@@ -1,0 +1,60 @@
+# Translation of Plugins - Term Management Tools - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Term Management Tools - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-07-25 15:37:11+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Term Management Tools - Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "scribu"
+msgstr "scribu"
+
+#. Author URI of the plugin/theme
+msgid "http://scribu.net/"
+msgstr "http://scribu.net/"
+
+#: term-management-tools.php:252
+msgid "None"
+msgstr "Ninguno"
+
+#. Plugin URI of the plugin/theme
+msgid "http://scribu.net/wordpress/term-management-tools"
+msgstr "http://scribu.net/wordpress/term-management-tools"
+
+#. Plugin Name of the plugin/theme
+msgid "Term Management Tools"
+msgstr "Term Management Tools"
+
+#: term-management-tools.php:225
+msgid "into: %s"
+msgstr "en: %s"
+
+#: term-management-tools.php:105
+msgid "Terms not updated."
+msgstr "Términos no actualizados."
+
+#: term-management-tools.php:101
+msgid "Terms updated."
+msgstr "Términos actualizados."
+
+#. Description of the plugin/theme
+msgid "Allows you to merge terms and set term parents in bulk"
+msgstr "Te permite combinar y configurar términos superiores en lotes"
+
+#: term-management-tools.php:30
+msgid "Set parent"
+msgstr "Hacer superior"
+
+#: term-management-tools.php:25
+msgid "Change taxonomy"
+msgstr "Cambiar taxonomía"
+
+#: term-management-tools.php:24
+msgid "Merge"
+msgstr "Combinar"

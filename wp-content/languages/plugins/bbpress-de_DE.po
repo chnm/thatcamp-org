@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-12 18:38:55+0000\n"
+"PO-Revision-Date: 2019-07-03 13:39:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2560,11 +2560,6 @@ msgstr "Lösche Konvertierungs-Tabelle&nbsp;&hellip; %s"
 msgid "Deleting Settings&hellip; %s"
 msgstr "Lösche Einstellungen&nbsp;&hellip; %s"
 
-#: includes/forums/template.php:840 includes/topics/template.php:1846
-#: includes/users/template.php:1058
-msgid "Subscribe"
-msgstr "&nbsp;Abonnieren"
-
 #: includes/topics/template.php:2977
 msgid "Viewing %1$s topic"
 msgid_plural "Viewing %1$s topics"
@@ -2855,6 +2850,11 @@ msgstr "%1$s hat diesen %2$s als Nicht-Spam gemeldet"
 #: includes/extend/akismet.php:475
 msgid "Akismet cleared this post as not spam"
 msgstr "Akismet hat diesen Beitrag als Nicht-Spam freigegeben"
+
+#: includes/forums/template.php:840 includes/topics/template.php:1846
+#: includes/users/template.php:1058
+msgid "Subscribe"
+msgstr "Abonnieren"
 
 #: includes/admin/admin.php:805
 msgid "Converters"

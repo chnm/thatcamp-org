@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twelve package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-07-18 10:36:59+0000\n"
+"PO-Revision-Date: 2019-11-05 08:42:43+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,19 +11,44 @@ msgstr ""
 "Language: pl\n"
 "Project-Id-Version: Themes - Twenty Twelve\n"
 
-#. Description of the plugin/theme
+#. Description of the theme
 msgid "The 2012 theme for WordPress is a fully responsive theme that looks great on any device. Features include a front page template with its own widgets, an optional display font, styling for post formats on both index and single views, and an optional no-sidebar page template. Make it yours with a custom menu, header image, and background."
 msgstr "Motyw 2012 jest w pełni responsywny i świetnie wygląda na różnych urządzeniach. Szerokie możliwości konfiguracji: własny szablon strony głównej z własnymi widgetami, wybór kroju czcionki, zmiany wyglądu wpisów na podstawie ich typów obejmuje zarówno tryb pojedynczego wpisu jak i wyświetlanie na listach oraz opcjonalny szablon bez panelu bocznego. Dodatkowo można ustawić własne: menu czy obrazek w nagłówku oraz wybrać tło."
 
-#. Theme Name of the plugin/theme
+#. Theme Name of the theme
 msgid "Twenty Twelve"
 msgstr "Twenty Twelve"
 
-#. Template Name of the plugin/theme
+#. translators: %s: The post title.
+#: comments.php:35
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "Jedna myśl na temat &ldquo;%s&rdquo;"
+
+#: functions.php:94
+msgid "White"
+msgstr "Biały"
+
+#: functions.php:89
+msgid "Light Gray"
+msgstr "Jasnoszary"
+
+#: functions.php:84
+msgid "Medium Gray"
+msgstr "Szary"
+
+#: functions.php:79
+msgid "Dark Gray"
+msgstr "Ciemnoszary"
+
+#: functions.php:74
+msgid "Blue"
+msgstr "Niebieski"
+
+#. Template Name of the theme
 msgid "Full-width Page Template, No Sidebar"
 msgstr "Szablon strony bez paska bocznego"
 
-#. Template Name of the plugin/theme
+#. Template Name of the theme
 msgid "Front Page Template"
 msgstr "Szablon strony startowej"
 
@@ -31,165 +56,165 @@ msgstr "Szablon strony startowej"
 msgid "Tag Archives: %s"
 msgstr "Archiwa tagu: %s"
 
-#: single.php:22
+#: single.php:25
 msgctxt "Next post link"
 msgid "&rarr;"
 msgstr "&rarr;"
 
-#: single.php:21
+#: single.php:24
 msgctxt "Previous post link"
 msgid "&larr;"
 msgstr "&larr;"
 
-#: search.php:38
+#: search.php:41
 msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
-msgstr "Przepraszamy, ale nic nie zostało dopasowane do Twoich kryteriów wyszukiwania. Proszę spróbować ponownie, korzystając z innych słów kluczowych."
+msgstr "Przepraszamy, ale nic nie pasuje do kryteriów wyszukiwania. Proszę spróbować ponownie, szukając czegoś innego."
 
 #: search.php:18
 msgid "Search Results for: %s"
 msgstr "Wyniki wyszukiwania dla zapytania &#8222;%s&#8221;"
 
-#: index.php:42
+#: index.php:46
 msgid "Ready to publish your first post? <a href=\"%s\">Get started here</a>."
 msgstr "Czy chcesz opublikować swój pierwszy wpis? <a href=\"%s\">Kliknij tutaj</a>."
 
-#: index.php:38
+#: index.php:42
 msgid "No posts to display"
 msgstr "Brak wpisów"
 
-#: image.php:42
+#: image.php:46
 msgid "Next &rarr;"
 msgstr "Następne &rarr;"
 
-#: image.php:41
+#: image.php:45
 msgid "&larr; Previous"
 msgstr "&larr; Poprzednie"
 
-#: image.php:26
+#: image.php:30
 msgid "<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>."
 msgstr "<span class=\"meta-prep meta-prep-entry-date\">Opublikowano </span> <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Odnośnik do pełnowymiarowego obrazka\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Powrót do %7$s\" rel=\"gallery\">%8$s</a>."
 
-#: header.php:44
+#: header.php:45
 msgid "Skip to content"
 msgstr "Przeskocz do treści"
 
-#: header.php:43
+#: header.php:44
 msgid "Menu"
 msgstr "Menu"
 
-#: functions.php:419
+#: functions.php:514
 msgid "This entry was posted on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Ten wpis został opublikowany dnia %3$s, <span class=\"by-author\">przez %4$s</span>."
 
-#: functions.php:417
+#: functions.php:512
 msgid "This entry was posted in %1$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Ten wpis został opublikowany w %1$s dnia %3$s, <span class=\"by-author\">przez %4$s</span>."
 
 #. Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's
 #. name.
-#: functions.php:415
+#: functions.php:510
 msgid "This entry was posted in %1$s and tagged %2$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Wpis opublikowany w %1$s i otagowany %2$s %3$s<span class=\"by-author\"> przez %4$s</span>."
 
-#: functions.php:409
+#: functions.php:504
 msgid "View all posts by %s"
 msgstr "Zobacz wszystkie wpisy, których autorem jest %s"
 
 #. Translators: used between list items, there is a space after the comma.
-#: functions.php:395 functions.php:398
+#: functions.php:488 functions.php:491
 msgid ", "
 msgstr ", "
 
-#: functions.php:374
+#: functions.php:460
 msgid "Reply"
 msgstr "Odpowiedz"
 
-#: functions.php:365
+#: functions.php:446
 msgid "Your comment is awaiting moderation."
 msgstr "Twój komentarz oczekuje na moderację."
 
 #. translators: 1: date, 2: time
-#: functions.php:359
+#: functions.php:440
 msgid "%1$s at %2$s"
 msgstr "%1$s o %2$s"
 
-#: functions.php:353
+#: functions.php:433
 msgid "Post author"
 msgstr "Autor wpisu"
 
-#: functions.php:338
+#: functions.php:417
 msgid "(Edit)"
 msgstr "(Edytuj)"
 
-#: functions.php:338
+#: functions.php:417
 msgid "Pingback:"
 msgstr "Pingback:"
 
-#: functions.php:313
+#: functions.php:391
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Nowsze wpisy <span class=\"meta-nav\">&rarr;</span>"
 
-#: functions.php:312
+#: functions.php:390
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Starsze wpisy"
 
-#: functions.php:311 single.php:20
+#: single.php:23 functions.php:389
 msgid "Post navigation"
 msgstr "Zobacz wpisy"
 
-#: functions.php:289
+#: functions.php:366
 msgid "Second Front Page Widget Area"
 msgstr "Drugi obszar widgetu strony tytułowej"
 
-#: functions.php:281 functions.php:291
+#: functions.php:356 functions.php:368
 msgid "Appears when using the optional Front Page template with a page set as Static Front Page"
-msgstr "Pojawia się przy użyciu opcjonalnego szablon strony głównej z wybraną stroną statyczną"
+msgstr "Pojawia się, jeśli zastosowano opcjonalny szablon Strony Głównej z wybraną Stroną Statyczną"
 
-#: functions.php:279
+#: functions.php:354
 msgid "First Front Page Widget Area"
 msgstr "Pierwszy obszar widgetu strony tytułowej"
 
-#: functions.php:271
+#: functions.php:344
 msgid "Appears on posts and pages except the optional Front Page template, which has its own widgets"
-msgstr "Pojawia się na wpisach i stronach, z wyjątkiem opcjonalnego szablonu strony tytułowej, która ma swoje własne widgety."
+msgstr "Pojawia się we wpisach i stronach, z wyjątkiem opcjonalnego szablonu Strony Głównej, mającej swoje własne widgety"
 
-#: functions.php:269
+#: functions.php:342
 msgid "Main Sidebar"
 msgstr "Główny panel boczny"
 
-#: functions.php:240
+#: functions.php:310
 msgid "Page %s"
 msgstr "Strona %s"
 
 #. translators: To add an additional Open Sans character subset specific to
-#. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
-#. translate into your own language.
-#: functions.php:110
+#. your language, * translate this to 'greek', 'cyrillic' or 'vietnamese'. Do
+#. not translate into your own language.
+#: functions.php:157
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr "bez podzbioru"
 
 #. translators: If there are characters in your language that are not supported
-#. by Open Sans, translate this to 'off'. Do not translate into your own
+#. * by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:104
+#: functions.php:151
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr "on"
 
-#: functions.php:64
+#: functions.php:108
 msgid "Primary Menu"
 msgstr "Menu główne"
 
-#: footer.php:16
+#: footer.php:22
 msgid "Proudly powered by %s"
 msgstr "Dumnie wspierane przez WordPressa"
 
-#: footer.php:16
+#: footer.php:21
 msgid "Semantic Personal Publishing Platform"
 msgstr "Semantyczną, osobistą platformę publikacyjną"
 
-#: content.php:66
+#: content.php:75
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Zobacz wszystkie wpisy, których autorem jest %s <span class=\"meta-nav\">&rarr;</span>"
 
@@ -197,15 +222,15 @@ msgstr "Zobacz wszystkie wpisy, których autorem jest %s <span class=\"meta-nav\
 msgid "Featured post"
 msgstr "Wyróżniony wpis"
 
-#: content-page.php:21 content.php:45 image.php:102
+#: content-page.php:24 image.php:123 content.php:50
 msgid "Pages:"
 msgstr "Strony:"
 
-#: content-none.php:17 index.php:53
+#: index.php:58 content-none.php:17
 msgid "Apologies, but no results were found. Perhaps searching will help find a related post."
 msgstr "Przepraszamy, ale niczego nie znaleziono. Być może użycie wyszukiwarki przyniesie oczekiwany rezultat."
 
-#: content-none.php:13 index.php:49 search.php:34
+#: index.php:54 search.php:37 content-none.php:13
 msgid "Nothing Found"
 msgstr "Niczego nie znaleziono"
 
@@ -213,65 +238,66 @@ msgstr "Niczego nie znaleziono"
 msgid "Link"
 msgstr "Odnośnik"
 
-#: content-aside.php:26 content-image.php:26 content-link.php:24
-#: content-page.php:24 content-quote.php:23 content-status.php:40
-#: content.php:51 functions.php:370 image.php:37
+#: content-aside.php:26 content-status.php:40 content-image.php:26
+#: content-link.php:24 content-page.php:31 content-quote.php:23 image.php:41
+#: functions.php:451 content.php:60
 msgid "Edit"
 msgstr "Edytuj"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-aside.php:23 content-status.php:37 content-image.php:23
+#: content-link.php:21 content-quote.php:20 content.php:35
 msgid "% Replies"
 msgstr "% odpowiedzi"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-aside.php:23 content-status.php:37 content-image.php:23
+#: content-link.php:21 content-quote.php:20 content.php:35
 msgid "1 Reply"
 msgstr "1 odpowiedź"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-aside.php:23 content-status.php:37 content-image.php:23
+#: content-link.php:21 content-quote.php:20 content.php:35
 msgid "Leave a reply"
 msgstr "Dodaj komentarz"
 
-#: content-aside.php:20 content-link.php:18 content-quote.php:17
-#: content-status.php:15
+#: content-aside.php:20 content-status.php:15 content-link.php:18
+#: content-quote.php:17
 msgid "Permalink to %s"
 msgstr "Bezpośredni odnośnik do &#8222;%s&#8221;"
 
-#: content-aside.php:15 content-image.php:13 content-link.php:14
-#: content-quote.php:13 content-status.php:31 content.php:44
+#: content-aside.php:15 content-status.php:31 content-image.php:13
+#: content-link.php:14 content-quote.php:13 content.php:46
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Czytaj dalej <span class=\"meta-nav\">&rarr;</span>"
 
-#: comments.php:53
+#: comments.php:74
 msgid "Comments are closed."
 msgstr "Możliwość komentowania jest wyłączona."
 
-#: comments.php:44
+#: comments.php:64
 msgid "Newer Comments &rarr;"
 msgstr "Nowsze komentarze &rarr;"
 
-#: comments.php:43
+#: comments.php:63
 msgid "&larr; Older Comments"
 msgstr "&larr; Starsze komentarze"
 
-#: comments.php:42
+#: comments.php:62
 msgid "Comment navigation"
 msgstr "Nawigacja po komentarzach"
 
-#: comments.php:31
-msgid "One thought on &ldquo;%2$s&rdquo;"
+#. translators: %1$s: The number of comments. %2$s: The post title.
+#: comments.php:41
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "Jedna myśl nt. &bdquo;%2$s&rdquo;"
-msgstr[1] "%1$s myśli nt. &bdquo;%2$s&rdquo;"
-msgstr[2] "%1$s myśli nt. &bdquo;%2$s&rdquo;"
+msgstr[0] "%1$s myśl w temacie &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s myśli w temacie &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s myśli w temacie &ldquo;%2$s&rdquo;"
 
 #: category.php:21
 msgid "Category Archives: %s"
 msgstr "Archiwum kategorii: %s"
 
-#: author.php:63 content.php:62
+#: content.php:71 author.php:64
 msgid "About %s"
 msgstr "O %s"
 
@@ -279,50 +305,49 @@ msgstr "O %s"
 msgid "Author Archives: %s"
 msgstr "Archiwum autora: %s"
 
-#: archive.php:35
+#: archive.php:36
 msgid "Archives"
 msgstr "Archiwa"
 
-#: archive.php:33
+#: archive.php:34
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: archive.php:33
+#: archive.php:34
 msgid "Yearly Archives: %s"
 msgstr "Roczne archiwum: %s"
 
-#: archive.php:31
+#: archive.php:32
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: archive.php:31
+#: archive.php:32
 msgid "Monthly Archives: %s"
 msgstr "Miesięczne archiwum: %s"
 
-#: archive.php:29
+#: archive.php:30
 msgid "Daily Archives: %s"
 msgstr "Dzienne archiwum: %s"
 
 #: 404.php:21
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr "Nie udało się znaleźć tego, czego szukasz. Być może wyszukiwanie przyniesie lepsze rezultaty."
+msgstr "Nie udało się znaleźć tego, czego szukano. Być może użycie wyszukiwarki da lepsze wyniki."
 
 #: 404.php:17
 msgid "This is somewhat embarrassing, isn&rsquo;t it?"
 msgstr "Jest to trochę krępujące, nieprawdaż?"
 
-#. #-#-#-#-#  twentytwelve.pot (Twenty Twelve 2.3)  #-#-#-#-#
-#. Author URI of the plugin/theme
-#: footer.php:16
+#. Author URI of the theme
+#: footer.php:21
 msgid "https://wordpress.org/"
 msgstr "https://pl.wordpress.org/"
 
-#. Author of the plugin/theme
+#. Author of the theme
 msgid "the WordPress team"
 msgstr "zespół WordPressa"
 
-#. Theme URI of the plugin/theme
+#. Theme URI of the theme
 msgid "https://wordpress.org/themes/twentytwelve/"
 msgstr "https://wordpress.org/themes/twentytwelve/"

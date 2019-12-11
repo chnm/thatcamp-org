@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-19 22:18:01+0000\n"
+"PO-Revision-Date: 2019-09-26 08:51:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -47,11 +47,11 @@ msgstr "مجتمع البي بي بريس"
 
 #. Plugin Name of the plugin/theme
 msgid "bbPress"
-msgstr "بي بي بريس"
+msgstr "إضافة bbPress"
 
 #. Description of the plugin/theme
 msgid "bbPress is forum software with a twist from the creators of WordPress."
-msgstr "بي بي بريس هو برنامج منتدى يندمج مع ووردبريس."
+msgstr "bbPress هو برنامج منتدى يندمج مع ووردبريس."
 
 #. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
@@ -59,6 +59,18 @@ msgstr "بي بي بريس هو برنامج منتدى يندمج مع وورد
 #. Author URI of the plugin/theme
 msgid "https://bbpress.org"
 msgstr "https://bbpress.org"
+
+#: includes/admin/tools.php:1148
+msgid "No reply positions to recalculate!"
+msgstr "لا توجد ردود لإعادة حساب مواضعها!"
+
+#: includes/admin/tools.php:1147
+msgid "Recalculating reply menu order &hellip; %s"
+msgstr "إعادة احتساب ترتيب قائمة الردّ &hellip; %s"
+
+#: includes/admin/tools.php:166
+msgid "Recalculate the position of each reply"
+msgstr "إعادة حساب موضع كل ردّ"
 
 #: templates/default/extras/page-topic-tags.php:22
 msgid "<p>This is a collection of tags that are currently popular on our forums.</p>"
@@ -83,7 +95,7 @@ msgstr "يرجى تسجيل الدخول لجعل هذا الموضوع في ا�
 
 #: templates/default/bbpress-functions.php:353
 msgid "Favorites are no longer active."
-msgstr "لم تعد المفضلات نشطة."
+msgstr "لم تعد قائمة المفضّلة نشطة."
 
 #: templates/default/bbpress-functions.php:320
 #: templates/default/bbpress-functions.php:388
@@ -139,7 +151,7 @@ msgstr "هذا العضو غير مشترك حالياً في أي موضوع."
 
 #: templates/default/bbpress/user-subscriptions.php:47
 msgid "You are not currently subscribed to any topics."
-msgstr "حالياً لا يوجد لديك موضوعات مشترك بها."
+msgstr "ليس لديك أي موضوعات مشترك بها حاليًا."
 
 #: templates/default/bbpress/user-subscriptions.php:28
 msgid "This user is not currently subscribed to any forums."
@@ -147,7 +159,7 @@ msgstr "هذا العضو غير مشترك في أي منتدى حالياً."
 
 #: templates/default/bbpress/user-subscriptions.php:28
 msgid "You are not currently subscribed to any forums."
-msgstr "أنت لست مشترك في أي منتدى حالياً."
+msgstr "أنت لست مشتركًا في أي منتدى حالياً."
 
 #: templates/default/bbpress/user-subscriptions.php:19
 msgid "Subscribed Forums"
@@ -179,11 +191,11 @@ msgstr "الرتبة في المنتدى: %s"
 
 #: templates/default/bbpress/user-favorites.php:28
 msgid "This user has no favorite topics."
-msgstr "هذا العضو لا يوجد لديه موضوعات في المفضّلة."
+msgstr "ليس لهذا المستخدم أي موضوعات في المفضّلة."
 
 #: templates/default/bbpress/user-favorites.php:28
 msgid "You currently have no favorite topics."
-msgstr "حالياًْ لا يوجد لديك موضوعات في المفضّلة."
+msgstr "حاليًا ليس هناك أي موضوعات في المفضّلة."
 
 #: templates/default/bbpress/user-favorites.php:15
 msgid "Favorite Forum Topics"
@@ -195,7 +207,7 @@ msgstr "اشتراكات %s"
 
 #: templates/default/bbpress/user-details.php:48
 msgid "%s's Favorites"
-msgstr "مفضلات %s"
+msgstr "قائمة %s المفضّلة"
 
 #: templates/default/bbpress/user-details.php:41
 msgid "%s's Replies Created"
@@ -265,7 +277,7 @@ msgstr "نحن نستخدم بريدك الإلكتروني لإرسال كلم�
 
 #: templates/default/bbpress/form-user-register.php:17
 msgid "Your username must be unique, and cannot be changed later."
-msgstr "إسم المستخدم يجب ان يكون فريداً، و لا يمكن تغييره لاحقاً."
+msgstr "اسم المستخدم يجب أن يكون فريدًا، و لا يمكن تغييره لاحقاً."
 
 #: templates/default/bbpress/form-user-register.php:14
 msgid "Create an Account"
@@ -939,7 +951,7 @@ msgstr "دمج"
 #: includes/topics/template.php:2686
 msgctxt "Topic Status"
 msgid "Open"
-msgstr "فتح"
+msgstr "مفتوح"
 
 #: includes/topics/template.php:2685
 msgctxt "Topic Status"
@@ -1715,6 +1727,10 @@ msgstr "<strong>خطأ</strong>: المنتدى يحتاج إلى عنوان."
 msgid "<strong>ERROR</strong>: You do not have permission to create new forums."
 msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لإنشاء منتديات جديدة."
 
+#: includes/extend/buddypress/notifications.php:165
+msgid "<strong>ERROR</strong>: You do not have permission to mark notifications for that user."
+msgstr "<strong>خطأ</strong>: ليس لديك صلاحية لتحديد الإشعارات لهذا العضو."
+
 #: includes/extend/buddypress/notifications.php:57
 msgid "You have %d new reply to %s"
 msgstr "لديك %d رد جديد على %s"
@@ -1771,6 +1787,10 @@ msgstr "<strong>خطأ</strong>: هل أنت متأكّد أنك تود فعل �
 #: includes/extend/buddypress/groups.php:304
 msgid "Save Settings"
 msgstr "حفظ الإعدادات"
+
+#: includes/extend/buddypress/groups.php:299
+msgid "Network administrators can reconfigure which forum belongs to this group."
+msgstr "المسؤولين عن الشبكة باستطاعتهم إعادة تكوين المنتدى الذي ينتمي لهذه المجموعة."
 
 #: includes/extend/buddypress/groups.php:291
 msgid "Group Forum:"
@@ -1913,7 +1933,7 @@ msgstr "%1$s على %2$s %3$s"
 
 #: includes/common/widgets.php:1081
 msgid "(bbPress) Recent Replies"
-msgstr "(بي بي بريس) أحدث الردود"
+msgstr "(bbPress) أحدث الردود"
 
 #: includes/common/widgets.php:1078
 msgid "A list of the most recent replies."
@@ -1925,7 +1945,7 @@ msgstr "إحصائيات المنتدى"
 
 #: includes/common/widgets.php:951
 msgid "(bbPress) Statistics"
-msgstr "(بي بي بريس) إحصائيات"
+msgstr "(bbPress) إحصائيات"
 
 #: includes/common/widgets.php:948
 msgid "Some statistics from your forum."
@@ -1971,7 +1991,7 @@ msgstr "بواسطة %1$s"
 
 #: includes/common/widgets.php:695
 msgid "(bbPress) Recent Topics"
-msgstr "(بي بي بريس) أحدث الموضوعات"
+msgstr "(bbPress) أحدث الموضوعات"
 
 #: includes/common/widgets.php:692
 msgid "A list of recent topics, sorted by popularity or freshness."
@@ -1987,7 +2007,7 @@ msgstr "رقم معرّف (ID) المنتدى:"
 
 #: includes/common/widgets.php:515
 msgid "(bbPress) Forums List"
-msgstr "(بي بي بريس) قائمة المنتديات"
+msgstr "(bbPress) قائمة المنتديات"
 
 #: includes/common/widgets.php:512
 msgid "A list of forums with an option to set the parent."
@@ -1999,15 +2019,15 @@ msgstr "بحث في المنتديات"
 
 #: includes/common/widgets.php:387
 msgid "(bbPress) Forum Search Form"
-msgstr "(بي بي بريس) نموذج البحث"
+msgstr "(bbPress) نموذج البحث في المنتدى"
 
 #: includes/common/widgets.php:384
 msgid "The bbPress forum search form."
-msgstr "نموذج البحث في بي بي بريس."
+msgstr "نموذج البحث في منتددى bbPress."
 
 #: includes/common/widgets.php:246
 msgid "(bbPress) Topic Views List"
-msgstr "(بي بي بريس) قائمة رؤى الموضوع"
+msgstr "(bbPress) قائمة مشاهدات الموضوع"
 
 #: includes/common/widgets.php:243
 msgid "A list of registered optional topic views."
@@ -2045,7 +2065,7 @@ msgstr "تذكرني"
 #: includes/common/widgets.php:97
 #: templates/default/bbpress/form-user-login.php:22
 msgid "Password"
-msgstr "كلمـــة المــــرور"
+msgstr "كلمة المرور"
 
 #: includes/common/widgets.php:92
 #: templates/default/bbpress/form-user-edit.php:98
@@ -2062,7 +2082,7 @@ msgstr "دخول"
 
 #: includes/common/widgets.php:42
 msgid "(bbPress) Login Widget"
-msgstr "(بي بي بريس) تسجيل الدخول"
+msgstr "(bbPress) ودجت تسجيل الدخول"
 
 #: includes/common/widgets.php:39
 msgid "A simple login form with optional links to sign-up and lost password pages."
@@ -2085,9 +2105,26 @@ msgstr "تحرير ملفك الشخصي"
 msgid "%s Profile"
 msgstr "الملف الشخصي لـ %s"
 
+#: includes/common/template.php:2621
+msgid "%s Subscriptions"
+msgstr "اشتراكات %s"
+
+#: includes/common/template.php:2617
+msgid "%s Favorites"
+msgstr "مفضّلة %s"
+
+#: includes/common/template.php:2613
+msgid "%s Replies"
+msgstr "ردود %s"
+
 #: includes/common/template.php:2609
 msgid "%s Topics"
 msgstr "مواضيع %s"
+
+#: includes/common/template.php:2604
+msgctxt "User viewing another users profile"
+msgid "%s's"
+msgstr "ملف %s الشخصي"
 
 #: includes/common/template.php:2600
 msgctxt "User viewing his/her own profile"
@@ -2164,6 +2201,32 @@ msgstr "لا تتوفّر منتديات"
 msgid "No topics available"
 msgstr "لا موضوعات متوفرة"
 
+#: includes/common/functions.php:1256
+msgid ""
+"%1$s wrote:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Topic Link: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"You are receiving this email because you subscribed to a forum.\n"
+"\n"
+"Login and visit the topic to unsubscribe from these emails."
+msgstr ""
+"لقد كتب %1$s:\n"
+"\n"
+"%2$s\n"
+"\n"
+"رابط الموضوع: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"أنت تستلم هذه الرسالة لأنك قمت بالاشتراك بأحد المنتديات.\n"
+"\n"
+"قم بتسجيل الدخول وزيارة الموضوع لإلغاء الاشتراك من هذه الرسائل الإلكترونية."
+
 #: includes/common/functions.php:1099
 msgid ""
 "%1$s wrote:\n"
@@ -2225,7 +2288,7 @@ msgstr "دقيقة"
 
 #: includes/common/functions.php:122
 msgid "hours"
-msgstr "ساعة"
+msgstr "ساعات"
 
 #: includes/common/functions.php:122
 msgid "hour"
@@ -2559,7 +2622,7 @@ msgstr "حذف ميتا المشاركات&hellip; %s"
 
 #: includes/admin/tools.php:1294
 msgid "Deleting Posts&hellip; %s"
-msgstr "حذف المواضيع&hellip; %s"
+msgstr "حذف الموضوعات&hellip; %s"
 
 #: includes/admin/tools.php:1287
 msgid "Success!"
@@ -2572,6 +2635,10 @@ msgstr "فشل"
 #: includes/admin/tools.php:1253
 msgid "Reset bbPress"
 msgstr "إعادة ضبط bbPress إلى الإفتراضي"
+
+#: includes/admin/tools.php:1245
+msgid "Human sacrifice, dogs and cats living together... mass hysteria!"
+msgstr "التضحية الإنسانية، الكلاب والقطط تعيش معا... هستيريا جماعية!"
 
 #: includes/admin/tools.php:1244
 msgid "This process cannot be undone."
@@ -2643,6 +2710,10 @@ msgstr "سيتم حذف البيانات التالية:"
 msgid "Backup your database before proceeding."
 msgstr "قم بالاحتفاظ بنسخة احتياطية من قاعدة البيانات قبل التنفيذ."
 
+#: includes/admin/tools.php:1209
+msgid "Revert your forums back to a brand new installation. This process cannot be undone."
+msgstr "استعادة المنتديات الخاصة بك كما كانت أثناء التنصيب لأول مرة. لا يمكن التراجع عن هذه العملية."
+
 #: includes/admin/tools.php:1100
 msgid "Recalculating the topic for each post &hellip; %s"
 msgstr "إعادة حساب الموضوع لكل مشاركة &hellip; %s"
@@ -2671,6 +2742,10 @@ msgstr "تم! تمّ تحديث %s عضو."
 msgid "Remapping forum role for each user on this site&hellip; %s"
 msgstr "إعادة تعيين رتبة كل عضو في المنتدى على هذا الموقع&hellip; %s"
 
+#: includes/admin/tools.php:743
+msgid "Removing trashed forums from user subscriptions&hellip; %s"
+msgstr "الحذف النهائي للمنتديات المحذوفة بسلة المهملات من اشتراكات المستخدم&hellip; %s"
+
 #: includes/admin/tools.php:682
 msgid "Removing trashed topics from user subscriptions&hellip; %s"
 msgstr "إزالة الموضوعات المهملة من إشتراكات العضو &hellip; %s"
@@ -2682,7 +2757,7 @@ msgstr "لا يوجد شيء لنقله!"
 
 #: includes/admin/tools.php:620
 msgid "Removing trashed topics from user favorites&hellip; %s"
-msgstr "إزالة الموضوعات المهملة من مفضلات العضو &hellip; %s"
+msgstr "إزالة الموضوعات المهملة من مفضّلة العضو &hellip; %s"
 
 #: includes/admin/tools.php:575
 msgid "Counting the number of topics to which each user has replied&hellip; %s"
@@ -2837,7 +2912,7 @@ msgstr "بعض من هذه الأدوات تسبّب ضغط كبير على قا
 
 #: includes/admin/tools.php:36
 msgid "bbPress keeps track of relationships between forums, topics, replies, and topic tags, and users. Occasionally these relationships become out of sync, most often after an import or migration. Use the tools below to manually recalculate these relationships."
-msgstr "بي بي بريس يتتبّع الارتباطات بين المنتديات، الموضوعات، الردود، وسوم الموضوعات والأعضاء. أحياناً تصبح هذه الارتباطات غير متزامنة، في معظم الأحيان يحصل ذلك بعد تنفيذ عملية استيراد أو تصدير. استخدم الأدوات أدناه لإعادة ضبط هذه الارتباطات."
+msgstr "bbPress يتتبّع الارتباطات بين المنتديات، الموضوعات، الردود، وسوم الموضوعات والأعضاء. أحياناً تصبح هذه الارتباطات غير متزامنة، في معظم الأحيان يحصل ذلك بعد تنفيذ عملية استيراد أو تصدير. استخدم الأدوات أدناه لإعادة ضبط هذه الارتباطات."
 
 #: includes/admin/settings.php:1755
 msgid "Possible %1$s conflict: %2$s"
@@ -2917,7 +2992,7 @@ msgstr "\"الأسماء اللطيفة الأخرى\" - تُستخدم كباد
 
 #: includes/admin/settings.php:1588
 msgid "\"Archive Slugs\" are used as the \"root\" for your forums and topics. If you combine these values with existing page slugs, bbPress will attempt to output the most correct title and content."
-msgstr "\"الاسم اللطيف للأرشيف\" -  يُستخدم لتحديد قاعدة المنتديات والموضوعات. في حال جمعت بين هذه القيم وبين صفحات أخرى تحمل نفس الاسم اللطيف، سيحاول بي بي بريس أن يعطي النتيجة الأفضل من حيث العنوان والمحتوى."
+msgstr "\"الاسم اللطيف للأرشيف\" -  يُستخدم لتحديد قاعدة المنتديات والموضوعات. في حال جمعت بين هذه القيم وبين صفحات أخرى تحمل نفس الاسم اللطيف، سيحاول bbPress أن يعطي النتيجة الأفضل من حيث العنوان والمحتوى."
 
 #: includes/admin/settings.php:1587
 msgid "The Slugs section allows you to control the permalink structure for your forums."
@@ -3001,7 +3076,7 @@ msgstr "ابدأ"
 
 #: includes/admin/settings.php:1488
 msgid "Non-bbPress passwords cannot be automatically converted. They will be converted as each user logs in."
-msgstr "لا يمكن تحويل كلمات المرور تلقائياً (باستثناء كلمات مرور بي بي بريس). سيتم تحويل كلمات المرور تلقائياً حينما يقوم كل مستخدم بتسجيل الدخول."
+msgstr "لا يمكن تحويل كلمات المرور تلقائياً (باستثناء كلمات مرور bbPress). سيتم تحويل كلمات المرور تلقائياً حينما يقوم كل مستخدم بتسجيل الدخول."
 
 #: includes/admin/settings.php:1487
 msgid "Attempt to import user accounts from previous forums"
@@ -3096,6 +3171,10 @@ msgstr "إعدادات أكيسميت في المنتدى"
 msgid "Using the Forum Root is not recommended. Changing this does not move existing forums."
 msgstr "إستخدام جذر المنتدى غير مستحسن. تغيير هذه القيمة لن ينقل المنتديات الحالية."
 
+#: includes/admin/settings.php:1202
+msgid "is the parent for all group forums"
+msgstr "هو المنتدى الأب لجميع منتديات المجموعة"
+
 #: includes/admin/settings.php:1194
 msgid "&mdash; Forum root &mdash;"
 msgstr "&mdash; جذر المنتدى &mdash;"
@@ -3148,6 +3227,10 @@ msgstr "إدراج الوسائط (يوتيوب، تويتر، فليكر، ال
 #: includes/admin/settings.php:732
 msgid "No template packages available."
 msgstr "لا توجد حزم قوالب متوفرة."
+
+#: includes/admin/settings.php:728
+msgid "will serve all bbPress templates"
+msgstr "سوف تخدم جميع نماذج وقوالب bbPress"
 
 #: includes/admin/settings.php:722
 msgid "%1$s - %2$s"
@@ -3321,6 +3404,18 @@ msgstr "دمج أكيسميت"
 msgid "BuddyPress Integration"
 msgstr "دمج BuddyPress"
 
+#: includes/admin/settings.php:59
+msgid "Forum User Slugs"
+msgstr "بادئة الأسماء اللطيفة لمستخدم المنتدى"
+
+#: includes/admin/settings.php:54
+msgid "Single Forum Slugs"
+msgstr "بادئة الأسماء اللطيفة للمنتديات المفردة"
+
+#: includes/admin/settings.php:49
+msgid "Forum Root Slug"
+msgstr "بادئة جذر المنتدى"
+
 #: includes/admin/settings.php:44
 msgid "Topics and Replies Per RSS Page"
 msgstr "الموضوعات والردود لكل صفحة تغذية RSS"
@@ -3339,7 +3434,7 @@ msgstr "خصائص المنتدى"
 
 #: includes/admin/settings.php:24
 msgid "Forum User Settings"
-msgstr "اعدادات عضو المنتدى"
+msgstr "إعدادات عضو المنتدى"
 
 #: includes/admin/replies.php:883
 msgid "Reply draft updated. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
@@ -3674,7 +3769,7 @@ msgstr "النوع:"
 
 #: includes/admin/metaboxes.php:222
 msgid "You are using <span class=\"b\">bbPress %s</span>."
-msgstr "أنت تستخدم <span class=\"b\">بي بي بريس %s</span>."
+msgstr "أنت تستخدم <span class=\"b\">bbPress %s</span>."
 
 #: includes/admin/metaboxes.php:198
 msgid "Empty Topic Tag"
@@ -3700,9 +3795,9 @@ msgstr[5] "رد مخفي"
 msgid "Hidden Topic"
 msgid_plural "Hidden Topics"
 msgstr[0] "موضوع مخفي"
-msgstr[1] "موضوع مخفي"
+msgstr[1] "موضوع واحد مخفي"
 msgstr[2] "موضوعان مخفيان"
-msgstr[3] "مواضيع مخفية"
+msgstr[3] "موضوعات مخفية"
 msgstr[4] "موضوع مخفي"
 msgstr[5] "موضوع مخفي"
 
@@ -3770,7 +3865,7 @@ msgstr "تم تحديث مسودة المنتدى. <a target=\"_blank\" href=\"%
 #: includes/admin/forums.php:558 includes/admin/replies.php:878
 #: includes/admin/topics.php:948
 msgid "M j, Y @ G:i"
-msgstr "M j, Y @ G:i"
+msgstr "j F، Y @ G:i"
 
 #: includes/admin/forums.php:556
 msgid "Forum scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview forum</a>"
@@ -4189,7 +4284,7 @@ msgstr "تحديث المنتدى"
 
 #: includes/admin/admin.php:905
 msgid "Core Contributors to bbPress 2.5"
-msgstr "المساهمين في بي بي بريس 2.5"
+msgstr "المساهمين في نواة bbPress 2.5"
 
 #: includes/admin/admin.php:896
 msgid "Bug Testing"
@@ -4202,7 +4297,7 @@ msgstr "توافق القالب"
 #: includes/admin/admin.php:257 includes/admin/admin.php:258
 #: includes/admin/admin.php:266 includes/admin/admin.php:267
 msgid "Welcome to bbPress"
-msgstr "مرحباً بك في بي بي بريس"
+msgstr "مرحباً بك في bbPress"
 
 #: includes/admin/admin.php:530
 msgid "Right Now in Forums"
@@ -4210,7 +4305,7 @@ msgstr "إحصائيات المنتدى"
 
 #: includes/admin/admin.php:545
 msgid "About bbPress"
-msgstr "حول بي بي بريس"
+msgstr "حول bbPress"
 
 #: includes/admin/admin.php:887
 msgid "Converter Specialist"
@@ -4218,7 +4313,11 @@ msgstr "أخصائي التحويل"
 
 #: bbpress.php:485
 msgid "bbPress Forums"
-msgstr "منتديات بي بي بريس"
+msgstr "منتديات bbPress"
+
+#: includes/admin/admin.php:816
+msgid "Better handling of styles and scripts in the template stack."
+msgstr "تحكُّم أفضل مع الأنماط والسكربتات في حزمة النموذج."
 
 #: includes/admin/admin.php:515
 msgid "About"
@@ -4226,7 +4325,7 @@ msgstr "عن"
 
 #: includes/admin/admin.php:865
 msgid "bbPress is created by a worldwide swarm of busy, busy bees."
-msgstr "يتم إنشاء بي بي بريس بواسطة سرب مشغول من النحل من جميع أنحاء العالم :)"
+msgstr "تم إنشاء bbPress بواسطة سرب مشغول من النحل من جميع أنحاء العالم :)"
 
 #: includes/admin/admin.php:867
 msgid "Project Leaders"
@@ -4266,11 +4365,11 @@ msgstr[5] "منفرد <span class=\"count\">(%s)</span>"
 
 #: bbpress.php:405 templates/default/bbpress-functions.php:51
 msgid "bbPress Default"
-msgstr "بي بي بريس الافتراضي"
+msgstr "bbPress الافتراضي"
 
 #: bbpress.php:510
 msgid "bbPress Topics"
-msgstr "موضوعات بي بي بريس"
+msgstr "موضوعات bbPress"
 
 #: bbpress.php:678
 msgid "Most popular topics"
@@ -4298,7 +4397,7 @@ msgstr "تتحايل، ها؟"
 
 #: bbpress.php:535
 msgid "bbPress Replies"
-msgstr "ردود بي بي بريس"
+msgstr "ردود bbPress"
 
 #: includes/admin/admin.php:832 includes/admin/admin.php:936
 msgid "Go to Forum Settings"
@@ -4306,7 +4405,7 @@ msgstr "اذهب إلى إعدادات المنتدى"
 
 #: includes/admin/admin.php:854
 msgid "Thank you for updating! bbPress %s is waxed, polished, and ready for you to take it for a lap or two around the block!"
-msgstr "شكراً لك على التحديث! بي بي بريس %s جاهز ليخدم احتياجاتك."
+msgstr "شكرًا لك على التحديث! إضافة bbPress %s جاهزة لتخدم احتياجاتك!"
 
 #: bbpress.php:570
 msgctxt "post"
@@ -4364,17 +4463,22 @@ msgstr "تحديث المنتديات"
 msgid "Settings"
 msgstr "الإعدادات"
 
+#: includes/admin/admin.php:639
+msgctxt "admin color scheme"
+msgid "Evergreen"
+msgstr "دائم الخضرة"
+
 #: includes/admin/admin.php:720 includes/admin/admin.php:758
 msgid "%s - %s"
 msgstr "%s - %s"
 
 #: includes/admin/admin.php:776 includes/admin/admin.php:853
 msgid "Welcome to bbPress %s"
-msgstr "مرحبًا في بي بي بريس %s"
+msgstr "مرحبًا في bbPress %s"
 
 #: includes/admin/admin.php:777
 msgid "Thank you for updating! bbPress %s is bundled up and ready to weather the storm of users in your community!"
-msgstr "شكراً لك على التحديث! بي بي بريس %s قد جُمعت ومستعدة للصمود في عاصفة الأعضاء في مجتمعك!"
+msgstr "شكراً لك على التحديث! إضافة bbPress %s قد جُمعت ومستعدة للصمود في عاصفة الأعضاء في مجتمعك!"
 
 #: includes/admin/admin.php:778 includes/admin/admin.php:855
 msgid "Version %s"
@@ -4394,19 +4498,19 @@ msgstr "إشتراكات المنتدى"
 
 #: includes/admin/admin.php:793
 msgid "Subscribe to Forums"
-msgstr "الإشتراك بالمنتديات"
+msgstr "الاشتراك بالمنتديات"
 
 #: includes/admin/admin.php:794
 msgid "Now your users can subscribe to new topics in specific forums."
-msgstr "الآن يمكن للأعضاء الإشتراك في جديد منتدى معين."
+msgstr "الآن يمكن للأعضاء الاشتراك في موضوعات جديدة في منتديات معينة."
 
 #: includes/admin/admin.php:798
 msgid "Manage Subscriptions"
-msgstr "إدارة الإشتراكات"
+msgstr "إدارة الاشتراكات"
 
 #: includes/admin/admin.php:799
 msgid "Your users can manage all of their subscriptions in one convenient location."
-msgstr "يمكن للأعضاء أن تقوم بإدارة جميع الإشتراكات من مكان واحد مناسب."
+msgstr "يمكن للأعضاء إدارة جميع اشتراكاتهم من مكان واحد مناسب."
 
 #: includes/admin/admin.php:805
 msgid "Converters"
@@ -4416,13 +4520,21 @@ msgstr "المحولات"
 msgid "We&#8217;re all abuzz about the hive of new importers, AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo and XMB. Existing importers are now sweeter than honey with improved importing stickies, topic tags, forum categories and the sting is now gone if you need to remove imported users."
 msgstr "تم إضافة مجموعة ادوات إستيراد جديدة من AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo و XMB. و تحسين أدوات الإستيراد السابقة لتصبح أكثر تطوراً في إستيراد الموضوعات المثبتة، وسوم الموضوعات، تصنيفات المنتديات، و إزالة الإرتباك إن أردت حذف العضويات المستوردة."
 
+#: includes/admin/admin.php:820
+msgid "Polyglot support"
+msgstr "الدعم الفني Polyglot"
+
 #: includes/admin/admin.php:821
 msgid "bbPress fully supports automatic translation updates."
-msgstr "بى بى بريس تدعم تحديث الترجمات الجديدة تلقائيا."
+msgstr "إضافة bbPress تدعم بشكل كلي تحديث الترجمات الجديدة تلقائيًا."
 
 #: includes/admin/admin.php:825
 msgid "User capabilities"
 msgstr "صلاحيات العضو"
+
+#: includes/admin/admin.php:826
+msgid "Roles and capabilities have been swept through, cleaned up, and simplified."
+msgstr "تمّ جرف الأدوار والرتب، وتنظيفها، وتبسيطها."
 
 #: includes/admin/admin.php:877
 msgid "Lead Developer"
@@ -4431,6 +4543,11 @@ msgstr "قائد تطوير"
 #: includes/admin/admin.php:872
 msgid "Founding Developer"
 msgstr "المطوّر الأساسي"
+
+#: includes/admin/admin.php:630
+msgctxt "admin color scheme"
+msgid "Mint"
+msgstr "نعناع"
 
 #: includes/admin/admin.php:198 includes/admin/functions.php:273
 #: includes/admin/tools.php:34

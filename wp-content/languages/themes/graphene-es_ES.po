@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Graphene package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-10-07 14:42:47+0000\n"
+"PO-Revision-Date: 2019-11-19 15:54:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,41 +11,67 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: Themes - Graphene\n"
 
-#. Description of the plugin/theme
+#. Description of the theme
 msgid "We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the beginning, we have listened to countless suggestions and requests for features that really matter. Here's a theme that's user-friendly, feature-packed, and endlessly customisable, for both beginners and advanced creators. Feel at home with more than 40 languages and backed with active community support, where questions, ideas and suggestions are always welcomed. Now Gutenberg compatible."
 msgstr "Creemos que todos los temas deberían facilitar la escritura creativa, no obstaculizarla. También creemos que cada página debería tener la oportunidad de ser única. Desde el principio, hemos escuchado incontables sugerencias y solicitudes de características realmente importantes. Aquí tienes un tema cómodo para el usuario, con todas las funcionalidades y con infinitas posibilidades de personalización, tanto para principiantes como para creadores avanzados. Siéntete cómodo con más de 40 idiomas y respaldado por una activa comunidad de soporte, donde las preguntas, ideas y sugerencias son siempre bienvenidas. Y compatible con Gutenberg."
 
-#. Theme Name of the plugin/theme
+#. Theme Name of the theme
 msgid "Graphene"
 msgstr "Graphene"
+
+#: admin/customizer/options-advanced.php:51
+msgid "Host theme fonts and scripts locally"
+msgstr "Alojar localmente las fuentes y scripts del tema"
+
+#: admin/customizer/options-advanced.php:44
+msgid "Scripts Options"
+msgstr "Opciones de scripts"
+
+#: admin/customizer/graphene-plus.php:60
+msgid "Live Search"
+msgstr "Búsqueda en vivo"
+
+#: inc/scripts.php:141
+msgid "No result found."
+msgstr "No se han encontrado resultados."
+
+#: inc/loop.php:1284
+msgid "Graphene has automatically switched the layout of this page to single column due to wide or full-width block being used in the content."
+msgstr "Graphene ha cambiado automáticamente el diseño de esta página a una sola columna debido a que en el contenido se utiliza un bloque ancho o de ancho completo."
+
+#: admin/customizer/options-general.php:560
+msgid "Maximum number of ads per page"
+msgstr "Número máximo de anuncios por página"
+
+#: admin/customizer/options-general.php:109
+msgid "Post types"
+msgstr "Tipos de contenido"
 
 #: admin/user.php:24
 msgid "Author profile image"
 msgstr "Imagen de perfil del autor"
 
-#. translators: %s will be replaced by a link to the Gravatar website
-#. (http://www.gravatar.com)
 #: admin/user.php:24
 msgid "Upload Image"
 msgstr "Subir imagen"
 
-#: admin/customizer/options-general.php:187
+#: admin/customizer/options-general.php:202
 msgid "Posts in categories selected here will not be displayed in the slider."
 msgstr "Los mensajes en las categorías seleccionadas aquí no se mostrarán en el carrusel."
 
-#: admin/customizer/options-general.php:184
+#: admin/customizer/options-general.php:199
 msgid "Categories to exclude"
 msgstr "Categorías a excluir"
 
-#: admin/customizer/options-general.php:178
+#: admin/customizer/options-general.php:193
 msgid "Enter ID of posts and pages to be excluded from the slider. Separate the IDs by comma, e.g. <code>1,13,45,33</code>"
 msgstr "Introduce el ID de las entrada y las páginas que quieres excluir del carrusel. Separar los IDs por comas, ej. <code>1,13,45,33</code>"
 
-#: admin/customizer/options-general.php:177
+#: admin/customizer/options-general.php:192
 msgid "Posts and pages to exclude"
 msgstr "Entradas y páginas a excluir"
 
-#: admin/customizer/options-general.php:118
+#: admin/customizer/options-general.php:133
 msgid "Disable slider caption"
 msgstr "Desactivar la leyenda del carrusel"
 
@@ -57,23 +83,23 @@ msgstr "A medida que los visitantes se desplazan hacia abajo, el menú de navega
 msgid "Enable sticky menu"
 msgstr "Activar menú fijo"
 
-#: admin/customizer/options-display.php:130
+#: admin/customizer/options-display.php:136
 msgid "Disable custom Yet Another Related Posts Plugin (YARPP) template"
 msgstr "Desactivar la plantilla personalizada del plugin Yet Another Related Posts (YARPP)"
 
-#: admin/customizer/options-colours.php:88
+#: admin/customizer/options-colours.php:94
 msgid "Card display style: links"
 msgstr "Estilo de presentación de la tarjeta: enlaces"
 
-#: admin/customizer/options-colours.php:87
+#: admin/customizer/options-colours.php:93
 msgid "Card display style: text"
 msgstr "Estilo de visualización de la tarjeta: texto"
 
-#: admin/customizer/options-colours.php:86
+#: admin/customizer/options-colours.php:92
 msgid "Card display style: background"
 msgstr "Estilo de visualización de la tarjeta: fondo"
 
-#: admin/customizer/graphene-plus.php:33
+#: admin/customizer/graphene-plus.php:35
 msgid "Graphene: Page Builder"
 msgstr "Graphene: Constructor de páginas"
 
@@ -89,52 +115,52 @@ msgstr "<strong>AVISO:</strong> Instala y activa %s para poder utilizar la funci
 msgid "<strong>NOTICE:</strong> Please install and activate %s in order to use the Breadcrumbs feature."
 msgstr "<strong>AVISO:</strong> Instala y activa %s para poder utilizar la funcionalidad de migas de pan."
 
-#: admin/customizer/options-general.php:618
+#: admin/customizer/options-general.php:639
 msgid "Brands logo"
 msgstr "Logotipo de marcas"
 
-#: admin/customizer/options-general.php:613
+#: admin/customizer/options-general.php:634
 msgid "Open links in new window"
 msgstr "Abrir los enlaces una ventana nueva"
 
-#: admin/customizer/options-general.php:607
+#: admin/customizer/options-general.php:628
 msgid "Mentions bar tagline"
 msgstr "Texto de la barra de menciones"
 
-#: admin/customizer/options-general.php:601
+#: admin/customizer/options-general.php:622
 msgid "Mentions bar title"
 msgstr "Título de la barra de menciones"
 
-#: admin/customizer/options-general.php:594
+#: admin/customizer/options-general.php:615
 msgid "All posts and pages"
 msgstr "Todas las entradas y páginas"
 
-#: admin/customizer/options-general.php:593
+#: admin/customizer/options-general.php:614
 msgid "All pages"
 msgstr "Todas las páginas"
 
-#: admin/customizer/options-general.php:592
+#: admin/customizer/options-general.php:613
 msgid "Front page"
 msgstr "Portada"
 
-#: admin/customizer/options-general.php:583
+#: admin/customizer/options-general.php:604
 msgid "Showcase the awards, reviews, or mentions you have received from other organisations or those you are affiliated to."
 msgstr "Muestra los premios, reseñas o menciones que hayas recibido de otras organizaciones o de aquellas con las que estés afiliado."
 
-#: admin/customizer/options-general.php:581
+#: admin/customizer/options-general.php:602
 msgid "Mentions Bar"
 msgstr "Barra de menciones"
 
-#: admin/customizer/options-general.php:459
+#: admin/customizer/options-general.php:474
 msgid "Top bar and footer"
 msgstr "Barra superior y pie"
 
-#: admin/customizer/options-general.php:454
-#: admin/customizer/options-general.php:589
+#: admin/customizer/options-general.php:469
+#: admin/customizer/options-general.php:610
 msgid "Display in"
 msgstr "Mostrar en"
 
-#: admin/customizer/options-general.php:104
+#: admin/customizer/options-general.php:119
 msgid "Banner"
 msgstr "Banner"
 
@@ -154,11 +180,11 @@ msgstr "Izquierda"
 msgid "Site Title and Tagline alignment"
 msgstr "Alineación del título y descripción corta del sitio"
 
-#: admin/customizer/options-display.php:124
+#: admin/customizer/options-display.php:130
 msgid "Restrict previous/next post navigation to within the same category"
 msgstr "Restringir los enlaces de entrada anterior y siguiente a la misma categoría"
 
-#: admin/customizer/options-display.php:118
+#: admin/customizer/options-display.php:124
 msgid "Hide previous/next post navigation"
 msgstr "Ocultar navegación anterior/siguiente"
 
@@ -174,21 +200,21 @@ msgstr "Ancho completo expandido"
 msgid "New"
 msgstr "Nuevo"
 
-#: admin/customizer/controls.php:439 admin/customizer/controls.php:454
+#: admin/customizer/controls.php:442 admin/customizer/controls.php:457
 msgid "Add brand logo"
 msgstr "Añadir logo de marca"
 
-#: admin/customizer/controls.php:428 admin/customizer/controls.php:450
-#: admin/customizer/customizer.php:50
+#: admin/customizer/customizer.php:50 admin/customizer/controls.php:431
+#: admin/customizer/controls.php:453
 msgid "Links to"
 msgstr "Enlaza a"
 
-#: admin/customizer/controls.php:421 admin/customizer/controls.php:443
-#: admin/customizer/customizer.php:49 admin/user.php:24
+#: admin/customizer/customizer.php:49 admin/customizer/controls.php:424
+#: admin/customizer/controls.php:446 admin/user.php:24
 msgid "Select image"
 msgstr "Seleccionar imagen"
 
-#: admin/customizer/controls.php:421 admin/customizer/controls.php:443
+#: admin/customizer/controls.php:424 admin/customizer/controls.php:446
 msgid "Select Image"
 msgstr "Selecciona imagen"
 
@@ -208,16 +234,14 @@ msgstr "Escritorio y móvil"
 msgid "Display on:"
 msgstr "Mostrar en:"
 
-#: inc/setup.php:218
+#: inc/setup.php:221
 msgid "Graphene - Left Sidebar"
 msgstr "Graphene - Barra lateral izquierda"
 
-#: inc/setup.php:210
+#: inc/setup.php:213
 msgid "Graphene - Right Sidebar"
 msgstr "Graphene Barra lateral derecha"
 
-#. translators: %s will be replaced by a link to the Gravatar website
-#. (http://www.gravatar.com)
 #: admin/user.php:138
 msgid "If no URL is defined here, the your %s will be used."
 msgstr "SI no se define aquí una URL, se usará tu %s."
@@ -230,55 +254,56 @@ msgstr "URL a la imagen de perfil"
 msgid "Additional user information"
 msgstr "Información de usuario adicional"
 
-#: admin/customizer/options-general.php:390
+#: admin/customizer/options-general.php:405
 msgid "When left empty, this will default to %s."
 msgstr "Cuando se deja vacío, será por defecto %s."
 
-#: admin/customizer/options-general.php:389
+#: admin/customizer/options-general.php:404
 msgid "Customise contextual navigation title"
 msgstr "Personalizar el título de navegación contextual"
 
-#: admin/customizer/options-general.php:103
+#: admin/customizer/options-general.php:118
 msgid "Card"
 msgstr "Tarjeta"
 
-#: admin/customizer/options-general.php:102
+#: admin/customizer/options-general.php:117
 msgid "Standard"
 msgstr "Estándar"
 
-#: admin/customizer/options-general.php:100
+#: admin/customizer/options-general.php:115
 msgid "Display style"
 msgstr "Estilo para mostrar"
 
-#: admin/customizer/options-display.php:173
+#: admin/customizer/options-display.php:179
 msgid "WP Editor"
 msgstr "Editor WP"
 
-#: admin/customizer/graphene-plus.php:116
+#: admin/customizer/graphene-plus.php:151
 msgid "Advertisements"
 msgstr "Anuncios"
 
-#: admin/customizer/graphene-plus.php:104
+#: admin/customizer/graphene-plus.php:139
 msgid "Social sharing"
 msgstr "Compartir en redes"
 
-#: admin/customizer/graphene-plus.php:92 admin/customizer/graphene-plus.php:128
+#: admin/customizer/graphene-plus.php:127
+#: admin/customizer/graphene-plus.php:163
 msgid "Appearance"
 msgstr "Apariencia"
 
-#: admin/customizer/graphene-plus.php:71
+#: admin/customizer/graphene-plus.php:106
 msgid "Typography"
 msgstr "Tipografía"
 
-#: admin/customizer/graphene-plus.php:58
+#: admin/customizer/graphene-plus.php:93
 msgid "Posts layout"
 msgstr "Disposición de las entradas"
 
-#: admin/customizer/graphene-plus.php:29
+#: admin/customizer/graphene-plus.php:31
 msgid "Graphene: Accelerated Mobile Pages (AMP)"
 msgstr "Graphene: Páginas móviles aceleradas (AMP)"
 
-#: admin/customizer/controls.php:572
+#: admin/customizer/controls.php:575
 msgid "This feature is available in Graphene Plus"
 msgstr "Esta característica está disponible en Graphene Plus"
 
@@ -290,23 +315,23 @@ msgstr "Usar esta imagen como avatar en tus comentarios"
 msgid "Help translate into %s"
 msgstr "Ayuda a traducir a %s"
 
-#: admin/customizer/options-general.php:206
+#: admin/customizer/options-general.php:221
 msgid "Best image available from post"
 msgstr "Mejor imagen disponible en la entrada"
 
-#: admin/customizer/options-colours.php:216
+#: admin/customizer/options-colours.php:222
 msgid "Widget area link text"
 msgstr "Texto del enlace del área de widgets"
 
-#: admin/customizer/options-colours.php:215
+#: admin/customizer/options-colours.php:221
 msgid "Widget area text"
 msgstr "Texto del área de widgets"
 
-#: admin/customizer/options-colours.php:214
+#: admin/customizer/options-colours.php:220
 msgid "Widget area border"
 msgstr "Borde del área de widgets"
 
-#: admin/customizer/options-colours.php:213
+#: admin/customizer/options-colours.php:219
 msgid "Widget area background"
 msgstr "Fondo del área de widgets"
 
@@ -314,15 +339,15 @@ msgstr "Fondo del área de widgets"
 msgid "Get Priority Support"
 msgstr "Conseguir soporte prioritario"
 
-#: admin/customizer/options-general.php:229
+#: admin/customizer/options-general.php:244
 msgid "Slider height (mobile)"
 msgstr "Altura del carrusel (móvil)"
 
-#: admin/customizer/options-general.php:136
+#: admin/customizer/options-general.php:151
 msgid "Include posts with featured image only"
 msgstr "Incluir solo entradas con imagen destacada"
 
-#: admin/customizer/controls.php:346 admin/customizer/controls.php:392
+#: admin/customizer/controls.php:349 admin/customizer/controls.php:395
 msgid "Icon name"
 msgstr "Nombre del icono"
 
@@ -338,115 +363,117 @@ msgstr "Etiqueta: <span>%s</span>"
 
 #. translators: %1$d is the number of results found, %2$s is the search term
 #: search.php:18
-msgid "%1$d result for %2$s"
-msgid_plural "%1$d results for %2$s"
-msgstr[0] "%1$d resultado para %2$s"
-msgstr[1] "%1$d resultados para %2$s"
+msgid "%1$s result for %2$s"
+msgid_plural "%1$s results for %2$s"
+msgstr[0] "%1$s resultado para %2$s"
+msgstr[1] "%1$s resultados para %2$s"
 
-#: inc/loop.php:98 loop.php:36
+#: loop.php:36 inc/loop.php:107
 msgid "Continue reading"
 msgstr "Continuar leyendo"
 
-#: inc/slider.php:94 inc/slider.php:114
+#: inc/slider.php:95 inc/slider.php:115
 msgid "View post"
 msgstr "Ver entrada"
 
-#: inc/setup.php:286
+#: inc/setup.php:289
 msgid "Graphene - Header"
 msgstr "Graphene - Cabecera"
 
-#: inc/setup.php:274
+#: inc/setup.php:277
 msgid "Graphene - Footer (Front Page)"
 msgstr "Graphene - Pie (página de inicio)"
 
-#: inc/setup.php:263
+#: inc/setup.php:266
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr "Graphene - Barra lateral Dos (página de inicio)"
 
-#: inc/setup.php:254
+#: inc/setup.php:257
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr "Graphene - Barra lateral Uno (página de inicio)"
 
-#: inc/setup.php:237
+#: inc/setup.php:240
 msgid "Graphene - Footer"
 msgstr "Graphene - Pie"
 
-#: inc/setup.php:146
+#: inc/setup.php:149
 msgid "Road"
 msgstr "Camino"
 
-#: inc/setup.php:141
+#: inc/setup.php:144
 msgid "Mountains"
 msgstr "Montañas"
 
-#: inc/setup.php:136
+#: inc/setup.php:139
 msgid "Forest"
 msgstr "Bosque"
 
-#: inc/scripts.php:135
+#: inc/scripts.php:137
 msgid "All comments loaded!"
 msgstr "¡Todos los comentarios han sido cargados!"
 
-#: inc/scripts.php:126 inc/scripts.php:130
+#: inc/scripts.php:128 inc/scripts.php:132
 msgid "Fetching %1$s of %2$s comments left ..."
-msgstr "Recuperando %1$s de %2$s comentarios restantes..."
+msgid_plural "Fetching %1$s of %2$s comments left ..."
+msgstr[0] "Recuperando %1$s de %2$s comentarios restantes..."
+msgstr[1] ""
 
-#: inc/scripts.php:122
+#: inc/scripts.php:124
 msgid "All loaded!"
 msgstr "¡Todo cargado!"
 
-#: inc/scripts.php:117
+#: inc/scripts.php:119
 msgid "Fetching %1$s of %2$s item left ..."
 msgid_plural "Fetching %1$s of %2$s items left ..."
 msgstr[0] "Recuperando elemento %1$s de %2$s..."
 msgstr[1] "Recuperando elemento %1$s de %2$s..."
 
-#: inc/scripts.php:113
+#: inc/scripts.php:115
 msgid "Fetching %1$s of %2$s items left ..."
 msgstr "Obteniendo otro %1$s elemento de los %2$s que quedan..."
 
-#: inc/menus.php:296
+#: inc/menus.php:298
 msgid "#%d (no title)"
 msgstr "#%d (sin título)"
 
-#: inc/menus.php:179
+#: inc/menus.php:181
 msgid "available icons"
 msgstr "iconos disponibles"
 
-#: inc/menus.php:179
+#: inc/menus.php:181
 msgid "Choose from 580+ %s"
 msgstr "Elige entre más de 580 %s"
 
-#: inc/menus.php:136
+#: inc/menus.php:138
 msgid "FontAwesome Icon Name"
 msgstr "Nombre del icono de FontAwesome"
 
-#: admin/customizer/customizer.php:73 admin/customizer/options-general.php:390
-#: inc/loop.php:1067
+#: admin/customizer/customizer.php:73 admin/customizer/options-general.php:405
+#: inc/loop.php:1080
 msgid "In this section"
 msgstr "En esta sección"
 
-#: inc/loop.php:901
+#: inc/loop.php:910
 msgid "Filed under %2$s"
 msgstr "Archivado en %2$s"
 
-#: inc/loop.php:900
+#: inc/loop.php:909
 msgid "By %1$s in %2$s"
 msgstr "Por %1$s en %2$s"
 
-#: inc/loop.php:222
+#: inc/loop.php:231
 msgid "Next &raquo;"
 msgstr "Página siguiente &raquo;"
 
-#: inc/loop.php:221
+#: inc/loop.php:230
 msgid "&laquo; Prev"
 msgstr "&laquo; Página anterior"
 
-#: inc/infinite-scroll.php:98 inc/scripts.php:106
+#: inc/infinite-scroll.php:99 inc/scripts.php:108
 msgid "Load more"
 msgstr "Cargar más"
 
-#: inc/comments.php:267
+#: inc/comments.php:273
 msgid "Author"
 msgstr "Autor"
 
@@ -466,7 +493,7 @@ msgstr "Opciones del título del sitio"
 msgid "Name"
 msgstr "Nombre"
 
-#: header.php:87
+#: header.php:88
 msgid "Toggle navigation"
 msgstr "Alternar navegación"
 
@@ -474,7 +501,6 @@ msgstr "Alternar navegación"
 msgid "Toggle search form"
 msgstr "Alternar el formulario de búsqueda"
 
-#. translators: %1$s is heart icon, %2$s is the theme's developer
 #: footer.php:91
 msgid "Made with %1$s by %2$s."
 msgstr "Hecho con %1$s por %2$s."
@@ -567,15 +593,15 @@ msgstr "Importar o exportar configuraciones"
 msgid "Reset theme settings"
 msgstr "Reiniciar la configuración"
 
-#: admin/customizer/options-import.php:159
+#: admin/customizer/options-import.php:168
 msgid "The uploaded file does not contain valid Graphene options. Please check and try again."
 msgstr "El fichero que has subido no contiene opciones válidas del tema Graphene."
 
-#: admin/customizer/options-import.php:158
+#: admin/customizer/options-import.php:167
 msgid "Uploaded file does not contain any setting to import. Please check and try again."
 msgstr "El fichero que has subido no contiene opciones válidas del tema Graphene."
 
-#: admin/customizer/options-import.php:154
+#: admin/customizer/options-import.php:163
 msgid "Could not read uploaded file. Please check the file and try again."
 msgstr "No se ha podido leer el archivo subido. Por favor, comprueba el archivo y vuelve a intentarlo."
 
@@ -583,189 +609,189 @@ msgstr "No se ha podido leer el archivo subido. Por favor, comprueba el archivo 
 msgid "Authorisation checks failed to perform this operation."
 msgstr "Se ha producido un error: no tienes permiso para llevar a cabo esta operación."
 
-#: admin/customizer/options-general.php:662
+#: admin/customizer/options-general.php:683
 msgid "Clean up single posts and pages when printing"
 msgstr "Limpia las entradas y páginas individuales al imprimir"
 
-#: admin/customizer/options-general.php:655
+#: admin/customizer/options-general.php:676
 msgid "Print"
 msgstr "Imprimir"
 
-#: admin/customizer/options-general.php:648
+#: admin/customizer/options-general.php:669
 msgid "Disable \"Return to top\" button"
 msgstr "No mostrar el enlace \"Volver al inicio\""
 
-#: admin/customizer/options-general.php:570
+#: admin/customizer/options-general.php:591
 msgid "The analytics code will be added inside the %s element of all pages in this site."
 msgstr "El código de analítica se añadirá tras el elemento %s de todas las páginas de este sitio."
 
-#: admin/customizer/options-general.php:569
+#: admin/customizer/options-general.php:590
 msgid "Analytics code"
 msgstr "Código de Analytics"
 
-#: admin/customizer/options-general.php:563
+#: admin/customizer/options-general.php:584
 msgid "Enable analytics tracking"
 msgstr "Activar el seguimiento de Analytics"
 
-#: admin/customizer/options-general.php:556
+#: admin/customizer/options-general.php:577
 msgid "Analytics"
 msgstr "Analytics"
 
-#: admin/customizer/options-general.php:545
+#: admin/customizer/options-general.php:566
 msgid "Ads code"
 msgstr "Código de anuncios"
 
-#: admin/customizer/options-general.php:539
+#: admin/customizer/options-general.php:554
 msgid "Include Front Page"
 msgstr "Incluir página principal"
 
-#: admin/customizer/options-general.php:533
+#: admin/customizer/options-general.php:548
 msgid "Show ads"
 msgstr "Mostrar anuncios"
 
-#: admin/customizer/options-general.php:526
+#: admin/customizer/options-general.php:541
 msgid "Ads"
 msgstr "Anuncios"
 
-#: admin/customizer/options-general.php:514
+#: admin/customizer/options-general.php:529
 msgid "Social sharing buttons code"
 msgstr "Código de botones para compartir en redes sociales"
 
-#: admin/customizer/options-general.php:507
+#: admin/customizer/options-general.php:522
 msgid "Top and bottom of posts"
 msgstr "Arriba y abajo de las entradas"
 
-#: admin/customizer/options-general.php:503
+#: admin/customizer/options-general.php:518
 msgid "Buttons location"
 msgstr "Ubicación de botones"
 
-#: admin/customizer/options-general.php:497
+#: admin/customizer/options-general.php:512
 msgid "Include home and archive pages"
 msgstr "Incluir la portada y las páginas de archivo"
 
-#: admin/customizer/options-general.php:491
+#: admin/customizer/options-general.php:506
 msgid "Include static Pages"
 msgstr "Incluir páginas estáticas"
 
-#: admin/customizer/options-general.php:478
+#: admin/customizer/options-general.php:493
 msgid "Social Sharing"
 msgstr "Compartir en Redes Sociales"
 
-#: admin/customizer/options-general.php:471
+#: admin/customizer/options-general.php:486
 msgid "Social profiles"
 msgstr "Perfiles sociales"
 
-#: admin/customizer/options-general.php:447
+#: admin/customizer/options-general.php:462
 msgid "Social Profiles"
 msgstr "Perfiles sociales"
 
-#: admin/customizer/options-general.php:440
+#: admin/customizer/options-general.php:455
 msgid "Divide alternative footer widget area into this number of columns"
 msgstr "Dividir el área de widgets alternativa del pie en este número de columnas"
 
-#: admin/customizer/options-general.php:434
+#: admin/customizer/options-general.php:449
 msgid "Divide footer widget area into this number of columns"
 msgstr "Dividir el área de widgets del pie en este número de columnas"
 
-#: admin/customizer/options-general.php:428
+#: admin/customizer/options-general.php:443
 msgid "Enable alternative footer widget area in front page."
 msgstr "Activar el área de widget de pie de página alternativo en la página de inicio."
 
-#: admin/customizer/options-general.php:422
+#: admin/customizer/options-general.php:437
 msgid "Enable alternative sidebar widget area in front page."
 msgstr "Activar el área de widgets alternativa de la portada."
 
-#: admin/customizer/graphene-plus.php:140
-#: admin/customizer/options-general.php:408
+#: admin/customizer/graphene-plus.php:175
+#: admin/customizer/options-general.php:423
 msgid "Widget Areas"
 msgstr "Áreas de widgets"
 
-#: admin/customizer/options-general.php:400
+#: admin/customizer/options-general.php:415
 msgid "Show only if parent is empty"
 msgstr "Mostrar solo si el padre está vacío"
 
-#: admin/customizer/options-general.php:383
+#: admin/customizer/options-general.php:398
 msgid "Disable contextual navigation in the sidebar"
 msgstr "Desactivar la navegación contextual en la barra lateral"
 
-#: admin/customizer/options-general.php:370
+#: admin/customizer/options-general.php:385
 msgid "Child Pages"
 msgstr "Páginas hijas"
 
-#: admin/customizer/options-general.php:324
+#: admin/customizer/options-general.php:339
 msgid "Number of posts"
 msgstr "Número de entradas"
 
-#: admin/customizer/options-general.php:291
+#: admin/customizer/options-general.php:306
 msgid "Only posts that belong to the categories selected here will be displayed on the front page. Works only if not using Static Front Page."
 msgstr "Sólo so mostrarán en la portada las entradas de las categorías seleccionadas. Sólo funciona si no estás usando la portada estática."
 
-#: admin/customizer/options-general.php:281
+#: admin/customizer/options-general.php:296
 msgid "Front Page"
 msgstr "Página de inicio"
 
-#: admin/customizer/options-general.php:273
+#: admin/customizer/options-general.php:288
 msgid "Click-to-load"
 msgstr "Pulsar-para-cargar"
 
-#: admin/customizer/options-general.php:272
+#: admin/customizer/options-general.php:287
 msgid "Auto-load"
 msgstr "Autocargar"
 
-#: admin/customizer/options-general.php:270
+#: admin/customizer/options-general.php:285
 msgid "Loading method"
 msgstr "Método de carga"
 
-#: admin/customizer/options-general.php:264
+#: admin/customizer/options-general.php:279
 msgid "Enable for comments"
 msgstr "Activar para los comentarios"
 
-#: admin/customizer/options-general.php:258
+#: admin/customizer/options-general.php:273
 msgid "Enable for posts"
 msgstr "Activar para las entradas"
 
-#: admin/customizer/options-general.php:223
-#: admin/customizer/options-general.php:230
+#: admin/customizer/options-general.php:238
+#: admin/customizer/options-general.php:245
 msgid "px"
 msgstr "px"
 
-#: admin/customizer/options-general.php:216
+#: admin/customizer/options-general.php:231
 msgid "Make sure you select \"Custom image\" in the slider image option above to use this image."
 msgstr "Asegúrate de marcar la opción \"Imagen personalizada\" en la opción de imagen del carrusel para utilizar esta imagen."
 
-#: admin/customizer/options-general.php:213
+#: admin/customizer/options-general.php:228
 msgid "Custom slider image"
 msgstr "Imagen de carrusel personalizada"
 
-#: admin/customizer/options-general.php:208
+#: admin/customizer/options-general.php:223
 msgid "Custom image"
 msgstr "Imagen personalizada"
 
-#: admin/customizer/options-general.php:207
+#: admin/customizer/options-general.php:222
 msgid "Featured image"
 msgstr "Imagen destacada"
 
-#: admin/customizer/options-general.php:197
+#: admin/customizer/options-general.php:212
 msgid "posts"
 msgstr "entradas"
 
-#: admin/customizer/options-general.php:158
-#: admin/customizer/options-general.php:189
-#: admin/customizer/options-general.php:293
-#: admin/customizer/options-general.php:335
+#: admin/customizer/options-general.php:173
+#: admin/customizer/options-general.php:204
+#: admin/customizer/options-general.php:308
+#: admin/customizer/options-general.php:350
 msgid "Select categories"
 msgstr "Seleccionar categorías"
 
-#: admin/customizer/options-general.php:143
-#: admin/customizer/options-general.php:343
+#: admin/customizer/options-general.php:158
+#: admin/customizer/options-general.php:358
 msgid "Enter ID of posts and/or pages to be displayed, separated by comma.<br / >Applicable only if \"Show specific posts/pages\" is selected above.<br />Example: <code>1,13,45,33</code>"
 msgstr "Escribe los IDs de las entradas y/o páginas a mostrar, separados por coma.<br / >Sólo aplica si se elige arriba \"Mostrar entradas/páginas específicas\".<br />Ejemplo: <code>1,13,45,33</code>"
 
-#: inc/loop.php:975
+#: inc/loop.php:989
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: admin/customizer/options-general.php:124
+#: admin/customizer/options-general.php:139
 msgid "Slider content"
 msgstr "Contenido del carrusel"
 
@@ -777,47 +803,47 @@ msgstr "Desactivar barra superior"
 msgid "Header"
 msgstr "Cabecera"
 
-#: admin/customizer/options-display.php:137
+#: admin/customizer/options-display.php:143
 msgid "Excerpts"
 msgstr "Extractos"
 
-#: admin/customizer/options-display.php:111
+#: admin/customizer/options-display.php:117
 msgid "Inline text"
 msgstr "Texto en línea"
 
-#: admin/customizer/options-display.php:110
+#: admin/customizer/options-display.php:116
 msgid "Icon with year"
 msgstr "Icono con año"
 
-#: admin/customizer/options-display.php:109
+#: admin/customizer/options-display.php:115
 msgid "Icon"
 msgstr "Icono"
 
-#: admin/customizer/options-display.php:100
+#: admin/customizer/options-display.php:105
 msgid "Hide author bio"
 msgstr "Ocultar bio del autor"
 
-#: admin/customizer/options-display.php:69
+#: admin/customizer/options-display.php:70
 msgid "Posts Elements"
 msgstr "Elementos de las entradas"
 
-#: admin/customizer/options-display.php:44
+#: admin/customizer/options-display.php:45
 msgid "Three columns, left & right sidebars"
 msgstr "Tres columnas, barras laterales izquierda y derecha"
 
-#: admin/customizer/options-display.php:43
+#: admin/customizer/options-display.php:44
 msgid "Three columns, left sidebars"
 msgstr "Tres columnas, barras laterales izquierda"
 
-#: admin/customizer/options-display.php:42
+#: admin/customizer/options-display.php:43
 msgid "Three columns, right sidebars"
 msgstr "Tres columnas, barras laterales derecha"
 
-#: admin/customizer/options-display.php:41
+#: admin/customizer/options-display.php:42
 msgid "Two columns, left sidebar"
 msgstr "Dos columnas, barras laterales izquierda "
 
-#: admin/customizer/options-display.php:40
+#: admin/customizer/options-display.php:41
 msgid "Two columns, right sidebar"
 msgstr "Dos columnas, barras laterales derecha"
 
@@ -841,85 +867,85 @@ msgstr "Estilo de contenedor"
 msgid "Columns Layout"
 msgstr "Diseño de columnas"
 
-#: admin/customizer/options-colours.php:191
+#: admin/customizer/options-colours.php:197
 msgid "Comments box shadow"
 msgstr "Sombra de la caja de comentarios"
 
-#: admin/customizer/options-colours.php:190
+#: admin/customizer/options-colours.php:196
 msgid "Comments border"
 msgstr "Borde de comentarios"
 
-#: admin/customizer/options-colours.php:181
-#: admin/customizer/options-general.php:350
+#: admin/customizer/options-general.php:365
+#: admin/customizer/options-colours.php:187
 msgid "Comments"
 msgstr "Comentarios"
 
-#: admin/customizer/options-colours.php:172
+#: admin/customizer/options-colours.php:178
 msgid "Archive label text colour"
 msgstr "Color de la etiqueta del archivo"
 
-#: admin/customizer/options-colours.php:171
+#: admin/customizer/options-colours.php:177
 msgid "Archive label title colour"
 msgstr "Color del título de la etiqueta del archivo"
 
-#: admin/customizer/options-colours.php:169
+#: admin/customizer/options-colours.php:175
 msgid "Archive label background"
 msgstr "Fondo de la etiqueta del archivo"
 
-#: admin/customizer/options-colours.php:161
+#: admin/customizer/options-colours.php:167
 msgid "Archives"
 msgstr "Archivo del blog"
 
-#: admin/customizer/options-colours.php:152
+#: admin/customizer/options-colours.php:158
 msgid "Label text"
 msgstr "Texto de etiqueta"
 
-#: admin/customizer/options-colours.php:141
+#: admin/customizer/options-colours.php:147
 msgid "Buttons and Labels"
 msgstr "Botones y etiquetas"
 
-#: admin/customizer/options-colours.php:112
+#: admin/customizer/options-colours.php:118
 msgid "Sticky posts border"
 msgstr "Borde de las entradas fijas"
 
-#: admin/customizer/options-colours.php:111
+#: admin/customizer/options-colours.php:117
 msgid "Links (hover)"
 msgstr "Enlaces (al pasar el cursor)"
 
-#: admin/customizer/options-colours.php:110
+#: admin/customizer/options-colours.php:116
 msgid "Links"
 msgstr "Enlaces"
 
-#: admin/customizer/options-colours.php:85
+#: admin/customizer/options-colours.php:91
 msgid "Slider caption text"
 msgstr "Leyenda del carrusel"
 
-#: admin/customizer/options-colours.php:76
+#: admin/customizer/options-colours.php:82
 msgid "Slider caption background"
 msgstr "Fondo de la leyenda del carrusel"
 
 #: admin/customizer/options-colours.php:39
-#: admin/customizer/options-colours.php:62
+#: admin/customizer/options-colours.php:68
 msgid "Dropdown menu text (active state)"
 msgstr "Texto del menú desplegable (estado activo)"
 
 #: admin/customizer/options-colours.php:37
-#: admin/customizer/options-colours.php:60
+#: admin/customizer/options-colours.php:66
 msgid "Text (active state)"
 msgstr "Texto (estado activo)"
 
 #: admin/customizer/options-colours.php:36
-#: admin/customizer/options-colours.php:59
+#: admin/customizer/options-colours.php:65
 msgid "Background (active state)"
 msgstr "Fondo (estado activo)"
 
 #: admin/customizer/options-colours.php:35
-#: admin/customizer/options-colours.php:58
+#: admin/customizer/options-colours.php:64
 msgid "Text (default state)"
 msgstr "Texto (estado por defecto)"
 
 #: admin/customizer/options-colours.php:34
-#: admin/customizer/options-colours.php:57
+#: admin/customizer/options-colours.php:63
 msgid "Background (default state)"
 msgstr "Fondo (estado por defecto)"
 
@@ -955,92 +981,82 @@ msgstr "Por favor, selecciona un archivo de ajustes para importar."
 msgid "(optional)"
 msgstr "(opcional)"
 
-#: admin/customizer/controls.php:544 admin/customizer/options-utilities.php:32
+#: admin/customizer/options-utilities.php:32 admin/customizer/controls.php:547
 msgid "Import settings"
 msgstr "Importar ajustes"
 
-#: admin/customizer/controls.php:522 admin/customizer/options-utilities.php:38
+#: admin/customizer/options-utilities.php:38 admin/customizer/controls.php:525
 msgid "Export settings"
 msgstr "Exportar ajustes"
 
-#: admin/customizer/controls.php:502
+#: admin/customizer/controls.php:505
 msgid "Confirm to reset settings? This action is not reversible."
 msgstr "¿Seguro que quieres restablecer los ajustes? Esta acción es irreversible."
 
-#: admin/customizer/controls.php:499
+#: admin/customizer/controls.php:502
 msgid "Reset all of the theme's settings to their default values. Custom Header, Custom Menus, and other WordPress settings won't be affected."
 msgstr "Restablecer todos los ajustes del tema a sus valores predeterminados. La cabecera personalizada, los menús y otros ajustes del WordPress no se verán afectados."
 
-#: admin/customizer/controls.php:358 admin/customizer/controls.php:396
+#: admin/customizer/controls.php:361 admin/customizer/controls.php:399
 msgid "Add social profile"
 msgstr "Añadir perfil social"
 
-#: admin/customizer/controls.php:352 admin/customizer/controls.php:433
-#: admin/customizer/customizer.php:51
+#: admin/customizer/customizer.php:51 admin/customizer/controls.php:355
+#: admin/customizer/controls.php:436
 msgid "Drag and drop to reorder"
 msgstr "Arrastrar y soltar para reordenar"
 
-#: admin/customizer/controls.php:236
+#: admin/customizer/controls.php:239
 msgid "Columns width (two-column mode)"
 msgstr "Ancho de columnas (modo dos columnas)"
 
-#: admin/customizer/controls.php:252
+#: admin/customizer/controls.php:255
 msgid "Columns width (three-column mode)"
 msgstr "Ancho de columnas (modo tres columnas)"
 
-#: admin/customizer/options-colours.php:151
+#: admin/customizer/options-colours.php:157
 msgid "Label background"
 msgstr "Fondo de la etiqueta"
 
-#: admin/customizer/options-colours.php:150
+#: admin/customizer/options-colours.php:156
 msgid "Button text"
 msgstr "Texto del botón"
 
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
+#. Template Name of the theme
 #. translators: For RTL languages, translate "left" as "right"
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
-#. Template Name of the plugin/theme
 #: template-twocolumnsright.php:13
 msgid "Two columns, sidebar on the left"
 msgstr "Dos columnas, con una barra lateral a la izquierda"
 
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
+#. Template Name of the theme
 #. translators: For RTL languages, translate "right" as "left"
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
-#. Template Name of the plugin/theme
 #: template-twocolumnsleft.php:13
 msgid "Two columns, sidebar on the right"
 msgstr "Dos columnas, con una barra lateral a la derecha"
 
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
+#. Template Name of the theme
 #. translators: For RTL languages, translate "left" as "right"
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
-#. Template Name of the plugin/theme
 #: template-threecolumnsright.php:13
 msgid "Three columns, sidebars on the left"
 msgstr "Tres columnas, con dos barras laterales a la izquierda"
 
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
+#. Template Name of the theme
 #. translators: For RTL languages, translate "right" as "left"
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
-#. Template Name of the plugin/theme
 #: template-threecolumnsleft.php:13
 msgid "Three columns, sidebars on the right"
 msgstr "Tres columnas, con dos barras laterales a la derecha"
 
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
-#. Template Name of the plugin/theme
+#. Template Name of the theme
 #: template-threecolumnscenter.php:11
 msgid "Three columns, sidebar left and right"
 msgstr "Tres columnas, con sendas barras laterales a derecha e izquierda"
 
-#. #-#-#-#-#  graphene.pot (Graphene 2.5.2)  #-#-#-#-#
-#. Template Name of the plugin/theme
+#. Template Name of the theme
 #: template-onecolumn.php:10
 msgid "One column, no sidebar"
 msgstr "Una columna, sin barra lateral"
 
-#: searchform.php:3
+#: searchform.php:4
 msgid "Search"
 msgstr "Buscar"
 
@@ -1066,11 +1082,11 @@ msgid_plural "Found %1$s search results for keyword: %2$s"
 msgstr[0] "Se ha encontrado %1$s resultado correspondiente a la cadena de búsqueda: '%2$s'"
 msgstr[1] "Se han encontrado %1$s resultados correspondientes a la cadena de búsqueda: '%2$s'"
 
-#: inc/loop.php:902
+#: inc/loop.php:911
 msgid "By %s"
 msgstr "Por %s"
 
-#: inc/loop.php:982
+#: inc/loop.php:996
 msgid "Leave comment"
 msgstr "Dejar comentario"
 
@@ -1078,11 +1094,11 @@ msgstr "Dejar comentario"
 msgid "Link"
 msgstr "Enlace"
 
-#: loop-page.php:42 loop-single.php:44 loop.php:74
+#: loop-page.php:45 loop.php:74 loop-single.php:44
 msgid "Permanent link to this article:"
 msgstr "Enlace permanente a este artículo:"
 
-#: inc/loop.php:236
+#: inc/loop.php:245
 msgid "Pages:"
 msgstr "Páginas:"
 
@@ -1102,24 +1118,24 @@ msgstr "Página no encontrada"
 msgid "Most commented posts"
 msgstr "Entradas más comentadas"
 
-#: loop-author.php:55 loop-children.php:45 loop-page.php:5 loop-page.php:16
-#: loop-single.php:16 loop.php:4 loop.php:18
+#: loop-author.php:55 loop-page.php:5 loop-page.php:19 loop.php:4 loop.php:18
+#: loop-single.php:16 loop-children.php:45
 msgid "(No title)"
 msgstr "(Sin título)"
 
-#: inc/setup.php:305
+#: inc/setup.php:311
 msgid "Dynamically added widget area. This widget area is attached to the %s action hook."
 msgstr "Área de widgets añadida de forma dinámica. Esta área de widgets se adjuntará al \"action hook\" %s"
 
-#: inc/setup.php:288
+#: inc/setup.php:291
 msgid "The header widget area."
 msgstr "El área de widgets de la cabecera"
 
-#: inc/setup.php:276
+#: inc/setup.php:279
 msgid "The footer widget area that will only be displayed on the front page. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "El área de widgets del pie de página, que solo se mostrará en la página de inicio. Si deseas desactivarla, déjala vacía. Desde la página de opciones del tema puedes establecer el número de columnas que deseas mostrar en esta área."
 
-#: inc/setup.php:265
+#: inc/setup.php:268
 msgid "The second sidebar widget area that will only be displayed on the front page."
 msgstr "La segunda área de widgets de la barra lateral, que solo se mostrará en la página principal."
 
@@ -1127,7 +1143,7 @@ msgstr "La segunda área de widgets de la barra lateral, que solo se mostrará e
 msgid "Front Page Sidebar Two Widget Area"
 msgstr "Segunda barra lateral de la página de inicio"
 
-#: inc/setup.php:256
+#: inc/setup.php:259
 msgid "The first sidebar widget area that will only be displayed on the front page."
 msgstr "La primera área de widgets de la barra lateral, que solo se mostrará en la página principal."
 
@@ -1135,7 +1151,7 @@ msgstr "La primera área de widgets de la barra lateral, que solo se mostrará e
 msgid "Front Page Sidebar Widget Area"
 msgstr "Barra lateral de la página de inicio"
 
-#: inc/setup.php:239
+#: inc/setup.php:242
 msgid "The footer widget area. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "Área de widgets del pie de página. Si deseas desactivarla, déjala vacía. Puedes establecer el número de columnas que deseas mostrar en la página de opciones de visualización."
 
@@ -1147,49 +1163,49 @@ msgstr "Segunda barra lateral"
 msgid "Sidebar Widget Area"
 msgstr "Barra lateral principal"
 
-#: inc/setup.php:158 inc/setup.php:162 inc/setup.php:166 inc/setup.php:170
-#: inc/setup.php:174
+#: inc/setup.php:161 inc/setup.php:165 inc/setup.php:169 inc/setup.php:173
+#: inc/setup.php:177
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Imagen de cabecera recortada a partir de una imagen de Ilco en sxc.hu"
 
-#: inc/setup.php:154
+#: inc/setup.php:157
 msgid "This is the default Graphene theme header image, cropped from image by Quantin Houyoux at sxc.hu"
 msgstr "Esta es la imagen de cabecera por defecto del tema Graphene, recortada a partir de una imagen de Quantin Houyoux en sxc.hu"
 
-#: inc/setup.php:150
+#: inc/setup.php:153
 msgid "Header image by Syahir Hakim"
 msgstr "Imagen de cabecera por Syahir Hakim"
 
-#: inc/setup.php:87
+#: inc/setup.php:90
 msgid "Footer Menu"
 msgstr "Menú de pie de página"
 
-#: admin/customizer/options-colours.php:48 inc/setup.php:86
+#: admin/customizer/options-colours.php:54 inc/setup.php:89
 msgid "Secondary Menu"
 msgstr "Menú secundario"
 
-#: inc/setup.php:85
+#: inc/setup.php:88
 msgid "Header Menu"
 msgstr "Menú de cabecera"
 
-#: inc/panes.php:85
+#: inc/panes.php:89
 msgid "Read more"
-msgstr "Continuar leyendo"
+msgstr "Leer más"
 
-#: inc/panes.php:70 inc/panes.php:85 loop-author.php:55 loop-children.php:45
-#: loop.php:17 loop.php:43
+#: loop-author.php:55 loop.php:17 loop.php:43 inc/panes.php:74 inc/panes.php:89
+#: loop-children.php:45
 msgid "Permalink to %s"
 msgstr "Enlace permanente a %s"
 
-#: inc/menus.php:224
+#: inc/menus.php:226
 msgid "Home"
 msgstr "Inicio"
 
-#: inc/loop.php:770
+#: inc/loop.php:779
 msgid "Return to %s"
 msgstr "Volver a %s"
 
-#: inc/loop.php:746
+#: inc/loop.php:755
 msgid "Print this %s"
 msgstr "Imprimir esta %s"
 
@@ -1234,11 +1250,11 @@ msgstr "Correo electrónico"
 msgid "Your comment is awaiting moderation."
 msgstr "Tu comentario está a la espera de ser aprobado."
 
-#: inc/comments.php:275
+#: inc/comments.php:281
 msgid "Reply"
 msgstr "Responder"
 
-#: header.php:28 header.php:68 header.php:107
+#: header.php:28 header.php:68 header.php:110
 msgid "Go back to the front page"
 msgstr "Volver a la página de inicio"
 
@@ -1264,7 +1280,7 @@ msgid_plural "%s pings"
 msgstr[0] "%s ping"
 msgstr[1] "%s pings"
 
-#: comments.php:50 inc/loop.php:983 loop-author.php:55
+#: loop-author.php:55 inc/loop.php:997 comments.php:50
 msgid "%s comment"
 msgid_plural "%s comments"
 msgstr[0] "%s comentario"
@@ -1313,11 +1329,11 @@ msgstr "Información del perfil de usuario específica del tema Graphene"
 msgid "Theme uninstalled. Redirecting to %s"
 msgstr "Tema desinstalado. Redirigiendo a %s"
 
-#: admin/customizer/controls.php:500
+#: admin/customizer/controls.php:503
 msgid "<strong>WARNING:</strong> This action is not reversible."
 msgstr "<strong>¡ATENCIÓN!:</strong> Esta acción no es reversible."
 
-#: admin/customizer/controls.php:502 admin/customizer/options-utilities.php:13
+#: admin/customizer/options-utilities.php:13 admin/customizer/controls.php:505
 msgid "Reset settings"
 msgstr "Restablecer ajustes"
 
@@ -1397,217 +1413,217 @@ msgstr "Tamaño máximo: %s"
 msgid "Before you can upload your import file, you will need to fix the following error:"
 msgstr "Antes de que puedas subir un fichero de importación, tendrás que subsanar el siguiente error:"
 
-#: admin/customizer/options-import.php:44 admin/uninstall.php:32
+#: admin/uninstall.php:32 admin/customizer/options-import.php:44
 msgid "ERROR: You are not authorised to perform that operation"
 msgstr "Se ha producido un error: no tienes permiso para llevar a cabo esta operación"
 
-#: admin/customizer/options-general.php:668
+#: admin/customizer/options-general.php:689
 msgid "Show print button"
 msgstr "Mostrar botón para imprimir"
 
-#: admin/customizer/options-general.php:642
+#: admin/customizer/options-general.php:663
 msgid "Do not show copyright info"
 msgstr "No mostrar información de copyright"
 
-#: admin/customizer/options-general.php:632
+#: admin/customizer/options-general.php:653
 msgid "Copyright text (html allowed)"
 msgstr "Texto de copyright (se permiten etiquetas HTML)"
 
-#: admin/customizer/options-general.php:515
+#: admin/customizer/options-general.php:530
 msgid "You can use codes from any popular social sharing sites, like Facebook, Digg, AddThis, etc."
 msgstr "Puedes utilizar códigos de cualquier servicio de marcadores sociales, como Facebook, Digg, AddThis, etc."
 
-#: admin/customizer/options-general.php:506
+#: admin/customizer/options-general.php:521
 msgid "Top of posts"
 msgstr "En la zona superior de las entradas"
 
-#: admin/customizer/options-general.php:505
+#: admin/customizer/options-general.php:520
 msgid "Bottom of posts"
 msgstr "En la zona inferior de las entradas"
 
-#: admin/customizer/options-general.php:485
+#: admin/customizer/options-general.php:500
 msgid "Show social sharing buttons"
 msgstr "Mostrar botón de marcadores sociales"
 
-#: admin/customizer/controls.php:362
+#: admin/customizer/controls.php:365
 msgid "Choose type"
 msgstr "Selecciona el tipo"
 
-#: admin/customizer/controls.php:351 admin/customizer/controls.php:432
 #: admin/customizer/customizer.php:41 admin/customizer/customizer.php:48
+#: admin/customizer/controls.php:354 admin/customizer/controls.php:435
 #: inc/comments.php:184
 msgid "Delete"
 msgstr "Borrar"
 
-#: admin/customizer/controls.php:342 admin/customizer/controls.php:387
+#: admin/customizer/controls.php:345 admin/customizer/controls.php:390
 msgid "Icon URL"
 msgstr "URL del icono"
 
-#: admin/customizer/controls.php:336
+#: admin/customizer/controls.php:339
 msgid "Leave the URL empty to use the default RSS URL."
 msgstr "Deja vacío el campo de URL para utilizar la URL por defecto de la fuente RSS."
 
-#: admin/customizer/controls.php:332 admin/customizer/controls.php:382
+#: admin/customizer/controls.php:335 admin/customizer/controls.php:385
 msgid "URL"
 msgstr "URL"
 
-#: admin/customizer/controls.php:303 admin/customizer/controls.php:368
+#: admin/customizer/controls.php:306 admin/customizer/controls.php:371
 msgid "Custom"
 msgstr "Personalizado"
 
-#: admin/customizer/options-general.php:466
+#: admin/customizer/options-general.php:481
 msgid "Open social media links in new window"
 msgstr "Abrir enlaces de medios sociales en una nueva ventana"
 
-#: admin/customizer/options-general.php:415
+#: admin/customizer/options-general.php:430
 msgid "Enable header widget area"
 msgstr "Activar el área de widgets de la cabecera"
 
-#: admin/customizer/options-general.php:416
+#: admin/customizer/options-general.php:431
 msgid "<strong>Important:</strong> This widget area is unstyled, as it is often used for advertisement banners, etc. If you enable it, make sure you style it to your needs using the Custom CSS option."
 msgstr "<strong>Importante:</strong> esta área de widgets no tiene estilos, y normalmente se utiliza para anuncios y elementos similares. Si la activas, asegúrate de que le asignas los estilos adecuados, mediante la opción \"CSS personalizado\"."
 
-#: admin/customizer/options-general.php:399
+#: admin/customizer/options-general.php:414
 msgid "Hide listing"
 msgstr "Ocultar listados"
 
-#: admin/customizer/options-general.php:398
+#: admin/customizer/options-general.php:413
 msgid "Show listing"
 msgstr "Mostrar listados"
 
-#: admin/customizer/options-general.php:396
+#: admin/customizer/options-general.php:411
 msgid "Child page listings"
 msgstr "Listados de páginas hijas"
 
-#: admin/customizer/options-general.php:377
+#: admin/customizer/options-general.php:392
 msgid "Hide parent box if content is empty"
 msgstr "Ocultar la caja de la página superior si el contenido está vacío"
 
-#: admin/customizer/options-general.php:358
+#: admin/customizer/options-general.php:373
 msgid "Overrides the global WordPress Discussion Setting called \"Allow people to post comments on new articles\" and also the \"Allow comments\" option for individual posts/pages."
 msgstr "Aviso: esta opción anula la configuración global de WordPress denominada \"Permite que se publiquen comentarios en los artículos nuevos\" y también la opción \"Permitir comentarios\" en las entradas o páginas individuales."
 
-#: admin/customizer/options-general.php:362
+#: admin/customizer/options-general.php:377
 msgid "Disable completely"
 msgstr "Completamente desactivados"
 
-#: admin/customizer/options-general.php:361
+#: admin/customizer/options-general.php:376
 msgid "Disable for pages"
 msgstr "Desactivados para páginas"
 
-#: admin/customizer/options-general.php:360
+#: admin/customizer/options-general.php:375
 msgid "Use WordPress settings"
 msgstr "Utilizar la configuración de WordPress"
 
-#: admin/customizer/options-general.php:357
+#: admin/customizer/options-general.php:372
 msgid "Commenting"
 msgstr "Comentarios"
 
-#: admin/customizer/options-general.php:330
+#: admin/customizer/options-general.php:345
 msgid "Categories to show latest posts from"
 msgstr "Categorías cuyas últimas entradas deseas mostrar"
 
-#: admin/customizer/options-general.php:316
+#: admin/customizer/options-general.php:331
 msgid "Latest posts"
 msgstr "Entradas más recientes"
 
-#: admin/customizer/options-general.php:314
+#: admin/customizer/options-general.php:329
 msgid "Type of content to show"
 msgstr "Tipo de contenido que se mostrará"
 
-#: admin/customizer/options-general.php:308
+#: admin/customizer/options-general.php:323
 msgid "Disable homepage panes"
 msgstr "Desactivar paneles de página de inicio"
 
-#: admin/customizer/options-general.php:301
+#: admin/customizer/options-general.php:316
 msgid "Home Page Panes"
 msgstr "Paneles de la página de inicio"
 
-#: admin/customizer/options-general.php:333
+#: admin/customizer/options-general.php:348
 msgid "Only posts that belong to the categories selected here will be displayed in the home page panes."
 msgstr "Sólo los mensajes que pertenecen a las categorías seleccionadas aquí se mostrarán en el FrontPage."
 
-#: admin/customizer/options-general.php:288
+#: admin/customizer/options-general.php:303
 msgid "Front page posts categories"
 msgstr "Categorías de entradas de la página principal"
 
-#: admin/customizer/options-general.php:251
+#: admin/customizer/options-general.php:266
 msgid "Infinite Scroll"
 msgstr "Desplazamiento infinito"
 
-#: admin/customizer/options-general.php:244
+#: admin/customizer/options-general.php:259
 msgid "Move slider to bottom of page"
 msgstr "Desplazar el pase de diapositivas al final de la página"
 
-#: admin/customizer/options-general.php:238
+#: admin/customizer/options-general.php:253
 msgid "This is the duration that each slider item will be shown."
 msgstr "Este valor corresponde a la duración en milisegundos de cada uno de los elementos del pase de diapositivas"
 
-#: admin/customizer/options-general.php:237
+#: admin/customizer/options-general.php:252
 msgid "milliseconds"
 msgstr "milisegundos"
 
-#: admin/customizer/options-general.php:236
+#: admin/customizer/options-general.php:251
 msgid "Slider speed"
 msgstr "Velocidad del pase de diapositivas"
 
-#: admin/customizer/options-general.php:222
+#: admin/customizer/options-general.php:237
 msgid "Slider height"
 msgstr "Altura del pase de diapositivas"
 
-#: admin/customizer/options-general.php:105
+#: admin/customizer/options-general.php:120
 msgid "Full post content"
 msgstr "Todo el contenido de la entrada"
 
-#: admin/customizer/options-general.php:196
+#: admin/customizer/options-general.php:211
 msgid "Number of posts to display"
 msgstr "Número de entradas que deseas mostrar"
 
-#: admin/customizer/options-general.php:171
+#: admin/customizer/options-general.php:186
 msgid "Show posts from categories in random order"
 msgstr "Mostrar las entradas de las categorías al azar"
 
 #: admin/customizer/options-general.php:72
-#: admin/customizer/options-general.php:456
-#: admin/customizer/options-general.php:591
+#: admin/customizer/options-general.php:471
+#: admin/customizer/options-general.php:612
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: admin/customizer/options-general.php:165
+#: admin/customizer/options-general.php:180
 msgid "Exclude the categories from posts listing"
 msgstr "Excluir las categorías de los listados de entradas"
 
-#: admin/customizer/options-general.php:156
+#: admin/customizer/options-general.php:171
 msgid "All posts within the categories selected here will be displayed on the slider. Usage example: create a new category \"Featured\" and assign all posts to be displayed on the slider to that category, and then select that category here."
 msgstr "Todas las entradas que pertenezcan a la categoría seleccionada se mostrarán en el pase de diapositivas. Ejemplo: crea una nueva categoría, llamada \"Destacados\", asigna a dicha categoría todas las entradas que quieras mostrar en el pase de diapositivas, y a continuación selecciona la categoría aquí."
 
-#: admin/customizer/options-general.php:153
+#: admin/customizer/options-general.php:168
 msgid "Categories to display"
 msgstr "Categorías que mostrar"
 
-#: admin/customizer/options-general.php:142
-#: admin/customizer/options-general.php:342
+#: admin/customizer/options-general.php:157
+#: admin/customizer/options-general.php:357
 msgid "Posts and/or pages to display"
 msgstr "Entradas y/o páginas que deseas mostrar"
 
-#: admin/customizer/options-general.php:129
+#: admin/customizer/options-general.php:144
 msgid "Show posts from categories"
 msgstr "Mostrar entradas de las categorías"
 
-#: admin/customizer/options-general.php:128
-#: admin/customizer/options-general.php:317
+#: admin/customizer/options-general.php:143
+#: admin/customizer/options-general.php:332
 msgid "Show specific posts/pages"
 msgstr "Mostrar las entradas o páginas seleccionadas"
 
-#: admin/customizer/options-general.php:127
+#: admin/customizer/options-general.php:142
 msgid "Show random posts"
 msgstr "Mostrar entradas al azar"
 
-#: admin/customizer/options-general.php:126
+#: admin/customizer/options-general.php:141
 msgid "Show latest posts"
 msgstr "Mostrar las últimas entradas"
 
-#: admin/customizer/options-general.php:112
+#: admin/customizer/options-general.php:127
 msgid "Extend slider to full width of theme"
 msgstr "Ampliar el pase de diapositivas para que ocupe toda la anchura del tema"
 
@@ -1615,75 +1631,75 @@ msgstr "Ampliar el pase de diapositivas para que ocupe toda la anchura del tema"
 msgid "Disable slider"
 msgstr "Desactivar el pase de diapositivas"
 
-#: admin/customizer/options-display.php:181
+#: admin/customizer/options-display.php:187
 msgid "Disable custom editor styles"
 msgstr "Desactivar el estilo personalizado del editor"
 
-#: admin/customizer/options-display.php:162
+#: admin/customizer/options-display.php:168
 msgid "Enter the HTML tags you'd like to retain in excerpts. For example, enter <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> HTML tags."
 msgstr "Escribe las etiquetas HTML que deseas mantener en los resúmenes. Por ejemplo, escribe <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> para mantener las etiquetas HTML <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, y <code>&lt;li&gt;</code>."
 
-#: admin/customizer/options-display.php:161
+#: admin/customizer/options-display.php:167
 msgid "Keep these HTML tags in excerpts"
 msgstr "Mantener en los resúmenes las siguientes etiquetas HTML"
 
-#: admin/customizer/options-display.php:156
+#: admin/customizer/options-display.php:162
 msgid "Show More link for manual excerpts"
 msgstr "Mostrar el enlace \"Continuar leyendo\" para los resúmenes manuales"
 
-#: admin/customizer/options-display.php:150
+#: admin/customizer/options-display.php:156
 msgid "Show full content in archive pages"
 msgstr "Mostrar contenido completo en las páginas de archivo"
 
-#: admin/customizer/options-display.php:144
+#: admin/customizer/options-display.php:150
 msgid "Show excerpts in Front Page"
 msgstr "Mostrar extractos en la página de inicio"
 
-#: admin/customizer/options-display.php:94
+#: admin/customizer/options-display.php:98
 msgid "Hide post comment count"
 msgstr "Ocultar el número de comentarios"
 
-#: admin/customizer/options-display.php:88
+#: admin/customizer/options-display.php:91
 msgid "Hide post tags"
 msgstr "Ocultar las etiquetas"
 
-#: admin/customizer/options-display.php:82
+#: admin/customizer/options-display.php:84
 msgid "Hide post categories"
 msgstr "Ocultar las categorías"
 
-#: admin/customizer/options-display.php:76
+#: admin/customizer/options-display.php:77
 msgid "Hide post author"
 msgstr "Ocultar el autor"
 
-#: admin/customizer/controls.php:262
+#: admin/customizer/controls.php:265
 msgid "Right sidebar"
 msgstr "Barra lateral derecha"
 
-#: admin/customizer/controls.php:254
+#: admin/customizer/controls.php:257
 msgid "Left sidebar"
 msgstr "Barra lateral izquierda"
 
-#: admin/customizer/controls.php:242
+#: admin/customizer/controls.php:245
 msgid "Sidebar"
 msgstr "Barra lateral"
 
-#: admin/customizer/controls.php:238 admin/customizer/controls.php:258
+#: admin/customizer/controls.php:241 admin/customizer/controls.php:261
 msgid "Content"
 msgstr "Contenido"
 
-#: admin/customizer/options-display.php:52
+#: admin/customizer/options-display.php:53
 msgid "Columns Width"
 msgstr "Anchura de columna"
 
-#: admin/customizer/controls.php:227
+#: admin/customizer/controls.php:230
 msgid "Container width"
 msgstr "Anchura del contenedor"
 
-#: admin/customizer/options-display.php:54
+#: admin/customizer/options-display.php:55
 msgid "Leave values empty to reset to the default values."
 msgstr "Aviso: deja los campos vacíos para volver a los valores por defecto."
 
-#: admin/customizer/options-display.php:39
+#: admin/customizer/options-display.php:40
 msgid "One column"
 msgstr "Una columna"
 
@@ -1719,116 +1735,116 @@ msgstr "Enlazar la imagen de cabecera a la página de inicio"
 msgid "Use light-coloured header bars"
 msgstr "Utilizar barras de navegación de cabecera con colores claros"
 
-#: admin/options-defaults.php:197
+#: admin/options-defaults.php:199
 msgid "Zesty Orange"
 msgstr "Zesty Orange"
 
-#: admin/options-defaults.php:193
+#: admin/options-defaults.php:195
 msgid "Curiosity Killed"
 msgstr "Curiosity Killed"
 
-#: admin/options-defaults.php:189
+#: admin/options-defaults.php:191
 msgid "Dream Magnet"
 msgstr "Dream Magnet"
 
-#: admin/options-defaults.php:185
+#: admin/options-defaults.php:187
 msgid "Default"
 msgstr "Por defecto"
 
-#: admin/options-defaults.php:89
+#: admin/options-defaults.php:90
 msgid "Subscribe to %s's RSS feed"
 msgstr "Suscríbete al feed RSS de %s"
 
-#: admin/customizer/options-colours.php:212
+#: admin/customizer/options-colours.php:218
 msgid "Link text"
 msgstr "Texto de enlace"
 
-#: admin/customizer/options-colours.php:211
+#: admin/customizer/options-colours.php:217
 msgid "Normal text"
 msgstr "Texto normal"
 
-#: admin/customizer/options-colours.php:202
-#: admin/customizer/options-general.php:458
-#: admin/customizer/options-general.php:625
+#: admin/customizer/options-general.php:473
+#: admin/customizer/options-general.php:646
+#: admin/customizer/options-colours.php:208
 msgid "Footer"
 msgstr "Pie de página"
 
-#: admin/customizer/options-colours.php:109
+#: admin/customizer/options-colours.php:115
 msgid "Title text"
 msgstr "Texto del título"
 
-#: admin/customizer/options-colours.php:108
+#: admin/customizer/options-colours.php:114
 msgid "Content text"
 msgstr "Texto del contenido"
 
-#: admin/customizer/options-colours.php:193
+#: admin/customizer/options-colours.php:199
 msgid "Author comments border"
 msgstr "Borde superior de los comentarios del autor"
 
-#: admin/customizer/options-colours.php:192
+#: admin/customizer/options-colours.php:198
 msgid "Comments text"
 msgstr "Texto de los comentarios"
 
-#: admin/customizer/options-colours.php:189
+#: admin/customizer/options-colours.php:195
 msgid "Comments background"
 msgstr "Fondo de los comentarios"
 
-#: admin/customizer/options-colours.php:170
+#: admin/customizer/options-colours.php:176
 msgid "Archive label border"
 msgstr "Color de la etiqueta de la página de archivo"
 
-#: admin/customizer/options-colours.php:71
 #: admin/customizer/options-general.php:87
+#: admin/customizer/options-colours.php:77
 msgid "Slider"
-msgstr "Pase de diapositivas"
+msgstr "Carrusel"
 
-#: admin/customizer/options-colours.php:132
+#: admin/customizer/options-colours.php:138
 msgid "Widget header border"
 msgstr "Borde de la cabecera del widget"
 
-#: admin/customizer/options-colours.php:131
+#: admin/customizer/options-colours.php:137
 msgid "Widget item list border"
 msgstr "Borde de la lista de elementos del widget"
 
-#: admin/customizer/options-colours.php:130
+#: admin/customizer/options-colours.php:136
 msgid "Widget item background"
 msgstr "Fondo de los elementos del widget"
 
-#: admin/customizer/options-colours.php:122
+#: admin/customizer/options-colours.php:128
 msgid "Widgets"
 msgstr "Widgets"
 
-#: admin/customizer/options-colours.php:113
+#: admin/customizer/options-colours.php:119
 msgid "Child pages content background"
 msgstr "Fondo del contenido de las páginas hijas"
 
-#: admin/customizer/options-colours.php:107
+#: admin/customizer/options-colours.php:113
 msgid "Post meta and footer border"
 msgstr "Borde de la cabecera y el pie de las entradas"
 
-#: admin/customizer/options-colours.php:106
+#: admin/customizer/options-colours.php:112
 msgid "Post and pages content background"
 msgstr "Fondo del contenido de las entradas y las páginas"
 
-#: admin/customizer/options-colours.php:105
+#: admin/customizer/options-colours.php:111
 msgid "Main content wrapper background"
 msgstr "Fondo del contenedor del contenido principal"
 
-#: admin/customizer/options-colours.php:97
+#: admin/customizer/options-colours.php:103
 msgid "Content Area"
 msgstr "Área de contenido"
 
-#: admin/customizer/options-colours.php:56
+#: admin/customizer/options-colours.php:62
 msgid "Top border"
 msgstr "Borde superior"
 
 #: admin/customizer/options-colours.php:19
-#: admin/customizer/options-colours.php:210
+#: admin/customizer/options-colours.php:216
 msgid "Background"
 msgstr "Fondo"
 
 #: admin/customizer/options-colours.php:38
-#: admin/customizer/options-colours.php:61
+#: admin/customizer/options-colours.php:67
 msgid "Dropdown menu text (default state)"
 msgstr "Menú desplegable (estado por defecto)"
 
@@ -1836,12 +1852,12 @@ msgstr "Menú desplegable (estado por defecto)"
 msgid "Primary Menu"
 msgstr "Menú principal"
 
-#: admin/customizer/options-colours.php:149
+#: admin/customizer/options-colours.php:155
 msgid "Button background"
 msgstr "Fondo inferior"
 
 #: admin/customizer/options-general.php:70
-#: admin/customizer/options-general.php:457
+#: admin/customizer/options-general.php:472
 msgid "Top bar"
 msgstr "Barra superior"
 
@@ -1853,23 +1869,23 @@ msgstr "Generalmente, es una buena idea ceñirse a colores de paletas que sean e
 msgid "Changing colours for your website involves a lot more than just trial and error. Simply mixing and matching colours without regard to their compatibility may do more damage than good to your site's aesthetics."
 msgstr "El cambio de colores en tu sitio web implica mucho más que prueba y error. Mezclar y combinar los colores sin considerar su compatibilidad puede hacer mucho daño a la estética de tu sitio."
 
-#: admin/customizer/controls.php:183
+#: admin/customizer/controls.php:186
 msgid "Click to show/hide the action hooks for this file"
 msgstr "Pulsa para mostrar u ocultar los action hooks correspondientes a este fichero"
 
-#: admin/customizer/controls.php:173
+#: admin/customizer/controls.php:176
 msgid "Graphene Action Hooks Map"
 msgstr "Lista de ganchos de acción de Graphene"
 
-#: admin/customizer/controls.php:173
+#: admin/customizer/controls.php:176
 msgid "To see a visual map showing where each action hook in Graphene is located, visit this page: %s"
 msgstr "Para ver una relación visual de la ubicación de los ganchos de acción en Graphene, visita esta página: %s"
 
-#: admin/customizer/controls.php:172
+#: admin/customizer/controls.php:175
 msgid "All action hooks available in the Graphene Theme are listed below. Click on the filename to display all the action hooks available in that file. Then, tick the checkbox next to an action hook to make a widget area available for that action hook."
 msgstr "Todos los \"action hooks\" del tema Graphene figuran a continuación. Haz clic sobre el nombre del fichero para mostrar todos los \"action hooks\" disponibles para él. A continuación, marca la casilla situada al lado del \"action hook\", para hacer que un área de widgets esté disponible para dicho elemento."
 
-#: admin/customizer/controls.php:171
+#: admin/customizer/controls.php:174
 msgid "This option enables you to place virtually any content anywhere in the theme, by attaching widget areas to the theme's action hooks."
 msgstr "Esta opción te permite colocar prácticamente cualquier clase de contenido hasta en el último rincón del tema. Para ello, hay que asociar las áreas de widgets a los \"action hooks\" del tema."
 
@@ -1913,8 +1929,8 @@ msgstr "Seguir a %s en Twitter"
 msgid "Only required if you need a description in the navigation menu and you are not using a custom menu."
 msgstr "Solo hace falta si necesitas una descripción en el menú de navegación y no tienes intención de utilizar un menú personalizado."
 
-#: admin/custom-fields.php:166 admin/customizer/controls.php:327
-#: admin/customizer/controls.php:377
+#: admin/customizer/controls.php:330 admin/customizer/controls.php:380
+#: admin/custom-fields.php:166
 msgid "Description"
 msgstr "Descripción"
 
@@ -1934,11 +1950,11 @@ msgstr "Como un icono (con el año)"
 msgid "As an icon (without the year)"
 msgstr "Como un icono (sin el año)"
 
-#: admin/custom-fields.php:151 admin/customizer/options-display.php:108
+#: admin/customizer/options-display.php:114 admin/custom-fields.php:151
 msgid "Hidden"
 msgstr "Oculto"
 
-#: admin/custom-fields.php:146 admin/customizer/options-display.php:106
+#: admin/customizer/options-display.php:112 admin/custom-fields.php:146
 msgid "Post date display"
 msgstr "Mostrar fecha de la entrada"
 
@@ -1986,7 +2002,7 @@ msgstr "Primera imagen de la entrada"
 msgid "Featured Image"
 msgstr "Imagen destacada"
 
-#: admin/custom-fields.php:102 admin/customizer/options-general.php:205
+#: admin/customizer/options-general.php:220 admin/custom-fields.php:102
 msgid "Don't show image"
 msgstr "No mostrar ninguna imagen"
 
@@ -1995,7 +2011,7 @@ msgstr "No mostrar ninguna imagen"
 msgid "Use global setting"
 msgstr "Utilizar configuración global"
 
-#: admin/custom-fields.php:97 admin/customizer/options-general.php:203
+#: admin/customizer/options-general.php:218 admin/custom-fields.php:97
 msgid "Slider image"
 msgstr "Imagen del pase de diapositivas"
 
@@ -2039,15 +2055,15 @@ msgstr "Buscando los términos <strong>'%s'</strong> ..."
 msgid "Automated search"
 msgstr "Búsqueda automática"
 
-#: 404.php:33 search-404.php:6
+#: search-404.php:6 404.php:33
 msgid "If you follow the link from another website, I may have removed or renamed the page some time ago. You may want to try searching for the page:"
 msgstr "Es posible que la página a la que has intentado llegar haya sido renombrada o eliminada. Te aconsejamos que lo intentes de nuevo, mediante el formulario de búsqueda que tienes a continuación:"
 
-#: 404.php:32 search-404.php:5
+#: search-404.php:5 404.php:32
 msgid "Sorry, I've looked everywhere but I can't find the page you're looking for."
 msgstr "Lo sentimos, pero aunque hemos buscado por todo el sitio, no ha sido posible encontrar la página que estabas buscando."
 
-#: 404.php:30 search-404.php:3
+#: search-404.php:3 404.php:30
 msgid "Error 404 - Page Not Found"
 msgstr "Error 404 - Página no encontrada"
 
@@ -2055,14 +2071,14 @@ msgstr "Error 404 - Página no encontrada"
 msgid "Searching for: <span>%s</span>"
 msgstr "Buscando '<span>%s</span>'"
 
-#. Author of the plugin/theme
+#. Author of the theme
 msgid "Graphene Themes Solutions"
 msgstr "Graphene Themes Solutions"
 
-#. Theme URI of the plugin/theme
+#. Theme URI of the theme
 msgid "https://www.graphene-theme.com/graphene-theme/"
 msgstr "https://www.graphene-theme.com/graphene-theme/"
 
-#. Author URI of the plugin/theme
+#. Author URI of the theme
 msgid "https://www.graphene-theme.com/"
 msgstr "https://www.graphene-theme.com/"

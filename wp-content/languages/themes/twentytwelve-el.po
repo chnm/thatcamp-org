@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twelve package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-01-03 15:31:46+0000\n"
+"PO-Revision-Date: 2019-02-22 08:14:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,23 +19,28 @@ msgstr "Το θέμα 2012 έχει σχεδιαστεί με την προσα�
 msgid "Twenty Twelve"
 msgstr "Twenty Twelve"
 
-#: functions.php:89
+#. translators: %s: The post title.
+#: comments.php:35
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "Ένα σχόλιο στο &ldquo;%s&rdquo;"
+
+#: functions.php:94
 msgid "White"
 msgstr "Λευκό"
 
-#: functions.php:84
+#: functions.php:89
 msgid "Light Gray"
 msgstr "Ανοικτό γκρι"
 
-#: functions.php:79
+#: functions.php:84
 msgid "Medium Gray"
 msgstr "Μεσαίο γκρι"
 
-#: functions.php:74
+#: functions.php:79
 msgid "Dark Gray"
 msgstr "Σκούρο γκρι"
 
-#: functions.php:69
+#: functions.php:74
 msgid "Blue"
 msgstr "Μπλε"
 
@@ -51,17 +56,17 @@ msgstr "Πρότυπο αρχικής σελίδας"
 msgid "Tag Archives: %s"
 msgstr "Αρχείο ετικέτας %s"
 
-#: single.php:22
+#: single.php:25
 msgctxt "Next post link"
 msgid "&rarr;"
 msgstr "&rarr;"
 
-#: single.php:21
+#: single.php:24
 msgctxt "Previous post link"
 msgid "&larr;"
 msgstr "&larr;"
 
-#: search.php:38
+#: search.php:41
 msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
 msgstr "Η αναζήτησή σας δεν απέδωσε αποτελέσματα.  Αν θέλετε, δοκιμάστε με διαφορετικούς όρους."
 
@@ -69,122 +74,122 @@ msgstr "Η αναζήτησή σας δεν απέδωσε αποτελέσμα�
 msgid "Search Results for: %s"
 msgstr "Αποτελέσματα για %s"
 
-#: index.php:42
+#: index.php:46
 msgid "Ready to publish your first post? <a href=\"%s\">Get started here</a>."
 msgstr "Έτοιμοι για το πρώτο σας άρθρο; <a href=\"%s\">Ξεκινήστε εδώ</a>."
 
-#: index.php:38
+#: index.php:42
 msgid "No posts to display"
 msgstr "Δεν υπάρχουν άρθρα"
 
-#: image.php:42
+#: image.php:46
 msgid "Next &rarr;"
 msgstr "Επόμενη →"
 
-#: image.php:41
+#: image.php:45
 msgid "&larr; Previous"
 msgstr "← Προηγούμενη"
 
-#: image.php:26
+#: image.php:30
 msgid "<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>."
 msgstr "<span class=\"meta-prep meta-prep-entry-date\">Δημοσιεύτηκε </span> <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> σε διαστάσεις <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> στο <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>."
 
-#: header.php:44
+#: header.php:45
 msgid "Skip to content"
 msgstr "Μετάβαση σε περιεχόμενο"
 
-#: header.php:43
+#: header.php:44
 msgid "Menu"
 msgstr "Μενού"
 
-#: functions.php:473
+#: functions.php:514
 msgid "This entry was posted on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Δημοσιεύτηκε στις %3$s από την/τον <span class=\"by-author\">%4$s</span>."
 
-#: functions.php:471
+#: functions.php:512
 msgid "This entry was posted in %1$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Δημοσιεύστηκε στην κατηγορία %1$s στις %3$s από την/τον <span class=\"by-author\">%4$s</span>."
 
 #. Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's
 #. name.
-#: functions.php:469
+#: functions.php:510
 msgid "This entry was posted in %1$s and tagged %2$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Δημοσιεύτηκε στην κατηγορία %1$s, με ετικέτες %2$s, στις %3$s από την/τον <span class=\"by-author\">%4$s</span>."
 
-#: functions.php:463
+#: functions.php:504
 msgid "View all posts by %s"
 msgstr "Δείτε όλα τα άρθρα του/της %s"
 
 #. Translators: used between list items, there is a space after the comma.
-#: functions.php:449 functions.php:452
+#: functions.php:488 functions.php:491
 msgid ", "
 msgstr ","
 
-#: functions.php:428
+#: functions.php:460
 msgid "Reply"
 msgstr "Απάντηση"
 
-#: functions.php:419
+#: functions.php:446
 msgid "Your comment is awaiting moderation."
 msgstr "Το σχόλιό σας αναμένει έγκριση."
 
 #. translators: 1: date, 2: time
-#: functions.php:413
+#: functions.php:440
 msgid "%1$s at %2$s"
 msgstr "%1$s στο %2$s"
 
-#: functions.php:407
+#: functions.php:433
 msgid "Post author"
 msgstr "Συντάκτης άρθρου"
 
-#: functions.php:392
+#: functions.php:417
 msgid "(Edit)"
 msgstr "(Διόρθωση)"
 
-#: functions.php:392
+#: functions.php:417
 msgid "Pingback:"
 msgstr "Πίνγκμπακ:"
 
-#: functions.php:367
+#: functions.php:391
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Επόμενα άρθρα <span class=\"meta-nav\">&rarr;</span>"
 
-#: functions.php:366
+#: functions.php:390
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Προηγούμενα άρθρα"
 
-#: functions.php:365 single.php:20
+#: single.php:23 functions.php:389
 msgid "Post navigation"
 msgstr "Πλοήγηση άρθρων"
 
-#: functions.php:343
+#: functions.php:366
 msgid "Second Front Page Widget Area"
 msgstr "2η περιοχή μονάδων αρχικής σελίδας"
 
-#: functions.php:335 functions.php:345
+#: functions.php:356 functions.php:368
 msgid "Appears when using the optional Front Page template with a page set as Static Front Page"
 msgstr "Εμφανίζεται όταν χρησιμοποιείται το πρότυπο αρχικής σελίδας"
 
-#: functions.php:333
+#: functions.php:354
 msgid "First Front Page Widget Area"
 msgstr "1η περιοχή μονάδων αρχικής σελίδας"
 
-#: functions.php:325
+#: functions.php:344
 msgid "Appears on posts and pages except the optional Front Page template, which has its own widgets"
 msgstr "Εμφανίζεται σε σελίδες και άρθρα εκτός από το προαιρετικό πρότυπο αρχικής σελίδες, που έχει τις δικές του μονάδες"
 
-#: functions.php:323
+#: functions.php:342
 msgid "Main Sidebar"
 msgstr "Πλευρική στήλη"
 
-#: functions.php:294
+#: functions.php:310
 msgid "Page %s"
 msgstr "Σελίδα %s"
 
 #. translators: To add an additional Open Sans character subset specific to
 #. your language, * translate this to 'greek', 'cyrillic' or 'vietnamese'. Do
 #. not translate into your own language.
-#: functions.php:148
+#: functions.php:157
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr "χωρίς-υποσύνολο"
@@ -192,12 +197,12 @@ msgstr "χωρίς-υποσύνολο"
 #. translators: If there are characters in your language that are not supported
 #. * by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:142
+#: functions.php:151
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr "on"
 
-#: functions.php:102
+#: functions.php:108
 msgid "Primary Menu"
 msgstr "Κύριο μενού"
 
@@ -209,7 +214,7 @@ msgstr "Κατασκευασμένο με %s"
 msgid "Semantic Personal Publishing Platform"
 msgstr "Σημασιολογικό σύστημα ιστοδημοσιεύσεων"
 
-#: content.php:66
+#: content.php:75
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Δείτε όλα τα άρθρα του/της %s <span class=\"meta-nav\">&rarr;</span>"
 
@@ -217,15 +222,15 @@ msgstr "Δείτε όλα τα άρθρα του/της %s <span class=\"meta-na
 msgid "Featured post"
 msgstr "Επιλεγμένο άρθρο"
 
-#: content.php:45 image.php:102 content-page.php:21
+#: content-page.php:24 image.php:123 content.php:50
 msgid "Pages:"
 msgstr "Σελίδες:"
 
-#: index.php:53 content-none.php:17
+#: index.php:58 content-none.php:17
 msgid "Apologies, but no results were found. Perhaps searching will help find a related post."
 msgstr "Δεν βρέθηκε κανένα αποτέλεσμα. Ίσως η αναζήτηση αποδώσει κάτι σχετικό."
 
-#: index.php:49 search.php:34 content-none.php:13
+#: index.php:54 search.php:37 content-none.php:13
 msgid "Nothing Found"
 msgstr "Κανένα αποτέλεσμα"
 
@@ -233,64 +238,65 @@ msgstr "Κανένα αποτέλεσμα"
 msgid "Link"
 msgstr "Σύνδεσμός"
 
-#: content-link.php:24 content.php:51 functions.php:424 content-image.php:26
-#: content-quote.php:23 content-status.php:40 image.php:37 content-aside.php:26
-#: content-page.php:24
+#: content-aside.php:26 content-status.php:40 content-image.php:26
+#: content-link.php:24 content-page.php:31 content-quote.php:23 image.php:41
+#: functions.php:451 content.php:60
 msgid "Edit"
 msgstr "Αλλαγή"
 
-#: content-link.php:21 content.php:33 content-image.php:23 content-quote.php:20
-#: content-status.php:37 content-aside.php:23
+#: content-aside.php:23 content-status.php:37 content-image.php:23
+#: content-link.php:21 content-quote.php:20 content.php:35
 msgid "% Replies"
 msgstr "% απαντήσεις"
 
-#: content-link.php:21 content.php:33 content-image.php:23 content-quote.php:20
-#: content-status.php:37 content-aside.php:23
+#: content-aside.php:23 content-status.php:37 content-image.php:23
+#: content-link.php:21 content-quote.php:20 content.php:35
 msgid "1 Reply"
 msgstr "1 σχόλιο"
 
-#: content-link.php:21 content.php:33 content-image.php:23 content-quote.php:20
-#: content-status.php:37 content-aside.php:23
+#: content-aside.php:23 content-status.php:37 content-image.php:23
+#: content-link.php:21 content-quote.php:20 content.php:35
 msgid "Leave a reply"
 msgstr "Σχολιάστε"
 
-#: content-link.php:18 content-quote.php:17 content-status.php:15
-#: content-aside.php:20
+#: content-aside.php:20 content-status.php:15 content-link.php:18
+#: content-quote.php:17
 msgid "Permalink to %s"
 msgstr "Μόνιμος σύνδεσμος του %s"
 
-#: content-link.php:14 content.php:44 content-image.php:13 content-quote.php:13
-#: content-status.php:31 content-aside.php:15
+#: content-aside.php:15 content-status.php:31 content-image.php:13
+#: content-link.php:14 content-quote.php:13 content.php:46
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Συνέχεια <span class=\"meta-nav\">&rarr;</span>"
 
-#: comments.php:53
+#: comments.php:74
 msgid "Comments are closed."
 msgstr "Τα σχόλια είναι κλειστά."
 
-#: comments.php:44
+#: comments.php:64
 msgid "Newer Comments &rarr;"
 msgstr "Νεότερα σχόλια →"
 
-#: comments.php:43
+#: comments.php:63
 msgid "&larr; Older Comments"
 msgstr "← Παλαιότερα σχόλια"
 
-#: comments.php:42
+#: comments.php:62
 msgid "Comment navigation"
 msgstr "Πλοήγηση σχολίων"
 
-#: comments.php:31
-msgid "One thought on &ldquo;%2$s&rdquo;"
+#. translators: %1$s: The number of comments. %2$s: The post title.
+#: comments.php:41
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "Ένα σχόλιο στο <i>%2$s</i>"
-msgstr[1] "%1$s σχόλια στο <i>%2$s</i>"
+msgstr[0] "%1$s σχόλιο στο &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s σχόλια στο &ldquo;%2$s&rdquo;"
 
 #: category.php:21
 msgid "Category Archives: %s"
 msgstr "Αρχείο κατηγορίας %s"
 
-#: author.php:63 content.php:62
+#: content.php:71 author.php:64
 msgid "About %s"
 msgstr "Σχετικά με %s"
 
@@ -298,29 +304,29 @@ msgstr "Σχετικά με %s"
 msgid "Author Archives: %s"
 msgstr "Αρχείο συντάκτη %s"
 
-#: archive.php:35
+#: archive.php:36
 msgid "Archives"
 msgstr "Αρχείο"
 
-#: archive.php:33
+#: archive.php:34
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: archive.php:33
+#: archive.php:34
 msgid "Yearly Archives: %s"
 msgstr "Αρχείο έτους %s"
 
-#: archive.php:31
+#: archive.php:32
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
-#: archive.php:31
+#: archive.php:32
 msgid "Monthly Archives: %s"
 msgstr "Αρχείο μηνός %s"
 
-#: archive.php:29
+#: archive.php:30
 msgid "Daily Archives: %s"
 msgstr "Αρχείο ημέρας %s"
 
