@@ -42,11 +42,11 @@ wp-content/debug.log
 *.log
 robots.txt
 /docs
+/wp-content/wflogs/*
 /wp-content/mu-plugins/domain_mapping.php
 /wp-content/plugins/si-captcha-for-wordpress/captcha/cache/*
 /wp-content/plugins/multisite-maintenance-mode/*
 /wp-content/upgrade/*
 /wp-includes/js/tinymce/plugins/wptextpattern/plugin.js
 /wp-includes/js/tinymce/plugins/wptextpattern/plugin.min.js
-
 
