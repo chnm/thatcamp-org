@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.4
+ * Transposh v1.0.5
  * http://transposh.org/
  *
- * Copyright 2018, Team Transposh
+ * Copyright 2019, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 31 Dec 2018 13:56:12 +0200
+ * Date: Sat, 28 Sep 2019 01:34:13 +0300
  */
 
 /*
@@ -669,7 +669,7 @@ class transposh_plugin_admin {
 
     function tp_advanced() {
         $this->checkbox($this->transposh->options->enable_url_translate_o, __('Enable url translation', TRANSPOSH_TEXT_DOMAIN) . ' (' . __('experimental', TRANSPOSH_TEXT_DOMAIN) . ')', __('Allow translation of permalinks and urls', TRANSPOSH_TEXT_DOMAIN));
-        $this->textinput($this->transposh->options->jqueryui_override_o, __('Override jQueryUI version', TRANSPOSH_TEXT_DOMAIN), __('Version', TRANSPOSH_TEXT_DOMAIN));
+        $this->textinput($this->transposh->options->jqueryui_override_o, __('Override jQueryUI version', TRANSPOSH_TEXT_DOMAIN)." (".JQUERYUI_VER.")", __('Version', TRANSPOSH_TEXT_DOMAIN));
         $this->checkbox($this->transposh->options->dont_add_rel_alternate_o, __('Disable adding rel=alternate to the html', TRANSPOSH_TEXT_DOMAIN), __('Disable the feature that adds the alternate language list to your page html header', TRANSPOSH_TEXT_DOMAIN));
         $this->section(__('Parser related settings', TRANSPOSH_TEXT_DOMAIN)
                 , __('This is extremely dangerous, will break your current translations, and might cause severe hickups, only proceed if you really know what you are doing.', TRANSPOSH_TEXT_DOMAIN));

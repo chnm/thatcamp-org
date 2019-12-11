@@ -5,7 +5,7 @@
   Plugin URI: http://transposh.org/
   Description: Translation filter for WordPress, After enabling please set languages at the <a href="admin.php?page=tp_main">the options page</a> Want to help? visit our development site at <a href="http://trac.transposh.org/">trac.transposh.org</a>.
   Author: Team Transposh
-  Version: 1.0.4
+  Version: 1.0.5
   Author URI: http://transposh.org/
   License: GPL (http://www.gnu.org/licenses/gpl.txt)
   Text Domain: transposh
@@ -13,14 +13,14 @@
  */
 
 /*
- * Transposh v1.0.4
+ * Transposh v1.0.5
  * http://transposh.org/
  *
- * Copyright 2018, Team Transposh
+ * Copyright 2019, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 31 Dec 2018 13:56:12 +0200
+ * Date: Sat, 28 Sep 2019 01:34:13 +0300
  */
 
 //avoid direct calls to this file where wp core files not present
@@ -33,7 +33,6 @@ if (!function_exists('add_action')) {
 require_once("core/logging.php");
 require_once("core/constants.php");
 require_once("core/utils.php");
-require_once("core/jsonwrapper/jsonwrapper.php");
 require_once("core/parser.php");
 require_once("wp/transposh_db.php");
 require_once("wp/transposh_widget.php");
@@ -1791,6 +1790,9 @@ class transposh_plugin {
                 curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
                 curl_setopt($ch, CURLOPT_POST, true);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $qstr);
+                // timeout is probably a good idea
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+ 		curl_setopt($ch, CURLOPT_TIMEOUT, 7);
 
                 //if the attempt is 2 or more, we skip ipv6 and use an alternative user agent
                 if ($attempt > 1) {
@@ -2016,7 +2018,7 @@ class transposh_plugin {
 
         $args = array(
             'slug' => $this->transposh_plugin_basename,
-            'version' => '1.0.4', //$checked_data->checked[$this->transposh_file_location],
+            'version' => '1.0.5', //$checked_data->checked[$this->transposh_file_location],
         );
         $request_string = array(
             'body' => array(
