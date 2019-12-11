@@ -1,18 +1,20 @@
 <?php
-/*
- * Plugin Name: WP fail2ban
- * Plugin URI: https://github.com/invisnet/wp-fail2ban
- * Description: Write a myriad of WordPress events to syslog for integration with fail2ban.
- * Text Domain: wp-fail2ban
- * Version: 3.6.0
- * Author: Charles Lecklider
- * Author URI: https://charles.lecklider.org/
- * License: GPL2
- * SPDX-License-Identifier: GPL-2.0
- */
 
 /*
- *  Copyright 2012-18  Charles Lecklider  (email : wordpress@charles.lecklider.org)
+ * Plugin Name: WP fail2ban
+ * Plugin URI: https://wp-fail2ban.com/
+ * Description: Write a myriad of WordPress events to syslog for integration with fail2ban.
+ * Text Domain: wp-fail2ban
+ * Version: 4.2.7.1
+ * Author: Charles Lecklider
+ * Author URI: https://charles.lecklider.org/
+ * License: GPLv2
+ * SPDX-License-Identifier: GPL-2.0
+ * Requires PHP: 5.3
+ *
+ */
+/*
+ *  Copyright 2012-19  Charles Lecklider  (email : wordpress@charles.lecklider.org)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License, version 2, as
@@ -27,354 +29,80 @@
  *	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-
+/**
+ * WP fail2ban
+ *
+ * @package wp-fail2ban 
+ */
 namespace org\lecklider\charles\wordpress\wp_fail2ban;
 
-
 /**
- * Guard for MU
+ * @since 4.0.5
  */
-global $wp_fail2ban;
-if (empty($wp_fail2ban) && defined('WP_FAIL2BAN')) return;
-define('WP_FAIL2BAN', true);
+define( 'WP_FAIL2BAN_VER', '4.2.7.1' );
+define( 'WP_FAIL2BAN_FILE', __FILE__ );
 
-
-/**
- * Allow custom openlog options. 
- * e.g. you may not want the PID if logging remotely. 
- * @since 3.5.0 
- * @since 3.6.0	Add LOG_NDELAY 
- */
-if (!defined('WP_FAIL2BAN_OPENLOG_OPTIONS')) {
-    define('WP_FAIL2BAN_OPENLOG_OPTIONS', LOG_PID|LOG_NDELAY);
-}
-/**
- * Make sure all custom logs are defined.
- * @since 3.5.0
- */
-if (!defined('WP_FAIL2BAN_AUTH_LOG')) {
-    define('WP_FAIL2BAN_AUTH_LOG', LOG_AUTH);
-}
-if (!defined('WP_FAIL2BAN_COMMENT_LOG')) {
-    define('WP_FAIL2BAN_COMMENT_LOG', LOG_USER);
-}
-if (!defined('WP_FAIL2BAN_PINGBACK_LOG')) {
-    define('WP_FAIL2BAN_PINGBACK_LOG', LOG_USER);
-}
-
-
-/**
- * @since 3.5.0 Refactored for unit testing
- */
-function openlog($log = 'WP_FAIL2BAN_AUTH_LOG')
-{
-    $tag    = (defined('WP_FAIL2BAN_SYSLOG_SHORT_TAG') && true === WP_FAIL2BAN_SYSLOG_SHORT_TAG)
-                ? 'wp' // @codeCoverageIgnore
-                : 'wordpress';
-    $host   = (array_key_exists('WP_FAIL2BAN_HTTP_HOST', $_ENV))
-                ? $_ENV['WP_FAIL2BAN_HTTP_HOST'] // @codeCoverageIgnore
-                : $_SERVER['HTTP_HOST'];
+if ( defined( 'ABSPATH' ) ) {
     /**
-     * Some varieties of syslogd have difficulty if $host is too long
-     * @since 3.5.0
+     * Freemius integration
+     *
+     * @since 4.0.0
      */
-    if (defined('WP_FAIL2BAN_TRUNCATE_HOST') && 1 < intval(WP_FAIL2BAN_TRUNCATE_HOST)) {
-        $host = substr($host, 0, intval(WP_FAIL2BAN_TRUNCATE_HOST));
-    }
-    if (false === \openlog("$tag($host)", WP_FAIL2BAN_OPENLOG_OPTIONS, constant($log))) {
-        error_log('WPf2b: Cannot open syslog', 0); // @codeCoverageIgnore
-    } elseif (defined('WP_FAIL2BAN_TRACE')) {
-        error_log('WPf2b: Opened syslog', 0); // @codeCoverageIgnore
-    }
-}
-
-/**
- * @since 3.5.0
- */
-function syslog($level, $msg, $remote_addr = null)
-{
-    $msg .= ' from ';
-    $msg .= (is_null($remote_addr))
-                ? remote_addr()
-                : $remote_addr;
-
-    if (false === \syslog($level, $msg)) {
-        error_log("WPf2b: Cannot write to syslog: '{$msg}'", 0); // @codeCoverageIgnore
-    } elseif (defined('WP_FAIL2BAN_TRACE')) {
-        error_log("WPf2b: Wrote to syslog: '{$msg}'", 0); // @codeCoverageIgnore
-    }
-    \closelog();
-
-    /**
-     * @todo Remove this once phpunit can handle stderr.
-     */
-    if (!defined('ABSPATH')) {
-        echo "$level|$msg";
-    }
-}
-
-/**
- * @since 3.5.0 Refactored for unit testing
- */
-function bail()
-{
-    wp_die('Forbidden', 'Forbidden', array('response' => 403));
-}
-
-/** 
- * @todo Test me! 
- * @codeCoverageIgnore
- */
-function remote_addr()
-{
-    if (defined('WP_FAIL2BAN_PROXIES')) {
-        if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
-            $ip = ip2long($_SERVER['REMOTE_ADDR']);
-            /**
-             * PHP 7 lets you define an array
-             * @since 3.5.4
-             */
-            $proxies = (is_array(WP_FAIL2BAN_PROXIES))
-                        ? WP_FAIL2BAN_PROXIES
-                        : explode(',', WP_FAIL2BAN_PROXIES);
-            foreach ($proxies as $proxy) {
-                if (2 == count($cidr = explode('/', $proxy))) {
-                    $net = ip2long($cidr[0]);
-                    $mask = ~ ( pow(2, (32 - $cidr[1])) - 1 );
-                } else {
-                    $net = ip2long($proxy);
-                    $mask = -1;
-                }
-                if ($net == ($ip & $mask)) {
-                    return (false === ($len = strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',')))
-                        ? $_SERVER['HTTP_X_FORWARDED_FOR']
-                        : substr($_SERVER['HTTP_X_FORWARDED_FOR'], 0, $len);
-                }
-            }
-        }
-    }
-
-    /**
-     * For plugins and themes that anonymise requests
-     * @since 3.6.0
-     */
-    return (defined('WP_FAIL2BAN_REMOTE_ADDR'))
-        ? WP_FAIL2BAN_REMOTE_ADDR
-        : $_SERVER['REMOTE_ADDR'];
-}
-
-
-/**
- * @since 2.0.0
- * @since 3.5.0 Refactored for unit testing
- *
- * @wp-f2b-hard Blocked authentication attempt for .*
- */
-function authenticate($user, $username, $password)
-{
-    if (!empty($username)) {
+    
+    if ( function_exists( __NAMESPACE__ . '\\wf_fs' ) ) {
+        // @codeCoverageIgnoreStart
+        wf_fs()->set_basename( false, __FILE__ );
+        return;
+    } else {
         /**
-         * @since 3.5.0 Arrays allowed in PHP 7
+         * Create a helper function for easy SDK access.
          */
-        $matched = (is_array(WP_FAIL2BAN_BLOCKED_USERS))
-            ? in_array($username, WP_FAIL2BAN_BLOCKED_USERS)
-            : preg_match('/'.WP_FAIL2BAN_BLOCKED_USERS.'/i', $username);
-
-        if ($matched) {
-            openlog();
-            syslog(LOG_NOTICE, "Blocked authentication attempt for {$username}");
-            bail();
-        }
-    }
-
-    return $user;
-}
-if (defined('WP_FAIL2BAN_BLOCKED_USERS')) {
-    add_filter('authenticate', __NAMESPACE__.'\authenticate', 1, 3);
-}
-
-
-/**
- * @since 2.1.0
- * @since 3.5.0 Refactored for unit testing
- * @since 3.5.1 Check is_admin
- *
- * @wp-f2b-hard Blocked user enumeration attempt
- */
-if (defined('WP_FAIL2BAN_BLOCK_USER_ENUMERATION') && true === WP_FAIL2BAN_BLOCK_USER_ENUMERATION) {
-    function parse_request($query)
-    {
-        if (!is_admin() && intval(@$query->query_vars['author'])) {
-            openlog();
-            syslog(LOG_NOTICE, 'Blocked user enumeration attempt');
-            bail();
-        }
-
-        return $query;
-    }
-    add_filter('parse_request', __NAMESPACE__.'\parse_request', 1, 2);
-}
-
-
-/**
- * @since 3.5.0
- */
-if (defined('WP_FAIL2BAN_LOG_COMMENTS') && true === WP_FAIL2BAN_LOG_COMMENTS) {
-    function notify_post_author($maybe_notify, $comment_ID)
-    {
-        openlog('WP_FAIL2BAN_COMMENT_LOG');
-        syslog(LOG_INFO, "Comment {$comment_ID}");
-
-        return $maybe_notify;
-    }
-    add_filter('notify_post_author', __NAMESPACE__.'\notify_post_author', 10, 2);
-}
-
-
-/**
- * @since 3.5.0
- *
- * @wp-f2b-hard Spam comment \d+
- */
-if (defined('WP_FAIL2BAN_LOG_SPAM') && true === WP_FAIL2BAN_LOG_SPAM) {
-    function log_spam_comment($comment_id, $comment_status)
-    {
-        if ('spam' === $comment_status) {
-            if (is_null($comment = get_comment($comment_id, ARRAY_A))) {
-                /**
-                 * @todo: decide what to do about this
-                 */
-            } else {
-                $remote_addr = (empty($comment['comment_author_IP']))
-                    ? 'unknown' // @codeCoverageIgnore
-                    : $comment['comment_author_IP'];
-
-                openlog();
-                syslog(LOG_INFO, "Spam comment {$comment_id}", $remote_addr);
-            }
-        }
-    };
-    add_action('comment_post', __NAMESPACE__.'\log_spam_comment', 10, 2);
-    add_action('wp_set_comment_status', __NAMESPACE__.'\log_spam_comment', 10, 2);
-}
-
-
-/**
- * @since 3.5.0
- */
-if (defined('WP_FAIL2BAN_LOG_PASSWORD_REQUEST') && true === WP_FAIL2BAN_LOG_PASSWORD_REQUEST) {
-    function retrieve_password($user_login)
-    {
-        openlog();
-        syslog(LOG_NOTICE, "Password reset requested for {$user_login}");
-    }
-    add_action('retrieve_password', __NAMESPACE__.'\retrieve_password');
-}
-
-
-if (defined('XMLRPC_REQUEST') && true === XMLRPC_REQUEST) {
-    /**
-     * @since 3.0.0
-     * @since 3.5.0 Refactored for unit testing
-     *
-     * @wp-f2b-hard XML-RPC multicall authentication failure
-     */
-    function xmlrpc_login_error($error, $user)
-    {
-        static $attempts = 0;
-
-        if (++$attempts > 1) {
-            openlog();
-            syslog(LOG_NOTICE, 'XML-RPC multicall authentication failure');
-            bail();
-        }
-    }
-    add_action('xmlrpc_login_error', __NAMESPACE__.'\xmlrpc_login_error', 10, 2);
-
-
-    /**
-     * @since 3.0.0
-     * @since 3.5.0 Refactored for unit testing
-     *
-     * @wp-f2b-hard Pingback error .* generated
-     */
-    function xmlrpc_pingback_error($ixr_error)
-    {
-        if (48 === $ixr_error->code) return $ixr_error; // @codeCoverageIgnore
-        openlog();
-        syslog(LOG_NOTICE, 'Pingback error '.$ixr_error->code.' generated');
-    }
-    add_filter('xmlrpc_pingback_error', __NAMESPACE__.'\xmlrpc_pingback_error', 5);
-
-
-    /**
-     * @since 2.2.0
-     * @since 3.5.0 Refactored for unit testing
-     */
-    if (defined('WP_FAIL2BAN_LOG_PINGBACKS') && true === WP_FAIL2BAN_LOG_PINGBACKS) {
-        function xmlrpc_call($call)
+        function wf_fs()
         {
-            if ('pingback.ping' == $call) {
-                openlog('WP_FAIL2BAN_PINGBACK_LOG');
-                syslog(LOG_INFO, 'Pingback requested');
+            global  $wf_fs ;
+            
+            if ( !isset( $wf_fs ) ) {
+                // Include Freemius SDK.
+                require_once dirname( __FILE__ ) . '/vendor/freemius/wordpress-sdk/start.php';
+                $wf_fs = fs_dynamic_init( array(
+                    'id'             => '3072',
+                    'slug'           => 'wp-fail2ban',
+                    'type'           => 'plugin',
+                    'public_key'     => 'pk_146d2c2a5bee3b157e43501ef8682',
+                    'is_premium'     => false,
+                    'has_addons'     => true,
+                    'has_paid_plans' => true,
+                    'trial'          => array(
+                    'days'               => 14,
+                    'is_require_payment' => false,
+                ),
+                    'menu'           => array(
+                    'slug'       => 'wp-fail2ban',
+                    'first-path' => 'admin.php?page=wp-fail2ban',
+                    'support'    => false,
+                ),
+                    'is_live'        => true,
+                ) );
             }
+            
+            return $wf_fs;
         }
-        add_action('xmlrpc_call', __NAMESPACE__.'\xmlrpc_call');
+        
+        // Init Freemius.
+        wf_fs();
+        // Set currency to GBP
+        wf_fs()->add_filter( 'default_currency', function () {
+            return 'gbp';
+        } );
+        // Signal that SDK was initiated.
+        do_action( 'wf_fs_loaded' );
     }
-
-
+    
+    // @codeCoverageIgnoreEnd
     /**
-     * Log XML-RPC requests
+     * Freemius insists on mangling the formatting of the main plugin file
      *
-     * It seems attackers are doing weird things with XML-RPC. This makes it easy to
-     * log them for analysis and future blocking.
-     *
-     * @since 3.6.0
+     * @since 4.0.0     Refactored
      */
-    if (defined('WP_FAIL2BAN_XMLRPC_LOG')) {
-        if (false === ($fp = fopen(WP_FAIL2BAN_XMLRPC_LOG, 'a+'))) {
-            // TODO: decided whether to log this
-        } else {
-            fprintf($fp, "# ---\n# Date: %s\n# IP: %s\n\n%s\n", date(DATE_ATOM), remote_addr(), $HTTP_RAW_POST_DATA);
-            fclose($fp);
-        }
-    }
+    require_once 'wp-fail2ban-main.php';
 }
-
-
-/**
- * @since 1.0.0
- * @since 3.5.0 Refactored for unit testing
- */
-function wp_login($user_login, $user)
-{
-    openlog();
-    syslog(LOG_INFO, "Accepted password for {$user_login}");
-}
-add_action('wp_login', __NAMESPACE__.'\wp_login', 10, 2);
-
-
-/**
- * @since 1.0.0
- * @since 3.5.0 Refactored for unit testing
- *
- * @wp-f2b-hard Authentication attempt for unknown user .*
- * @wp-f2b-hard XML-RPC authentication attempt for unknown user .*
- * @wp-f2b-soft Authentication failure for .*
- * @wp-f2b-soft XML-RPC authentication failure for .*
- */
-function wp_login_failed($username)
-{
-    global $wp_xmlrpc_server;
-
-    $msg  = ($wp_xmlrpc_server)
-            ? 'XML-RPC a'
-            : 'A';
-    $msg .= (wp_cache_get($username, 'userlogins'))
-            ? "uthentication failure for {$username}"
-            : "uthentication attempt for unknown user {$username}";
-    openlog();
-    syslog(LOG_NOTICE, $msg);
-}
-add_action('wp_login_failed', __NAMESPACE__.'\wp_login_failed');
-
