@@ -6,7 +6,12 @@ class wfWAFStorageFile implements wfWAFStorageInterface {
 	const LOG_FILE_HEADER = "<?php exit('Access denied'); __halt_compiler(); ?>\n";
 	const LOG_INFO_HEADER = "******************************************************************\nThis file is used by the Wordfence Web Application Firewall. Read \nmore at https://docs.wordfence.com/en/Web_Application_Firewall_FAQ\n******************************************************************\n";
 	const IP_BLOCK_RECORD_SIZE = 24;
-	
+	private $rules;
+	private $failScores;
+	private $variables;
+	private $whitelistedParams;
+	private $blacklistedParams;
+
 	public static function allowFileWriting() {
 		if (defined('WFWAF_ALWAYS_ALLOW_FILE_WRITING') && WFWAF_ALWAYS_ALLOW_FILE_WRITING) {
 			return true;
@@ -123,6 +128,7 @@ class wfWAFStorageFile implements wfWAFStorageInterface {
 	 */
 	private $ipCacheFile;
 	private $configFile;
+	private $rulesFile;
 	private $rulesDSLCacheFile;
 	private $dataChanged = array();
 	private $data = array();
@@ -139,12 +145,14 @@ class wfWAFStorageFile implements wfWAFStorageInterface {
 	 * @param string|null $attackDataFile
 	 * @param string|null $ipCacheFile
 	 * @param string|null $configFile
+	 * @param string|null $rulesFile
 	 * @param null $rulesDSLCacheFile
 	 */
-	public function __construct($attackDataFile = null, $ipCacheFile = null, $configFile = null, $rulesDSLCacheFile = null) {
+	public function __construct($attackDataFile = null, $ipCacheFile = null, $configFile = null, $rulesFile = null, $rulesDSLCacheFile = null) {
 		$this->setAttackDataFile($attackDataFile);
 		$this->setIPCacheFile($ipCacheFile);
 		$this->setConfigFile($configFile);
+		$this->setRulesFile($rulesFile);
 		$this->setRulesDSLCacheFile($rulesDSLCacheFile);
 	}
 
@@ -323,6 +331,7 @@ class wfWAFStorageFile implements wfWAFStorageInterface {
 		$row[] = $failedRulesString;
 		$row[] = $request->getProtocol() === 'https' ? 1 : 0;
 		$row[] = (string) $request;
+		// phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection
 		$args = func_get_args();
 		$row = array_merge($row, array_slice($args, 4));
 
@@ -882,6 +891,36 @@ class wfWAFStorageFile implements wfWAFStorageInterface {
 	 */
 	public function setAttackDataEngine($attackDataEngine) {
 		$this->attackDataEngine = $attackDataEngine;
+	}
+
+	public function getRules() {
+		throw new wfWAFStorageFileException('wfWAFStorageFile::getRules not implemented.');
+	}
+
+	public function setRules($rules) {
+		throw new wfWAFStorageFileException('wfWAFStorageFile::getRules not implemented.');
+	}
+
+	public function needsInitialRules() {
+		if (file_exists($this->getRulesFile())) {
+			return is_writeable($this->getRulesFile()) && !filesize($this->getRulesFile());
+		} else {
+			return is_writeable(dirname($this->getRulesFile()));
+		}
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getRulesFile() {
+		return $this->rulesFile;
+	}
+
+	/**
+	 * @param mixed $rulesFile
+	 */
+	public function setRulesFile($rulesFile) {
+		$this->rulesFile = $rulesFile;
 	}
 }
 

@@ -16,7 +16,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 	<div class="wf-modal-content">
 		<div id="wf-onboarding-final-attempt-1" class="wf-onboarding-modal-content"<?php if (wfConfig::get('onboardingAttempt3') == wfOnboardingController::ONBOARDING_THIRD_EMAILS) { echo ' style="display: none;"'; } ?>>
 			<h3><?php _e('Please tell us where Wordfence should send you security alerts for your website:', 'wordfence'); ?></h3>
-			<input type="text" id="wf-onboarding-alerts" placeholder="you@example.com" value="<?php echo esc_attr(wfConfig::get('alertEmails')); ?>">
+			<input type="text" id="wf-onboarding-alerts" placeholder="you@example.com" value="<?php echo esc_attr(implode(',', wfConfig::getAlertEmails())); ?>">
 			<p id="wf-onboarding-alerts-disclaimer"><?php _e('We do not use this email address for any other purpose unless you opt-in to receive other mailings. You can turn off alerts in the options.', 'wordfence'); ?></p>
 			<div id="wf-onboarding-subscribe">
 				<label for="wf-onboarding-email-list"><?php _e('Would you also like to join our WordPress security mailing list to receive WordPress security alerts and Wordfence news?', 'wordfence'); ?></label>

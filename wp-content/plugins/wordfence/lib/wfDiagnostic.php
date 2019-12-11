@@ -43,7 +43,7 @@ class wfGrant
 class wfDiagnostic
 {
 	protected $minVersion = array(
-		'PHP' => '5.2.4',
+		'PHP' => '5.6.20',
 		'cURL' => '1.0',
 	);
 
@@ -59,6 +59,7 @@ class wfDiagnostic
 				'tests' => array(
 					'wfVersion' => __('Wordfence Version', 'wordfence'),
 					'geoIPVersion' => __('GeoIP Version', 'wordfence'),
+					'cronStatus' => __('Cron Status', 'wordfence'),
 				),
 			),
 			'Filesystem' => array(
@@ -81,6 +82,7 @@ class wfDiagnostic
 				'description' => __('Current WAF configuration.', 'wordfence'),
 				'tests' => array(
 					'wafAutoPrepend' => __('WAF auto prepend active', 'wordfence'),
+					'wafStorageEngine' => __('WAF storage engine (WFWAF_STORAGE_ENGINE)', 'wordfence'),
 					'wafLogPath' => __('WAF log path', 'wordfence'),
 					'wafSubdirectoryInstall' => __('WAF subdirectory installation', 'wordfence'),
 					'wafAutoPrependFilePath' => __('wordfence-waf.php path', 'wordfence'),
@@ -105,7 +107,7 @@ class wfDiagnostic
 			'PHP Environment' => array(
 				'description' => __('PHP version, important PHP extensions.', 'wordfence'),
 				'tests' => array(
-					'phpVersion' => __('PHP version >= PHP 5.2.4<br><em> (<a href="https://wordpress.org/about/requirements/" target="_blank" rel="noopener noreferrer">Minimum version required by WordPress</a>)</em>', 'wordfence'),
+					'phpVersion' => array('raw' => true, 'value' => sprintf(__('PHP version >= PHP 5.6.20<br><em> (<a href="https://wordpress.org/about/requirements/" target="_blank" rel="noopener noreferrer">Minimum version required by WordPress</a>)</em> <a href="%s" target="_blank" rel="noopener noreferrer" class="wfhelp"></a>', 'wordfence'), wfSupportController::esc_supportURL(wfSupportController::ITEM_VERSION_PHP))),
 					'processOwner' => __('Process Owner', 'wordfence'),
 					'hasOpenSSL' => __('Checking for OpenSSL support', 'wordfence'),
 					'openSSLVersion' => __('Checking OpenSSL version', 'wordfence'),
@@ -126,6 +128,17 @@ class wfDiagnostic
 					'connectToSelf' => __('Connecting back to this site', 'wordfence'),
 					'serverIP' => __('IP(s) used by this server', 'wordfence'),
 				)
+			),
+			'Time' => array(
+				'description' => __('Server time accuracy and applied offsets.', 'wordfence'),
+				'tests' => array(
+					'wfTime' => __('Wordfence Network Time', 'wordfence'),
+					'serverTime' => __('Server Time', 'wordfence'),
+					'wfTimeOffset' => __('Wordfence Network Time Offset', 'wordfence'),
+					'ntpTimeOffset' => __('NTP Time Offset', 'wordfence'),
+					'timeSourceInUse' => __('TOTP Time Source', 'wordfence'),
+					'wpTimeZone' => __('WordPress Time Zone', 'wordfence'),
+				),
 			),
 		);
 		
@@ -168,6 +181,22 @@ class wfDiagnostic
 		return array('test' => true, 'infoOnly' => true, 'message' => wfUtils::geoIPVersion());
 	}
 	
+	public function cronStatus() {
+		$cron = _get_cron_array();
+		$overdue = 0;
+		foreach ($cron as $timestamp => $values) {
+			if (is_array($values)) {
+				foreach ($values as $cron_job => $v) {
+					if (is_numeric($timestamp)) {
+						if ((time() - 1800) > $timestamp) { $overdue++; }
+					}
+				}
+			}
+		}
+		
+		return array('test' => true, 'infoOnly' => true, 'message' => $overdue ? ($overdue == 1 ? __('1 Job Overdue', 'wordfence') : sprintf(__('%d Jobs Overdue', 'wordfence'), $overdue)) : __('Normal', 'wordfence'));
+	}
+	
 	public function geoIPError() {
 		$error = wfUtils::last_error('geoip');
 		return array('test' => true, 'infoOnly' => true, 'message' => $error ? $error : __('None', 'wordfence'));
@@ -183,6 +212,10 @@ class wfDiagnostic
 	
 	public function isWAFReadable() {
 		if (!is_readable(WFWAF_LOG_PATH)) {
+			if (defined('WFWAF_STORAGE_ENGINE') && WFWAF_STORAGE_ENGINE == 'mysqli') {
+				return array('test' => false, 'infoOnly' => true, 'message' => __('No files readable', 'wordfence'));
+			}
+			
 			return array('test' => false, 'message' => __('No files readable', 'wordfence'));
 		}
 		
@@ -203,6 +236,10 @@ class wfDiagnostic
 		}
 		
 		if (count($unreadable) > 0) {
+			if (defined('WFWAF_STORAGE_ENGINE') && WFWAF_STORAGE_ENGINE == 'mysqli') {
+				return array('test' => false, 'infoOnly' => true, 'message' => implode(', ', $unreadable));
+			}
+			
 			return array('test' => false, 'message' => implode(', ', $unreadable));
 		}
 		
@@ -211,6 +248,10 @@ class wfDiagnostic
 	
 	public function isWAFWritable() {
 		if (!is_writable(WFWAF_LOG_PATH)) {
+			if (defined('WFWAF_STORAGE_ENGINE') && WFWAF_STORAGE_ENGINE == 'mysqli') {
+				return array('test' => false, 'infoOnly' => true, 'message' => __('No files writable', 'wordfence'));
+			}
+			
 			return array('test' => false, 'message' => __('No files writable', 'wordfence'));
 		}
 		
@@ -231,6 +272,10 @@ class wfDiagnostic
 		}
 		
 		if (count($unwritable) > 0) {
+			if (defined('WFWAF_STORAGE_ENGINE') && WFWAF_STORAGE_ENGINE == 'mysqli') {
+				return array('test' => false, 'infoOnly' => true, 'message' => implode(', ', $unwritable));
+			}
+			
 			return array('test' => false, 'message' => implode(', ', $unwritable));
 		}
 		
@@ -310,6 +355,9 @@ class wfDiagnostic
 
 	public function wafAutoPrepend() {
 		return array('test' => true, 'infoOnly' => true, 'message' => (defined('WFWAF_AUTO_PREPEND') && WFWAF_AUTO_PREPEND ? __('Yes', 'wordfence') : __('No', 'wordfence')));
+	}
+	public function wafStorageEngine() {
+		return array('test' => true, 'infoOnly' => true, 'message' => (defined('WFWAF_STORAGE_ENGINE') ? WFWAF_STORAGE_ENGINE : __('(default)', 'wordfence')));
 	}
 	public function wafLogPath() {
 		$logPath = __('(not set)', 'wordfence');
@@ -645,6 +693,118 @@ class wfDiagnostic
 		return array(
 			'test' => true,
 			'message' => 'REMOTE_ADDR',
+		);
+	}
+	
+	public function serverTime() {
+		return array(
+			'test' => true,
+			'infoOnly' => true,
+			'message' => date('Y-m-d H:i:s', time()) . ' UTC',
+		);
+	}
+	
+	public function wfTime() {
+		try {
+			$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
+			$response = $api->call('timestamp');
+			if (!is_array($response) || !isset($response['timestamp'])) {
+				throw new Exception('Unexpected payload returned');
+			}
+		}
+		catch (Exception $e) {
+			return array(
+				'test' => true,
+				'infoOnly' => true,
+				'message' => '-',
+			);
+		}
+		
+		return array(
+			'test' => true,
+			'infoOnly' => true,
+			'message' => date('Y-m-d H:i:s', $response['timestamp']) . ' UTC',
+		);
+	}
+	
+	public function wfTimeOffset() {
+		$delta = wfUtils::normalizedTime() - time();
+		return array(
+			'test' => true,
+			'infoOnly' => true,
+			'message' => ($delta < 0 ? '-' : '+') . ' ' . wfUtils::makeDuration(abs($delta), true),
+		);
+	}
+	
+	public function ntpTimeOffset() {
+		if (class_exists('WFLSPHP52Compatability')) {
+			$time = WFLSPHP52Compatability::ntp_time();
+			if ($time === false) {
+				return array(
+					'test' => true,
+					'infoOnly' => true,
+					'message' => __('Blocked', 'wordfence'),
+				);
+			}
+			
+			$delta = $time - time();
+			return array(
+				'test' => true,
+				'infoOnly' => true,
+				'message' => ($delta < 0 ? '-' : '+') . ' ' . wfUtils::makeDuration(abs($delta), true),
+			);
+		}
+		
+		return array(
+			'test' => true,
+			'infoOnly' => true,
+			'message' => '-',
+		);
+	}
+	
+	public function timeSourceInUse() {
+		if (class_exists('WFLSPHP52Compatability')) {
+			$time = WFLSPHP52Compatability::ntp_time();
+			if (WFLSPHP52Compatability::using_ntp_time()) {
+				return array(
+					'test' => true,
+					'infoOnly' => true,
+					'message' => __('NTP', 'wordfence'),
+				);
+			}
+			else if (WFLSPHP52Compatability::using_wf_time()) {
+				return array(
+					'test' => true,
+					'infoOnly' => true,
+					'message' => __('Wordfence Network', 'wordfence'),
+				);
+			}
+			
+			return array(
+				'test' => true,
+				'infoOnly' => true,
+				'message' => __('Server Time', 'wordfence'),
+			);
+		}
+		
+		return array(
+			'test' => true,
+			'infoOnly' => true,
+			'message' => '-',
+		);
+	}
+	
+	public function wpTimeZone() {
+		$tz = get_option('timezone_string');
+		if (empty($tz)) {
+			$offset = get_option('gmt_offset');
+			$tz = 'UTC' . ($offset >= 0 ? '+' . $offset : $offset);
+		}
+		
+		return array(
+			'test' => true,
+			'infoOnly' => true,
+			'message' => $tz,
 		);
 	}
 }

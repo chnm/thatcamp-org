@@ -49,10 +49,9 @@ if (!isset($collapseable)) {
 						array('key' => 'scansEnabled_suspiciousAdminUsers', 'label' => __('Scan for admin users created outside of WordPress', 'wordfence'), 'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_SCAN_OPTION_UNKNOWN_ADMINS)),
 						array('key' => 'scansEnabled_passwds', 'label' => __('Check the strength of passwords', 'wordfence'), 'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_SCAN_OPTION_PASSWORD_STRENGTH)),
 						array('key' => 'scansEnabled_diskSpace', 'label' => __('Monitor disk space', 'wordfence'), 'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_SCAN_OPTION_DISK_SPACE)),
-						array('key' => 'scansEnabled_dns', 'label' => __('Scan for unauthorized DNS changes', 'wordfence'), 'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_SCAN_OPTION_DNS_CHANGES)),
+						array('key' => 'scansEnabled_wafStatus', 'label' => __('Monitor Web Application Firewall status', 'wordfence'), 'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_SCAN_OPTION_WAF_STATUS)),
 						array('key' => 'other_scanOutside', 'label' => __('Scan files outside your WordPress installation', 'wordfence'), 'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_SCAN_OPTION_OUTSIDE_WORDPRESS)),
 						array('key' => 'scansEnabled_scanImages', 'label' => __('Scan images, binary, and other files as if they were executable', 'wordfence'), 'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_SCAN_OPTION_IMAGES_EXECUTABLE)),
-						array('key' => 'scansEnabled_highSense', 'label' => __('Enable HIGH SENSITIVITY scanning (may give false positives)', 'wordfence'), 'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_SCAN_OPTION_HIGH_SENSITIVITY)),
 					);
 					foreach ($options as $o):
 						?>

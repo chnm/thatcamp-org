@@ -11,7 +11,6 @@
  - Receive real-time Firewall and Scan engine rule updates for protection as threats emerge
  - Real-time IP Blacklist blocks the most malicious IPs from accessing your site
  - Country blocking
- - Two factor authentication
  - IP reputation monitoring
  - Schedule scans to run more frequently and at optimal times
  - Access to Premium Support

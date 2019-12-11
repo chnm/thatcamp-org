@@ -55,7 +55,7 @@ class wfUpdateCheck {
 			require_once(ABSPATH . 'wp-admin/includes/update.php');
 		}
 		
-		include( ABSPATH . WPINC . '/version.php' ); //defines $wp_version
+		include(ABSPATH . WPINC . '/version.php'); //defines $wp_version
 		
 		$update_core = get_preferred_from_update_core();
 		if ($useCachedValued && isset($update_core->last_checked) && isset($update_core->version_checked) && 12 * HOUR_IN_SECONDS > (time() - $update_core->last_checked) && $update_core->version_checked == $wp_version) { //Duplicate of _maybe_update_core, which is a private call
@@ -108,7 +108,7 @@ class wfUpdateCheck {
 		if ($update_plugins && !empty($update_plugins->response)) {
 			foreach ($update_plugins->response as $plugin => $vals) {
 				if (!function_exists('get_plugin_data')) {
-					require_once ABSPATH . '/wp-admin/includes/plugin.php';
+					require_once(ABSPATH . '/wp-admin/includes/plugin.php');
 				}
 				
 				$pluginFile = wfUtils::getPluginBaseDir() . $plugin;
@@ -161,7 +161,7 @@ class wfUpdateCheck {
 		if ($update_plugins && !empty($update_plugins->no_update)) {
 			foreach ($update_plugins->no_update as $plugin => $vals) {
 				if (!function_exists('get_plugin_data')) {
-					require_once ABSPATH . '/wp-admin/includes/plugin.php';
+					require_once(ABSPATH . '/wp-admin/includes/plugin.php');
 				}
 				
 				$pluginFile = wfUtils::getPluginBaseDir() . $plugin;
@@ -247,7 +247,7 @@ class wfUpdateCheck {
 
 		if ($update_themes && (!empty($update_themes->response))) {
 			if (!function_exists('wp_get_themes')) {
-				require_once ABSPATH . '/wp-includes/theme.php';
+				require_once(ABSPATH . '/wp-includes/theme.php');
 			}
 			$themes = wp_get_themes();
 			foreach ($update_themes->response as $theme => $vals) {
@@ -302,7 +302,7 @@ class wfUpdateCheck {
 		if ($update_plugins) {
 			if (!function_exists('get_plugin_data'))
 			{
-				require_once ABSPATH . '/wp-admin/includes/plugin.php';
+				require_once(ABSPATH . '/wp-admin/includes/plugin.php');
 			}
 			
 			if (!empty($update_plugins->response)) {
@@ -436,7 +436,7 @@ class wfUpdateCheck {
 		if ($update_themes && !empty($update_themes->response)) {
 			if (!function_exists('get_plugin_data'))
 			{
-				require_once ABSPATH . '/wp-admin/includes/plugin.php';
+				require_once(ABSPATH . '/wp-admin/includes/plugin.php');
 			}
 			
 			foreach ($update_themes->response as $themeSlug => $vals) {

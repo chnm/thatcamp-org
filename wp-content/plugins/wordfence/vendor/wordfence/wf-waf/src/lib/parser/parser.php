@@ -797,6 +797,13 @@ class wfWAFRuleVariable {
 		$this->value = $value;
 	}
 
+	public function __sleep() {
+		return array(
+			'name',
+			'value',
+		);
+	}
+
 	public function render() {
 		return sprintf('new %s($this, %s, %s)', get_class($this),
 			var_export($this->getName(), true), var_export($this->getValue(), true));

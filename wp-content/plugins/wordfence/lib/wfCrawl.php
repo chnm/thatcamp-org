@@ -1,5 +1,5 @@
 <?php
-require_once('wfUtils.php');
+require_once(dirname(__FILE__) . '/wfUtils.php');
 class wfCrawl {
 	const GOOGLE_BOT_VERIFIED = 'verified';
 	const GOOGLE_BOT_FAKE = 'fakeBot';
@@ -115,6 +115,11 @@ class wfCrawl {
 		if ($ip === null) {
 			$ip = wfUtils::getIP();
 		}
+		
+		if ($ip === null || $ip === false) { //Likely a CLI execution
+			return false;
+		}
+		
 		if (array_key_exists($ip, $verified)) {
 			return $verified[$ip];
 		}

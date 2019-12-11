@@ -20,7 +20,7 @@ class wfBrowscap {
 
     public function getBrowser($user_agent){
         if (!$this->_cacheLoaded) {
-                if (!$this->_loadCache('wfBrowscapCache.php')) {
+                if (!$this->_loadCache(dirname(__FILE__) . '/wfBrowscapCache.php')) {
                     throw new Exception('Cannot load this cache version - the cache format is not compatible.');
                 }
             }

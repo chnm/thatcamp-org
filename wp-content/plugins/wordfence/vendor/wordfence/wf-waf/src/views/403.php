@@ -226,6 +226,8 @@ if (!defined('WFWAF_VIEW_RENDERING')) { exit; }
 	$contents = preg_replace('/<svg\s+xmlns="[^"]*"/i', '<svg', $contents);
 	$contents = preg_replace('/(<svg[^>]+)/i', '${1} class="wf-header-logo"', $contents);
 	echo $contents;
+	
+	if (!empty($errorNonce)) { echo '<!-- WFWAF NONCE: ' . htmlentities($errorNonce) . ' -->'; }
 	?>
 	<h2>403 Forbidden</h2>
 	<p>A potentially unsafe operation has been detected in your request to this site.</p>

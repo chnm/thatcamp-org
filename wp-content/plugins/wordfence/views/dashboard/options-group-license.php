@@ -146,7 +146,7 @@ if (!isset($collapseable)) {
 	<?php
 	echo wfView::create('common/modal-prompt', array(
 		'title' => __('Confirm Downgrade', 'wordfence'),
-		'message' => __('Are you sure you want to downgrade your Wordfence Premium License? This will disable all Premium features and return you to the free version of Wordfence.', 'wordfence'),
+		'messageHTML' => __('<p>Are you sure you want to downgrade your Wordfence Premium License? This will disable all Premium features and return you to the free version of Wordfence.</p><p>If autorenew is enabled for the current premium license, the license will renew at the next expiration date. If you would like to turn renewal off or assign the license to another site, log into wordfence.com to change it.</p>', 'wordfence'),
 		'primaryButton' => array('id' => 'wf-downgrade-prompt-cancel', 'label' => __('Cancel', 'wordfence'), 'link' => '#'),
 		'secondaryButtons' => array(array('id' => 'wf-downgrade-prompt-downgrade', 'label' => __('Downgrade', 'wordfence'), 'link' => '#')),
 	))->render();

@@ -28,64 +28,72 @@
 	</div>
 <?php endif ?>
 
-<?php if($totalCriticalIssues > 0){ ?>
-<p><?php _e('Critical Problems:', 'wordfence'); ?></p>
+<?php
+$severitySections = array(
+	wfIssues::SEVERITY_CRITICAL => __('Critical Problems:', 'wordfence'),
+	wfIssues::SEVERITY_HIGH => __('High Severity Problems:', 'wordfence'),
+	wfIssues::SEVERITY_MEDIUM => __('Medium Severity Problems:', 'wordfence'),
+	wfIssues::SEVERITY_LOW => __('Low Severity Problems:', 'wordfence'),
+);
+?>
 
-<?php foreach($issues as $i){ if($i['severity'] == 1){ ?>
+<?php
+foreach ($severitySections as $severityLevel => $severityLabel):
+	if ($severityLevel < $level) {
+		continue;
+	}
+	$hasIssuesAtSeverity = false;
+
+	foreach($issues as $i){ if($i['severity'] == $severityLevel){ ?>
+<?php if (!$hasIssuesAtSeverity): $hasIssuesAtSeverity = true; ?>
+<p><?php echo $severityLabel ?></p>
+<?php endif ?>
 <p>* <?php echo htmlspecialchars($i['shortMsg']) ?></p>
 <?php
 	if ((isset($i['tmplData']['wpRemoved']) && $i['tmplData']['wpRemoved']) || (isset($i['tmplData']['abandoned']) && $i['tmplData']['abandoned'])) {
 		if (isset($i['tmplData']['vulnerable']) && $i['tmplData']['vulnerable']) {
 			echo '<p><strong>' . __('Plugin contains an unpatched security vulnerability.', 'wordfence') . '</strong>';
 			if (isset($i['tmplData']['vulnerabilityLink'])) {
-				echo ' <a href="' . $i['tmplData']['vulnerabilityLink'] . '" target="_blank" rel="nofollow noreferer noopener">' . __('Vulnerability Information', 'wordfence') . '</a>';
+				echo ' <a href="' . $i['tmplData']['vulnerabilityLink'] . '" target="_blank" rel="nofollow noreferrer noopener">' . __('Vulnerability Information', 'wordfence') . '</a>';
 			}
 			echo '</p>';
 		}
 	}
-	else if (isset($i['tmplData']['wpURL'])) {
-		echo '<p>';
-		if (isset($i['tmplData']['vulnerable']) && $i['tmplData']['vulnerable']) {
-			echo '<strong>' . __('Update includes security-related fixes.', 'wordfence') . '</strong> ';
-			if (isset($i['tmplData']['vulnerabilityLink'])) {
-				echo '<a href="' . $i['tmplData']['vulnerabilityLink'] . '" target="_blank" rel="nofollow noreferer noopener">' . __('Vulnerability Information', 'wordfence') . '</a> ';
-			}
-		}
-		echo $i['tmplData']['wpURL'] . '/#developers</p>';
+	if ($i['type'] == 'coreUnknown') {
+		echo '<p>' . __('The core files scan has not run because this version is not currently indexed by Wordfence. New WordPress versions may take up to a day to be indexed.', 'wordfence') . '</p>';
 	}
-	else if (isset($i['tmplData']['vulnerable']) && $i['tmplData']['vulnerable']) {
-		echo '<p><strong>' . __('Update includes security-related fixes.', 'wordfence') . '</strong>';
+	else if ($i['type'] == 'wafStatus') {
+		echo '<p>' . __('Firewall issues may be caused by file permission changes or other technical problems.', 'wordfence') . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_RESULT_WAF_DISABLED) . '" target="_blank" rel="nofollow noreferrer noopener">' . __('More Details and Instructions', 'wordfence') . '</a></p>';
+    }
+
+	$showWPParagraph = !empty($i['tmplData']['vulnerable']) || isset($i['tmplData']['wpURL']);
+	if ($showWPParagraph) {
+		echo '<p>';
+	}
+	if (!empty($i['tmplData']['vulnerable'])) {
+		echo '<strong>' . __('Update includes security-related fixes.', 'wordfence') . '</strong>';
 		if (isset($i['tmplData']['vulnerabilityLink'])) {
-			echo ' <a href="' . $i['tmplData']['vulnerabilityLink'] . '" target="_blank" rel="nofollow noreferer noopener">' . __('Vulnerability Information', 'wordfence') . '</a>';
+			echo ' <a href="' . $i['tmplData']['vulnerabilityLink'] . '" target="_blank" rel="nofollow noreferrer noopener">' . __('Vulnerability Information', 'wordfence') . '</a>';
 		}
+	}
+	if (isset($i['tmplData']['wpURL'])) {
+		echo $i['tmplData']['wpURL'] . '/#developers';
+	}
+	if ($showWPParagraph) {
 		echo '</p>';
 	}
+	?>
+
+<?php
+if (!empty($i['tmplData']['badURL'])):
+	$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
+	$url = set_url_scheme($api->getTextImageURL($i['tmplData']['badURL']), 'https');
 ?>
-<?php if (!empty($i['tmplData']['badURL'])): ?>
-<p><img src="<?php echo WORDFENCE_API_URL_BASE_NONSEC . "?" . http_build_query(array(
-		'v' => wfUtils::getWPVersion(), 
-		's' => home_url(),
-		'k' => wfConfig::get('apiKey'),
-		'action' => 'image',
-		'txt' => base64_encode($i['tmplData']['badURL'])
-	), '', '&') ?>" alt="" /></p>
+<p><img src="<?php echo esc_url($url) ?>" alt="The malicious URL matched" /></p>
 <?php endif ?>
 
-<?php } } } ?>
-
-<?php if($level == 2 && $totalWarningIssues > 0){ ?>
-<p><?php _e('Warnings:', 'wordfence'); ?></p>
-
-<?php foreach($issues as $i){ if($i['severity'] == 2){  ?>
-<p>* <?php echo htmlspecialchars($i['shortMsg']) ?></p>
-		<?php if ($i['type'] == 'coreUnknown'): ?>
-			<p><?php _e('The core files scan has not run because this version is not currently indexed by Wordfence. New WordPress versions may take up to a day to be indexed.', 'wordfence'); ?></p>
-		<?php endif ?>
-		<?php if (isset($i['tmplData']['wpURL'])): ?>
-			<p><?php echo $i['tmplData']['wpURL']; ?>/#developers</p>
-		<?php endif ?>
-
-<?php } } } ?>
+<?php } } ?>
+<?php endforeach; ?>
 
 <?php if ($issuesNotShown > 0) { ?>
 <p><?php printf(($issuesNotShown == 1 ? __('%d issue was omitted from this email.', 'wordfence') : __('%d issues were omitted from this email.', 'wordfence')), $issuesNotShown); echo ' '; _e('View every issue:', 'wordfence'); ?> <a href="<?php echo esc_attr(wfUtils::wpAdminURL('admin.php?page=WordfenceScan')); ?>"><?php echo esc_html(wfUtils::wpAdminURL('admin.php?page=WordfenceScan')); ?></a></p>
@@ -99,7 +107,6 @@
 		<li><?php _e('Receive real-time Firewall and Scan engine rule updates for protection as threats emerge', 'wordfence'); ?></li>
 		<li><?php _e('Real-time IP Blacklist blocks the most malicious IPs from accessing your site', 'wordfence'); ?></li>
 		<li><?php _e('Country blocking', 'wordfence'); ?></li>
-		<li><?php _e('Two factor authentication', 'wordfence'); ?></li>
 		<li><?php _e('IP reputation monitoring', 'wordfence'); ?></li>
 		<li><?php _e('Schedule scans to run more frequently and at optimal times', 'wordfence'); ?></li>
 		<li><?php _e('Access to Premium Support', 'wordfence'); ?></li>

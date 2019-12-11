@@ -21,15 +21,15 @@ $helpLink = wfSupportController::supportURL(wfSupportController::ITEM_TOOLS_TWO_
 			<div class="wf-block-header">
 				<div class="wf-block-header-content">
 					<div class="wf-block-title">
-						<strong><?php _e('Two Factor Authentication Options', 'wordfence') ?></strong>
+						<strong><?php _e('Two-Factor Authentication Options', 'wordfence') ?></strong>
 					</div>
 					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive($stateKey) ? 'true' : 'false'); ?>" tabindex="0"></div></div><?php endif; ?>
 				</div>
 			</div>
 			<div class="wf-block-content">
 				<?php if (!wfConfig::get('isPaid')): ?>
-				<h3><?php _e("Take Login Security to the next level with Two Factor Authentication", 'wordfence') ?></h3>
-				<p><?php _e('Used by banks, government agencies, and military worldwide, two factor authentication is one of the most secure forms of remote system authentication available. With it enabled, an attacker needs to know your username, password, <em>and</em> have control of your phone to log into your site. Upgrade to Premium now to enable this powerful feature.', 'wordfence') ?></p>
+				<h3><?php _e("Take Login Security to the next level with Two-Factor Authentication", 'wordfence') ?></h3>
+				<p><?php _e('Used by banks, government agencies, and military worldwide, two-factor authentication is one of the most secure forms of remote system authentication available. With it enabled, an attacker needs to know your username, password, <em>and</em> have control of your phone to log into your site. Upgrade to Premium now to enable this powerful feature.', 'wordfence') ?></p>
 
 				<p class="wf-nowrap wf-center">
 					<img id="wf-two-factor-img1" src="<?php echo wfUtils::getBaseURL() . 'images/2fa1.svg' ?>" alt="">
@@ -60,7 +60,7 @@ $helpLink = wfSupportController::supportURL(wfSupportController::ITEM_TOOLS_TWO_
 							'enabledValue'  => 1,
 							'disabledValue' => 0,
 							'value'         => wfConfig::get('loginSec_enableSeparateTwoFactor') ? 1 : 0,
-							'htmlTitle'     => sprintf(__('<strong>Enable Separate Prompt for Two Factor Code<a href="%s" target="_blank" rel="noopener noreferrer" class="wfhelp wf-inline-help"></a></strong><br><em>Note:</em> This setting changes the behavior for obtaining the two factor authentication code from using the password field to showing a separate prompt. If your theme overrides the default login page, you may not be able to use this option.', 'wordfence'), $helpLink) .
+							'htmlTitle'     => sprintf(__('<strong>Enable Separate Prompt for Two-Factor Code<a href="%s" target="_blank" rel="noopener noreferrer" class="wfhelp wf-inline-help"></a></strong><br><em>Note:</em> This setting changes the behavior for obtaining the two-factor authentication code from using the password field to showing a separate prompt. If your theme overrides the default login page, you may not be able to use this option.', 'wordfence'), $helpLink) .
 								($allowSeparatePrompt ? '' : __('<br><strong>This setting will be ignored because the PHP configuration option <code>output_buffering</code> is off.</strong>', 'wordfence')),
 						))->render();
 						?>

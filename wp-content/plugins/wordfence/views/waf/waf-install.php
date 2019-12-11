@@ -17,7 +17,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 		<div class="wf-modal-content">
 			<?php
 			$currentAutoPrependFile = ini_get('auto_prepend_file');
-			if (empty($currentAutoPrependFile)):
+			if (empty($currentAutoPrependFile) || WF_IS_WP_ENGINE):
 			?>
 			<p><?php _e('To make your site as secure as possible, the Wordfence Web Application Firewall is designed to run via a PHP setting called <code>auto_prepend_file</code>, which ensures it runs before any potentially vulnerable code runs.', 'wordfence'); ?></p>
 			<?php else: ?>
@@ -59,7 +59,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 			<select name='serverConfiguration' id='wf-waf-server-config'>
 				<?php echo $wafPrependOptions; ?>
 			</select>
-			<div class="wf-notice wf-nginx-waf-config" style="display: none;"><?php printf(__('Part of the Firewall configuration procedure for NGINX depends on creating a <code>%s</code> file in the root of your WordPress installation. This file can contain sensitive information and public access to it should be restricted. We have <a href="%s">instructions on our documentation site</a> on what directives to put in your nginx.conf to fix this.', 'wordfence'), esc_html(ini_get('user_ini.filename') ? ini_get('user_ini.filename') : __('(.user.ini)', 'wordfence')), wfSupportController::esc_supportURL(wfSupportController::ITEM_FIREWALL_WAF_INSTALL_NGINX)); ?></div>
+			<div class="wf-notice wf-nginx-waf-config" style="display: none;"><?php printf(__('Part of the Firewall configuration procedure for NGINX depends on creating a <code>%s</code> file in the root of your WordPress installation. This file can contain sensitive information and public access to it should be restricted. We have <a href="%s" target="_blank" rel="noreferrer noopener">instructions on our documentation site</a> on what directives to put in your nginx.conf to fix this.', 'wordfence'), esc_html(ini_get('user_ini.filename') ? ini_get('user_ini.filename') : __('(.user.ini)', 'wordfence')), wfSupportController::esc_supportURL(wfSupportController::ITEM_FIREWALL_WAF_INSTALL_NGINX)); ?></div>
 			<div class="wf-manual-waf-config" style="display: none;">
 				<p><?php printf(__('If you are using a web server not listed in the dropdown or if file permissions prevent the installer from completing successfully, you will need to perform the change manually. Click Continue below to create the required file and view manual installation instructions.', 'wordfence')); ?></p>
 			</div>

@@ -1,5 +1,5 @@
 <?php
-require_once('wfUtils.php');
+require_once(dirname(__FILE__) . '/wfUtils.php');
 class wfIssues {
 	//Possible responses from `addIssue`
 	const ISSUE_ADDED = 'a';
@@ -35,7 +35,13 @@ class wfIssues {
 	const SCAN_FAILED_API_CALL_FAILED = 'apifailed';
 	const SCAN_FAILED_API_INVALID_RESPONSE = 'apiinvalid';
 	const SCAN_FAILED_API_ERROR_RESPONSE = 'apierror';
-	
+
+	const SEVERITY_NONE = 0;
+	const SEVERITY_LOW = 25;
+	const SEVERITY_MEDIUM = 50;
+	const SEVERITY_HIGH = 75;
+	const SEVERITY_CRITICAL = 100;
+
 	private $db = false;
 
 	//Properties that are serialized on sleep:
@@ -45,12 +51,40 @@ class wfIssues {
 	private $maxIssues = 0;
 	private $newIssues = array();
 	public $totalIssues = 0;
-	public $totalCriticalIssues = 0;
-	public $totalWarningIssues = 0;
 	public $totalIgnoredIssues = 0;
-	
+	private $totalIssuesBySeverity = array();
+
+	public static $issueSeverities = array(
+		'checkGSB' => wfIssues::SEVERITY_CRITICAL,
+		'checkSpamIP' => wfIssues::SEVERITY_HIGH,
+		'spamvertizeCheck' => wfIssues::SEVERITY_CRITICAL,
+		'commentBadURL' => wfIssues::SEVERITY_LOW,
+		'postBadTitle' => wfIssues::SEVERITY_HIGH,
+		'postBadURL' => wfIssues::SEVERITY_HIGH,
+		'file' => wfIssues::SEVERITY_CRITICAL,
+		'timelimit' => wfIssues::SEVERITY_HIGH,
+		'checkHowGetIPs' => wfIssues::SEVERITY_HIGH,
+		'diskSpace' => wfIssues::SEVERITY_HIGH,
+		'wafStatus' => wfIssues::SEVERITY_CRITICAL,
+		'configReadable' => wfIssues::SEVERITY_CRITICAL,
+		'wfPluginVulnerable' => wfIssues::SEVERITY_HIGH,
+		'coreUnknown' => wfIssues::SEVERITY_HIGH,
+		'easyPasswordWeak' => wfIssues::SEVERITY_HIGH,
+		'knownfile' => wfIssues::SEVERITY_HIGH,
+		'optionBadURL' => wfIssues::SEVERITY_HIGH,
+		'publiclyAccessible' => wfIssues::SEVERITY_HIGH,
+		'suspiciousAdminUsers' => wfIssues::SEVERITY_HIGH,
+		'wfPluginAbandoned' => wfIssues::SEVERITY_MEDIUM,
+		'wfPluginRemoved' => wfIssues::SEVERITY_CRITICAL,
+		'wfPluginUpgrade' => wfIssues::SEVERITY_MEDIUM,
+		'wfThemeUpgrade' => wfIssues::SEVERITY_MEDIUM,
+		'wfUpgrade' => wfIssues::SEVERITY_HIGH,
+		'wpscan_directoryList' => wfIssues::SEVERITY_HIGH,
+		'wpscan_fullPathDiscl' => wfIssues::SEVERITY_HIGH,
+	);
+
 	public static function validIssueTypes() {
-		return array('checkHowGetIPs', 'checkSpamIP', 'commentBadURL', 'configReadable', 'coreUnknown', 'database', 'diskSpace', 'dnsChange', 'easyPassword', 'file', 'geoipSupport', 'knownfile', 'optionBadURL', 'postBadTitle', 'postBadURL', 'publiclyAccessible', 'spamvertizeCheck', 'suspiciousAdminUsers', 'timelimit', 'wfPluginAbandoned', 'wfPluginRemoved', 'wfPluginUpgrade', 'wfPluginVulnerable', 'wfThemeUpgrade', 'wfUpgrade', 'wpscan_directoryList', 'wpscan_fullPathDiscl');
+		return array('checkHowGetIPs', 'checkSpamIP', 'commentBadURL', 'configReadable', 'coreUnknown', 'database', 'diskSpace', 'wafStatus', 'easyPassword', 'file', 'geoipSupport', 'knownfile', 'optionBadURL', 'postBadTitle', 'postBadURL', 'publiclyAccessible', 'spamvertizeCheck', 'suspiciousAdminUsers', 'timelimit', 'wfPluginAbandoned', 'wfPluginRemoved', 'wfPluginUpgrade', 'wfPluginVulnerable', 'wfThemeUpgrade', 'wfUpgrade', 'wpscan_directoryList', 'wpscan_fullPathDiscl');
 	}
 	
 	public static function statusPrep(){
@@ -186,7 +220,7 @@ class wfIssues {
 	}
 	
 	public function __sleep(){ //Same order here as vars above
-		return array('updateCalled', 'issuesTable', 'pendingIssuesTable', 'maxIssues', 'newIssues', 'totalIssues', 'totalCriticalIssues', 'totalWarningIssues', 'totalIgnoredIssues');
+		return array('updateCalled', 'issuesTable', 'pendingIssuesTable', 'maxIssues', 'newIssues', 'totalIssues', 'totalIgnoredIssues', 'totalIssuesBySeverity');
 	}
 	public function __construct(){
 		$this->issuesTable = wfDB::networkTable('wfIssues');
@@ -248,12 +282,10 @@ class wfIssues {
 		}
 		
 		if ($group != 'pending') {
-			if ($severity == 1) {
-				$this->totalCriticalIssues++;
+			if (!array_key_exists($severity, $this->totalIssuesBySeverity)) {
+				$this->totalIssuesBySeverity[$severity] = 0;
 			}
-			else if ($severity == 2) {
-				$this->totalWarningIssues++;
-			}
+			$this->totalIssuesBySeverity[$severity]++;
 			$this->totalIssues++;
 			if (empty($this->maxIssues) || $this->totalIssues <= $this->maxIssues)
 			{
@@ -268,8 +300,22 @@ class wfIssues {
 					);
 			}
 		}
-		
+
 		if (isset($updateID)) {
+			if ($group !== 'pending' && wfCentral::isConnected()) {
+				wfCentral::sendIssue(array(
+					'id' => $updateID,
+					'lastUpdated' => time(),
+					'type' => $type,
+					'severity' => $severity,
+					'ignoreP' => $ignoreP,
+					'ignoreC' => $ignoreC,
+					'shortMsg' => $shortMsg,
+					'longMsg' => $longMsg,
+					'data' => $templateData,
+				));
+			}
+
 			$this->getDB()->queryWrite(
 				"UPDATE {$table} SET lastUpdated = UNIX_TIMESTAMP(), status = '%s', type = '%s', severity = %d, ignoreP = '%s', ignoreC = '%s', shortMsg = '%s', longMsg = '%s', data = '%s' WHERE id = %d",
 				'new',
@@ -281,6 +327,8 @@ class wfIssues {
 				$longMsg,
 				serialize($templateData),
 				$updateID);
+
+
 			return self::ISSUE_UPDATED;
 		}
 		
@@ -294,22 +342,63 @@ class wfIssues {
 			$longMsg,
 			serialize($templateData));
 
+		if ($group !== 'pending' && wfCentral::isConnected()) {
+			global $wpdb;
+			wfCentral::sendIssue(array(
+				'id' => $wpdb->insert_id,
+				'status' => 'new',
+				'time' => time(),
+				'lastUpdated' => time(),
+				'type' => $type,
+				'severity' => $severity,
+				'ignoreP' => $ignoreP,
+				'ignoreC' => $ignoreC,
+				'shortMsg' => $shortMsg,
+				'longMsg' => $longMsg,
+				'data' => $templateData,
+			));
+		}
+
 		return self::ISSUE_ADDED;
 	}
 	public function deleteIgnored(){
+		if (wfCentral::isConnected()) {
+			$result = $this->getDB()->querySelect("SELECT id from " . $this->issuesTable . " where status='ignoreP' or status='ignoreC'");
+			$issues = array();
+			foreach ($result as $row) {
+				$issues[] = $row['id'];
+			}
+			wfCentral::deleteIssues($issues);
+		}
+
 		$this->getDB()->queryWrite("delete from " . $this->issuesTable . " where status='ignoreP' or status='ignoreC'");
 	}
 	public function deleteNew($types = null) {
 		if (!is_array($types)) {
+			if (wfCentral::isConnected()) {
+				wfCentral::deleteNewIssues();
+			}
+
 			$this->getDB()->queryWrite("DELETE FROM {$this->issuesTable} WHERE status = 'new'");
 		}
 		else {
+			if (wfCentral::isConnected()) {
+				wfCentral::deleteIssueTypes($types, 'new');
+			}
+
 			$query = "DELETE FROM {$this->issuesTable} WHERE status = 'new' AND type IN (" . implode(',', array_fill(0, count($types), "'%s'")) . ")";
 			array_unshift($types, $query);
 			call_user_func_array(array($this->getDB(), 'queryWrite'), $types);
 		}
 	}
 	public function ignoreAllNew(){
+		if (wfCentral::isConnected()) {
+			$issues = $this->getDB()->querySelect('SELECT * FROM ' . $this->issuesTable . ' WHERE status=\'new\'');
+			if ($issues) {
+				wfCentral::sendIssues($issues);
+			}
+		}
+
 		$this->getDB()->queryWrite("update " . $this->issuesTable . " set status='ignoreC' where status='new'");
 	}
 	public function emailNewIssues($timeLimitReached = false, $scanController = false){
@@ -324,8 +413,16 @@ class wfIssues {
 
 		if(sizeof($emails) < 1){ return; }
 		if($level < 1){ return; }
-		if($level == 2 && $this->totalCriticalIssues < 1 && $this->totalWarningIssues < 1){ return; }
-		if($level == 1 && $this->totalCriticalIssues < 1){ return; }
+		$needsToAlert = false;
+		foreach ($this->totalIssuesBySeverity as $issueSeverity => $totalIssuesBySeverity) {
+			if ($issueSeverity >= $level && $totalIssuesBySeverity > 0) {
+				$needsToAlert = true;
+				break;
+			}
+		}
+		if (!$needsToAlert) {
+			return;
+		}
 		$emailedIssues = wfConfig::get_ser('emailedIssuesList', array());
 		if(! is_array($emailedIssues)){
 			$emailedIssues = array();
@@ -352,24 +449,30 @@ class wfIssues {
 		$this->newIssues = array();
 		$this->totalIssues = 0;
 
-		$totalWarningIssues = 0;
-		$totalCriticalIssues = 0;
+		$totals = array();
 		foreach($finalIssues as $i){
 			$emailedIssues[] = array( 'ignoreC' => $i['ignoreC'], 'ignoreP' => $i['ignoreP'] );
-			if($i['severity'] == 1){
-				$totalCriticalIssues++;
-			} else if($i['severity'] == 2){
-				$totalWarningIssues++;
+			if (!array_key_exists($i['severity'], $totals)) {
+				$totals[$i['severity']] = 0;
 			}
+			$totals[$i['severity']]++;
 		}
 		wfConfig::set_ser('emailedIssuesList', $emailedIssues);
-		if($level == 2 && $totalCriticalIssues < 1 && $totalWarningIssues < 1){ return; }
-		if($level == 1 && $totalCriticalIssues < 1){ return; }
+		$needsToAlert = false;
+		foreach ($totals as $issueSeverity => $totalIssuesBySeverity) {
+			if ($issueSeverity >= $level && $totalIssuesBySeverity > 0) {
+				$needsToAlert = true;
+				break;
+			}
+		}
+		if (!$needsToAlert) {
+			return;
+		}
+
 		$content = wfUtils::tmpl('email_newIssues.php', array(
 			'isPaid' => wfConfig::get('isPaid'),
 			'issues' => $finalIssues,
-			'totalCriticalIssues' => $totalCriticalIssues,
-			'totalWarningIssues' => $totalWarningIssues,
+			'totals' => $totals,
 			'level' => $level,
 			'issuesNotShown' => $overflowCount,
 			'adminURL' => get_admin_url(),
@@ -384,12 +487,44 @@ class wfIssues {
 	}
 	public function deleteIssue($id){ 
 		$this->getDB()->queryWrite("delete from " . $this->issuesTable . " where id=%d", $id);
+		if (wfCentral::isConnected()) {
+			wfCentral::deleteIssue($id);
+		}
 	}
+
+	public function deleteUpdateIssues($type)
+	{
+		$this->getDB()->queryWrite("DELETE FROM {$this->issuesTable} WHERE status = 'new' AND type = '%s'", $type);
+
+		if (wfCentral::isConnected()) {
+			wfCentral::deleteIssueTypes(array($type));
+		}
+	}
+
+	public function deleteAllUpdateIssues()
+	{
+		$this->getDB()->queryWrite("DELETE FROM {$this->issuesTable} WHERE status = 'new' AND (type = 'wfUpgrade' OR type = 'wfPluginUpgrade' OR type = 'wfThemeUpgrade')");
+
+		if (wfCentral::isConnected()) {
+			wfCentral::deleteIssueTypes(array('wfUpgrade', 'wfPluginUpgrade', 'wfThemeUpgrade'));
+		}
+	}
+
 	public function updateIssue($id, $status){ //ignoreC, ignoreP, delete or new
 		if($status == 'delete'){
+			if (wfCentral::isConnected()) {
+				wfCentral::deleteIssue($id);
+			}
 			$this->getDB()->queryWrite("delete from " . $this->issuesTable . " where id=%d", $id);
 		} else if($status == 'ignoreC' || $status == 'ignoreP' || $status == 'new'){
 			$this->getDB()->queryWrite("update " . $this->issuesTable . " set status='%s' where id=%d", $status, $id);
+
+			if (wfCentral::isConnected()) {
+				$issue = $this->getDB()->querySelect('SELECT * FROM ' . $this->issuesTable . ' where id=%d', $id);
+				if ($issue) {
+					wfCentral::sendIssues($issue);
+				}
+			}
 		}
 	}
 	public function getIssueByID($id){
@@ -410,7 +545,7 @@ class wfIssues {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 		
-		$siteCleaningTypes = array('file', 'checkGSB', 'checkSpamIP', 'commentBadURL', 'dnsChange', 'knownfile', 'optionBadURL', 'postBadTitle', 'postBadURL', 'spamvertizeCheck', 'suspiciousAdminUsers');
+		$siteCleaningTypes = array('file', 'checkGSB', 'checkSpamIP', 'commentBadURL', 'knownfile', 'optionBadURL', 'postBadTitle', 'postBadURL', 'spamvertizeCheck', 'suspiciousAdminUsers');
 		$sortTagging = 'CASE';
 		foreach ($siteCleaningTypes as $index => $t) {
 			$sortTagging .= ' WHEN type = \'' . esc_sql($t) . '\' THEN ' . ((int) $index);
@@ -422,8 +557,8 @@ class wfIssues {
 			'ignored' => array()
 			);
 		$userIni = ini_get('user_ini.filename');
-		$q1 = $this->getDB()->querySelect("SELECT *, {$sortTagging} AS sortTag FROM " . $this->issuesTable . " WHERE status = 'new' ORDER BY severity ASC, sortTag ASC, type ASC, time DESC LIMIT %d,%d", $offset, $limit);
-		$q2 = $this->getDB()->querySelect("SELECT *, {$sortTagging} AS sortTag FROM " . $this->issuesTable . " WHERE status = 'ignoreP' OR status = 'ignoreC' ORDER BY severity ASC, sortTag ASC, type ASC, time DESC LIMIT %d,%d", $ignoredOffset, $ignoredLimit);
+		$q1 = $this->getDB()->querySelect("SELECT *, {$sortTagging} AS sortTag FROM " . $this->issuesTable . " WHERE status = 'new' ORDER BY severity DESC, sortTag ASC, type ASC, time DESC LIMIT %d,%d", $offset, $limit);
+		$q2 = $this->getDB()->querySelect("SELECT *, {$sortTagging} AS sortTag FROM " . $this->issuesTable . " WHERE status = 'ignoreP' OR status = 'ignoreC' ORDER BY severity DESC, sortTag ASC, type ASC, time DESC LIMIT %d,%d", $ignoredOffset, $ignoredLimit);
 		$q = array_merge($q1, $q2);
 		foreach($q as $i){
 			$i['data'] = unserialize($i['data']);
@@ -521,7 +656,7 @@ class wfIssues {
 		$updatesNeeded = $report->getUpdatesNeeded($useCachedValued);
 		if ($updatesNeeded) {
 			if (!$updatesNeeded['core']) {
-				$this->getDB()->queryWrite("DELETE FROM {$this->issuesTable} WHERE status = 'new' AND type = 'wfUpgrade'");
+				$this->deleteUpdateIssues('wfUpgrade');
 			}
 			
 			if ($updatesNeeded['plugins']) {
@@ -540,9 +675,9 @@ class wfIssues {
 				}
 			}
 			else {
-				$this->getDB()->queryWrite("DELETE FROM {$this->issuesTable} WHERE status = 'new' AND type = 'wfPluginUpgrade'");
+				$this->deleteUpdateIssues('wfPluginUpgrade');
 			}
-			
+
 			if ($updatesNeeded['themes']) {
 				$upgradeNames = array();
 				foreach ($updatesNeeded['themes'] as $t) {
@@ -559,11 +694,11 @@ class wfIssues {
 				}
 			}
 			else {
-				$this->getDB()->queryWrite("DELETE FROM {$this->issuesTable} WHERE status = 'new' AND type = 'wfThemeUpgrade'");
+				$this->deleteUpdateIssues('wfThemeUpgrade');
 			}
 		}
 		else {
-			$this->getDB()->queryWrite("DELETE FROM {$this->issuesTable} WHERE status = 'new' AND (type = 'wfUpgrade' OR type = 'wfPluginUpgrade' OR type = 'wfThemeUpgrade')");
+			$this->deleteAllUpdateIssues();
 		}
 		
 		wfScanEngine::refreshScanNotification($this);
@@ -573,5 +708,12 @@ class wfIssues {
 			$this->db = new wfDB();
 		}
 		return $this->db;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getIssuesTable() {
+		return $this->issuesTable;
 	}
 }

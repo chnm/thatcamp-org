@@ -114,7 +114,7 @@ class wfPage {
 			case self::PAGE_SCAN_OPTIONS:
 				return __('Scan Options', 'wordfence');
 			case self::PAGE_TOOLS_2FA:
-				return __('Two Factor Authentication', 'wordfence');
+				return __('Two-Factor Authentication', 'wordfence');
 			case self::PAGE_TOOLS_LIVE_TRAFFIC:
 				return __('Live Traffic', 'wordfence');
 			case self::PAGE_TOOLS_IMPORT_EXPORT:

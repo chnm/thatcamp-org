@@ -461,7 +461,7 @@ SQL
 	public function getCountryNameByCode($code) {
 		static $wfBulkCountries;
 		if (!isset($wfBulkCountries)) {
-			include 'wfBulkCountries.php';
+			include(dirname(__FILE__) . '/wfBulkCountries.php');
 		}
 		return array_key_exists($code, $wfBulkCountries) ? $wfBulkCountries[$code] : "";
 	}
@@ -589,7 +589,7 @@ SQL
 				$paramKey = base64_decode($actionData['paramKey']);
 				$paramValue = base64_decode($actionData['paramValue']);
 				if (strlen($paramValue) > 100) {
-					$paramValue = substr($paramValue, 0, 100) . chr(2026);
+					$paramValue = substr($paramValue, 0, 100) . '...';
 				}
 				
 				if (preg_match('/([a-z0-9_]+\.[a-z0-9_]+)(?:\[(.+?)\](.*))?/i', $paramKey, $matches)) {

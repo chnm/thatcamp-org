@@ -259,6 +259,8 @@ foreach ($waf->getFailedRules() as $paramKey => $categories) {
 	$contents = preg_replace('/<svg\s+xmlns="[^"]*"/i', '<svg', $contents);
 	$contents = preg_replace('/(<svg[^>]+)/i', '${1} class="wf-header-logo"', $contents);
 	echo $contents;
+	
+	if (!empty($errorNonce)) { echo '<!-- WFWAF NONCE: ' . htmlentities($errorNonce) . ' -->'; }
 	?>
 	<h2>403 Forbidden</h2>
 	

@@ -4,7 +4,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
  * @var wfActivityReportView $this
  */
 ?>
-<a class="wf-logo" href="//www.wordfence.com/zz8/"><img src="<?php echo wfUtils::getBaseURL(); ?>images/logo.png" alt=""/></a>
+<a class="wf-logo" href="//www.wordfence.com/zz8/"><img src="<?php echo wfUtils::getBaseURL(); ?>images/wf-horizontal.svg" alt="Wordfence"/></a>
 
 <h2><?php printf(__('Top %d IPs Blocked', 'wordfence'), $limit); ?></h2>
 
@@ -13,8 +13,8 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 <table class="wf-striped-table wf-fixed-table">
 	<thead>
 		<tr>
-			<th width="50%"><?php _e('IP', 'wordfence'); ?></th>
-			<th width="25%"><?php _e('Country', 'wordfence'); ?></th>
+			<th width="40%"><?php _e('IP', 'wordfence'); ?></th>
+			<th width="35%"><?php _e('Country', 'wordfence'); ?></th>
 			<th width="25%"><?php _e('Block Count', 'wordfence'); ?></th> 
 		</tr>
 	</thead>
@@ -29,7 +29,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 						<?php if ($row->countryCode): ?>
 							<span class="wf-flag <?php echo esc_attr('wf-flag-' . strtolower($row->countryCode)); ?>" title="<?php echo esc_attr($row->countryName); ?>"></span>
 							&nbsp;
-							<?php echo esc_html($row->countryCode) ?>
+							<?php echo esc_html($row->countryName) ?>
 						<?php else: ?>
 							<?php _e('(Unknown)', 'wordfence'); ?>
 						<?php endif ?>
@@ -73,7 +73,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 						<?php if ($row->countryCode): ?>
 							<span class="wf-flag <?php echo esc_attr('wf-flag-' . strtolower($row->countryCode)); ?>" title="<?php echo esc_attr($row->countryName); ?>"></span>
 							&nbsp;
-							<?php echo esc_html($row->countryCode) ?>
+							<?php echo esc_html($row->countryName) ?>
 						<?php else: ?>
 							<?php _e('(Unknown)', 'wordfence'); ?>
 						<?php endif ?>
@@ -163,6 +163,11 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 
 <h2><?php _e('Updates Needed', 'wordfence'); ?></h2>
 
+<?php
+if (!is_array($updates_needed)) {
+	$updates_needed = array('core' => array(), 'plugins' => array(), 'themes' => array());
+}
+?>
 <?php if ($updates_needed['core']): ?>
 	<h4><?php _e('Core', 'wordfence'); ?></h4>
 	<ul>

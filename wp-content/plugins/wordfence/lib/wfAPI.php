@@ -1,6 +1,6 @@
 <?php
-require_once('wordfenceConstants.php');
-require_once('wordfenceClass.php');
+require_once(dirname(__FILE__) . '/wordfenceConstants.php');
+require_once(dirname(__FILE__) . '/wordfenceClass.php');
 
 class wfAPI {
 	const KEY_TYPE_FREE = 'free';
@@ -108,7 +108,7 @@ class wfAPI {
 		wordfence::status(4, 'info', "Calling Wordfence API v" . WORDFENCE_API_VERSION . ":" . $url);
 
 		if (!function_exists('wp_remote_post')) {
-			require_once ABSPATH . WPINC . 'http.php';
+			require_once(ABSPATH . WPINC . 'http.php');
 		}
 
 		$ssl_verify = (bool) wfConfig::get('ssl_verify');
@@ -217,9 +217,14 @@ class wfAPI {
 
 	public static function SSLEnabled() {
 		if (!function_exists('wp_http_supports')) {
-			require_once ABSPATH . WPINC . 'http.php';
+			require_once(ABSPATH . WPINC . 'http.php');
 		}
 		return wp_http_supports(array('ssl'));
+	}
+	
+	public function getTextImageURL($text) {
+		$apiURL = $this->getAPIURL();
+		return rtrim($apiURL, '/') . '/v' . WORDFENCE_API_VERSION . '/?' . $this->makeAPIQueryString() . '&' . self::buildQuery(array('action' => 'image', 'txt' => base64_encode($text)));
 	}
 }
 

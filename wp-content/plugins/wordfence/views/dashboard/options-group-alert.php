@@ -52,22 +52,31 @@ if (!isset($collapseable)) {
 					<li>
 						<?php
 						echo wfView::create('options/option-toggled', array(
-							'optionName' => 'alertOn_critical',
+							'optionName' => 'alertOn_wafDeactivated',
 							'enabledValue' => 1,
 							'disabledValue' => 0,
-							'value' => wfConfig::get('alertOn_critical') ? 1 : 0,
-							'title' => __('Alert on critical problems', 'wordfence'),
+							'value' => wfConfig::get('alertOn_wafDeactivated') ? 1 : 0,
+							'title' => __('Email me if the Wordfence Web Application Firewall is turned off', 'wordfence'),
 						))->render();
 						?>
 					</li>
 					<li>
+
 						<?php
-						echo wfView::create('options/option-toggled', array(
-							'optionName' => 'alertOn_warnings',
-							'enabledValue' => 1,
-							'disabledValue' => 0,
-							'value' => wfConfig::get('alertOn_warnings') ? 1 : 0,
-							'title' => __('Alert on warnings', 'wordfence'),
+						echo wfView::create('options/option-toggled-select', array(
+							'toggleOptionName' => 'alertOn_scanIssues',
+							'enabledToggleValue' => 1,
+							'disabledToggleValue' => 0,
+							'toggleValue' => wfConfig::get('alertOn_scanIssues') > 0 ? 1 : 0,
+							'selectOptionName' => 'alertOn_severityLevel',
+							'selectOptions' => array(
+								array('value' => wfIssues::SEVERITY_CRITICAL, 'label' => __('Critical', 'wordfence')),
+								array('value' => wfIssues::SEVERITY_HIGH, 'label' => __('High', 'wordfence')),
+								array('value' => wfIssues::SEVERITY_MEDIUM, 'label' => __('Medium', 'wordfence')),
+								array('value' => wfIssues::SEVERITY_LOW, 'label' => __('Low', 'wordfence')),
+							),
+							'selectValue' => wfConfig::get('alertOn_severityLevel'),
+							'title' => __('Alert me with scan results of this severity level or greater:', 'wordfence'),
 						))->render();
 						?>
 					</li>

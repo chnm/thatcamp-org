@@ -21,6 +21,7 @@ require_once WFWAF_LIB_PATH . 'xmlrpc.php';
 
 require_once WFWAF_LIB_PATH . 'storage.php';
 require_once WFWAF_LIB_PATH . 'storage/file.php';
+require_once WFWAF_LIB_PATH . 'storage/mysql.php';
 
 require_once WFWAF_LIB_PATH . 'config.php';
 

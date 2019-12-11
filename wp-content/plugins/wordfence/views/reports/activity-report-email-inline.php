@@ -161,7 +161,7 @@ h6 a:visited { color: purple !important; }
 									<span class="wf-flag <?php echo esc_attr('wf-flag-' . $key); ?>" style="display: inline-block;vertical-align: middle;
 	margin: 0;padding: 0; border: 0;background-repeat: no-repeat;background-position: <?php echo $offset; ?>;width: 16px;height: 11px;background-image: url('<?php echo esc_attr(wfUtils::getBaseURL() . 'images/flags.png'); ?>')"></span>
 										&nbsp;
-										<?php echo esc_html($row->countryCode) ?>
+										<?php echo esc_html($row->countryName) ?>
 									<?php else: ?>
 										<?php _e('(Unknown)', 'wordfence'); ?>
 									<?php endif ?>
@@ -215,7 +215,7 @@ h6 a:visited { color: purple !important; }
 											<span class="wf-flag <?php echo esc_attr('wf-flag-' . $key); ?>" style="display: inline-block;vertical-align: middle;
 													margin: 0;padding: 0; border: 0;background-repeat: no-repeat;background-position: <?php echo $offset; ?>;width: 16px;height: 11px;background-image: url('<?php echo esc_attr(wfUtils::getBaseURL() . 'images/flags.png'); ?>')"></span>
 											&nbsp;
-											<?php echo esc_html($row->countryCode) ?>
+											<?php echo esc_html($row->countryName) ?>
 										<?php else: ?>
 											<?php _e('(Unknown)', 'wordfence'); ?>
 										<?php endif ?>
@@ -355,7 +355,12 @@ h6 a:visited { color: purple !important; }
 				<?php wfHelperString::cycle(); ?>
 
 				<h2 style="font-size: 20px; vertical-align: baseline; clear: both; color: #222 !important; margin: 20px 0 4px; padding: 0; border: 0;"><?php _e('Updates Needed', 'wordfence'); ?></h2>
-
+				
+				<?php
+				if (!is_array($updates_needed)) {
+					$updates_needed = array('core' => array(), 'plugins' => array(), 'themes' => array());
+				}
+				?>
 				<?php if ($updates_needed['core']): ?>
 					<h4 style="font-size: 16px; vertical-align: baseline; clear: both; color: #666666 !important; margin: 20px 0 4px; padding: 0; border: 0;"><?php _e('Core', 'wordfence'); ?></h4>
 					<ul style="font-size: 100%; vertical-align: baseline; list-style-type: none; margin: 0; padding: 0; border: 0;">

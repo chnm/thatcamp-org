@@ -23,6 +23,7 @@ $wfIPWhitelist = array(
 		//'255.255.255.255/32',	#Reserved for the "limited broadcast" destination address, as specified by RFC 6890
 	),
 	'wordfence' => array(
+		'54.68.32.247', // Central @ AWS
 		'69.46.36.0/27',
 		'2605:2400:0104:0100::/56',
 	),

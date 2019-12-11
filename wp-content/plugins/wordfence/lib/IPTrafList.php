@@ -53,7 +53,7 @@ if (!wfUtils::isAdmin()) {
 			<tr>
 				<th>User:</th>
 				<td>
-					<a href="<?php echo $v['user']['editLink']; ?>" target="_blank" rel="noopener noreferrer"><?php echo $v['user']['avatar'] . ' ' . $v['user']['display_name']; ?></a>
+					<a href="<?php echo $v['user']['editLink']; ?>" target="_blank" rel="noopener noreferrer"><span data-userid="<?php echo esc_attr($v['user']['ID']); ?>" class="wfAvatar"></span><?php echo $v['user']['display_name']; ?></a>
 				</td>
 			</tr>
 		<?php } ?>

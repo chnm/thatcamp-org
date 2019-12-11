@@ -18,17 +18,30 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 if (!isset($textOutput) || !is_array($textOutput)):
 ?>
 <script type="text/x-jquery-template" id="issueTmpl_<?php echo $internalType; ?>">
-<ul class="wf-issue wf-issue-<?php echo $internalType; ?> {{if severity == '1'}}wf-issue-severity-critical{{else}}wf-issue-severity-warning{{/if}}" data-issue-id="${id}" data-issue-type="<?php echo $internalType; ?>" data-issue-severity="${severity}" data-high-sensitivity="{{if (data.highSense == '1')}}1{{else}}0{{/if}}" data-beta-signatures="{{if (data.betaSigs == '1')}}1{{else}}0{{/if}}">
+<ul class="wf-issue wf-issue-<?php echo $internalType; ?>
+	{{if severity == <?php echo wfIssues::SEVERITY_CRITICAL ?>}}wf-issue-severity-critical{{/if}}
+	{{if severity == <?php echo wfIssues::SEVERITY_HIGH ?>}}wf-issue-severity-high{{/if}}
+	{{if severity == <?php echo wfIssues::SEVERITY_MEDIUM ?>}}wf-issue-severity-medium{{/if}}
+	{{if severity == <?php echo wfIssues::SEVERITY_LOW ?>}}wf-issue-severity-low{{/if}}" data-issue-id="${id}" data-issue-type="<?php echo $internalType; ?>" data-issue-severity="${severity}" data-high-sensitivity="{{if (data.highSense == '1')}}1{{else}}0{{/if}}" data-beta-signatures="{{if (data.betaSigs == '1')}}1{{else}}0{{/if}}">
 	<li class="wf-issue-summary">
 		<ul>
 			<li class="wf-issue-icon"><?php echo $iconSVG; ?></li>
 			<li class="wf-issue-short wf-hidden-xs"><div class="wf-issue-message">${shortMsg}</div><div class="wf-issue-type"><?php echo __('Type:', 'wordfence') . ' ' . $displayType; ?></div></li>
-			<li class="wf-issue-stats wf-hidden-xs"><div class="wf-issue-time"><?php _e('Issue Found ', 'wordfence'); ?> ${displayTime}</div>{{if severity == '1'}}<div class="wf-issue-severity-critical"><?php _e('Critical', 'wordfence'); ?></div>{{else}}<div class="wf-issue-severity-warning"><?php _e('Warning', 'wordfence'); ?></div>{{/if}}</li>
+			<li class="wf-issue-stats wf-hidden-xs">
+				<div class="wf-issue-time"><?php _e('Issue Found ', 'wordfence'); ?> ${displayTime}</div>
+				{{if severity == <?php echo wfIssues::SEVERITY_CRITICAL ?>}}<div class="wf-issue-severity-critical"><?php echo __('Critical', 'wordfence'); ?></div>{{/if}}
+				{{if severity == <?php echo wfIssues::SEVERITY_HIGH ?>}}<div class="wf-issue-severity-high"><?php echo __('High', 'wordfence'); ?></div>{{/if}}
+				{{if severity == <?php echo wfIssues::SEVERITY_MEDIUM ?>}}<div class="wf-issue-severity-medium"><?php echo __('Medium', 'wordfence'); ?></div>{{/if}}
+				{{if severity == <?php echo wfIssues::SEVERITY_LOW ?>}}<div class="wf-issue-severity-low"><?php echo __('Low', 'wordfence'); ?></div>{{/if}}
+			</li>
 			<li class="wf-issue-short-stats wf-hidden-sm wf-hidden-md wf-hidden-lg">
 				<div class="wf-issue-message wf-split-word-xs">${shortMsg}</div>
 				<div class="wf-issue-type"><?php echo __('Type:', 'wordfence') . ' ' . $displayType; ?></div>
 				<div class="wf-issue-time"><?php _e('Found ', 'wordfence'); ?> ${displayTime}</div>
-				{{if severity == '1'}}<div class="wf-issue-severity-critical"><?php _e('Critical', 'wordfence'); ?></div>{{else}}<div class="wf-issue-severity-warning"><?php _e('Warning', 'wordfence'); ?></div>{{/if}}
+				{{if severity == <?php echo wfIssues::SEVERITY_CRITICAL ?>}}<div class="wf-issue-severity-critical"><?php echo __('Critical', 'wordfence'); ?></div>{{/if}}
+				{{if severity == <?php echo wfIssues::SEVERITY_HIGH ?>}}<div class="wf-issue-severity-high"><?php echo __('High', 'wordfence'); ?></div>{{/if}}
+				{{if severity == <?php echo wfIssues::SEVERITY_MEDIUM ?>}}<div class="wf-issue-severity-medium"><?php echo __('Medium', 'wordfence'); ?></div>{{/if}}
+				{{if severity == <?php echo wfIssues::SEVERITY_LOW ?>}}<div class="wf-issue-severity-low"><?php echo __('Low', 'wordfence'); ?></div>{{/if}}
 				<div class="wf-issue-controls"><?php echo implode("\n", $summaryControls); ?></div>
 			</li>
 			<li class="wf-issue-controls wf-hidden-xs"><?php echo implode("\n", $summaryControls); ?></li>
@@ -70,7 +83,28 @@ if (!isset($textOutput) || !is_array($textOutput)):
 echo '[' . $displayType . ($textOutput['status'] == 'ignoreP' || $textOutput['status'] == 'ignoreP' ? ', ' . __('Ignored', 'wordfence') : '') . ']' . "\n";
 echo $textOutput['shortMsg'] . "\n";
 echo sprintf(__('Issue Found: %s', 'wordfence'), $textOutput['displayTime']) . "\n";
-echo sprintf(__('Severity: %s', 'wordfence'), $textOutput['severity'] == 1 ? __('Critical', 'wordfence') : __('Warning', 'wordfence')) . "\n";
+$severity = null;
+switch ($textOutput['severity']) {
+	case wfIssues::SEVERITY_CRITICAL:
+		$severity = __('Critical', 'wordfence');
+		break;
+	case wfIssues::SEVERITY_HIGH:
+		$severity = __('High', 'wordfence');
+		break;
+	case wfIssues::SEVERITY_MEDIUM:
+		$severity = __('Medium', 'wordfence');
+		break;
+	case wfIssues::SEVERITY_LOW:
+		$severity = __('Low', 'wordfence');
+		break;
+	default:
+		$severity = __('None', 'wordfence');
+		break;
+}
+if ($severity) {
+	echo sprintf(__('Severity: %s', 'wordfence'), $severity) . "\n";
+}
+
 foreach ($textOutputDetailPairs as $label => $value) {
 	if ($value === null) {
 		echo "\n";

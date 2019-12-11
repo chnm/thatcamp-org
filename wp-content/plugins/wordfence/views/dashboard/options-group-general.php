@@ -51,7 +51,7 @@ if (!isset($collapseable)) {
 						<?php
 						echo wfView::create('options/option-text', array(
 							'textOptionName' => 'alertEmails',
-							'textValue' => wfConfig::get('alertEmails'),
+							'textValue' => implode(',', wfConfig::getAlertEmails()),
 							'title' => __('Where to email alerts', 'wordfence'),
 							'placeholder' => __('Separate multiple addresses with commas', 'wordfence'),
 							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_DASHBOARD_OPTION_ALERT_EMAILS),
@@ -130,6 +130,7 @@ if (!isset($collapseable)) {
 							'disabledValue' => 0,
 							'value' => wfConfig::get('deleteTablesOnDeact') ? 1 : 0,
 							'title' => __('Delete Wordfence tables and data on deactivation', 'wordfence'),
+							'subtitle' => __('Note: This does not include Login Security settings and tables. An option to delete those must be selected separately on the Login Security settings page.', 'wordfence'),
 							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_DASHBOARD_OPTION_DELETE_DEACTIVATION),
 						))->render();
 						?>

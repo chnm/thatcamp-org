@@ -174,6 +174,9 @@ $payload = "-----BEGIN REPORT-----\n" . implode("\n", str_split($message, 60)) .
 	</style>
 </head>
 <body>
+<?php
+if (!empty($errorNonce)) { echo '<!-- WFWAF NONCE: ' . htmlentities($errorNonce) . ' -->'; }
+?>
 
 <h1>403 Forbidden</h1>
 
@@ -201,7 +204,7 @@ $payload = "-----BEGIN REPORT-----\n" . implode("\n", str_split($message, 60)) .
 		
 		textarea.addEventListener('focus', function() {
 			document.getElementById('reportButton').className = document.getElementById('reportButton').className.replace(new RegExp('(?:^|\\s)'+ 'disabled' + '(?:\\s|$)'), ' ');
-			document.getElementById('reportButton').href = 'ht' + 'tp:/' + '/user-reports.wordfence' + '.com';
+			document.getElementById('reportButton').href = 'ht' + 'tps:/' + '/user-reports.wordfence' + '.com';
 		});
 	})();
 </script>

@@ -94,7 +94,7 @@ if (!isset($sendingDiagnosticEmail)) {
 				<table>
 					<thead>
 					<tr>
-						<th colspan="<?php echo $cols ?>"><?php echo esc_html($title) ?></th>
+						<th colspan="2"><?php echo esc_html($title) ?></th>
 					</tr>
 					</thead>
 					<tbody>
@@ -103,13 +103,12 @@ if (!isset($sendingDiagnosticEmail)) {
 						$infoOnly = isset($result['infoOnly']) && $result['infoOnly'];
 						?>
 						<tr>
-							<td style="width: 75%; min-width: 300px"
-									colspan="<?php echo $cols - 1 ?>"><?php echo wp_kses($result['label'], array(
+							<td style="width: 75%; min-width: 300px"><?php echo (is_array($result['label']) && isset($result['label']['raw']) && $result['label']['raw'] ? $result['label']['value'] : wp_kses($result['label'], array(
 									'code'   => array(),
 									'strong' => array(),
 									'em'     => array(),
 									'a'      => array('href' => true),
-								)) ?></td>
+								))) ?></td>
 							<td>
 								<?php if ($infoOnly): ?>
 									<div class="wf-result-info"><?php echo nl2br(esc_html($result['message'])); ?></div>
@@ -147,13 +146,12 @@ if (!isset($sendingDiagnosticEmail)) {
 								$infoOnly = isset($result['infoOnly']) && $result['infoOnly'];
 								?>
 								<li>
-									<div style="width: 75%; min-width: 300px;"
-											colspan="<?php echo $cols - 1 ?>"><?php echo wp_kses($result['label'], array(
+									<div style="width: 75%; min-width: 300px;"><?php echo (is_array($result['label']) && isset($result['label']['raw']) && $result['label']['raw'] ? $result['label']['value'] : wp_kses($result['label'], array(
 											'code'   => array(),
 											'strong' => array(),
 											'em'     => array(),
 											'a'      => array('href' => true),
-										)) ?></div>
+										))) ?></div>
 									<div class="wf-right">
 									<?php if ($infoOnly): ?>
 										<div class="wf-result-info"><?php echo nl2br(esc_html($result['message'])); ?></div>
@@ -178,18 +176,7 @@ if (!isset($sendingDiagnosticEmail)) {
 		<?php
 		$howGet = wfConfig::get('howGetIPs', false);
 		list($currentIP, $currentServerVarForIP) = wfUtils::getIPAndServerVariable();
-		$howGetHasErrors = false;
-		foreach (array(
-			         'REMOTE_ADDR'           => 'REMOTE_ADDR',
-			         'HTTP_CF_CONNECTING_IP' => 'CF-Connecting-IP',
-			         'HTTP_X_REAL_IP'        => 'X-Real-IP',
-			         'HTTP_X_FORWARDED_FOR'  => 'X-Forwarded-For',
-		         ) as $variable => $label) {
-			if (!($currentServerVarForIP && $currentServerVarForIP === $variable) && $howGet === $variable) {
-				$howGetHasErrors = true;
-				break;
-			}
-		}
+		$howGetHasErrors = $howGet && (! $currentServerVarForIP || $howGet !== $currentServerVarForIP);
 		?>
 		<div class="wf-block<?php echo ($howGetHasErrors ? ' wf-diagnostic-fail' : '') . (wfPersistenceController::shared()->isActive('wf-diagnostics-client-ip') ? ' wf-active' : '') ?>" data-persistence-key="<?php echo esc_attr('wf-diagnostics-client-ip') ?>">
 			<div class="wf-block-header">
@@ -215,50 +202,25 @@ if (!isset($sendingDiagnosticEmail)) {
 					</tbody>
 					<tbody>
 					<?php
-					$howGet = wfConfig::get('howGetIPs', false);
-					list($currentIP, $currentServerVarForIP) = wfUtils::getIPAndServerVariable();
-					foreach (array(
-						         'REMOTE_ADDR'           => 'REMOTE_ADDR',
-						         'HTTP_CF_CONNECTING_IP' => 'CF-Connecting-IP',
-						         'HTTP_X_REAL_IP'        => 'X-Real-IP',
-						         'HTTP_X_FORWARDED_FOR'  => 'X-Forwarded-For',
-					         ) as $variable => $label): ?>
+					$serverVariables = array(
+						'REMOTE_ADDR'           => 'REMOTE_ADDR',
+						'HTTP_CF_CONNECTING_IP' => 'CF-Connecting-IP',
+						'HTTP_X_REAL_IP'        => 'X-Real-IP',
+						'HTTP_X_FORWARDED_FOR'  => 'X-Forwarded-For',
+					);
+					foreach (wfUtils::getAllServerVariableIPs() as $variable => $ip): ?>
 						<tr>
-							<td><?php echo $label ?></td>
+							<td><?php echo isset($serverVariables[$variable]) ? $serverVariables[$variable] : $variable ?></td>
 							<td><?php
-								if (!array_key_exists($variable, $_SERVER)) {
+								if (! $ip) {
 									_e('(not set)', 'wordfence');
+								} elseif (is_array($ip)) {
+									$output = array_map('esc_html', $ip);
+									echo str_replace($currentIP, "<strong>{$currentIP}</strong>", implode(', ', $output));
 								} else {
-									if (strpos($_SERVER[$variable], ',') !== false) {
-										$trustedProxies = explode("\n", wfConfig::get('howGetIPs_trusted_proxies', ''));
-										$items = preg_replace('/[\s,]/', '', explode(',', $_SERVER[$variable]));
-										$items = array_reverse($items);
-										$output = '';
-										$markedSelectedAddress = false;
-										foreach ($items as $index => $i) {
-											foreach ($trustedProxies as $proxy) {
-												if (!empty($proxy)) {
-													if (wfUtils::subnetContainsIP($proxy, $i) && $index < count($items) - 1) {
-														$output = esc_html($i) . ', ' . $output;
-														continue 2;
-													}
-												}
-											}
-
-											if (!$markedSelectedAddress) {
-												$output = '<strong>' . esc_html($i) . '</strong>, ' . $output;
-												$markedSelectedAddress = true;
-											} else {
-												$output = esc_html($i) . ', ' . $output;
-											}
-										}
-
-										echo substr($output, 0, -2);
-									} else {
-										echo esc_html($_SERVER[$variable]);
-									}
+									echo esc_html($ip);
 								}
-								?></td>
+							?></td>
 							<?php if ($currentServerVarForIP && $currentServerVarForIP === $variable): ?>
 								<td class="wf-result-success"><?php _e('In use', 'wordfence'); ?></td>
 							<?php elseif ($howGet === $variable): ?>
@@ -357,6 +319,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						'DOMAIN_CURRENT_SITE'		   => __('Defines the multisite domain for the current site', 'wordfence'),
 						'PATH_CURRENT_SITE'			   => __('Defines the multisite path for the current site', 'wordfence'),
 						'BLOG_ID_CURRENT_SITE'		   => __('Defines the multisite database ID for the current site', 'wordfence'),
+						'WP_DISABLE_FATAL_ERROR_HANDLER' => array('description' => __('Disable the fatal error handler', 'wordfence'), 'value' => (defined('WP_DISABLE_FATAL_ERROR_HANDLER') && WP_DISABLE_FATAL_ERROR_HANDLER ? __('Yes', 'wordfence') : __('No', 'wordfence'))),
 					);
 
 					foreach ($wordPressValues as $settingName => $settingData):
@@ -412,7 +375,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						}
 						?>
 						<tr>
-							<td colspan="<?php echo $cols - 1 ?>">
+							<td>
 								<strong><?php echo esc_html($pluginData['Name']); ?> (<?php echo esc_html($slug); ?>)</strong>
 								<?php if (!empty($pluginData['Version'])): ?>
 									- <?php printf(__('Version %s', 'wordfence'), esc_html($pluginData['Version'])); ?>
@@ -458,7 +421,7 @@ if (!isset($sendingDiagnosticEmail)) {
 							}
 							?>
 							<tr>
-								<td colspan="<?php echo $cols - 1 ?>">
+								<td>
 									<strong><?php echo esc_html($pluginData['Name']) ?> (<?php echo esc_html($slug); ?>)</strong>
 									<?php if (!empty($pluginData['Version'])): ?>
 										- <?php printf(__('Version %s', 'wordfence'), esc_html($pluginData['Version'])); ?>
@@ -471,7 +434,7 @@ if (!isset($sendingDiagnosticEmail)) {
 					<?php else: ?>
 						<tbody>
 						<tr>
-							<td colspan="<?php echo $cols ?>"><?php _e('No MU-Plugins', 'wordfence'); ?></td>
+							<td><?php _e('No MU-Plugins', 'wordfence'); ?></td>
 						</tr>
 						</tbody>
 
@@ -497,12 +460,14 @@ if (!isset($sendingDiagnosticEmail)) {
 					<?php
 					//Taken from plugin.php and modified to always show multisite drop-ins
 					$dropins = array(
-						'advanced-cache.php' => array( __( 'Advanced caching plugin'       ), 'WP_CACHE' ), // WP_CACHE
-						'db.php'             => array( __( 'Custom database class'         ), true ), // auto on load
-						'db-error.php'       => array( __( 'Custom database error message' ), true ), // auto on error
-						'install.php'        => array( __( 'Custom installation script'    ), true ), // auto on installation
-						'maintenance.php'    => array( __( 'Custom maintenance message'    ), true ), // auto on maintenance
-						'object-cache.php'   => array( __( 'External object cache'         ), true ), // auto on load
+						'advanced-cache.php'	 => array( __( 'Advanced caching plugin'       ), 'WP_CACHE' ), // WP_CACHE
+						'db.php'            	 => array( __( 'Custom database class'         ), true ), // auto on load
+						'db-error.php'      	 => array( __( 'Custom database error message' ), true ), // auto on error
+						'install.php'       	 => array( __( 'Custom installation script'    ), true ), // auto on installation
+						'maintenance.php'   	 => array( __( 'Custom maintenance message'    ), true ), // auto on maintenance
+						'object-cache.php'  	 => array( __( 'External object cache'         ), true ), // auto on load
+						'php-error.php'          => array( __( 'Custom PHP error message'	   ), true ), // auto on error
+						'fatal-error-handler.php'=> array( __( 'Custom PHP fatal error handler' ), true ), // auto on error
 					);
 					$dropins['sunrise.php'       ] = array( __( 'Executed before Multisite is loaded' ), is_multisite() && 'SUNRISE' ); // SUNRISE
 					$dropins['blog-deleted.php'  ] = array( __( 'Custom site deleted message'   ), is_multisite() ); // auto on deleted blog
@@ -514,7 +479,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						$active = file_exists(WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $file) && is_readable(WP_CONTENT_DIR . DIRECTORY_SEPARATOR . $file) && $data[1];
 						?>
 						<tr>
-							<td colspan="<?php echo $cols - 1 ?>">
+							<td>
 								<strong><?php echo esc_html($data[0]) ?> (<?php echo esc_html($file); ?>)</strong>
 							</td>
 							<?php if ($active): ?>
@@ -555,7 +520,7 @@ if (!isset($sendingDiagnosticEmail)) {
 							}
 							?>
 							<tr>
-								<td colspan="<?php echo $cols - 1 ?>">
+								<td>
 									<strong><?php echo esc_html($themeData['Name']) ?> (<?php echo esc_html($slug); ?>)</strong>
 									<?php if (!empty($themeData['Version'])): ?>
 										- <?php printf(__('Version %s', 'wordfence'), esc_html($themeData['Version'])); ?>
@@ -571,7 +536,7 @@ if (!isset($sendingDiagnosticEmail)) {
 					<?php else: ?>
 						<tbody>
 						<tr>
-							<td colspan="<?php echo $cols ?>"><?php _e('No Themes', 'wordfence'); ?></td>
+							<td><?php _e('No Themes', 'wordfence'); ?></td>
 						</tr>
 						</tbody>
 
@@ -601,9 +566,10 @@ if (!isset($sendingDiagnosticEmail)) {
 						if (is_array($values)) {
 							foreach ($values as $cron_job => $v) {
 								if (is_numeric($timestamp)) {
+									$overdue = ((time() - 1800) > $timestamp);
 									?>
-									<tr>
-										<td colspan="<?php echo $cols - 1 ?>"><?php echo esc_html(date('r', $timestamp)) ?></td>
+									<tr<?php echo $overdue ? ' class="wf-overdue-cron"' : ''; ?>>
+										<td><?php echo esc_html(date('r', $timestamp)) . ($overdue ? ' <strong>(' . __('Overdue', 'wordfence') . ')</strong>' : '') ?></td>
 										<td><?php echo esc_html($cron_job) ?></td>
 									</tr>
 									<?php
@@ -646,7 +612,7 @@ if (!isset($sendingDiagnosticEmail)) {
 				<div class="wf-block-content wf-clearfix wf-padding-no-left wf-padding-no-right">
 					<ul class="wf-block-list wf-padding-add-left-large wf-padding-add-right-large">
 						<li style="border-bottom: 1px solid #e2e2e2;">
-							<div style="width: 75%; min-width: 300px;" colspan="<?php echo $cols - 1 ?>"><?php _e('Wordfence Table Check', 'wordfence'); ?></div>
+							<div style="width: 75%; min-width: 300px;"><?php _e('Wordfence Table Check', 'wordfence'); ?></div>
 							<div class="wf-right">
 								<?php if ($total > 250): ?>
 									<div class="wf-result-info"><?php _e('Unable to verify - table count too high', 'wordfence'); ?></div>

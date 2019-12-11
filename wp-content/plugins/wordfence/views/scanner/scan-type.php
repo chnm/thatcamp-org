@@ -90,8 +90,16 @@ $highSensitivityOptions = array_filter(wfScanner::highSensitivityScanTypeOptions
 							var selectedOptions = $(this).data('selectedOptions');
 							var keys = Object.keys(selectedOptions);
 							for (var i = 0; i < keys.length; i++) {
-								delete WFAD.pendingChanges[keys[i]];
-								$('.wf-option.wf-option-toggled[data-option="' + keys[i] + '"]').find('.wf-option-checkbox').toggleClass('wf-checked', selectedOptions[keys[i]]).attr('aria-checked', selectedOptions[keys[i]] ? 'true' : 'false'); //Currently all checkboxes
+								var el = $('.wf-option.wf-option-toggled[data-option="' + keys[i] + '"]');
+								el.find('.wf-option-checkbox').toggleClass('wf-checked', selectedOptions[keys[i]]).attr('aria-checked', selectedOptions[keys[i]] ? 'true' : 'false'); //Currently all checkboxes
+
+								originalValue = el.attr('data-original-value');
+								if (originalValue !== undefined &&
+									typeof selectedOptions[keys[i]] === 'boolean' &&
+									originalValue != selectedOptions[keys[i]]
+								) {
+									WFAD.pendingChanges[keys[i]] = selectedOptions[keys[i]];
+								}
 							}
 
 							WFAD.updatePendingChanges();

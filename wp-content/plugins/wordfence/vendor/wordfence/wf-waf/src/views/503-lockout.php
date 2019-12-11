@@ -226,6 +226,8 @@ if (!defined('WFWAF_VIEW_RENDERING')) { exit; }
 	$contents = preg_replace('/<svg\s+xmlns="[^"]*"/i', '<svg', $contents);
 	$contents = preg_replace('/(<svg[^>]+)/i', '${1} class="wf-header-logo"', $contents);
 	echo $contents;
+	
+	if (!empty($errorNonce)) { echo '<!-- WFWAF NONCE: ' . htmlentities($errorNonce) . ' -->'; }
 	?>
 	<h4>You are temporarily locked out</h4>
 	<p>You have been temporarily locked out of this system. This means that you will not be able to log in for a while.</p>

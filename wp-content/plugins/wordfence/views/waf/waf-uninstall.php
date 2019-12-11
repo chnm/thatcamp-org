@@ -16,7 +16,12 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 		</div>
 		<div class="wf-modal-content">
 		<?php
-		$currentAutoPrependFile = ini_get('auto_prepend_file');
+		if (WF_IS_WP_ENGINE) {
+			$currentAutoPrependFile = wordfence::getWAFBootstrapPath();
+		} else {
+			$currentAutoPrependFile = ini_get('auto_prepend_file');
+		}
+
 		?>
 			<p><?php _e('Extended Protection Mode of the Wordfence Web Application Firewall uses the PHP ini setting called <code>auto_prepend_file</code> in order to ensure it runs before any potentially vulnerable code runs. This PHP setting currently refers to the Wordfence file at:', 'wordfence'); ?></p>
 			<pre class='wf-pre'><?php echo esc_html($currentAutoPrependFile); ?></pre>

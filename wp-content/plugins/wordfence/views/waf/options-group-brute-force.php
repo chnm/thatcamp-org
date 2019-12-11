@@ -36,7 +36,7 @@ if (!isset($collapseable)) {
 							'optionName' => 'loginSecurityEnabled',
 							'value' => wfConfig::get('loginSecurityEnabled') ? '1': '0',
 							'titleHTML' => '<strong>' . __('Enable brute force protection', 'wordfence') . '</strong>',
-							'subtitle' => __('This option enables all "Brute Force Protection" options, including two-factor authentication, strong password enforcement, and invalid login throttling. You can modify individual options below.', 'wordfence'),
+							'subtitle' => __('This option enables all "Brute Force Protection" options, including strong password enforcement and invalid login throttling. You can modify individual options below.', 'wordfence'),
 							'states' => array(
 								array('value' => '0', 'label' => __('Off', 'wordfence')),
 								array('value' => '1', 'label' => __('On', 'wordfence')),

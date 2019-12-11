@@ -226,6 +226,8 @@ if (!defined('WFWAF_VIEW_RENDERING')) { exit; }
 	$contents = preg_replace('/<svg\s+xmlns="[^"]*"/i', '<svg', $contents);
 	$contents = preg_replace('/(<svg[^>]+)/i', '${1} class="wf-header-logo"', $contents);
 	echo $contents;
+	
+	if (!empty($errorNonce)) { echo '<!-- WFWAF NONCE: ' . htmlentities($errorNonce) . ' -->'; }
 	?>
 	<h4>Your access to this site has been limited</h4>
 	<p>Your access to this service has been temporarily limited. Please try again in a few minutes. (HTTP response code 503)</p>

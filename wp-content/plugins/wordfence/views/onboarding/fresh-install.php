@@ -6,10 +6,10 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 ?>
 <div id="wf-onboarding-fresh-install" class="wf-onboarding-modal">
 	<div id="wf-onboarding-fresh-install-1" class="wf-onboarding-modal-content"<?php if (wfConfig::get('onboardingAttempt1') == wfOnboardingController::ONBOARDING_FIRST_EMAILS) { echo ' style="display: none;"'; } ?>>
-		<div class="wf-onboarding-logo"><img src="<?php echo esc_attr(wfUtils::getBaseURL() . 'images/logo.png'); ?>" alt="<?php _e('Wordfence - Securing your WordPress Website', 'wordfence'); ?>"></div>
+		<div class="wf-onboarding-logo"><img src="<?php echo esc_attr(wfUtils::getBaseURL() . 'images/wf-horizontal.svg'); ?>" alt="<?php _e('Wordfence - Securing your WordPress Website', 'wordfence'); ?>"></div>
 		<h3><?php printf(__('You have successfully installed Wordfence %s', 'wordfence'), WORDFENCE_VERSION); ?></h3>
 		<h4><?php _e('Please tell us where Wordfence should send you security alerts for your website:', 'wordfence'); ?></h4>
-		<input type="text" id="wf-onboarding-alerts" placeholder="you@example.com" value="<?php echo esc_attr(wfConfig::get('alertEmails')); ?>">
+		<input type="text" id="wf-onboarding-alerts" placeholder="you@example.com" value="<?php echo esc_attr(implode(',', wfConfig::getAlertEmails())); ?>">
 		<p id="wf-onboarding-alerts-disclaimer"><?php _e('We do not use this email address for any other purpose unless you opt-in to receive other mailings. You can turn off alerts in the options.', 'wordfence'); ?></p>
 		<div id="wf-onboarding-subscribe">
 			<label for="wf-onboarding-email-list"><?php _e('Would you also like to join our WordPress security mailing list to receive WordPress security alerts and Wordfence news?', 'wordfence'); ?></label>
@@ -32,7 +32,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 		</div>
 	</div>
 	<div id="wf-onboarding-fresh-install-2" class="wf-onboarding-modal-content"<?php if (wfConfig::get('onboardingAttempt1') != wfOnboardingController::ONBOARDING_FIRST_EMAILS) { echo ' style="display: none;"'; } ?>>
-		<div class="wf-onboarding-logo"><img src="<?php echo esc_attr(wfUtils::getBaseURL() . 'images/logo.png'); ?>" alt="<?php _e('Wordfence - Securing your WordPress Website', 'wordfence'); ?>"></div>
+		<div class="wf-onboarding-logo"><img src="<?php echo esc_attr(wfUtils::getBaseURL() . 'images/wf-horizontal.svg'); ?>" alt="<?php _e('Wordfence - Securing your WordPress Website', 'wordfence'); ?>"></div>
 		<h3><?php _e('Enter Premium License Key', 'wordfence'); ?></h3>
 		<p><?php _e('Enter your premium license key to enable real-time protection for your website.', 'wordfence'); ?></p>
 		<div id="wf-onboarding-license"><input type="text" placeholder="<?php _e('Enter Premium Key', 'wordfence'); ?>"><a href="#" class="wf-onboarding-btn wf-onboarding-btn-primary wf-disabled" id="wf-onboarding-license-install"><?php _e('Install', 'wordfence'); ?></a></div>

@@ -1,6 +1,6 @@
 <?php
-require_once('wfAPI.php');
-require_once('wfArray.php');
+require_once(dirname(__FILE__) . '/wfAPI.php');
+require_once(dirname(__FILE__) . '/wfArray.php');
 class wordfenceURLHoover {
 	private $debug = false;
 	public $errorMsg = false;

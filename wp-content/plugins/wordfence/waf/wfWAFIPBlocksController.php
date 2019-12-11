@@ -46,7 +46,7 @@ class wfWAFIPBlocksController
 	}
 	
 	public static function synchronizeConfigSettings() {
-		if (!class_exists('wfConfig') || !wfConfig::tableExists()) { // Ensure this is only called when WordPress and the plugin are fully loaded
+		if (!class_exists('wfConfig') || !wfConfig::tableExists() || !wfWAF::getInstance()) { // Ensure this is only called when WordPress and the plugin are fully loaded
 			return;
 		}
 		

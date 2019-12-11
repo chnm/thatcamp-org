@@ -17,13 +17,14 @@ else if (wfConfig::get('touppPromptNeeded')) {
 <div class="wrap wordfence">
 	<div class="wf-container-fluid">
 		<?php
-		$tabsArray = array(
-			array('twofactor', __('Two Factor Authentication')),
-			array('livetraffic', __('Live Traffic')),
-			array('whois', __('Whois Lookup')),
-			array('importexport', __('Import/Export Options')),
-			array('diagnostics', __('Diagnostics')),
-		);
+		$tabsArray = array();
+		if (wfCredentialsController::allowLegacy2FA()) {
+			$tabsArray[] = array('twofactor', __('Two-Factor Authentication'));
+		}
+		$tabsArray[] = array('livetraffic', __('Live Traffic'));
+		$tabsArray[] = array('whois', __('Whois Lookup'));
+		$tabsArray[] = array('importexport', __('Import/Export Options'));
+		$tabsArray[] = array('diagnostics', __('Diagnostics'));
 
 		$tabs = array();
 		foreach ($tabsArray as $tab) {
