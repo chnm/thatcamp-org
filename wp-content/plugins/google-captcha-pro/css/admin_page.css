@@ -5,3 +5,40 @@
     content: "\e912";
     font-family: 'bwsicons' !important;
 }
+
+.cptch_loading {
+    position: relative;
+}
+
+.cptch_loading::after {
+    content: "";
+    position: absolute;
+    top: 15%;
+    right: -30%;
+    width: 12px;
+    height: 12px;
+    border: 3px solid #00aadc;
+    background-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+
+    -webkit-animation: cptch_animate 9.0s linear infinite;
+    animation: cptch_animate 9.0s linear infinite;
+}
+
+@-webkit-keyframes cptch_animate {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(3000deg)
+    }
+}
+@keyframes cptch_animate {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(3000deg)
+    }
+}

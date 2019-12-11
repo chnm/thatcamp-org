@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Captcha Pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-09 12:26+0200\n"
+"POT-Creation-Date: 2019-09-30 11:07+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft Team <plugin@bestwebsoft.com>\n"
@@ -17,8 +17,10 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: bws_menu\n"
 
 #: captcha_for_cf7.php:95 captcha_for_cf7.php:97 captcha_for_cf7.php:99
+#: includes/captcha_for_nf.php:27
 msgid "BWS Google Captcha"
 msgstr "BWS Google Captcha"
 
@@ -46,34 +48,34 @@ msgstr "Вставити тег"
 msgid "Error: You have entered an incorrect reCAPTCHA value"
 msgstr "Помилка: Ви ввели невірне значення reCAPTCHA"
 
-#: google-captcha-pro.php:21 google-captcha-pro.php:23
-#: includes/class-gglcptch-settings-tabs.php:194
+#: google-captcha-pro.php:25 google-captcha-pro.php:35
+#: includes/class-gglcptch-settings-tabs.php:196
 msgid "Google Captcha Settings"
 msgstr "Налаштування Google Captcha"
 
-#: google-captcha-pro.php:23 google-captcha-pro.php:1333
-#: google-captcha-pro.php:1346 includes/class-gglcptch-settings-tabs.php:26
+#: google-captcha-pro.php:36 google-captcha-pro.php:1413
+#: google-captcha-pro.php:1426 includes/class-gglcptch-settings-tabs.php:26
 #: includes/class-gglcptch-settings-tabs.php:32
 msgid "Settings"
 msgstr "Налаштування"
 
-#: google-captcha-pro.php:26 includes/whitelist.php:44
+#: google-captcha-pro.php:45 includes/whitelist.php:44
 msgid "Google Captcha Whitelist"
 msgstr "Білий список Google Captcha"
 
-#: google-captcha-pro.php:26
+#: google-captcha-pro.php:46
 msgid "Whitelist"
 msgstr "Білий список"
 
-#: google-captcha-pro.php:326
+#: google-captcha-pro.php:354
 msgid "You are in the whitelist"
 msgstr "Ви знаходитесь в білому списку"
 
-#: google-captcha-pro.php:493
+#: google-captcha-pro.php:530
 msgid "Please wait until Google reCAPTCHA is loaded."
 msgstr "Будь ласка, зачекайте, поки буде завантаженo Google reCAPTCHA."
 
-#: google-captcha-pro.php:494
+#: google-captcha-pro.php:531
 msgid ""
 "Failed to load Google reCAPTCHA. Please check your internet connection and "
 "reload this page."
@@ -81,63 +83,87 @@ msgstr ""
 "Не вдалося завантажити Google reCAPTCHA. Будь ласка, перевірте підключення "
 "до Інтернету та оновіть цю сторінку."
 
-#: google-captcha-pro.php:528
+#: google-captcha-pro.php:565
 msgid "Warning"
 msgstr "Увага"
 
-#: google-captcha-pro.php:647
+#: google-captcha-pro.php:694
 msgid "Google Captcha Pro Settings"
 msgstr "Налаштування Google Captcha Pro"
 
-#: google-captcha-pro.php:766 google-captcha-pro.php:1448
+#: google-captcha-pro.php:695
+msgid "Please enable JavaScript in your browser."
+msgstr "Будь ласка, увімкніть JavaScript у вашому браузері."
+
+#: google-captcha-pro.php:807
+msgid "This site is protected by reCAPTCHA and the Google "
+msgstr "Цей сайт захищений reCAPTCHA і застосовуються "
+
+#: google-captcha-pro.php:808
+msgid "Privacy Policy"
+msgstr "Політика конфіденційності"
+
+#: google-captcha-pro.php:809
+msgid " and "
+msgstr " та "
+
+#: google-captcha-pro.php:810
+msgid "Terms of Service"
+msgstr "Умови обслуговування"
+
+#: google-captcha-pro.php:811
+msgid " apply."
+msgstr " Google."
+
+#: google-captcha-pro.php:818 google-captcha-pro.php:1528
 msgid "To use Google Captcha you must get the keys from"
 msgstr "Щоб використовувати Google Captcha, вам необхідно отримати ключі з"
 
-#: google-captcha-pro.php:767 google-captcha-pro.php:1449
+#: google-captcha-pro.php:819 google-captcha-pro.php:1529
 msgid "here"
 msgstr "тут"
 
-#: google-captcha-pro.php:768 google-captcha-pro.php:1450
+#: google-captcha-pro.php:820 google-captcha-pro.php:1530
 msgid "and enter them on the"
 msgstr "і вставте їх у"
 
-#: google-captcha-pro.php:770 google-captcha-pro.php:1452
+#: google-captcha-pro.php:822 google-captcha-pro.php:1532
 msgid "plugin setting page"
 msgstr "сторінку налаштувань плагіну"
 
-#: google-captcha-pro.php:1112 includes/forms.php:625 includes/forms.php:959
+#: google-captcha-pro.php:1171 includes/forms.php:672 includes/forms.php:1015
 msgid "Error"
 msgstr "Помилка"
 
-#: google-captcha-pro.php:1190
+#: google-captcha-pro.php:1249 includes/captcha_for_nf.php:44
 msgid "User response is missing."
 msgstr "Відповідь користувача відсутня."
 
-#: google-captcha-pro.php:1194 google-captcha-pro.php:1202
+#: google-captcha-pro.php:1253 google-captcha-pro.php:1261
 msgid "Secret Key is invalid."
 msgstr "Секретний ключ некоректний."
 
-#: google-captcha-pro.php:1195 google-captcha-pro.php:1203
+#: google-captcha-pro.php:1254 google-captcha-pro.php:1262
 msgid "Check your domain configurations"
 msgstr "Перевірте конфігурацію вашого домену"
 
-#: google-captcha-pro.php:1196 google-captcha-pro.php:1204
+#: google-captcha-pro.php:1255 google-captcha-pro.php:1263
 msgid "and enter it again"
 msgstr "і введіть його знову"
 
-#: google-captcha-pro.php:1199
+#: google-captcha-pro.php:1258
 msgid "Secret Key is missing."
 msgstr "Секретний ключ відсутній."
 
-#: google-captcha-pro.php:1206
+#: google-captcha-pro.php:1265
 msgid "User response is invalid"
 msgstr "Некоректна відповідь користувача"
 
-#: google-captcha-pro.php:1207
+#: google-captcha-pro.php:1266
 msgid "You have entered an incorrect reCAPTCHA value."
 msgstr "Ви ввели невірне значення reCAPTCHA."
 
-#: google-captcha-pro.php:1208
+#: google-captcha-pro.php:1267
 msgid ""
 "More than one reCAPTCHA has been found in the current form. Please remove "
 "all unnecessary reCAPTCHA fields to make it work properly."
@@ -145,32 +171,32 @@ msgstr ""
 "В поточній формі знайдено більш ніж один блок reCAPTCHA. Будь-ласка видаліть "
 "усі зайві блоки reCAPTCHA для коректної подальшої роботи."
 
-#: google-captcha-pro.php:1210
+#: google-captcha-pro.php:1269
 msgid "reCAPTCHA v3 test failed"
 msgstr "Тест reCAPTCHA v3 не пройдений"
 
-#: google-captcha-pro.php:1262
+#: google-captcha-pro.php:1343
 msgid "Please submit \"Test verification\""
 msgstr "Будь ласка, натисніть кнопку \"Тестування перевірки\""
 
-#: google-captcha-pro.php:1264
+#: google-captcha-pro.php:1345
 msgid "Please complete the captcha and submit \"Test verification\""
 msgstr ""
 "Будь ласка, заповніть капчу і натисніть кнопку \"Тестування перевірки\""
 
-#: google-captcha-pro.php:1275
+#: google-captcha-pro.php:1355
 msgid "Test verification"
 msgstr "Тестування перевірки"
 
-#: google-captcha-pro.php:1301
+#: google-captcha-pro.php:1381
 msgid "The verification is successfully completed."
 msgstr "Перевірка завершена успішно."
 
-#: google-captcha-pro.php:1347
+#: google-captcha-pro.php:1427
 msgid "FAQ"
 msgstr "FAQ"
 
-#: google-captcha-pro.php:1348
+#: google-captcha-pro.php:1428
 msgid "Support"
 msgstr "Техпідтримка"
 
@@ -219,16 +245,16 @@ msgstr ""
 msgid "Enter secret key"
 msgstr "Введіть секретний ключ"
 
-#: includes/class-gglcptch-settings-tabs.php:180
+#: includes/class-gglcptch-settings-tabs.php:182
 msgid "Settings saved."
 msgstr "Налаштування збережені."
 
-#: includes/class-gglcptch-settings-tabs.php:198
-#: includes/class-gglcptch-settings-tabs.php:201
+#: includes/class-gglcptch-settings-tabs.php:200
+#: includes/class-gglcptch-settings-tabs.php:203
 msgid "Notice:"
 msgstr "Увага:"
 
-#: includes/class-gglcptch-settings-tabs.php:198
+#: includes/class-gglcptch-settings-tabs.php:200
 msgid ""
 "It is prohibited to view Google Captcha Pro settings on this site in the "
 "Google Captcha Pro network settings."
@@ -236,7 +262,7 @@ msgstr ""
 "Забороняється переглядати налаштування Google Captcha Pro на цьому сайті в "
 "мережевих налаштуваннях Google Captcha Pro."
 
-#: includes/class-gglcptch-settings-tabs.php:201
+#: includes/class-gglcptch-settings-tabs.php:203
 msgid ""
 "It is prohibited to change Google Captcha Pro settings on this site in the "
 "Google Captcha Pro network settings."
@@ -244,49 +270,49 @@ msgstr ""
 "Забороняється змінювати налаштування Google Captcha Pro на цьому сайті в "
 "мережевих налаштуваннях Google Captcha Pro."
 
-#: includes/class-gglcptch-settings-tabs.php:206
+#: includes/class-gglcptch-settings-tabs.php:208
 msgid "Apply network settings"
 msgstr "Застосувати мережеві настройки"
 
-#: includes/class-gglcptch-settings-tabs.php:209
+#: includes/class-gglcptch-settings-tabs.php:211
 msgid "Apply to all sites and use by default"
 msgstr "Застосувати для всіх сайтів і використовувати за замовчуванням"
 
-#: includes/class-gglcptch-settings-tabs.php:209
+#: includes/class-gglcptch-settings-tabs.php:211
 msgid "All current settings on separate sites will be replaced"
 msgstr "Всі поточні налаштування на окремих сайтах буде замінено"
 
-#: includes/class-gglcptch-settings-tabs.php:211
+#: includes/class-gglcptch-settings-tabs.php:213
 msgid "Allow changing the settings on separate websites"
 msgstr "Дозволити змінювати налаштування на окремих сайтах"
 
-#: includes/class-gglcptch-settings-tabs.php:212
+#: includes/class-gglcptch-settings-tabs.php:214
 msgid "Allow viewing the settings on separate websites"
 msgstr "Дозволити переглядати налаштування на окремих сайтах"
 
-#: includes/class-gglcptch-settings-tabs.php:214
+#: includes/class-gglcptch-settings-tabs.php:216
 msgid "By default"
 msgstr "За замовчуванням"
 
-#: includes/class-gglcptch-settings-tabs.php:214
+#: includes/class-gglcptch-settings-tabs.php:216
 msgid "Settings will be applied to newly added websites by default"
 msgstr ""
 "Налаштування будуть використовуватися за замовчуванням для знову доданих "
 "сайтів"
 
-#: includes/class-gglcptch-settings-tabs.php:215
+#: includes/class-gglcptch-settings-tabs.php:217
 msgid "Do not apply"
 msgstr "Не застосовувати"
 
-#: includes/class-gglcptch-settings-tabs.php:215
+#: includes/class-gglcptch-settings-tabs.php:217
 msgid "Change the settings on separate sites of the multisite only"
 msgstr "Змінювати налаштування тільки на окремих сайтах"
 
-#: includes/class-gglcptch-settings-tabs.php:221
+#: includes/class-gglcptch-settings-tabs.php:223
 msgid "Authentication"
 msgstr "Ідентифікація"
 
-#: includes/class-gglcptch-settings-tabs.php:222
+#: includes/class-gglcptch-settings-tabs.php:224
 msgid ""
 "Register your website with Google to get required API keys and enter them "
 "below."
@@ -294,70 +320,92 @@ msgstr ""
 "Зареєструйте свій веб-сайт за допомогою Google, щоб отримати необхідні API "
 "ключі та введіть їх нижче."
 
-#: includes/class-gglcptch-settings-tabs.php:222
+#: includes/class-gglcptch-settings-tabs.php:224
 msgid "Get the API Keys"
 msgstr "Отримати API ключі"
 
-#: includes/class-gglcptch-settings-tabs.php:239
+#: includes/class-gglcptch-settings-tabs.php:241
 msgid "Test reCAPTCHA"
 msgstr "Тестування reCAPTCHA"
 
-#: includes/class-gglcptch-settings-tabs.php:245
+#: includes/class-gglcptch-settings-tabs.php:247
 msgid "General"
 msgstr "Загальне"
 
-#: includes/class-gglcptch-settings-tabs.php:248
-msgid "Enable reCAPTCHA for"
-msgstr "Включити  reCAPTCHA для"
-
-#: includes/class-gglcptch-settings-tabs.php:290
-msgid "Hide reCAPTCHA for"
-msgstr "Сховати reCAPTCHA для"
-
-#: includes/class-gglcptch-settings-tabs.php:309
+#: includes/class-gglcptch-settings-tabs.php:250
 msgid "reCAPTCHA Version"
 msgstr "Версія reCAPTCHA"
 
-#: includes/class-gglcptch-settings-tabs.php:323
+#: includes/class-gglcptch-settings-tabs.php:263
+msgid "Enable reCAPTCHA for"
+msgstr "Включити  reCAPTCHA для"
+
+#: includes/class-gglcptch-settings-tabs.php:285
+msgid "This plugin has been closed for new installations."
+msgstr "Цей плагін недоступний для нових установок."
+
+#: includes/class-gglcptch-settings-tabs.php:309
+msgid "Hide reCAPTCHA for"
+msgstr "Сховати reCAPTCHA для"
+
+#: includes/class-gglcptch-settings-tabs.php:329
+msgid "Hide reCAPTCHA Badge"
+msgstr "Сховати значок reCAPTCHA"
+
+#: includes/class-gglcptch-settings-tabs.php:334
+msgid "Enable to hide reCAPTCHA Badge for Version 3 and Invisble reCAPTCHA."
+msgstr ""
+"Увімкніть, щоб приховати значок reCAPTCHA для версії 3 і Invisible reCAPTCHA."
+
+#: includes/class-gglcptch-settings-tabs.php:340
 msgid "Theme"
 msgstr "Тема"
 
-#: includes/class-gglcptch-settings-tabs.php:334
+#: includes/class-gglcptch-settings-tabs.php:344
+msgid "Light"
+msgstr "Свiтла"
+
+#: includes/class-gglcptch-settings-tabs.php:345
+msgid "Dark"
+msgstr "Темна"
+
+#: includes/class-gglcptch-settings-tabs.php:351
 msgid "Size"
 msgstr "Розмір"
 
-#: includes/class-gglcptch-settings-tabs.php:338
+#: includes/class-gglcptch-settings-tabs.php:355
 msgid "Normal"
 msgstr "Нормальний"
 
-#: includes/class-gglcptch-settings-tabs.php:340
+#: includes/class-gglcptch-settings-tabs.php:357
 msgid "Compact"
 msgstr "Компактний"
 
-#: includes/class-gglcptch-settings-tabs.php:346
+#: includes/class-gglcptch-settings-tabs.php:363
 msgid "Score"
 msgstr "Кількість очок"
 
-#: includes/class-gglcptch-settings-tabs.php:351
+#: includes/class-gglcptch-settings-tabs.php:368
 msgid "Set the minimum verification score from 0 to 1"
 msgstr ""
 "Вкажіть граничне значення, при якому перевірка буде пройдена від 0 до 1"
 
-#: includes/class-gglcptch-settings-tabs.php:355
+#: includes/class-gglcptch-settings-tabs.php:372
 msgid "Language"
 msgstr "Мова"
 
-#: includes/class-gglcptch-settings-tabs.php:371 includes/forms.php:179
-#: includes/forms.php:226
+#: includes/class-gglcptch-settings-tabs.php:388 includes/forms.php:199
+#: includes/forms.php:230 includes/forms.php:232 includes/forms.php:291
 msgid "Activate"
 msgstr "Активувати"
 
-#: includes/class-gglcptch-settings-tabs.php:374 includes/forms.php:181
-#: includes/forms.php:229 includes/forms.php:231 includes/forms.php:235
+#: includes/class-gglcptch-settings-tabs.php:391 includes/forms.php:201
+#: includes/forms.php:227 includes/forms.php:294 includes/forms.php:296
+#: includes/forms.php:300
 msgid "Install Now"
 msgstr "Встановити зараз"
 
-#: includes/class-gglcptch-settings-tabs.php:377
+#: includes/class-gglcptch-settings-tabs.php:394
 msgid ""
 "Enable to switch language automatically on multilingual website using "
 "Multilanguage plugin."
@@ -365,19 +413,19 @@ msgstr ""
 "Увімкніть, щоб перемкнути мову автоматично на багатомовному сайті, "
 "використовуючи плагін Multilanguage."
 
-#: includes/class-gglcptch-settings-tabs.php:382
+#: includes/class-gglcptch-settings-tabs.php:399
 msgid "Whitelist Notification"
 msgstr "Повідомлення про знаходження у білому списку"
 
-#: includes/class-gglcptch-settings-tabs.php:385
+#: includes/class-gglcptch-settings-tabs.php:402
 msgid "This message will be displayed instead of the reCAPTCHA."
 msgstr "Це повідомлення буде відображатися замість reCAPTCHA."
 
-#: includes/class-gglcptch-settings-tabs.php:389
-msgid "Disabled Submit Button"
-msgstr "Відключена кнопка підтвердження"
+#: includes/class-gglcptch-settings-tabs.php:406
+msgid "Advanced Protection"
+msgstr "Посилений захист"
 
-#: includes/class-gglcptch-settings-tabs.php:393
+#: includes/class-gglcptch-settings-tabs.php:410
 msgid ""
 "Enable to keep submit button disabled until reCAPTCHA is loaded (do not use "
 "this option if you see \"Failed to load Google reCAPTCHA\" message)."
@@ -386,7 +434,19 @@ msgstr ""
 "не буде завантажена reCAPTCHA (Не використовуйте цю опцію, якщо ви бачите "
 "повідомлення \"Не вдалося завантажити Google reCAPTCHA\")."
 
-#: includes/class-gglcptch-settings-tabs.php:408
+#: includes/class-gglcptch-settings-tabs.php:416
+msgid "Disabled Submit Button"
+msgstr "Відключена кнопка підтвердження"
+
+#: includes/class-gglcptch-settings-tabs.php:421
+msgid ""
+"Enable to keep submit button disabled until user passes the reCAPTCHA test "
+"(for Version 2)."
+msgstr ""
+"Увімкніть, щоб кнопка відправки залишалася відключеною до тих пір, поки "
+"користувач не пройде тест reCAPTCHA (для версії 2)."
+
+#: includes/class-gglcptch-settings-tabs.php:436
 msgid ""
 "reCAPTCHA version was changed. Please submit \"Test reCAPTCHA\" and "
 "regenerate Site and Secret keys if necessary."
@@ -394,149 +454,145 @@ msgstr ""
 "Версію reCAPTCHA було змінено. Будь ласка, натисніть \"Тестування reCAPTCHA"
 "\" та оновіть секретний ключ та ключ сайту, якщо це необхідно."
 
-#: includes/class-gglcptch-settings-tabs.php:421
+#: includes/class-gglcptch-settings-tabs.php:449
 msgid "Google Captcha Shortcode"
 msgstr "Шорткод Google Captcha"
 
-#: includes/class-gglcptch-settings-tabs.php:424
+#: includes/class-gglcptch-settings-tabs.php:452
 msgid ""
 "Add Google Captcha to your posts or pages using the following shortcode:"
 msgstr ""
 "Додайте Google Captcha до своїх постів або сторінок за допомогою такого "
 "шорткоду:"
 
-#: includes/deprecated.php:117
-msgid "the instruction"
-msgstr "інструкцією"
-
-#: includes/deprecated.php:126
-#, php-format
-msgid ""
-"Your site uses the function %1s from the %2s plugin that is deprecated since "
-"version %3s. Please replace it according to %4s. If you close this message "
-"it will appear in case if deprecated function would be called again."
-msgstr ""
-"На вашому сайті використовується застаріла функція %1s плагіна %2s починаючи "
-"з версії %3s. Будь ласка, замініть її згідно з %4s. Після закриття цього "
-"повідомлення, воно з'явиться знову в тому випадку, якщо функція буде знову "
-"викликана."
-
-#: includes/forms.php:11
+#: includes/forms.php:12
 msgid "Login form"
 msgstr "Форма логіну"
 
-#: includes/forms.php:12
+#: includes/forms.php:13
 msgid "Registration form"
 msgstr "Форма реєстрації"
 
-#: includes/forms.php:13
+#: includes/forms.php:14
 msgid "Reset password form"
 msgstr "Форма відновлення паролю"
 
-#: includes/forms.php:14
+#: includes/forms.php:15
 msgid "Comments form"
 msgstr "Форма коментарів"
 
-#: includes/forms.php:18
+#: includes/forms.php:19
 msgid "Jetpack Contact Form"
 msgstr "Контактна форма плагіна Jetpack"
 
-#: includes/forms.php:20
+#: includes/forms.php:21
 msgid "bbPress New Topic form"
 msgstr "Форма \"Нова тема\" плагіна bbPress"
 
-#: includes/forms.php:21
+#: includes/forms.php:22
 msgid "bbPress Reply form"
 msgstr "Форма \"Відповісти\" плагіна bbPress"
 
-#: includes/forms.php:22
+#: includes/forms.php:23
 msgid "BuddyPress Registration form"
 msgstr "Форма реєстрації плагіну BuddyPress"
 
-#: includes/forms.php:23
+#: includes/forms.php:24
 msgid "BuddyPress Comments form"
 msgstr "Форма коментарів плагіну BuddyPress"
 
-#: includes/forms.php:24
+#: includes/forms.php:25
 msgid "BuddyPress Add New Group form"
 msgstr "Форма \"Додати нову групу\" плагіна BuddyPress"
 
-#: includes/forms.php:25
+#: includes/forms.php:26
 msgid "WooCommerce Login form"
 msgstr "Форма логіну плагіну WooCommerce"
 
-#: includes/forms.php:26
+#: includes/forms.php:27
 msgid "WooCommerce Registration form"
 msgstr "Форма реєстрації плагіна WooCommerce"
 
-#: includes/forms.php:27
+#: includes/forms.php:28
 msgid "WooCommerce Reset password form"
 msgstr "Форма відновлення пароля плагіна WooCommerce"
 
-#: includes/forms.php:28
+#: includes/forms.php:29
 msgid "WooCommerce Checkout form"
 msgstr "Форма оформлення замовлення плагіна WooCommerce"
 
-#: includes/forms.php:29
+#: includes/forms.php:30
 msgid "wpForo Login form"
 msgstr "Форма логіна плагіна wpForo"
 
-#: includes/forms.php:30
+#: includes/forms.php:31
 msgid "wpForo Registration form"
 msgstr "Форма реєстрації плагина wpForo"
 
-#: includes/forms.php:31
+#: includes/forms.php:32
 msgid "wpForo New Topic form"
 msgstr "Форма нової теми плагіна wpForo"
 
-#: includes/forms.php:32
+#: includes/forms.php:33
 msgid "wpForo Reply form"
 msgstr "Форма відповіді плагина wpForo"
 
-#: includes/forms.php:33
+#: includes/forms.php:34
 msgid "MailChimp for Wordpress"
 msgstr "MailChimp for Wordpress"
 
-#: includes/forms.php:34
+#: includes/forms.php:35
 msgid "Testimonials"
 msgstr "Testimonials"
 
-#: includes/forms.php:56
+#: includes/forms.php:36
+msgid "Ninja Forms"
+msgstr "Ninja Forms"
+
+#: includes/forms.php:37
+msgid "Divi Contact Form"
+msgstr "Контактна форма плагіна Divi"
+
+#: includes/forms.php:38
+msgid "Divi Login Forms"
+msgstr "Форми входу плагіна Divi"
+
+#: includes/forms.php:60
 msgid "WordPress default"
 msgstr "Стандартних форм WordPress"
 
-#: includes/forms.php:65
+#: includes/forms.php:69
 msgid "External Plugins"
 msgstr "Зовнішні плагіни"
 
-#: includes/forms.php:113
+#: includes/forms.php:125
 msgid "Custom Forms"
 msgstr "Користувацькі форми"
 
-#: includes/forms.php:133
+#: includes/forms.php:145
 msgid "Google Captcha Plugin"
 msgstr "Плагін Google Captcha"
 
-#: includes/forms.php:176
+#: includes/forms.php:195
 msgid "BuddyPress works only with single site or main domain"
 msgstr ""
 "Плагін BuddyPress працює тільки на одиночному сайті або головному підсайті"
 
-#: includes/forms.php:211
+#: includes/forms.php:276
 #, php-format
 msgid "Update %s at least up to %s"
 msgstr "Оновіть %s як мінімум до версії %s"
 
-#: includes/forms.php:218
+#: includes/forms.php:283
 #, php-format
 msgid "%1$s %2$s requires WordPress %3$s or higher."
 msgstr "%1$s %2$s вимагає версію WordPress %3$s або вище."
 
-#: includes/forms.php:536
+#: includes/forms.php:580
 msgid "Authentication failed."
 msgstr "Помилка аутентифікації."
 
-#: includes/forms.php:627
+#: includes/forms.php:674
 msgid "Click the BACK button on your browser and try again."
 msgstr "Натисніть кнопку НАЗАД у браузері та спробуйте ще раз."
 
@@ -688,6 +744,23 @@ msgstr "Результати пошуку для"
 #: includes/whitelist.php:433
 msgid "No changes was made for"
 msgstr "Ніякиз змін не було виконано для"
+
+#~ msgid "Divi Theme Contact Form"
+#~ msgstr "Контактна форма теми Divi Theme"
+
+#~ msgid "the instruction"
+#~ msgstr "інструкцією"
+
+#~ msgid ""
+#~ "Your site uses the function %1s from the %2s plugin that is deprecated "
+#~ "since version %3s. Please replace it according to %4s. If you close this "
+#~ "message it will appear in case if deprecated function would be called "
+#~ "again."
+#~ msgstr ""
+#~ "На вашому сайті використовується застаріла функція %1s плагіна %2s "
+#~ "починаючи з версії %3s. Будь ласка, замініть її згідно з %4s. Після "
+#~ "закриття цього повідомлення, воно з'явиться знову в тому випадку, якщо "
+#~ "функція буде знову викликана."
 
 #~ msgid ""
 #~ "Only one reCAPTCHA can be displayed on the page, it's related to "
@@ -1005,9 +1078,6 @@ msgstr "Ніякиз змін не було виконано для"
 #~ msgstr ""
 #~ "Налаштування плагіну змінено. Щоб зберегти їх, будь ласка, не забудьте "
 #~ "клікнути 'Зберегти зміни'."
-
-#~ msgid "Contact form"
-#~ msgstr "Контактна форма"
 
 #~ msgid "Activate contact form"
 #~ msgstr "Активувати контактну форму"

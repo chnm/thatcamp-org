@@ -3,9 +3,10 @@
  * Contains the extending functionality
  * @since 1.32
  */
+
 if ( ! function_exists( 'gglcptch_get_forms' ) ) {
 	function gglcptch_get_forms() {
-		global $gglcptch_options, $gglcptch_forms;
+		global $gglcptch_forms;
 
 		$default_forms = array(
 			'login_form'				=> array( 'form_name' => __( 'Login form', 'google-captcha-pro' ) ),
@@ -31,7 +32,10 @@ if ( ! function_exists( 'gglcptch_get_forms' ) ) {
 			'wpforo_new_topic_form'		=> array( 'form_name' => __( 'wpForo New Topic form', 'google-captcha-pro' ) ),
 			'wpforo_reply_form'			=> array( 'form_name' => __( 'wpForo Reply form', 'google-captcha-pro') ),
 			'mailchimp'					=> array( 'form_name' => __( 'MailChimp for Wordpress', 'google-captcha-pro' ) ),
-			'testimonials'				=> array( 'form_name' => __( 'Testimonials', 'google-captcha-pro' ) )
+			'testimonials'				=> array( 'form_name' => __( 'Testimonials', 'google-captcha-pro' ) ),
+            'ninja_form'				=> array( 'form_name' => __( 'Ninja Forms', 'google-captcha-pro' ) ),
+			'divi_contact_form'			=> array( 'form_name' => __( 'Divi Contact Form', 'google-captcha-pro' ) ),
+			'divi_login'				=> array( 'form_name' => __( 'Divi Login Form', 'google-captcha-pro' ) ),
 		);
 
 		$custom_forms = apply_filters( 'gglcptch_add_custom_form', array() );
@@ -66,18 +70,21 @@ if ( ! function_exists( 'gglcptch_get_sections' ) ) {
 				'forms' => array(
 					'contact_form',
 					'cf7',
-					'si_contact_form',
+					'ninja_form',
 					'jetpack_contact_form',
-					'sbscrbr',
 					'mailchimp',
-					'testimonials'
+					'sbscrbr',
+					'testimonials',
+					'si_contact_form',
 				)
 			),
-			'bbpress' => array(
-				'name' => 'bbPress',
+			'woocommerce' => array(
+				'name' => 'WooCommerce',
 				'forms' => array(
-					'bbpress_new_topic_form',
-					'bbpress_reply_form'
+					'woocommerce_login',
+					'woocommerce_register',
+					'woocommerce_lost_password',
+					'woocommerce_checkout'
 				)
 			),
 			'buddypress' => array(
@@ -88,13 +95,18 @@ if ( ! function_exists( 'gglcptch_get_sections' ) ) {
 					'buddypress_group'
 				)
 			),
-			'woocommerce' => array(
-				'name' => 'WooCommerce',
+			'divi' => array(
+				'name' => 'Divi',
 				'forms' => array(
-					'woocommerce_login',
-					'woocommerce_register',
-					'woocommerce_lost_password',
-					'woocommerce_checkout'
+					'divi_contact_form',
+					'divi_login'
+				)
+			),
+			'bbpress' => array(
+				'name' => 'bbPress',
+				'forms' => array(
+					'bbpress_new_topic_form',
+					'bbpress_reply_form'
 				)
 			),
 			'wpforo' => array(
@@ -155,35 +167,90 @@ if ( ! function_exists( 'gglcptch_add_lmtttmpts_forms' ) ) {
 if ( ! function_exists( 'gglcptch_get_section_notice' ) ) {
 	function gglcptch_get_section_notice( $section_slug = '' ) {
 		$section_notice = "";
-		$plugins = array(
-			'bbpress'			=> 'bbpress/bbpress.php',
-			'buddypress'		=> 'buddypress/bp-loader.php',
-			'woocommerce'		=> 'woocommerce/woocommerce.php',
-			'wpforo'			=> 'wpforo/wpforo.php'
-		);
 
+		$theme_all = wp_get_themes();
+
+		$plugins = array(
+			'bbpress'				  => 'bbpress/bbpress.php',
+			'buddypress'		  	  => 'buddypress/bp-loader.php',
+			'woocommerce'		  	  => 'woocommerce/woocommerce.php',
+			'wpforo'				  => 'wpforo/wpforo.php',
+			'divi_plugin'			  => 'divi-builder/divi-builder.php',
+			'divi'					  => ''
+		);
 		$is_network_admin = is_network_admin();
 
 		if ( isset( $plugins[ $section_slug ] ) ) {
 			$slug = explode( '/', $plugins[ $section_slug ] );
 			$slug = $slug[0];
 			$plugin_info = gglcptch_plugin_status( $plugins[ $section_slug ], get_plugins(), $is_network_admin );
+
+			$cur_theme_name = gglcptch_current_theme_name();
+
+			/* Checking for plugins */
 			if ( 'activated' == $plugin_info['status'] ) {
 				/* check required conditions */
-
 				/* BuddyPress works only with single site or main domain */
 				if ( 'buddypress' == $section_slug && ! ( is_main_site() || $is_network_admin ) ) {
 					$section_notice = __( 'BuddyPress works only with single site or main domain', 'google-captcha-pro' );
 				}
+				$plugin_info['status']  = 'activated';
 			} elseif ( 'deactivated' == $plugin_info['status'] ) {
-				$section_notice = '<a href="' . self_admin_url( 'plugins.php' ) . '">' . __( 'Activate', 'google-captcha-pro' ) . '</a>';
+					$section_notice = '<a href="' . self_admin_url( 'plugins.php' ) . '">' . __( 'Activate', 'google-captcha-pro' ) . '</a>';
 			} elseif ( 'not_installed' == $plugin_info['status'] ) {
-				$section_notice = sprintf( '<a href="http://wordpress.org/plugins/%s/" target="_blank">%s</a>', $slug, __( 'Install Now', 'google-captcha-pro' ) );
+					$section_notice = sprintf( '<a href="http://wordpress.org/plugins/%s/" target="_blank">%s</a>', $slug, __( 'Install Now', 'google-captcha-pro' ) );
+			}
+
+			/* Checking for Divi */
+			$is_divi_theme_isset =  false;
+
+			foreach ( $theme_all as $theme ) {
+				if ( 'Divi' == $theme->get( 'Name' ) ) {
+
+					$is_divi_theme_isset = true;
+					break;
+                }
+            }
+
+			$is_divi_theme_active = ( 'Divi' == $cur_theme_name );
+
+			$is_divi_plugin_isset = file_exists( WP_PLUGIN_DIR . '/divi-builder/divi-builder.php' );
+			$is_divi_plugin_active = is_plugin_active( 'divi-builder/divi-builder.php' );
+
+            /* plugin and theme isset but not active */
+			$is_divi_plugin_isset_not_active = ( $is_divi_plugin_isset && ! $is_divi_plugin_active );
+			$is_divi_theme_isset_not_active = ( $is_divi_theme_isset && ! $is_divi_theme_active );
+
+			if ( 'divi' == $section_slug ) {
+
+			    if ( ! $is_divi_theme_isset && ! $is_divi_plugin_isset ) {
+				    $section_notice = sprintf( '<a href="https://www.elegantthemes.com/join/" target="_blank">%s</a>', __( 'Install Now', 'google-captcha-pro' ) );
+                    /* the theme has more priority */
+			    } else if ( $is_divi_theme_isset_not_active && ( ! $is_divi_plugin_isset || $is_divi_plugin_isset_not_active ) ) {
+				    $section_notice = '<a href="' . self_admin_url( 'themes.php' ) . '">' . __( 'Activate', 'google-captcha-pro' ) . '</a>';
+                } else if ( $is_divi_plugin_isset_not_active && ! $is_divi_theme_isset ) {
+				    $section_notice = '<a href="' . self_admin_url( 'plugins.php' ) . '">' . __( 'Activate', 'google-captcha-pro' ) . '</a>';
+                } else {
+				    $section_notice = '';
+                }
 			}
 		}
 
 		return apply_filters( 'gglcptch_section_notice', $section_notice, $section_slug );
 	}
+}
+
+if ( ! function_exists( 'gglcptch_current_theme_name' ) ) {
+	function gglcptch_current_theme_name() {
+
+		$cur_theme_uri = get_template_directory_uri();
+		$cur_theme_uri_chapters = explode( '/', $cur_theme_uri );
+
+		$parent_theme_folder = array_pop($cur_theme_uri_chapters);
+		$parent_theme_obj = wp_get_theme( $parent_theme_folder );
+
+		return $parent_theme_obj->get('Name');
+    }
 }
 
 if ( ! function_exists( 'gglcptch_get_form_notice' ) ) {
@@ -199,6 +266,7 @@ if ( ! function_exists( 'gglcptch_get_form_notice' ) ) {
 			'jetpack_contact_form'	=> 'jetpack/jetpack.php',
 			'mailchimp'				=> 'mailchimp-for-wp/mailchimp-for-wp.php',
 			'testimonials'			=> 'bws-testimonials/bws-testimonials.php',
+            'ninja_form'			=> 'ninja-forms/ninja-forms.php',
 		);
 
 		if ( isset( $plugins[ $form_slug ] ) ) {
@@ -206,16 +274,16 @@ if ( ! function_exists( 'gglcptch_get_form_notice' ) ) {
 
 			if ( 'activated' == $plugin_info['status'] ) {
 				/* check required conditions */
-				if ( 'cf7' == $form_slug ) {
-					if ( version_compare( $plugin_info['plugin_info']['Version'], '3.4', '<' ) ) {
-						$form_notice = '<a href="' . self_admin_url( 'plugins.php' ) . '">' . sprintf( __( 'Update %s at least up to %s', 'google-captcha-pro' ), 'Contact Form 7', 'v3.4' ) . '</a>';
+				if ('cf7' == $form_slug) {
+					if (version_compare($plugin_info['plugin_info']['Version'], '3.4', '<')) {
+						$form_notice = '<a href="' . self_admin_url('plugins.php') . '">' . sprintf(__('Update %s at least up to %s', 'google-captcha-pro'), 'Contact Form 7', 'v3.4') . '</a>';
 					} elseif (
-						defined( 'WPCF7_VERSION' ) &&
-						defined( 'WPCF7_REQUIRED_WP_VERSION' ) &&
-						version_compare( $wp_version, WPCF7_REQUIRED_WP_VERSION, '<' )
+						defined('WPCF7_VERSION') &&
+						defined('WPCF7_REQUIRED_WP_VERSION') &&
+						version_compare($wp_version, WPCF7_REQUIRED_WP_VERSION, '<')
 					) {
 						$form_notice = sprintf(
-							__( '%1$s %2$s requires WordPress %3$s or higher.', 'google-captcha-pro' ),
+							__('%1$s %2$s requires WordPress %3$s or higher.', 'google-captcha-pro'),
 							'Contact Form 7',
 							WPCF7_VERSION,
 							WPCF7_REQUIRED_WP_VERSION
@@ -242,45 +310,35 @@ if ( ! function_exists( 'gglcptch_get_form_notice' ) ) {
 
 if ( ! function_exists( 'gglcptch_add_pro_actions' ) ) {
 	function gglcptch_add_pro_actions() {
-		global $gglcptch_options, $wp_version, $gglcptch_ip_in_whitelist;
+		global $gglcptch_options, $wp_version;
 
 		$is_user_logged_in = is_user_logged_in();
 
 		if ( ! empty( $gglcptch_options['login_form'] ) || ! empty( $gglcptch_options['reset_pwd_form'] ) || ! empty( $gglcptch_options['registration_form'] ) ) {
-			add_action( 'login_enqueue_scripts', 'gglcptch_add_styles' );
 
 			if ( ! ( function_exists( 'is_wpforo_page' ) && is_wpforo_page() ) ) {
 				if ( gglcptch_is_recaptcha_required( 'login_form', $is_user_logged_in ) ) {
 					add_action( 'login_form', 'gglcptch_login_display' );
 					add_action( 'bp_login_widget_form', 'gglcptch_buddypress_login_widget' );
-					if ( ! $gglcptch_ip_in_whitelist ) {
-						add_action( 'authenticate', 'gglcptch_login_check', 21, 1 );
-					}
+					add_action( 'authenticate', 'gglcptch_login_check', 21, 1 );
 				}
 
 				if ( gglcptch_is_recaptcha_required( 'registration_form', $is_user_logged_in ) ) {
 					if ( ! is_multisite() ) {
 						add_action( 'register_form', 'gglcptch_login_display', 99 );
 						add_action( 'woocommerce_register_form_start', 'gglcptch_woocommerce_remove_register_action' );
-						if ( ! $gglcptch_ip_in_whitelist ) {
-							add_action( 'registration_errors', 'gglcptch_register_check', 10, 1 );
-						}
+						add_action( 'registration_errors', 'gglcptch_register_check', 10, 1 );
 					} else {
 						add_action( 'signup_extra_fields', 'gglcptch_signup_display' );
 						add_action( 'signup_blogform', 'gglcptch_signup_display' );
-						if ( ! $gglcptch_ip_in_whitelist ) {
-							add_filter( 'wpmu_validate_user_signup', 'gglcptch_signup_check', 10, 3 );
-						}
+						add_filter( 'wpmu_validate_user_signup', 'gglcptch_signup_check', 10, 3 );
 					}
 				}
 			}
 
 			if ( gglcptch_is_recaptcha_required( 'reset_pwd_form', $is_user_logged_in ) ) {
 				add_action( 'lostpassword_form', 'gglcptch_login_display' );
-
-				if ( ! $gglcptch_ip_in_whitelist ) {
-					add_action( 'allow_password_reset', 'gglcptch_lostpassword_check' );
-				}
+				add_action( 'allow_password_reset', 'gglcptch_lostpassword_check' );
 			}
 		}
 
@@ -288,25 +346,24 @@ if ( ! function_exists( 'gglcptch_add_pro_actions' ) ) {
 		if ( gglcptch_is_recaptcha_required( 'comments_form', $is_user_logged_in ) ) {
 			add_action( 'comment_form_after_fields', 'gglcptch_commentform_display' );
 			add_action( 'comment_form_logged_in_after', 'gglcptch_commentform_display' );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_action( 'pre_comment_on_post', 'gglcptch_commentform_check' );
-			}
+			add_action( 'pre_comment_on_post', 'gglcptch_commentform_check' );
 		}
 
 		/* Add Google Captcha to Contact Form by BestWebSoft */
 		if ( gglcptch_is_recaptcha_required( 'contact_form', $is_user_logged_in ) ) {
 			add_filter( 'cntctfrm_display_captcha', 'gglcptch_display', 10, 1 );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_filter( 'cntctfrm_check_form', 'gglcptch_contact_form_check' );
-			}
+			add_filter( 'cntctfrm_check_form', 'gglcptch_contact_form_check' );
+		}
+
+		/* Add Google Captcha to Testimonials by BestWebSoft */
+		if ( gglcptch_is_recaptcha_required( 'testimonials', $is_user_logged_in ) ) {
+			add_filter( 'tstmnls_display_recaptcha', 'gglcptch_display', 10, 0 );
 		}
 
 		/* Add Google Captcha to Mailchimp for WordPress */
 		if ( gglcptch_is_recaptcha_required( 'mailchimp', $is_user_logged_in ) ) {
 			add_filter( 'mc4wp_form_content', 'gglcptch_mailchimp_display', 20, 3 );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_filter( 'mc4wp_valid_form_request', 'gglcptch_mailchimp_check', 10, 2 );
-			}
+			add_filter( 'mc4wp_valid_form_request', 'gglcptch_mailchimp_check', 10, 2 );
 		}
 
 		/* Add Google Captcha to Contact Form 7 */
@@ -318,64 +375,56 @@ if ( ! function_exists( 'gglcptch_add_pro_actions' ) ) {
 			require_once( dirname( dirname( __FILE__ ) ) . '/captcha_for_cf7.php' );
 			/* add shortcode handler */
 			wpcf7_add_shortcode_bws_google_captcha_pro();
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				/* validation for captcha */
-				add_filter( 'wpcf7_validate_bwsgooglecaptcha', 'wpcf7_bws_google_captcha_pro_validation_filter', 10, 2 );
-				/* add messages for Captha errors */
-				add_filter( 'wpcf7_messages', 'wpcf7_bws_google_captcha_pro_messages' );
-			}
+			/* validation for captcha */
+            add_filter( 'wpcf7_validate_bwsgooglecaptcha', 'wpcf7_bws_google_captcha_pro_validation_filter', 10, 2 );
+            /* add messages for Captha errors */
+            add_filter( 'wpcf7_messages', 'wpcf7_bws_google_captcha_pro_messages' );
 		}
 
 		/* Add Google Captcha to Subscriber by BestWebSoft */
 		if ( gglcptch_is_recaptcha_required( 'sbscrbr', $is_user_logged_in ) ) {
 			add_filter( 'sbscrbr_add_field', 'gglcptch_display', 10, 0 );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_filter( 'sbscrbr_check', 'gglcptch_susbscriber_check' );
-			}
+			add_filter( 'sbscrbr_check', 'gglcptch_susbscriber_check' );
 		}
 
 		/* Add captcha to BuddyPress registration form */
 		if ( gglcptch_is_recaptcha_required( 'buddypress_register', $is_user_logged_in ) ) {
 			add_action( 'bp_before_registration_submit_buttons', 'gglcptch_buddypress_register_display' );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				if ( ! ( ! empty( $gglcptch_options['registration_form'] ) && is_multisite() ) )
-				add_action( 'bp_signup_validate', 'gglcptch_buddypress_register_check' );
+			if ( ! ( ! empty( $gglcptch_options['registration_form'] ) && is_multisite() ) ){
+			    add_action( 'bp_signup_validate', 'gglcptch_buddypress_register_check' );
 			}
 		}
 
 		/* Add captcha to BuddyPress comments form */
 		if ( gglcptch_is_recaptcha_required( 'buddypress_comments', $is_user_logged_in ) ) {
+
 			add_action( 'bp_activity_entry_comments', 'gglcptch_buddypress_comments_display' );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_action( 'bp_activity_before_save', 'gglcptch_buddypress_comments_check' );
-			}
+			add_action( 'bp_activity_before_save', 'gglcptch_buddypress_comments_check' );
+
+			/* nouveau template */
+			$bp_template_name = bp_get_theme_package_id();
+
+            if ( 'nouveau' === $bp_template_name ) {
+	            gglcptch_buddypress_nouveau();
+            }
 		}
 
 		/* Add captcha to BuddyPress add group form */
 		if ( gglcptch_is_recaptcha_required( 'buddypress_group', $is_user_logged_in ) ) {
 			add_action( 'bp_after_group_details_creation_step', 'gglcptch_buddypress_create_group_display' );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_action( 'groups_group_before_save', 'gglcptch_buddypress_create_group_check' );
-			}
+			add_action( 'groups_group_before_save', 'gglcptch_buddypress_create_group_check' );
 		}
 
 		/* Add Google Captcha to WooCommerce Login Form */
 		if ( gglcptch_is_recaptcha_required( 'woocommerce_login', $is_user_logged_in ) ) {
 			add_action( 'woocommerce_login_form', 'gglcptch_echo_recaptcha', 10, 0 );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_filter( 'woocommerce_process_login_errors', 'gglcptch_woocommerce_login_check' );
-			}
+			add_filter( 'woocommerce_process_login_errors', 'gglcptch_woocommerce_login_check' );
 		}
 
 		/* Add Google Captcha to WooCommerce Register Form */
 		if ( gglcptch_is_recaptcha_required( 'woocommerce_register', $is_user_logged_in ) ) {
-			if ( 1 == $gglcptch_options['registration_form'] ) {
-
-			}
 			add_action( 'woocommerce_register_form', 'gglcptch_echo_recaptcha', 10, 0 );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_filter( 'woocommerce_process_registration_errors', 'gglcptch_woocommerce_register_check' );
-			}
+			add_filter( 'woocommerce_process_registration_errors', 'gglcptch_woocommerce_register_check' );
 		}
 
 		/* Add Google Captcha to WooCommerce Lost Password Form */
@@ -384,26 +433,19 @@ if ( ! function_exists( 'gglcptch_add_pro_actions' ) ) {
 			if ( ! empty( $gglcptch_options['reset_pwd_form'] ) ) {
 				add_action( 'woocommerce_lostpassword_form_start', 'gglcptch_woocommerce_remove_lostpassword_action' );
 			}
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_filter( 'allow_password_reset', 'gglcptch_woocommerce_allow_password_reset', 9 );
-			}
+			add_filter( 'allow_password_reset', 'gglcptch_woocommerce_allow_password_reset', 9 );
 		}
 
 		/* Add Google Captcha to WooCommerce Checkout Billing Form */
 		if ( gglcptch_is_recaptcha_required( 'woocommerce_checkout', $is_user_logged_in ) ) {
 			add_action( 'woocommerce_after_checkout_billing_form', 'gglcptch_echo_recaptcha', 10, 0 );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_action( 'woocommerce_checkout_process', 'gglcptch_woocommerce_checkout_process' );
-			}
+			add_action( 'woocommerce_checkout_process', 'gglcptch_woocommerce_checkout_process' );
 		}
 
 		/* Fast Secure Contact Form */
 		if ( gglcptch_is_recaptcha_required( 'si_contact_form', $is_user_logged_in ) ) {
 			add_filter( 'si_contact_display_after_fields', 'gglcptch_si_cf_display', 10, 3 );
-
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_filter( 'si_contact_form_validate', 'gglcptch_si_cf_check', 10, 1 );
-			}
+			add_filter( 'si_contact_form_validate', 'gglcptch_si_cf_check', 10, 1 );
 		}
 
 		/* jetpack contact form*/
@@ -412,24 +454,18 @@ if ( ! function_exists( 'gglcptch_add_pro_actions' ) ) {
 			add_filter( 'widget_text', 'gglcptch_jetpack_cf_display', 0 );
 			add_filter( 'widget_text', 'shortcode_unautop' );
 			add_filter( 'widget_text', 'do_shortcode' );
-			if ( ! $gglcptch_ip_in_whitelist ) {
-				add_filter( 'jetpack_contact_form_is_spam', 'gglcptch_jetpack_cf_check' );
-			}
+			add_filter( 'jetpack_contact_form_is_spam', 'gglcptch_jetpack_cf_check' );
 		}
 
 		/* bbPress New Topic, Reply to Topic*/
 		if( class_exists( 'bbPress' ) ) {
 			if ( gglcptch_is_recaptcha_required( 'bbpress_new_topic_form', $is_user_logged_in ) ) {
 				add_action( 'bbp_theme_after_topic_form_content', 'gglcptch_echo_recaptcha', 10, 0 );
-				if ( ! $gglcptch_ip_in_whitelist ) {
-					add_action( 'bbp_new_topic_pre_extras', 'gglcptch_bbpress_topic_check' );
-				}
+				add_action( 'bbp_new_topic_pre_extras', 'gglcptch_bbpress_topic_check' );
 			}
 			if ( gglcptch_is_recaptcha_required( 'bbpress_reply_form', $is_user_logged_in ) ) {
 				add_action( 'bbp_theme_after_reply_form_content', 'gglcptch_echo_recaptcha', 10, 0 );
-				if ( ! $gglcptch_ip_in_whitelist ) {
-					add_action( 'bbp_new_reply_pre_extras', 'gglcptch_bbpress_reply_check' );
-				}
+				add_action( 'bbp_new_reply_pre_extras', 'gglcptch_bbpress_reply_check' );
 			}
 		}
 
@@ -437,38 +473,50 @@ if ( ! function_exists( 'gglcptch_add_pro_actions' ) ) {
 		if ( function_exists( 'is_wpforo_page' ) && is_wpforo_page() ) {
 			if ( gglcptch_is_recaptcha_required( 'wpforo_login_form', $is_user_logged_in ) ) {
 				add_action( 'login_form', 'gglcptch_login_display' );
-				if ( ! $gglcptch_ip_in_whitelist ) {
-					add_action( 'authenticate', 'gglcptch_wpforo_login_check', 21, 1 );
-				}
+				add_action( 'authenticate', 'gglcptch_wpforo_login_check', 21, 1 );
 			}
 
 			if ( gglcptch_is_recaptcha_required( 'wpforo_register_form', $is_user_logged_in ) ) {
 				if ( ! is_multisite() ) {
 					add_action( 'register_form', 'gglcptch_login_display', 99 );
-					if ( ! $gglcptch_ip_in_whitelist ) {
-						add_action( 'registration_errors', 'gglcptch_wpforo_register_check', 10, 1 );
-					}
+					add_action( 'registration_errors', 'gglcptch_wpforo_register_check', 10, 1 );
 				} else {
 					add_action( 'signup_extra_fields', 'gglcptch_signup_display' );
 					add_action( 'signup_blogform', 'gglcptch_signup_display' );
-					if ( ! $gglcptch_ip_in_whitelist ) {
-						add_filter( 'wpmu_validate_user_signup', 'gglcptch_signup_check', 10, 3 );
-					}
+					add_filter( 'wpmu_validate_user_signup', 'gglcptch_signup_check', 10, 3 );
 				}
 			}
 
 			if ( gglcptch_is_recaptcha_required( 'wpforo_new_topic_form', $is_user_logged_in ) ) {
 				add_action( 'wpforo_topic_form_buttons_hook', 'gglcptch_echo_recaptcha', 99, 0 );
-				if ( ! $gglcptch_ip_in_whitelist ) {
-					add_filter( 'wpforo_add_topic_data_filter', 'gglcptch_wpfpro_topic_check', 10, 1 );
-				}
+				add_filter( 'wpforo_add_topic_data_filter', 'gglcptch_wpfpro_topic_check', 10, 1 );
 			}
 
 			if ( gglcptch_is_recaptcha_required( 'wpforo_reply_form', $is_user_logged_in ) ) {
 				add_action( 'wpforo_reply_form_buttons_hook', 'gglcptch_echo_recaptcha', 99, 0 );
-				if ( ! $gglcptch_ip_in_whitelist ) {
-					add_filter( 'wpforo_add_post_data_filter', 'gglcptch_wpfpro_reply_check', 10, 1 );
-				}
+				add_filter( 'wpforo_add_post_data_filter', 'gglcptch_wpfpro_reply_check', 10, 1 );
+			}
+		}
+
+		$cur_theme_name = gglcptch_current_theme_name();
+
+		/* is active theme or plugin */
+		$is_divi_theme_active = ( 'Divi' == $cur_theme_name );
+		$is_divi_plugin_active = is_plugin_active( 'divi-builder/divi-builder.php' );
+
+		/* is active contact form */
+		$is_active_contact_form = gglcptch_is_recaptcha_required( 'divi_contact_form', $is_user_logged_in );
+
+		if ( $is_divi_theme_active || $is_divi_plugin_active ) {
+
+			if ( $is_active_contact_form ) {
+                /* hide default divi captcha */
+                add_filter( 'et_pb_module_shortcode_attributes', 'gglcptch_get_this_et_fb_divi', 10, 5);
+                add_filter( 'et_module_shortcode_output', 'gglcptch_get_forms_et_fb_divi', 10, 2 );
+			}
+
+			if ( gglcptch_is_recaptcha_required( 'divi_login', $is_user_logged_in ) ) {
+				add_filter( 'et_module_shortcode_output', 'gglcptch_get_forms_et_fb_divi_login', 10, 2);
 			}
 		}
 	}
@@ -551,9 +599,12 @@ if ( ! function_exists( 'gglcptch_login_check' ) ) {
 if ( ! function_exists( 'gglcptch_register_check' ) ) {
 	function gglcptch_register_check( $allow ) {
 		global $gglcptch_check;
+
 		if ( gglcptch_is_woocommerce_page() )
 			return $allow;
+
 		$gglcptch_check = gglcptch_check( 'registration_form' );
+
 		if ( ! $gglcptch_check['response'] ) {
 			return $gglcptch_check['errors'];
 		}
@@ -720,8 +771,11 @@ if ( ! function_exists( 'gglcptch_add_buddypress_script' ) ) {
 		$bp_plugin_info = get_plugin_data( dirname( dirname( dirname( __FILE__ ) ) ) . "/buddypress/bp-loader.php" );
 
 		if ( ! wp_script_is( 'gglcptch_buddypress', 'registered' ) ) {
-			$file_version   = isset( $bp_plugin_info ) && $bp_plugin_info["Version"] < '2.1' ? '_before_2.1' : '' ;
-			wp_register_script( 'gglcptch_buddypress', plugins_url( "js/bp_script{$file_version}.js" , dirname( __FILE__ ) ), array( 'gglcptch_script' ), $gglcptch_plugin_info['Version'], true );
+
+		    $bp_template_name = bp_get_theme_package_id(); // get current buddypress template name
+			$file_version   = isset( $bp_plugin_info ) && $bp_plugin_info["Version"] < '2.1' ? 'before_2.1' : $bp_template_name ;
+
+			wp_register_script( 'gglcptch_buddypress', plugins_url( "js/bp_script_{$file_version}.js" , dirname( __FILE__ ) ), array( 'gglcptch_script' ), $gglcptch_plugin_info['Version'], true );
 		}
 	}
 }
@@ -776,13 +830,19 @@ if ( ! function_exists( 'gglcptch_buddypress_comments_display' ) ) {
 if ( ! function_exists( 'gglcptch_buddypress_comments_check' ) ) {
 	function gglcptch_buddypress_comments_check( $bp_activity ) {
 		global $gglcptch_check;
-		if ( 'activity_comment' != $bp_activity->type )
+
+		if ( 'activity_comment' != $bp_activity->type ) {
 			return $bp_activity;
+        }
+
 		$gglcptch_check = gglcptch_check( 'buddypress_comments' );
+
 		if ( ! $gglcptch_check['response'] ) {
 			$error_message = implode( "\n", $gglcptch_check['errors']->get_error_messages() );
 			$bp_activity->errors->add( 'gglcptch_error', $error_message );
+			$bp_activity->error_type = 'wp_error';
 		}
+
 	return $bp_activity;
 	}
 }
@@ -1096,4 +1156,52 @@ if ( ! function_exists( 'gglcptch_wpfpro_reply_check' ) ) {
 		}
 		return $data;
 	}
-} /* end function gglcptch_wpfpro_reply_check */
+}
+
+/* compatibility with divi */
+if ( ! function_exists( 'gglcptch_get_forms_et_fb_divi' ) ) {
+	function gglcptch_get_forms_et_fb_divi( $output, $render_slug ) {
+
+		if ( $render_slug == 'et_pb_contact_form' ) {
+
+			if ( ! empty( $output ) ) {
+
+			    $search = '<div class="et_contact_bottom_container">';
+			    $replace = '<div class="gglcptch_et_pb_contact_field_half et_pb_contact_field_last">' . gglcptch_display() . '</div>' . $search;
+
+				$output = str_replace( $search, $replace, $output );
+			}
+		}
+
+		return $output;
+	}
+}
+
+if ( ! function_exists( 'gglcptch_get_forms_et_fb_divi_login' ) ) {
+	function gglcptch_get_forms_et_fb_divi_login( $output, $render_slug ) {
+
+		if ( $render_slug == 'et_pb_login' && ! is_user_logged_in() ) {
+
+			if ( ! isset( $_REQUEST['et_post_id'] ) ) {
+
+				$search = '<button type="submit" class="et_pb_newsletter_button';
+				$replace = '<div class="gglcptch_et_pb_contact_field_half gglcptch_et_pb_contact_login"><p class="gglcptch_et_pb_login_message"></p>' . gglcptch_display() . '</div>' . $search;
+
+				$output = str_replace( $search, $replace, $output );
+			}
+		}
+
+		return $output;
+	}
+}
+
+if ( ! function_exists( 'gglcptch_get_this_et_fb_divi' ) ) {
+	function gglcptch_get_this_et_fb_divi( $this_props, $attrs, $render_slug) {
+
+		if ( isset( $this_props['captcha'] ) && $render_slug == 'et_pb_contact_form') {
+			$this_props['captcha'] = false;
+		}
+
+		return $this_props;
+	}
+}

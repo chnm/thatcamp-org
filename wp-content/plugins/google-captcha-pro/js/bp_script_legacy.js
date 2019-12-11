@@ -28,6 +28,9 @@
 
 		$( 'div.activity' ).off( 'click' );
 
+		/* nouveau */
+		$( '#buddypress [data-bp-list="activity"]' ).off( 'click', '.activity-item' );
+
 		/* Activity list event delegation */
 		$( 'div.activity' ).on( 'click', function( event ) {
 			var target = $( event.target );
@@ -103,19 +106,20 @@
 				/* continue buddypress script */
 				var ajaxdata = {
 					action: 'new_activity_comment',
-					'cookie': bp_get_cookies(),
 					'_wpnonce_new_activity_comment': $( "input#_wpnonce_new_activity_comment" ).val(),
 					'comment_id': comment_id,
 					'form_id': form_id[2],
 					'content': content.val()
 				};
-				if ( 'v1' == gglcptch_version ) {
-					ajaxdata['recaptcha_challenge_field'] = form.find( '#recaptcha_challenge_field' ).val();
-					ajaxdata['recaptcha_response_field']  = form.find( '#recaptcha_response_field' ).val();
-				}
 
-				if ( 'v2' == gglcptch_version || 'invisible' == gglcptch_version ) {
-					ajaxdata['g-recaptcha-response'] = form.find( '.g-recaptcha-response' ).val();
+				switch( gglcptch_version ) {
+					case 'v2':
+					case 'invisible':
+						ajaxdata['g-recaptcha-response'] = form.find( '.g-recaptcha-response' ).val();
+						break;
+					case 'v3':
+						ajaxdata['g-recaptcha-response'] = $(document).find( '#g-recaptcha-response' ).val();
+						break;
 				}
 
 				/* Akismet */

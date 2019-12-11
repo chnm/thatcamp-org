@@ -27,14 +27,18 @@
             .trigger('change');
 
 		$( 'input[name="gglcptch_recaptcha_version"]' ).change( function() {
-			var versions =  $( 'input[name="gglcptch_recaptcha_version"]' );
+			var versions = $( 'input[name="gglcptch_recaptcha_version"]' );
 			versions.each( function() {
                 if ( $( this ).is( ':checked' ) ) {
                     $( '.gglcptch_theme_' + $( this ).val() ).show();
                     $( '.gglcptch_score_' + $( this ).val() ).show();
+					$( '.gglcptch_badge_v3' ).show();
+					$( '.gglcptch_submit_' + $( this ).val() ).show();
                 } else {
                     $( '.gglcptch_theme_' + $( this ).val() ).hide();
                     $( '.gglcptch_score_' + $( this ).val() ).hide();
+					$( '.gglcptch_badge_' + $( this ).val() ).hide();
+					$( '.gglcptch_submit_' + $( this ).val() ).hide();
                 }
 			} );
 		} ).trigger( 'change' );
@@ -145,9 +149,12 @@
         $( '#gglcptch-test-keys' ).hide();
         setTimeout( function(){
         	if( $( '#gglcptch_test_keys_verification' ).length > 0 ) {
-        		$( '#gglcptch_test_keys_verification' ).removeAttr('disabled');
+
+        		$( '#gglcptch_test_keys_verification' ).removeAttr( 'disabled' );
+        		$( '#gglcptch_test_keys_verification' ).removeClass( 'cptch_loading' );
+        		$( '.bws_form input[type="submit"]' ).removeAttr( 'disabled' );
         	}
-		}, 2000 );
+		}, 8000 );
 
 		return false;
 	} );
@@ -190,7 +197,7 @@
 
 		e.stopPropagation();
 		return false;
-	});
+	} );
 } )( jQuery );
 
 /**

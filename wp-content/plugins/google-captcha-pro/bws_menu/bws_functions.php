@@ -91,7 +91,7 @@ if ( ! function_exists( 'bws_plugin_reviews_block' ) ) {
 			<div class="bws-plugin-reviews-rate">
 				<?php _e( 'Like the plugin?', 'bestwebsoft' ); ?>
 				<a href="https://wordpress.org/support/view/plugin-reviews/<?php echo esc_attr( $plugin_slug ); ?>?filter=5" target="_blank" title="<?php printf( __( '%s reviews', 'bestwebsoft' ), sanitize_text_field( $plugin_name ) ); ?>">
-					<?php _e( 'Rate it', 'bestwebsoft' ); ?> 
+					<?php _e( 'Rate it', 'bestwebsoft' ); ?>
 					<span class="dashicons dashicons-star-filled"></span>
 					<span class="dashicons dashicons-star-filled"></span>
 					<span class="dashicons dashicons-star-filled"></span>
@@ -261,8 +261,8 @@ if ( ! function_exists( 'bws_admin_notices' ) ) {
 		*/
 		if ( ! empty( $bstwbsftwppdtplgns_options['deprecated_function'] ) ) { ?>
 			<div class="update-nag">
-				<strong><?php _e( 'Deprecated function(-s) is used on the site here:', 'bestwebsoft' ); ?></strong>  
-				<?php $i = 1; 
+				<strong><?php _e( 'Deprecated function(-s) is used on the site here:', 'bestwebsoft' ); ?></strong>
+				<?php $i = 1;
 				foreach ( $bstwbsftwppdtplgns_options['deprecated_function'] as $function_name => $attr ) {
 					if ( 1 != $i )
 						echo ' ,';
@@ -275,8 +275,8 @@ if ( ! function_exists( 'bws_admin_notices' ) ) {
 					$i++;
 				} ?>.
 				<br/>
-				<?php _e( 'This function(-s) will be removed over time. Please update the product(-s).', 'bestwebsoft' ); ?>				
-			</div>				
+				<?php _e( 'This function(-s) will be removed over time. Please update the product(-s).', 'bestwebsoft' ); ?>
+			</div>
 			<?php if ( is_multisite() )
 				update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
 			else
@@ -581,9 +581,8 @@ if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) ) {
 	function bws_admin_enqueue_scripts() {
 		global $wp_scripts, $hook_suffix;
 
-		$jquery_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.12.1';
-
-		wp_enqueue_style( 'jquery-ui-style', '//code.jquery.com/ui/' . $jquery_version . '/themes/smoothness/jquery-ui.min.css', array(), $jquery_version );
+		$jquery_ui_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.12.1';
+		wp_enqueue_style( 'jquery-ui-style', bws_menu_url( 'css/jquery-ui-styles/' . $jquery_ui_version . '/jquery-ui.css' ) );
 		wp_enqueue_style( 'bws-admin-css', bws_menu_url( 'css/general_style.css' ) );
 		wp_enqueue_script( 'bws-admin-scripts', bws_menu_url( 'js/general_script.js' ), array( 'jquery', 'jquery-ui-tooltip' ) );
 
@@ -594,7 +593,7 @@ if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) ) {
 			add_thickbox();
 			wp_enqueue_script( 'plugin-install' );
 		}
-		
+
 		if ( 'plugins.php' == $hook_suffix && ! defined( 'DOING_AJAX' ) ) {
 			wp_enqueue_style( 'bws-modal-css', bws_menu_url( 'css/modal.css' ) );
 		}
@@ -696,8 +695,15 @@ if ( ! function_exists ( 'bws_plugins_admin_footer' ) ) {
 
 if ( ! function_exists ( 'bws_plugins_include_codemirror' ) ) {
 	function bws_plugins_include_codemirror() {
-		wp_enqueue_style( 'codemirror.css', bws_menu_url( 'css/codemirror.css' ) );
-		wp_enqueue_script( 'codemirror.js', bws_menu_url( 'js/codemirror.js' ), array( 'jquery' ) );
+		global $wp_version;
+		if ( version_compare( $wp_version,'4.9.0',  '>=' ) ) {
+			wp_enqueue_style('wp-codemirror');
+			wp_enqueue_script('wp-codemirror');
+        } else {
+			wp_enqueue_style( 'codemirror.css', bws_menu_url( 'css/codemirror.css' ) );
+			wp_enqueue_script( 'codemirror.js', bws_menu_url( 'js/codemirror.js' ), array( 'jquery' ) );
+        }
+
     }
 }
 
@@ -887,7 +893,7 @@ if ( ! function_exists( 'bws_shortcode_media_button_popup' ) ) {
 	}
 }
 
-/** 
+/**
  * output shortcode in a special block
  * @since 1.9.8
  */
@@ -897,7 +903,7 @@ if ( ! function_exists( 'bws_shortcode_output' ) ) {
 	<?php }
 }
 
-/** 
+/**
  * output tooltip
  * @since 1.9.8
  * @param   string   $content  - HTML content for the tooltip

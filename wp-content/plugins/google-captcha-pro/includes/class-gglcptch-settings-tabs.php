@@ -104,6 +104,8 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 		public function save_options() {
 			global $wpdb;
 
+			$message = $notice = $error = '';
+
 			if ( ! $this->forbid_view && empty( $this->change_permission_attr ) ) {
 				/* Save data for settings page */
 				if ( empty( $_POST['gglcptch_public_key'] ) ) {
@@ -132,14 +134,16 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 				$this->options['public_key']				= trim( stripslashes( esc_html( $_POST['gglcptch_public_key'] ) ) );
 				$this->options['private_key']				= trim( stripslashes( esc_html( $_POST['gglcptch_private_key'] ) ) );
 
-				$this->options['recaptcha_version']	=	in_array( $_POST['gglcptch_recaptcha_version'], array( 'v2', 'invisible', 'v3' ) ) ? $_POST['gglcptch_recaptcha_version']: 'v2';
-				$this->options['theme_v2']			=	stripslashes( esc_html( $_POST['gglcptch_theme_v2'] ) );
+				$this->options['recaptcha_version']	        = in_array( $_POST['gglcptch_recaptcha_version'], array( 'v2', 'invisible', 'v3' ) ) ? $_POST['gglcptch_recaptcha_version']: 'v2';
+				$this->options['theme_v2']		            = stripslashes( esc_html( $_POST['gglcptch_theme_v2'] ) );
 
 				$this->options['size_v2']					= 'compact' == $_POST['gglcptch_size_v2'] ? 'compact' : 'normal';
 				$this->options['language']					= isset( $_POST['gglcptch_language'] ) ? stripslashes( esc_html( $_POST['gglcptch_language'] ) ) : 'en';
 				$this->options['use_multilanguage_locale']	= isset( $_POST['gglcptch_use_multilanguage_locale'] ) ? stripslashes( esc_html( $_POST['gglcptch_use_multilanguage_locale'] ) ) : 0;
-                $this->options['score_v3']          =    isset( $_POST['gglcptch_score_v3'] ) ? (float)$_POST['gglcptch_score_v3'] : 0.5;
+                $this->options['score_v3']                  = isset( $_POST['gglcptch_score_v3'] ) ? (float)$_POST['gglcptch_score_v3'] : 0.5;
 				$this->options['disable_submit']			= isset( $_POST['gglcptch_disable_submit'] ) ? 1 : 0;
+				$this->options['hide_badge']                = isset( $_POST['gglcptch_hide_badge'] ) ? 1 : 0;
+				$this->options['disable_submit_button']     = isset( $_POST['gglcptch_disable_submit_button'] ) ? 1 : 0;
 
 				foreach ( $this->forms as $form_slug => $form_data ) {
 					$this->options[ $form_slug ] = isset( $_POST["gglcptch_{$form_slug}"] ) ? 1 : 0;
@@ -244,7 +248,20 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 				</table>
 				<div class="bws_tab_sub_label gglcptch_settings_form"><?php _e( 'General', 'google-captcha-pro' ); ?></div>
 				<table class="form-table gglcptch_settings_form">
-					<tr valign="top">
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'reCAPTCHA Version', 'google-captcha-pro' ); ?></th>
+                        <td>
+                            <fieldset>
+                                <?php foreach ( $this->versions as $version => $version_name ) { ?>
+                                    <label>
+                                        <input<?php echo $this->change_permission_attr; ?> type="radio" name="gglcptch_recaptcha_version" value="<?php echo $version; ?>" <?php checked( $version, $this->options['recaptcha_version'] ); ?>> <?php echo $version_name; ?>
+                                    </label>
+                                    <br/>
+                                <?php } ?>
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr valign="top">
 						<th scope="row"><?php _e( 'Enable reCAPTCHA for', 'google-captcha-pro' ); ?></th>
 						<td>
 							<!--[if !IE]> -->
@@ -265,6 +282,10 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 									<fieldset class="gglcptch_section_forms">
 										<?php foreach ( $section['forms'] as $form_slug ) {
 											$form_notice = $this->forms[ $form_slug ]['form_notice'];
+											/* Plugin 'Fast Secure Contact Form' has been closed for new installations */
+											if ( 'si_contact_form' === $form_slug && strstr( $form_notice, 'Install Now' ) ) {
+											    $form_notice = __( 'This plugin has been closed for new installations.', 'google-captcha-pro' );
+											}
 											$form_atts = '';
 											if ( '' == $this->change_permission_attr && ( '' != $form_notice || '' != $section_notice ) ) {
 												$form_atts .= disabled( 1, 1, false );
@@ -305,27 +326,25 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 							</fieldset>
 						</td>
 					</tr>
-					<tr valign="top">
-						<th scope="row"><?php _e( 'reCAPTCHA Version', 'google-captcha-pro' ); ?></th>
-						<td>
-							<fieldset>
-								<?php foreach ( $this->versions as $version => $version_name ) { ?>
-									<label>
-										<input<?php echo $this->change_permission_attr; ?> type="radio" name="gglcptch_recaptcha_version" value="<?php echo $version; ?>" <?php checked( $version, $this->options['recaptcha_version'] ); ?>> <?php echo $version_name; ?>
-									</label>
-									<br/>
-								<?php } ?>
-							</fieldset>
-						</td>
-					</tr>
+                    <tr class="gglcptch_badge_v3" valign="top">
+                        <th scope="row">
+							<?php _e( 'Hide reCAPTCHA Badge', 'google-captcha-pro' ); ?>
+                        </th>
+                        <td>
+                            <input<?php echo $this->change_permission_attr; ?> id="gglcptch_hide_badge" type="checkbox" <?php checked( ! empty( $this->options["hide_badge"] ) ); ?> name="gglcptch_hide_badge" value="1" />
+                            <span class="bws_info">
+							    <?php _e( 'Enable to hide reCAPTCHA Badge for Version 3 and Invisble reCAPTCHA.', 'google-captcha-pro' ); ?>
+						    </span>
+                        </td>
+                    </tr>
 					<tr class="gglcptch_theme_v2" valign="top">
 						<th scope="row">
 							<?php _e( 'Theme', 'google-captcha-pro' ); ?>
 						</th>
 						<td>
 							<select<?php echo $this->change_permission_attr; ?> name="gglcptch_theme_v2">
-								<option value="light" <?php selected( 'light', $this->options['theme_v2'] ); ?>>Light</option>
-								<option value="dark" <?php selected( 'dark', $this->options['theme_v2'] ); ?>>Dark</option>
+								<option value="light" <?php selected( 'light', $this->options['theme_v2'] ); ?>><?php _e( 'Light', 'google-captcha-pro' ); ?></option>
+								<option value="dark" <?php selected( 'dark', $this->options['theme_v2'] ); ?>><?php _e( 'Dark', 'google-captcha-pro' ); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -386,7 +405,7 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 						</td>
 					</tr>
 					<tr valign="top">
-						<th scope="row"><?php _e( 'Disabled Submit Button', 'google-captcha-pro' ); ?></th>
+						<th scope="row"><?php _e( 'Advanced Protection', 'google-captcha-pro' ); ?></th>
 						<td>
 							<input<?php echo $this->change_permission_attr; ?> id="gglcptch_disable_submit" type="checkbox" <?php checked( ! empty( $this->options["disable_submit"] ) ); ?> name="gglcptch_disable_submit" value="1" />&nbsp;
 							<span class="bws_info">
@@ -394,6 +413,17 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 							</span>
 						</td>
 					</tr>
+                    <tr class="gglcptch_submit_v2" valign="top">
+                        <th scope="row">
+							<?php _e( 'Disabled Submit Button', 'google-captcha-pro' ); ?>
+                        </th>
+                        <td>
+                            <input<?php echo $this->change_permission_attr; ?> id="gglcptch_disable_submit_button" type="checkbox" <?php checked( ! empty( $this->options['disable_submit_button'] ) ); ?> name="gglcptch_disable_submit_button" value="1" />
+                            <span class="bws_info">
+							<?php _e( 'Enable to keep submit button disabled until user passes the reCAPTCHA test (for Version 2).', 'google-captcha-pro' ); ?>
+						</span>
+                        </td>
+                    </tr>
 				</table>
 			<?php }
 		}

@@ -205,7 +205,7 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 		function column_cb( $item ) {
 			/* customize displaying cb collumn */
 			return sprintf(
-				'<input type="checkbox" name="id[]" value="%s"/>', $item['ip']
+				'<input type="checkbox" name="id[]" value="%s"/>', $item['id']
 			);
 		}
 		/**

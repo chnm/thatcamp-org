@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: anti-spam security, antispam, recaptcha, captcha, captha, Invisible reCaptcha, Invisible captcha, Invisibl reCaptcha, comment, cpatcha, google catcha, Invisible re captcha, recaptcha version3
-Requires at least: 3.9
-Tested up to: 5.0.1
-Stable tag: 1.39
+Requires at least: 4.0
+Tested up to: 5.3
+Stable tag: 1.54
 License: Proprietary
 License URI: https://bestwebsoft.com/end-user-license-agreement/
 
@@ -31,6 +31,7 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 	* Testimonials
 	* Custom form
 * Hide Google Captcha (reCAPTCHA) for the whitelisted IP addresses
+* Disable the submit button
 * Validity check of keys in admin panel
 * Available Google Captcha (reCAPTCHA) themes for:
 	* Version 1
@@ -43,6 +44,7 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 		* Dark
 * Compatible with [Limit Attempts](https://bestwebsoft.com/products/wordpress/plugins/limit-attempts/?k=868b3be3ef88587238dd58785fe0f1d1)
 * Hide Google Captcha (reCAPTCHA) in your forms for certain user roles
+* Hide Google Captcha (reCAPTCHA) Badge (Invisible and V3)
 * Supports Google Captcha (reCAPTCHA):
 	* Version 2
 	* Version 3
@@ -64,11 +66,16 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 > 	* Jetpack contact form
 > 	* Fast Secure Contact Form
 > 	* MailChimp for WordPress
+> 	* Ninja Forms
 > * Compatible with WooCommerce:
 > 	* Login form
 > 	* Register form
 > 	* Lost password form
 > 	* Checkout billing form
+> * Compatible with Divi:
+> 	* Divi Builder Contact form
+> 	* Divi Builder Login form
+> 	* Divi Theme Contact form
 > * Compatible with bbPress:
 > 	* New Topic form
 > 	* Reply form
@@ -183,6 +190,12 @@ In case there is no such hook in the comments file of your theme, then, unfortun
 2. Go to "Contact Form 7" form where you want to make use of Captcha.
 3. For the Contact Form 7 since version 4.2 on the edit form page select the BWS Google Captcha form-tag, and insert it into your form. For the Contact Form 7 below version 4.2 on the edit form page find a dropdown menu with the form fields, select BWS BWS Google Captcha and insert it into your form.
 
+= I would like to add Google Captcha (reCAPTCHA) to the Ninja Forms. How can I do this? =
+
+1. Make sure you enabled "Ninja Forms" on the Google Captcha settings page.
+2. Go to "Ninja Forms" form where you would like to add reCAPTCHA.
+3. Open the form in the edit mode and click the “Add Field” button. Single-click or drag the "BWS Google Captcha" field from the drawer into the builder and click “Done”.
+
 = Add Google Captcha (reCAPTCHA) plugin to a custom form on your WordPress website =
 
 Follow the instructions below in order to add Google Captcha (reCAPTCHA) plugin to your custom PHP or HTML form:
@@ -280,9 +293,71 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 26. Google Captcha Pro (reCAPTCHA) Settings page for Network.
 27. Google Captcha Pro (reCAPTCHA) Whitelist page.
 28. Testimonials form with Google Captcha (reCAPTCHA).
+29. Ninja Forms with Google Captcha (reCAPTCHA).
+30. Divi "Contact Form" with Google Captcha (reCAPTCHA).
+31. Divi "Login" with Google Captcha (reCAPTCHA).
 
 
 == Changelog ==
+
+= V1.54 - 22.11.2019 =
+* Bugfix : The bug with the reload of Google Captcha (reCAPTCHA) Version 3 verification on Contact Form 7 has been fixed.
+* Update : BWS menu has been updated.
+
+= V1.53 - 01.11.2019 =
+* Bugfix : The compatibility with Divi theme and Divi builder has been improved.
+* Bugfix : The bug with the reCAPTCHA verification on the Buddypress comment form has been fixed.
+* Bugfix : The bug with the Google Captcha (reCAPTCHA) Version 3 verification in several forms on the page has been fixed.
+* Update : All functionality was updated for WordPress 5.2.4.
+
+= V1.52 - 04.09.2019 =
+* Update: The deactivation feedback has been changed. Misleading buttons have been removed.
+
+= V1.51 - 14.08.2019 =
+* Update : BWS menu has been updated.
+* Bugfix : The bug with the reCAPTCHA verification on the Divi Contact forms has been fixed.
+
+= V1.50 - 31.07.2019 =
+* Bugfix : The bug with the Divi Theme hooks has been fixed.
+
+= V1.49 - 30.07.2019 =
+* Bugfix : The compatibility with Divi theme and Divi builder has been improved.
+* Bugfix : The bug with the Divi builder saving has been fixed.
+
+= V1.48 - 27.07.2019 =
+* Bugfix : The compatibility with Divi child themes has been fixed.
+
+= V1.47 - 18.07.2019 =
+* Update : The bug with the reCAPTCHA verification in admin page has been fixed.
+
+= V1.46 - 16.07.2019 =
+* Update : All functionality was updated for WordPress 5.2.2.
+
+= V1.45 - 16.07.2019 =
+* Bugfix : The bug with "Disabled Submit Button" option in several forms on the page has been fixed.
+* Bugfix : The bug with custom forms has been fixed.
+
+= V1.44 - 09.05.2019 =
+* NEW : The ability to keep submit button disabled until user passes the reCAPTCHA test has been added.
+* Bugfix : The bug with "Advanced Protection" option has been fixed.
+
+= V1.43 - 27.03.2019 =
+* NEW : The ability to hide reCAPTCHA Badge has been added.
+* NEW : The compatibility with Divi Theme has been added.
+* Bugfix : The bug with button Test verification has been fixed.
+
+= V1.42 - 26.02.2019 =
+* NEW : The compatibility with Divi Builder has been added.
+* Update : All functionality was updated for WordPress 5.1.
+
+= V1.41 - 13.02.2019 =
+* NEW : The compatibility with Ninja Forms has been added.
+* Update : The user interface has been updated.
+* Bugfix : The code refactoring was performed.
+
+= V1.40 - 18.01.2019 =
+* Update : All functionality was updated for WordPress 5.0.3.
+* Update : The enqueueing of styles and scripts has been improved.
 
 = V1.39 - 20.12.2018 =
 * Update : All functionality was updated for WordPress 5.0.1.
@@ -385,6 +460,63 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : The Google Captcha Pro (reCAPTCHA) by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.54 =
+* Bugs fixed.
+* Functionality improved.
+
+= V1.53 =
+* Functionality improved.
+* Bugs fixed.
+* Bugs fixed.
+* The compatibility with new WordPress version updated.
+
+= V1.52 =
+* Usability improved.
+
+= V1.51 =
+* Functionality improved.
+* Bugs fixed.
+
+= V1.50 =
+* Bugs fixed.
+
+= V1.49 =
+* Bugs fixed.
+* Functionality improved.
+
+= V1.48 =
+* Bugs fixed.
+
+= V1.47 =
+* Bugs fixed.
+
+= V1.46 =
+* The compatibility with new WordPress version updated.
+
+= V1.45 =
+* Bugs fixed.
+
+= V1.44 =
+* New features added.
+* Bugs fixed.
+
+= V1.43 =
+* New features added.
+* Bugs fixed.
+
+= V1.42 =
+* Functionality expanded.
+* The compatibility with new WordPress version updated.
+
+= V1.41 =
+* Functionality expanded.
+* Usability improved.
+* Bugs fixed.
+
+= V1.40 =
+* The compatibility with new WordPress version updated.
+* Functionality improved.
 
 = V1.39 =
 * The compatibility with new WordPress version updated.

@@ -41,3 +41,24 @@
 .woocommerce-billing-fields .gglcptch_whitelist_message {
 	clear: both;
 }
+#et-boc .et_pb_contact_form .gglcptch_et_pb_contact_field_half, .et_pb_contact_form_container .et_pb_contact .gglcptch {
+	padding: 0 0 0 3%;
+	margin-bottom: 3%;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	float: left;
+}
+#et-boc .gglcptch_et_pb_contact_field_half .gglcptch_recaptcha div, .et_pb_contact_form_container .et_pb_contact .gglcptch_recaptcha div{
+	float: right;
+}
+#et-boc .gglcptch_et_pb_contact_field_half .error_gglcptch {
+	float: right;
+	color: #ff333b;
+}
+#et-boc .et_pb_newsletter_form .gglcptch_et_pb_contact_login .gglcptch_recaptcha div{
+	margin-bottom: 15px;
+}
+#et-boc .et_pb_newsletter_form .gglcptch_et_pb_contact_login p{
+	text-align: right;
+}
