@@ -4,7 +4,7 @@ Plugin Name: amr shortcode any widget
 Plugin URI: http://webdesign.anmari.com/shortcode-any-widget/
 Description: Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget "widget name" ] [do_widget id=widgetnamedashed-n ]or include a whole widget area [do_widget_area]. Please see <a href="https://wordpress.org/plugins/amr-shortcode-any-widget/faq/">FAQ</a>.
 Author: anmari
-Version: 3.6
+Version: 3.7
 Author URI: http://webdesign.anmari.com
 
 */
@@ -92,7 +92,6 @@ global $wp_registered_widgets, $_wp_sidebars_widgets, $wp_registered_sidebars;
 if it is in, then get the instance  data and use that */
 
 	if (is_admin()) {return '';}  // eg in case someone decides to apply content filters when apost is saved, and not all widget stuff is there.
-
 	extract(shortcode_atts(array(
 		'sidebar' => 'Widgets for Shortcodes', //default
 		'id' => '',
@@ -114,7 +113,6 @@ if it is in, then get the instance  data and use that */
 	/* compatibility check - if the name is not entered, then the first parameter is the name */
 	if (empty($name) and !empty($atts[0]))  
 		$name = $atts[0];
-
 	/* the widget need not be specified, [do_widget widgetname] is adequate */
 	if (!empty($name)) {  // we have a name
 		$widget = $name;
@@ -212,8 +210,10 @@ if it is in, then get the instance  data and use that */
 	}
 			
 	return ($output);
-}
-/* -------------------------------------------------------------------------*/
+	}
+	
+
+	
 function amr_shortcode_sidebar( $widget_id, 
 	$name="widgets_for_shortcode", 
 	$title=true, 
@@ -226,7 +226,7 @@ function amr_shortcode_sidebar( $widget_id,
 
 	$sidebarid = amr_get_sidebar_id ($name);
 
-	$sidebars_widgets = wp_get_sidebars_widgets(); 
+	$amr_sidebars_widgets = wp_get_sidebars_widgets(); //201711 do we need?
 
 	$sidebar = $wp_registered_sidebars[$sidebarid];  // has the params etc
 	
@@ -322,9 +322,21 @@ function amr_shortcode_sidebar( $widget_id,
 	return $did_one;
 }
 
+
+function amr_saw_setup_sidebar ($sidebars_widgets) {
+	global $sidebars_widgets; //need?
+	// now theme mods has record of widgets and sidebar, but not for our new one.
+	if ( is_array( $sidebars_widgets ) )  {
+		if (empty($sidebars_widgets['widgets_for_shortcodes'])) {
+			$sidebars_widgets['widgets_for_shortcodes'] = array();
+		}
+	}	
+	return $sidebars_widgets;
+}
+
 function amr_reg_sidebar() {  // this is fired late, so hopefully any theme sidebars will have been registered already.
 
-global $wp_registered_widgets, $_wp_sidebars_widgets, $wp_registered_sidebars;
+global $wp_registered_widgets, $_wp_sidebars_widgets, $sidebars_widgets, $wp_registered_sidebars;
 
 if ( function_exists('register_sidebar') )  {  // maybe later, get the first main sidebar and copy it's before/after etc
 	$args = array(
@@ -347,6 +359,7 @@ if ( function_exists('register_sidebar') )  {  // maybe later, get the first mai
 	}
 	
 	register_sidebar($args);
+
 }
 	
 //else {	echo '<h1>CANNOT REGISTER widgets_for_shortcodes SIDEBAR</h1>';}
@@ -358,6 +371,7 @@ include ('amr-utilities.php');
 if (is_admin() )  $amr_saw_plugin_admin = new amr_saw_plugin_admin();  
 
 add_action('widgets_init', 		'amr_reg_sidebar',98);   // register late so it appears last
+add_filter( 'theme_mod_sidebars_widgets', 'amr_saw_setup_sidebar' ); //20171126
 
 add_action('switch_theme', 			'amr_save_shortcodes_sidebar'); 
 add_action('after_switch_theme',	'amr_restore_shortcodes_sidebar');
@@ -384,4 +398,3 @@ function amr_add_action_links ( $links ) {
  '<a title="Click for a page of tips" href="' . admin_url( 'options-general.php?page=amr_saw' ) . '">HELP</a>';
 return array_merge( $links, $mylinks );
 }
-?>

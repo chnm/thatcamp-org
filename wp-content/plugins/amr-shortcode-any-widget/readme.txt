@@ -1,8 +1,8 @@
 === amr shortcode any widget ===
 Contributors: anmari
 Tags: shortcode, widget, page, templates, page template, widget_area, sidebar
-Tested up to: 4.8.1
-Version: 3.6
+Tested up to: 5.3
+Version: 3.7
 Stable tag: trunk
 
 == Description ==
@@ -12,6 +12,8 @@ Set up your widget first in a normal sidebar.  Check it works.
 THEN Drag your chosen widgets to the sidebar called "widgets for shortcode".   
 
 Add the do_widget shortcode to the page where you would like the widget to appear (or the do_widget_area)
+
+To use in the block editor, add a shortcode block, then type in (including the square brackets [do_widget widgetname]  or copy the do_widget tip from the widget in the 'Widgets for Shortcodes' sidebar.
 
 Please see detailed info on shortcodes and parameters under the installation tab (depending what the plugin directory developers have most recently done, this may be under the FAQ, or at the very least under the readme.)
 
@@ -160,6 +162,10 @@ If you only using widget, maybe inserting the whole sidebar or widgertarea would
 [do_widget_area]
 
 == Changelog ==
+= Version 3.7 =
+*  Found a mixed line ending. Updated.
+*  Tested on 5.3.1RC1
+
 = Version 3.6 =
 *  Basically forcing an update in the hope that the third party php7compatibility checker sort itself out.  It's complaining about mixed line endings, but they're not.
 *  Added indonesian translation provided by Jordan Silaen.
