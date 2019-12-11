@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$form_data['form_email'] = $value;
 
 		// validate subject
-		if ($vscf_atts['hide_subject'] != "true") {
+		if ($subject_setting != "yes") {
 			$value = stripslashes($post_data['form_subject']);
 			if ( strlen($value)<2 ) {
 				$error_class['form_subject'] = true;
@@ -32,7 +32,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		// validate captcha
 		$value = stripslashes($post_data['form_captcha']);
-		if ( $value != $captcha ) {
+		$hidden = stripslashes($post_data['form_captcha_hidden']);
+		if ( $value != $hidden ) {
 			$error_class['form_captcha'] = true;
 			$error = true;
 		}

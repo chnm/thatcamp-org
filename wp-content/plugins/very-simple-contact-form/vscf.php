@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Very Simple Contact Form
  * Description: This is a lightweight plugin to create a customized contact form. Add shortcode [contact] on a page or use the widget to display your form.
- * Version: 9.6
+ * Version: 10.8
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GNU General Public License v3 or later
@@ -24,9 +24,7 @@ add_action('plugins_loaded', 'vscf_init');
 
 // enqueue plugin scripts
 function vscf_scripts() {
-	if(!is_admin())	{
-		wp_enqueue_style('vscf_style', plugins_url('/css/vscf-style.min.css',__FILE__));
-	}
+	wp_enqueue_style('vscf_style', plugins_url('/css/vscf-style.min.css',__FILE__));
 }
 add_action('wp_enqueue_scripts', 'vscf_scripts');
 
@@ -37,12 +35,12 @@ function register_vscf_widget() {
 add_action( 'widgets_init', 'register_vscf_widget' );
 
 // form submissions
-$list_submissions_setting = esc_attr(get_option('vscf-setting-2'));
+$list_submissions_setting = get_option('vscf-setting-2');
 if ($list_submissions_setting == "yes") {
 	// create submission post type
 	function vscf_custom_postype() {
 		$vscf_args = array(
-			'labels' => array('name' => __( 'Submissions', 'very-simple-contact-form' )),
+			'labels' => array('name' => esc_attr__( 'Submissions', 'very-simple-contact-form' )),
 			'menu_icon' => 'dashicons-email',
 			'public' => false,
 			'can_export' => true,
@@ -50,18 +48,18 @@ if ($list_submissions_setting == "yes") {
 			'show_ui' => true,
 			'show_in_rest' => true,
 			'capability_type' => 'post',
-			'capabilities' => array('create_posts' => 'do_not_allow'),
+			'capabilities' => array( 'create_posts' => 'do_not_allow' ),
 			'map_meta_cap' => true,
- 			'supports' => array('title', 'editor'),
+ 			'supports' => array( 'title', 'editor' )
 		);
-		register_post_type( 'submission', $vscf_args);
+		register_post_type( 'submission', $vscf_args );
 	}
 	add_action( 'init', 'vscf_custom_postype' );
 
 	// dashboard submission columns
 	function vscf_custom_columns( $columns ) {
-		$columns['name_column'] = __( 'Name', 'very-simple-contact-form' );
-		$columns['email_column'] = __( 'Email', 'very-simple-contact-form' );
+		$columns['name_column'] = esc_attr__( 'Name', 'very-simple-contact-form' );
+		$columns['email_column'] = esc_attr__( 'Email', 'very-simple-contact-form' );
 		$custom_order = array('cb', 'title', 'name_column', 'email_column', 'date');
 		foreach ($custom_order as $colname) {
 			$new[$colname] = $columns[$colname];
@@ -119,7 +117,7 @@ if ($list_submissions_setting == "yes") {
 
 // add settings link
 function vscf_action_links ( $links ) {
-	$settingslink = array( '<a href="'. admin_url( 'options-general.php?page=vscf' ) .'">'. __('Settings', 'very-simple-contact-form') .'</a>', );
+	$settingslink = array( '<a href="'. admin_url( 'options-general.php?page=vscf' ) .'">'. esc_attr__('Settings', 'very-simple-contact-form') .'</a>' );
 	return array_merge( $links, $settingslink );
 }
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'vscf_action_links' );
@@ -148,50 +146,14 @@ function vscf_from_header() {
 
 // create random number for page captcha
 function vscf_random_number() {
-	$vscf_time = current_time( 'timestamp' );
-	$vscf_date = date('w', $vscf_time);
-	if ($vscf_date == '0') {
-		$number = '098';
-	} elseif ($vscf_date == '01') {
-		$number = '187';
-	} elseif ($vscf_date == '02') {
-		$number = '276';
-	} elseif ($vscf_date == '03') {
-		$number = '365';
-	} elseif ($vscf_date == '04') {
-		$number = '454';
-	} elseif ($vscf_date == '05') {
-		$number = '543';
-	} elseif ($vscf_date == '06') {
-		$number = '632';
-	} else {
-		$number = '721';
-	}
-	return $number;
+	$page_number = mt_rand(100, 999);
+	return $page_number;
 }
 
 // create random number for widget captcha
 function vscf_widget_random_number() {
-	$vscf_time = current_time( 'timestamp' );
-	$vscf_date = date('w', $vscf_time); 
-	if ($vscf_date == '0') {
-		$number = '021';
-	} elseif ($vscf_date == '01') {
-		$number = '132';
-	} elseif ($vscf_date == '02') {
-		$number = '243';
-	} elseif ($vscf_date == '03') {
-		$number = '354';
-	} elseif ($vscf_date == '04') {
-		$number = '465';
-	} elseif ($vscf_date == '05') {
-		$number = '576';
-	} elseif ($vscf_date == '06') {
-		$number = '687';
-	} else {
-		$number = '798';
-	}
-	return $number;
+	$widget_number = mt_rand(100, 999);
+	return $widget_number;
 }
 
 // redirect if sending succeeded
@@ -206,9 +168,7 @@ function vscf_redirect_success() {
 			$url_with_param = $current_url."/?vscfsp=success";
 		}
 	}
-	echo '<script type="text/javascript">';
-	echo 'window.location="'.$url_with_param.'";';
-	echo '</script>';
+	return $url_with_param;
 }
 
 function vscf_widget_redirect_success() {
@@ -222,9 +182,7 @@ function vscf_widget_redirect_success() {
 			$url_with_param = $current_url."/?vscfsw=success";
 		}
 	}
-	echo '<script type="text/javascript">';
-	echo 'window.location="'.$url_with_param.'";';
-	echo '</script>';
+	return $url_with_param;
 }
 
 // redirect if sending failed
@@ -239,9 +197,7 @@ function vscf_redirect_error() {
 			$url_with_param = $current_url."/?vscfsp=fail";
 		}
 	}
-	echo '<script type="text/javascript">';
-	echo 'window.location="'.$url_with_param.'";';
-	echo '</script>';
+	return $url_with_param;
 }
 
 function vscf_widget_redirect_error() {
@@ -255,26 +211,21 @@ function vscf_widget_redirect_error() {
 			$url_with_param = $current_url."/?vscfsw=fail";
 		}
 	}
-	echo '<script type="text/javascript">';
-	echo 'window.location="'.$url_with_param.'";';
-	echo '</script>';
+	return $url_with_param;
 }
 
 // form anchor
 function vscf_anchor_footer() {
-	$anchor_setting = esc_attr(get_option('vscf-setting-21'));
+	$anchor_setting = get_option('vscf-setting-21');
 	if ($anchor_setting == "yes") {
 		echo '<script type="text/javascript">';
-		echo 'if(document.getElementById("vscf-anchor")) {';
-		echo 'document.getElementById("vscf-anchor").scrollIntoView({behavior:"smooth", block:"center"});';
-		echo '}';
+		echo 'if(document.getElementById("vscf-anchor")) { document.getElementById("vscf-anchor").scrollIntoView({behavior:"smooth", block:"center"}); }';
 		echo '</script>';
 	}
 }
 add_action('wp_footer', 'vscf_anchor_footer');
 
 // include files
-include 'vscf-page-shortcode.php';
-include 'vscf-widget-shortcode.php';
+include 'vscf-shortcodes.php';
 include 'vscf-widget.php';
 include 'vscf-options.php';
