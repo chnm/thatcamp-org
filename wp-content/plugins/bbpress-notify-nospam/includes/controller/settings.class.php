@@ -28,8 +28,8 @@ class bbPress_Notify_noSpam_Controller_Settings extends bbPress_Notify_noSpam {
 		add_action( 'admin_init', array( $this, 'register_options' ) );
 		
 		add_filter( 'bbpnns_settings_pagehook', array( $this, 'get_page_hook' ) );
-		add_filter( 'bbpnns_available_topics_tags', array( $this, 'available_topics_tags' ), 1, 1 );
-		add_filter( 'bbpnns_available_reply_tags', array( $this, 'available_reply_tags' ), 1, 1 );
+		add_filter( 'bbpnns_settings_available_topics_tags', array( $this, 'available_topics_tags' ), 1, 1 );
+		add_filter( 'bbpnns_settings_available_reply_tags', array( $this, 'available_reply_tags' ), 1, 1 );
 		
 		add_filter( 'pre_update_option_' . $this->domain, array( $this, 'before_update_option' ), 10, 2 );
 		
@@ -100,22 +100,28 @@ class bbPress_Notify_noSpam_Controller_Settings extends bbPress_Notify_noSpam {
 	
 	/**
 	 * 
-	 * @param unknown $new_value
-	 * @param unknown $old_value
-	 * @return unknown
+	 * @param array $new_value
+	 * @param array $old_value
+	 * @return array
 	 */
 	public function before_update_option( $new_value, $old_value )
 	{
 		$newer_value = wp_parse_args( $new_value, $old_value );
 		
-		if ( isset( $_POST['bbpnns_checkbox_fields'] ) )
+		if ( isset( $_POST['bbpnns_nullable_fields'] ) )
 		{
-			$fields = explode(',', $_POST['bbpnns_checkbox_fields']);
+			$fields = explode(',', $_POST['bbpnns_nullable_fields']);
 			foreach ( $fields as $field )
 			{
 				if ( ! isset( $new_value[$field] ) )
 				{
 					unset( $newer_value[$field] );
+					
+					if ( 'background_notifications' === $field )
+					{
+						unset($newer_value['newtopic_background']);
+						unset($newer_value['newreply_background']);
+					}
 				}
 			}
 		}
@@ -131,61 +137,43 @@ class bbPress_Notify_noSpam_Controller_Settings extends bbPress_Notify_noSpam {
 	 */
 	public function available_topics_tags( $tags )
 	{
-		$tags = array ( '[blogname]', '[recipient-first_name]', '[recipient-last_name]', '[recipient-display_name]', 
-						'[recipient-user_nicename]', '[topic-title]', '[topic-content]', '[topic-excerpt]', '[topic-url]', 
-						'[topic-replyurl]', '[topic-author]', '[topic-author-email]', '[topic-forum]' );
-		
-		
-		$extra_tags = apply_filters( 'bbpnns_extra_topic_tags',  array() );
-		
-		if ( ! is_array( $extra_tags ) )
-		{
-			$extra_tags = preg_replace( '/\s*,\s*/', ',', $extra_tags ); // Remove any spaces
-			$extra_tags = explode( ',', $extra_tags ); // Make sure it's an array
-		}
-		
-		$tags = array_merge( $tags, $extra_tags );
+	    $tags = apply_filters('bbpnns_available_topic_tags', [] );
 
-		$linked_tags = array();
-		
-		foreach ( $tags as $t )
-		{
-			$link_tags[] = sprintf('<a href="#" class="bbpnns_tinymce_tag" data-insert-tag="%s">%s</a>', esc_attr($t), esc_html($t) );
-		}
-		
-		return $link_tags;
+	    return $this->_build_linked_tags($tags);
 	}
 	
 	
 	/**
-	 * Returns the available tags for topics
+	 * Returns the available tags for replies
 	 * @since 1.10
 	 */
 	public function available_reply_tags( $tags )
 	{
-		$tags = array ( '[blogname]', '[recipient-first_name]', '[recipient-last_name]',
-				        '[recipient-display_name]', '[recipient-user_nicename]', 
-				        '[reply-title]', '[reply-content]', '[reply-excerpt]', '[reply-url]',
-				        '[reply-replyurl]', '[reply-author]', '[reply-author-email]', '[reply-forum]', '[topic-url]' );
+	    $tags = apply_filters('bbpnns_available_reply_tags', [] );
 		
-		$extra_tags = apply_filters( 'bbpnns_extra_reply_tags',  array() );
-
-		if ( ! is_array( $extra_tags ) )
-		{
-			$extra_tags = preg_replace( '/\s*,\s*/', ',', $extra_tags ); // Remove any spaces
-			$extra_tags = explode( ',', $extra_tags ); // Make sure it's an array
-		}
-		
-		$tags = array_merge( $tags, $extra_tags );
-
-		$linked_tags = array();
-		
-		foreach ( $tags as $t )
-		{
-			$link_tags[] = sprintf('<a href="#" class="bbpnns_tinymce_tag" data-insert-tag="%s">%s</a>', esc_attr($t), esc_html($t) );
-		}
-		
-		return $link_tags;
+		return $this->_build_linked_tags($tags);
+	}
+	
+	
+	/**
+	 * Builds insertable TinyMCE links 
+	 */
+	private function _build_linked_tags( $tags )
+	{
+	    $linked_tags = array();
+	    
+	    if ( ! is_array( $tags ) )
+	    {
+	        $tags = preg_replace( '/\s*,\s*/', ',', $tags ); // Remove any spaces
+	        $tags = explode( ',', $tags ); // Make sure it's an array
+	    }
+	    
+	    foreach ( $tags as $t )
+	    {
+	        $link_tags[] = sprintf('<a href="#" class="bbpnns_tinymce_tag" data-insert-tag="%s">%s</a>', esc_attr($t), esc_html($t) );
+	    }
+	    
+	    return $link_tags;
 	}
 	
 	

@@ -12,7 +12,7 @@ class Tests_bbPress_Notify_noSpam_Helper_Converter extends WP_UnitTestCase {
 	public $child;
 	
 	function setUp()
-	{
+	{ 
 		parent::setUp();
 		
 		$this->child = new bbPress_Notify_noSpam_Child();
@@ -64,7 +64,7 @@ class Tests_bbPress_Notify_noSpam_Helper_Converter extends WP_UnitTestCase {
 		
 		$conv->do_db_upgrade();
 		
-		$dao = $this->child->load_lib( 'dal/settings_dao' );
+		$dao = $this->child->load_lib( 'dal/settings_dao', array(), $force=true );
 		$settings = $dao->load();
 		
 		$this->assertTrue( get_option( 'bbpnns_v2_conversion_complete', false ), 'The completed option was set' );
@@ -78,7 +78,8 @@ class Tests_bbPress_Notify_noSpam_Helper_Converter extends WP_UnitTestCase {
 		
 		foreach ( $this->options as $key => $prop )
 		{
-			if ( in_array( $key, array( 'bbpnns_dismissed_admin_notices', 'bbpnns-dismissed-1_7_1', 'bbpnns-opt-out-msg', 'bbpress-notify-pro-dismissed' )))
+			if ( in_array( $key, array( 'bbpnns_dismissed_admin_notices', 'bbpnns-dismissed-1_7_1', 'bbpnns-opt-out-msg', 'bbpress-notify-pro-dismissed',
+					      'bbpress_notify_newtopic_background', 'bbpress_notify_newreply_background' )))
 			{
 				continue;
 			}
@@ -93,11 +94,9 @@ class Tests_bbPress_Notify_noSpam_Helper_Converter extends WP_UnitTestCase {
 					break;
 				case 'bbpress_notify_newtopic_recipients':
 				case 'bbpress_notify_newreply_recipients':
-					$value = array( 'administrator' => 'Administrator');
+					$value = array( 'administrator' );
 					break;
 				case 'bbpress_notify_encode_subject':
-				case 'bbpress_notify_newtopic_background':
-				case 'bbpress_notify_newreply_background':
 				case "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification":
 				case "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification":
 				case 'bbpnns_hijack_bbp_subscriptions_forum':
@@ -109,6 +108,7 @@ class Tests_bbPress_Notify_noSpam_Helper_Converter extends WP_UnitTestCase {
 				case 'bbpress_notify_hidden_forum_topic_override':
 					$value = false;
 					$prop  = 'hidden_forum_topic_override';
+					break;
 				case 'bbpress_notify_hidden_forum_reply_override':
 					$value = false;
 					$prop  = 'hidden_forum_reply_override';
@@ -121,14 +121,13 @@ class Tests_bbPress_Notify_noSpam_Helper_Converter extends WP_UnitTestCase {
 		
 	}
 	
-	
 	function _set_up_legacy_data()
 	{
 		foreach ( $this->options as $key => $value )
 		{
 			if ( 'bbpress_notify_newtopic_recipients' === $key || 'bbpress_notify_newreply_recipients' === $key )
 			{
-				$value = array( 'administrator' );
+				$value = 'administrator'; // the converter needs to cast this as array
 			}
 			
 			update_option( $key, $value );

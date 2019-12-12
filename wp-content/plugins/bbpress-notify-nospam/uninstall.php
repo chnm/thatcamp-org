@@ -49,7 +49,8 @@ class bbPress_Notify_noSpam_Uninstall extends bbPress_Notify_noSpam
 				'bbpnns_hijack_bbp_subscriptions_topic',
 				'bbpress_notify_message_type',
 				'bbpnns_dismissed_admin_notices',
-				'bbPress_Notify_noSpam'
+				'bbPress_Notify_noSpam',
+				'bbpnns_v2_conversion_complete'
 		);
 	
 		foreach ( $options as $option )

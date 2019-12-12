@@ -39,13 +39,13 @@ jQuery(document).ready(function($){
 				<?php 
 					global $wp_roles;
 
-					$options = $wp_roles->get_names();
-					$saved_option = (array) $stash->settings->newtopic_recipients;
+					$options      = $wp_roles->get_names();
+					$saved_option = array_flip( $stash->settings->newtopic_recipients );
 				?>
 				<select id="bbpnns-topic-recipients" class="full-width" multiple="multiple" name="<?php echo $this->settings_name; ?>[newtopic_recipients][]">
 			<?php foreach( $options as $value => $description ) :?>
 			
-				<option value="<?php echo $value; ?>" <?php selected( in_array( $value, $saved_option ) );?>><?php echo esc_html( $description ); ?></option>
+				<option value="<?php echo esc_attr( $value ); ?>" <?php selected( isset( $saved_option[$value] ) );?>><?php echo esc_html( $description ); ?></option>
 			
 			<?php endforeach; ?>
 			</select>
@@ -118,7 +118,7 @@ The bbPress Setting "Allow users to subscribe to forums and topics" must also be
 				<br><br>
 				<span class="description bbpnns-subject-line">
 				<?php printf( __( '<strong>Available Tags</strong>: %s.', 'bbPress_Notify_noSpam' ) , 
-					  join( ', ', apply_filters( 'bbpnns_available_topics_tags', array() ) ) ); ?>
+					  join( ', ', apply_filters( 'bbpnns_settings_available_topics_tags', array() ) ) ); ?>
 				</span>
 			</td>
 		</tr>
@@ -132,13 +132,13 @@ The bbPress Setting "Allow users to subscribe to forums and topics" must also be
 				<br>
 				<span class="description bbpnns-message-body">
 				<?php printf( __( '<strong>Available Tags</strong>: %s.', 'bbPress_Notify_noSpam' ) , 
-					  join( ', ', apply_filters( 'bbpnns_available_topics_tags', array() ) ) ); ?>
+					  join( ', ', apply_filters( 'bbpnns_settings_available_topics_tags', array() ) ) ); ?>
 				</span>
 			</td>
 		</tr>
 		
-		<input type="hidden" name="bbpnns_checkbox_fields" 
-value="default_topic_notification_checkbox,override_bbp_forum_subscriptions,notify_authors_topic,hidden_forum_topic_override" />
+		<input type="hidden" name="bbpnns_nullable_fields" 
+value="default_topic_notification_checkbox,override_bbp_forum_subscriptions,notify_authors_topic,hidden_forum_topic_override,newtopic_recipients" />
 		
 		<?php do_action( 'bbpnns_settings_topics_box_after_last_row' ); ?>
 		

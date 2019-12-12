@@ -1,20 +1,20 @@
 === bbPress Notify (No Spam) ===
 Contributors: useStrict
-Author URI: http://www.usestrict.net/
-Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
+Donate link: https://www.paypal.me/usestrict
+Author URI: https://www.usestrict.net/
+Plugin URI: https://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 5.0.2
-Text Domain: bbpress_notify
+Tested up to: 5.3
+Text Domain: bbPress_Notify_noSpam
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.0.1
-Requires PHP: 5.3
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
+Stable tag: 2.6.1
+Requires PHP: 5.6
+
 
 == Description ==
-This plugin extends bbPress to send notifications via e-mail to selected roles  when new topics or replies are posted. It also has options to override the
-core bbPress notification templates, and is fully configurable in the bbPress settings.
+Give bbPress notifications your personal touch by deciding who gets the emails and what they look like. 
 
 = Features include =
 
@@ -22,9 +22,11 @@ core bbPress notification templates, and is fully configurable in the bbPress se
  * Override bbPress' core subscription messages with your own;
  * Set Notification recipient roles for new topics;
  * Set Notification recipient roles for new replies;
- * Set Notification e-mail's subject and body for both new topics and replies;
+ * Set Notification e-mail's subject and body templates for both new topics and replies;
  * Send Background Notifications (to avoid delays in loading pages for large user databases);
- * Extensible through almost 40 handy actions and filters;
+ * Extensible through almost 40 actions and filters;
+
+<a href="https://usestrict.net/bbpress-notify-no-spam-documentation/" target="_new">Click here for the full documentation.</a>
 
 <blockquote>
 = Premium Add-Ons =
@@ -32,7 +34,8 @@ core bbPress notification templates, and is fully configurable in the bbPress se
 Take your notifications to the next level with one or more of these add-ons.
 
 <ul>
-    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-reply-email/" target="_new">Reply by Email Add-on</a>: Users can reply directly from their mailbox. No need to click links or open the forums in a browser.</li>
+	<li><a href="https://usestrict.net/product/bbpress-notify-no-spam-bulk-mailer/" target="_new">Bulk Mailer Add-on</a>: Having trouble with mailout timouts because you have too many users? This is the solution. Integrate bbpnns with Mailgun or SendGrid and send messages in batches of 1000 instead of one-by-one.</li>
+    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-reply-email/" target="_new">Reply by Email Add-on</a>: Users can reply directly from their mailbox. No need to click links or open the forums in a browser. Heck, they can even dictate their replies if they want!</li>
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/" target="_new">Opt-out Add-on</a>: Users can choose not to receive any notifications, or simply unsubscribe from the thread with a single click. A must-have for CAN-SPAM and CASL laws!</li>
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-digests/" target="_new">Digest Add-on</a>: Users can choose to receive daily, weekly, or monthly digests.</li>
     <li><a href="https://usestrict.net/product/bbpress-moderation-plugin-add-on/" target="_new">bbPress Moderation Integration</a>: Make bbpnns work with <a href="https://wordpress.org/plugins/bbpressmoderation/" target="_new">bbPress Moderation</a>.</li>
@@ -40,6 +43,7 @@ Take your notifications to the next level with one or more of these add-ons.
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/" target="_new">BuddyPress Integration</a>: Notify BuddyPress Group members of new Group Forum topics and replies. It also shows individual Opt Out and Digest settings in each user's BuddyPress profile screen.</li>
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-memberpress-bridge/" target="_new">MemberPress Integration</a>: Make sure your members have access to Opt Out and Digest settings in their MemberPress profile screens, and only get notified of topics/replies they have access to.</li>
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-ultimate-member-bridge/" target="_new">Ultimate Member Integration</a>: Make sure your members have access to Opt Out and Digest settings in their Ultimate Member profile screens.</li>
+    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-accessally-bridge/" target="_new">AccessAlly Integration</a>: A must for those using AccessAlly, so their users won't receive notifications for forums they don't have access to.</li>
 </ul>
 
 = Partnerships =
@@ -56,29 +60,30 @@ We've made a parnership with ISIPP.com, securing their SuretyMail Email certific
 
 == Frequently Asked Questions ==
 = Why am I not receiving notifications of a topic/reply that I created? =
- * As of version 1.9.4, topic/reply authors no longer get notified of their own posts by default.
- * Version 1.12 and up have settings to decide whether authors get notified or not.
+* Make sure the setting to notify authors of their own posts is checked in both the Topics and Replies screen.
 
 = Where are the settings? =
- * All settings are under Admin -> Settings -> Forums -> Email Notifications. It will get its own settings screen in the upcoming version 2.0.
+* As of version 2.0, the settings are no longer in the Forums screen but have their own location in the Admin menu area.
+
+= People are getting timeouts when posting a new Topic or Reply. Why? =
+* When a new Topic or Reply is created, bbpnns is triggered to send notifications regarding that new post. If there are too many recipients, it may take too long for bbpnns to iterate through the recipient list and the webserver will throw a timeout message and the person posting it will think their message didn't get saved. To get around this problem, turn on the option to send messages in the background. That will create a scheduled action for the next time the wp-cron runs, and bbpnns will try to override any time limits while running.
+
+= Why are some of my users not getting notified? =
+* If you have *not* turned on Background Notifications, see the FAQ item above. If you have turned it on and some users are still not getting notified, it could be that your host is not letting bbpnns finish doing its thing, even though the timeout settings have been overridden. Some hosts will have scripts monitoring long running processes and have them killed, regardless of the PHP timeout values. A solution for this is to have bbpnns work faster, and for that we've released the [Bulk Mailer add-on](https://usestrict.net/product/bbpress-notify-no-spam-bulk-mailer) which connects with an existing Mailgun or SendGrid account and sends notifications to up to 1000 recipients in the time it would otherwise take to send to a single one.
 
 = Can a user turn off notifications? =
- * Originally, this plugin was developed to alert Administrators of new topics and replies. After a few iterations, users requested the ability to send
-messages to other roles, which then could be characterized as spam. To allow your users to opt-out from receiving notifications, please consider purchasing
-the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/).
- * As of version 1.12, you can use this plugin with bbPress Forum/Topic subscribers, instead of- or in addition to roles. Just turn on the Override option for Forums or Topics.
+* Originally, this plugin was developed to alert Administrators of new topics and replies. After a few iterations, users requested the ability to send messages to other roles, which could then be characterized as spam. To allow your users to opt-out from receiving notifications, please consider purchasing the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/) or disable per-role notifications in favor of Overriding Core Subscriptions.
 
-= Does this plugin integrate with BuddyPress Groups? =
- * Out of the box, no. However, you can get BuddyPress Group notification functionality using our premium [bbpnns/BuddyPress Bridge plugin](http://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/).
+= Does this plugin integrate with BuddyPress? =
+* Out of the box, no. However, you can get BuddyPress Group notification functionality using our premium [bbpnns/BuddyPress Bridge plugin](http://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/).
 
 = Does this plugin integrate with X, Y, Z Membership/Privacy plugin? =
- * We can't add support for all sorts of third party plugins inside the core bbpnns plugin. It would become way too bloated. However, we do support some of the more popular membership and privacy plugins
- such as Private Groups, MemberPress and Ultimate Member. See the Premium Addons section above for the links to each one. If you're using a different plugin and need support, reach out and let us know.
+* We can't add support for all sorts of third party plugins inside the core bbpnns plugin. It would become way too bloated. However, we do support some of the more popular membership and privacy plugins such as Private Groups, MemberPress, AccessAlly and Ultimate Member. See the Premium Addons section above for the links to each one. If you're using a different plugin and need support, reach out and let us know.
  We'll look into adding it.
+ 
 
 = Can this plugin be customized? =
-* If you have some WordPress coding experience, customizing should be really easy as we offer around 40 filters and actions. However, if you need help, reach out
-and let us know your specs for an estimate.
+* If you have some WordPress coding experience, customizing should be really easy as we offer around 40 filters and actions. However, if you need help, reach out and let us know your specs for an estimate.
 
 
 
@@ -90,6 +95,124 @@ and let us know your specs for an estimate.
 
 
 == Changelog ==
+= 2.6.1 =
+* Added support for bbpress 2.6 moderation functionality.
+
+= 2.6 =
+* Changed behaviour of notify_authors checkbox: Originally it would only remove authors if they were already in the recipient list. Now it will also add authors if they're not in recipients and the setting is checked. 
+
+= 2.5.7 =
+* Call bbp_new_topic and bbp_new_reply in Dry Run with full param list to avoid breaking third-party plugins. 
+
+= 2.5.6 =
+* Fix login controller's maybe_add_redirect() to use given URL instead of pulling the permalink from the DB.
+
+= 2.5.5 =
+* Fix dry-run sending messages when run with background notifications enabled.
+
+= 2.5.4 =
+* Pass reply-url through login query string logic.
+
+= 2.5.3 =
+* Add safeguards to dry-run to keep bbpress from sending notifications.
+
+= 2.5.2 =
+* Fix nonce handling in old 1.x to 2.x db conversion.
+
+= 2.5.1 -
+* Better encoding of href variables in convert_images_and_links().
+
+= 2.5 =
+* Added ability to include forum subscribers in a reply notification.
+* Improved trace messages.
+
+= 2.4 =
+* Added feature: Dry run tests to help identify which settings are adding/dropping which users from the recipient list.
+
+= 2.3.1 =
+* Encode href variable in convert_images_and_links() if necessary.
+
+= 2.3 =
+* Added action bbpnns_doing_notify_on_save.
+
+= 2.2.1=
+* Fix: Lines ending in <br> were being wrapped in <p></p> tags.
+
+= 2.2 =
+* Enhancement: Call `set_time_limit()` when running as cron to try to avoid timeouts.
+* Enhancement: No longer embed images as some sites don't use PHPMailer to allow attaching them.
+* Enhancement: Add support for [date] tag in email subjects and bodies. Accepted parameter is `format` and values are those accepted by the `date()` function. It defaults to WP's date and time values in Settings > General.
+
+= 2.1.13.2 =
+* Fix: make new argument forum_id optional for backwards compatibility with other plugins/customizations.
+
+= 2.1.13.1 =
+* Fix: missed one instance of the bbpnns_topic_url filter in previous commit. 
+
+= 2.1.13 =
+* Added feature: Topic and reply urls in private forums now go through the login screen instead of throwing a 404 error.
+
+= 2.1.12 =
+* Replace filename with basename in image attachments as filename did not have the extension.
+
+= 2.1.11 =
+* Make render_template() public.
+
+= 2.1.10 =
+* Set default has_sidebar value for settings screen.
+
+= 2.1.9 =
+* Fix: Edge case where add_settings_error() was being called too soon.
+
+= 2.1.8 =
+* Fix: Fixed undefined property notice in Settings screen.
+
+= 2.1.7 =
+* Fix: Properly handle Subject line entity decoding when UTF-8 subject line option is selected.
+
+= 2.1.6 =
+* Fix: Adjusted priority of 'init' as it was causing weird issues in some cases.
+
+= 2.1.5 =
+* Fix: Add missed do_action( 'bbpnns_register_settings' ) call to admin_core.
+
+= 2.1.4 =
+* Fix: Race condition between bbpnns and Moderation Tools for bbPress plugin.
+
+= 2.1.3 =
+* Enhancement: Some third-party plugins are suppressing the database update notice with the button. Added a shortcut to force the upgrade. Use ?bbpnns_force_convert=1 query parameter in any Admin screen to force the update.
+
+= 2.1.2 =
+* Fix: Some 1.x installs had non-array values for recipient roles. Normalizing them to avoid errors.
+
+= 2.1.1 =
+* Fix: Role recipients settings field was not accepting an empty list.
+
+= 2.1 =
+* Fix: Normalizing recipient roles from bad 1.x -> 2.0 conversion. This also fixes cases where some add-ons can't display the user preferences in their profile screens.
+* Fix: Normalizing background notifications settings that were unified - previously we had one for topics and one for replies.
+* Added: Converting entities to their characters in subject line if UTF-8 subject is enabled.
+* Fixed: Removing duplicate notifications (bbpnns + bbpress core) in some scenarios.
+
+= 2.0.5.1=
+* Removed debugging left behind in previous commit.
+
+= 2.0.5 =
+* Fix: better handling of roles in topics and replies settings tabs.
+
+= 2.0.4.1 =
+* Fix: Corrected instance of legacy options check.
+
+= 2.0.4 =
+* Fix: Occasionally the background notifications settings checkbox would not uncheck. 
+
+= 2.0.3 =
+* Fix: Typo in previous commit causing set_notice() errors.
+
+= 2.0.2 =
+* Fix: Defer conversion check to 'init' action as some installs were croaking with 'undefined function add_settings_error'
+* Enhancement: Add support for certain add-ons to display their settings in the main bbpnns settings screen.
+
 = 2.0.1 =
 * Fix: 1.x -> 2.x converter bug not saving settings correctly.
 
@@ -369,5 +492,4 @@ This option can be overridden by using the filter 'bbpnns_handle_mandrill_nl2br'
 
 
 == Upgrade Notice ==
-= 2.0 =
-AVOID THIS UPDATE. Update to 2.0.1 instead.
+No special notices at this time.

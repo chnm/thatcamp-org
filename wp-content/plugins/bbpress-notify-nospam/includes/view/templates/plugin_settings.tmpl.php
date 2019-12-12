@@ -31,8 +31,7 @@
 	<?php endif; ?>
 	
     <div>
-    	<?php settings_fields( $this->settings_name ); ?>
-    	<?php do_settings_sections( $this->settings_name ); ?>
+    	<?php settings_fields( apply_filters( 'bbpnns_settings_screen_settings_name', $this->settings_name ) ); ?>
         <?php submit_button(); ?>
     </div>
 </form>

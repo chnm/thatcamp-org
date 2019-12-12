@@ -15,7 +15,7 @@ class bbPress_Notify_noSpam_View_Metaboxes extends bbPress_Notify_noSpam {
 	/**
 	 * @since 1.4
 	 */
-	function notification_meta_box_content( $post )
+	public function notification_meta_box_content( $post )
 	{
 		$type = ( $post->post_type === $this->get_topic_post_type() ) ? 'topic' : 'reply';
 

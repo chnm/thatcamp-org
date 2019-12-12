@@ -7,6 +7,19 @@ jQuery(document).ready(function($){
 		  placeholder: "<?php esc_attr_e( 'Select one or more Roles', 'bbPress_Notify_noSpam' ) ;?>",
 		  allowClear: true
 		});
+
+	$("#include_bbp_forum_subscriptions_in_replies").on('click', function(){
+		if ( $(this).prop( 'checked' ) && ! $("#override_bbp_topic_subscriptions").prop( 'checked' ) ) {
+			$("#override_bbp_topic_subscriptions").prop( 'checked', true );
+		}
+	});
+
+	$("#override_bbp_topic_subscriptions").on( 'click', function(){
+		if ( ! $(this).prop( 'checked' ) ) {
+			$("#include_bbp_forum_subscriptions_in_replies").prop( 'checked', false );
+		}
+	});
+	
 });
 
 </script>
@@ -24,13 +37,13 @@ jQuery(document).ready(function($){
 				<?php 
 					global $wp_roles;
 
-					$options = $wp_roles->get_names();
-					$saved_option = (array) $stash->settings->newreply_recipients;
+					$options      = $wp_roles->get_names();
+					$saved_option = array_flip( $stash->settings->newreply_recipients );
 				?>
 				<select id="bbpnns-reply-recipients" class="full-width" multiple="multiple" name="<?php echo $this->settings_name; ?>[newreply_recipients][]">
 			<?php foreach( $options as $value => $description ) :?>
 			
-				<option value="<?php echo $value; ?>" <?php selected( in_array( $value, $saved_option ) );?>><?php echo esc_html( $description ); ?></option>
+				<option value="<?php echo esc_attr( $value ); ?>" <?php selected( isset( $saved_option[$value] ) );?>><?php echo esc_html( $description ); ?></option>
 			
 			<?php endforeach; ?>
 			</select>
@@ -57,15 +70,23 @@ jQuery(document).ready(function($){
 		
 		
 		<tr>
-			<th scope="row"><?php _e( 'bbPress Forums Subscriptions Override', 'bbPress_Notify_noSpam' ) ;?></th>
+			<th scope="row"><?php _e( 'bbPress Topics Subscriptions Override', 'bbPress_Notify_noSpam' ) ;?></th>
 			<td>
 				<label>
-					<input type="checkbox" name="<?php echo $this->settings_name; ?>[override_bbp_topic_subscriptions]" value="1"
+					<input type="checkbox" id="override_bbp_topic_subscriptions" name="<?php echo $this->settings_name; ?>[override_bbp_topic_subscriptions]" value="1"
 					<?php checked( $stash->settings->override_bbp_topic_subscriptions ); ?> >
 					       <?php _e( 'Override Subscriptions to Topics.', 'bbPress_Notify_noSpam' ) ; ?>
 					       <br><br>
 					       <span class="description"><?php _e( 'Enable this option if you want bbPress Notify (No-Spam) to handle bbPress subscriptions to Topics (new replies).
 The bbPress Setting "Allow users to subscribe to forums and replies" must also be enabled for this to work.<br><a target="_blank" href="https://usestrict.net/2013/02/bbpress-notify-nospam/#subscriptions">Click here to learn more.</a>', 'bbPress_Notify_noSpam' ) ;?></span>
+				</label>
+				<br><br>
+				<label style="margin-left:2em;">
+					<input type="checkbox" id="include_bbp_forum_subscriptions_in_replies" name="<?php echo $this->settings_name; ?>[include_bbp_forum_subscriptions_in_replies]" value="1"
+					<?php checked( $stash->settings->include_bbp_forum_subscriptions_in_replies ); ?> >
+					       <?php _e( 'Also notify <em>forum</em> subscribers of new replies.', 'bbPress_Notify_noSpam' ) ; ?>
+					       <br>
+					       <span class="description" style="margin-left:2em;"><?php _e( 'Enabling this option will include the forum\'s subscribers in new replies. This may make some people angry. You have been warned!', 'bbPress_Notify_noSpam' ) ;?></span>
 				</label>
 			</td>
 		</tr>
@@ -103,7 +124,7 @@ The bbPress Setting "Allow users to subscribe to forums and replies" must also b
 				<br><br>
 				<span class="description bbpnns-subject-line">
 				<?php printf( __( '<strong>Available Tags</strong>: %s.', 'bbPress_Notify_noSpam' ) , 
-					  join( ', ', (array) apply_filters( 'bbpnns_available_reply_tags', array() ) ) ); ?>
+					  join( ', ', (array) apply_filters( 'bbpnns_settings_available_reply_tags', array() ) ) ); ?>
 				</span>
 			</td>
 		</tr>
@@ -117,13 +138,13 @@ The bbPress Setting "Allow users to subscribe to forums and replies" must also b
 				<br>
 				<span class="description bbpnns-message-body">
 				<?php printf( __( '<strong>Available Tags</strong>: %s.', 'bbPress_Notify_noSpam' ) , 
-					  join( ', ', (array) apply_filters( 'bbpnns_available_reply_tags', array() ) ) ); ?>
+					  join( ', ', (array) apply_filters( 'bbpnns_settings_available_reply_tags', array() ) ) ); ?>
 				</span>
 			</td>
 		</tr>
 		
-		<input type="hidden" name="bbpnns_checkbox_fields" 
-value="default_reply_notification_checkbox,override_bbp_topic_subscriptions,notify_authors_reply,hidden_forum_reply_override" />
+		<input type="hidden" name="bbpnns_nullable_fields" 
+value="default_reply_notification_checkbox,override_bbp_topic_subscriptions,notify_authors_reply,hidden_forum_reply_override,newreply_recipients,include_bbp_forum_subscriptions_in_replies" />
 		
 		<?php do_action( 'bbpnns_settings_replies_box_after_last_row' ); ?>
 		

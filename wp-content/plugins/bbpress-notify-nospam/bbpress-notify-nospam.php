@@ -2,7 +2,7 @@
 /*
 * Plugin Name: bbPress Notify (No-Spam)
 * Description: Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a> 
-* Version:	   2.0.1
+* Version:	   2.6.1
 * Author: 	   <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:     GNU General Public License, v2 ( or newer )
 * License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -17,7 +17,7 @@
 
 class bbPress_Notify_noSpam 
 {
-	const VERSION = '2.0.1';
+	const VERSION = '2.6.1';
 	
 	/**
 	 * The singletons
@@ -61,14 +61,6 @@ class bbPress_Notify_noSpam
 			$notices = $this->load_lib( 'controller/admin_notices' );
 			$this->load_lib( 'controller/ajax' );
 			
-			$did_v2_conversion = get_option( 'bbpnns_v2_conversion_complete', false );
-			$has_v1_data       = get_option( 'bbpress_notify_newtopic_email_subject', false );
-			if ( false === $did_v2_conversion && false !== $has_v1_data ) 
-			{
-				$this->load_lib( 'helper/converter' );
-				$notices->set_notice( 'bbpnns_v2_conversion_needed' );
-			}
-			
 			register_activation_hook( __FILE__, array( $this, 'do_activation') );
 			register_deactivation_hook( __FILE__, array( $this, 'do_deactivation') );
 		}
@@ -83,15 +75,50 @@ class bbPress_Notify_noSpam
 		
 		// Always Load the settings
 		$this->load_lib( 'controller/settings' );
-		add_action( 'init', array( $this, 'init' ) );
+
+		// Load this first so it can play nicely with Moderation plugins.
+		add_action( 'init', array( $this, 'init' ), 0 );
 	}
 	
 	public function init()
 	{
+	    $this->load_lib( 'controller/login' );
 		$this->load_lib( 'controller/common_core' );
 		
 		if ( self::is_admin() )
 		{
+			$did_v2_conversion = get_option( 'bbpnns_v2_conversion_complete', false );
+			
+			if ( false === $did_v2_conversion )
+			{
+				$has_v1_data = get_option( 'bbpress_notify_newtopic_email_subject', false );
+				
+				if ( false !== $has_v1_data )
+				{
+					// Kick off the converter
+					$converter = $this->load_lib( 'helper/converter' );
+					
+					/**
+					 * Allow forcing the conversion via query string.
+					 * @since 2.1.3
+					 */
+					if ( isset( $_GET['bbpnns_force_convert'] ) && $_GET['bbpnns_force_convert'] && current_user_can('manage_options') )
+					{
+						$status = $converter->do_db_upgrade();
+						
+						if ( true === $status )
+						{
+							wp_die( sprintf( __( 'bbPress Notify (No-Spam) 1.x -> 2.x conversion was successful. Click <a href="%s">here</a> to go back to your WP Admin.', 'bbPress_Notify_noSpam' ), esc_attr( admin_url('/') ) ), 200 );
+						}
+					}
+					else 
+					{
+						$notices = $this->load_lib( 'controller/admin_notices' );
+						$notices->set_notice( 'bbpnns_v2_conversion_needed' );
+					}
+				}
+			}
+			
 			$this->load_lib( 'controller/admin_core' );
 		}
 	}
@@ -321,7 +348,7 @@ class bbPress_Notify_noSpam
 	 * @param array $stash
 	 * @param bool $debug
 	 */
-	protected function render_template( $name, $stash=array(), $debug=false )
+	public function render_template( $name, $stash=array(), $debug=false )
 	{
 		$env = $this->get_env();
 	

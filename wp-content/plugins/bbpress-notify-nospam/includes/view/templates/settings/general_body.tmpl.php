@@ -66,7 +66,7 @@
 			</td>
 		</tr>
 		
-		<input type="hidden" name="bbpnns_checkbox_fields" value="background_notifications,encode_subject,show_credits" />
+		<input type="hidden" name="bbpnns_nullable_fields" value="background_notifications,encode_subject,show_credits" />
 		
 		<?php do_action( 'bbpnns_settings_global_box_after_last_row' ); ?>
 		

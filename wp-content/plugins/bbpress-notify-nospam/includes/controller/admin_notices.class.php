@@ -91,7 +91,17 @@ class bbPress_Notify_noSpam_Controller_Admin_Notices extends bbPress_Notify_noSp
 		       isset( $_GET['page'] ) && $this->domain === $_GET['page'] */ )
 		{
 			$msg = $this->get_message( $code );
-			add_settings_error( $this->settings_name, $code, $msg->msg, $msg->type );
+			
+			// Maybe defer setting the error
+			if ( ! function_exists( 'add_settings_error' ) )
+			{
+				add_action( 'admin_notices', function() use ($code, $msg){ 
+					add_settings_error( $this->settings_name, $code, $msg->msg, $msg->type );
+				}, -100);
+			}
+			else {
+				add_settings_error( $this->settings_name, $code, $msg->msg, $msg->type );
+			}
 		}
 		// Make sure we get unique notices
 		$this->notices[$code] = true;

@@ -79,8 +79,32 @@ class Tests_bbPress_Notify_noSpam_Model_Settings extends WP_UnitTestCase {
 		$this->assertEquals( $m->newreply_email_body, __( "Hello!\nA new reply has been posted by [reply-author].\nTopic title: [reply-title]\nTopic url: [reply-url]\n\nExcerpt:\n[reply-excerpt]", $this->child->domain ), 'Good default for reply email body' );
 		
 		$this->assertEquals( $m->email_type, 'html', 'Good default for message type' );
-		$this->assertEquals( $m->newtopic_recipients, array( 'administrator' => 'Administrator' ), 'Good default for new topic recipients' );
-		$this->assertEquals( $m->newreply_recipients, array( 'administrator' => 'Administrator' ), 'Good default for new reply recipients' );
+		$this->assertEquals( $m->newtopic_recipients, array(), 'Good empty/default for new topic recipients' );
+		$this->assertEquals( $m->newreply_recipients, array(), 'Good empty/default for new reply recipients' );
+	}
+	
+	function test_getter()
+	{
+		$m = $this->child->load_lib( 'model/settings' );
+		
+		// Check normalization after bad conversion.
+		$m->newreply_recipients = array( 'administrator' => 'Administrator' );
+		$this->assertEquals( $m->newreply_recipients, array( 'administrator' ), 'Normalization works for topic recipients' );
+		
+		$m->newtopic_recipients = array( 'administrator' => 'Administrator' );
+		$this->assertEquals( $m->newtopic_recipients, array( 'administrator' ), 'Normalization works for reply recipients' );
+		
+		$m->newtopic_email_subject = 'Test topic subject with an entity: &#8211;'; 
+		$m->newreply_email_subject = 'Test reply subject with an entity: &#8211;'; 
+		
+		$m->encode_subject = false;
+		$this->assertEquals( $m->newtopic_email_subject, 'Test topic subject with an entity: &#8211;', 'Unchanged subject'); 
+		$this->assertEquals( $m->newreply_email_subject, 'Test reply subject with an entity: &#8211;', 'Unchanged subject');
+		
+		$m->encode_subject = true;
+		$this->assertEquals( $m->newtopic_email_subject, 'Test topic subject with an entity: –', 'De-entitized subject');
+		$this->assertEquals( $m->newreply_email_subject, 'Test reply subject with an entity: –', 'De-entitized subject');
+		
 	}
 	
 	function test_setter_on_new()

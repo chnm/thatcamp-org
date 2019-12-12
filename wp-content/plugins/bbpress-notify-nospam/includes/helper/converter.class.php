@@ -36,7 +36,7 @@ class bbPress_Notify_noSpam_Helper_Converter extends bbPress_Notify_noSpam {
 		$this->bbpress_topic_post_type = $this->get_topic_post_type();
 		$this->bbpress_reply_post_type = $this->get_reply_post_type();
 	
-		$dao = $this->load_lib( 'dal/settings_dao' );
+		$dao = $this->load_lib( 'dal/settings_dao', array(), $force=true );
 		$settings = $dao->load();
 	
 		$options = array(
@@ -71,6 +71,8 @@ class bbPress_Notify_noSpam_Helper_Converter extends bbPress_Notify_noSpam {
 		global $wp_roles;
 		$all_roles = $wp_roles->roles;
 		
+		$do_background_notifications = false;
+		
 		foreach ( $results as $row )
 		{
 			// Only work on not null maps
@@ -81,25 +83,27 @@ class bbPress_Notify_noSpam_Helper_Converter extends bbPress_Notify_noSpam {
 			$property = $options[$row->option_name];
 			$value = maybe_unserialize( $row->option_value );
 			
-			if ( in_array( $row->option_name, array( 'bbpress_notify_newreply_recipients', 'bbpress_notify_newtopic_recipients' ) ) )
+			if ( 'bbpress_notify_newtopic_background' === $row->option_name || 'bbpress_notify_newreply_background' === $row->option_name )
 			{
-				$roles = array();
-				foreach ( $value as $role )
+				if ( $row->option_value ) // Check for truthy value
 				{
-					if ( ! isset( $all_roles[$role] ) ) 
-					{
-						continue;
-					}
-					$roles[$role] = $all_roles[$role]['name'];
+					$do_background_notifications = true;
+				}		
+			}
+			else 
+			{
+				// Some 1.x installs had non-array values for recipients. Normalize it.
+				if( 'bbpress_notify_newtopic_recipients' === $row->option_name || 'bbpress_notify_newreply_recipients' === $row->option_name )
+				{
+					$value = (array) $value;
 				}
 				
-				$value = $roles;
+				$settings->{$property} = $value;
 			}
-			
-			$settings->{$property} = $value;
 		}
 	
-		$settings->background_notifications = ( $settings->newtopic_background || $settings->newreply_background );
+		$settings->background_notifications = $do_background_notifications;
+
 		$dao->save( $settings );
 	
 		// Finally delete the old options
@@ -112,7 +116,6 @@ class bbPress_Notify_noSpam_Helper_Converter extends bbPress_Notify_noSpam {
 	
 		return true;
 	}
-	
 }
 
 /* End of file converter.class.php */

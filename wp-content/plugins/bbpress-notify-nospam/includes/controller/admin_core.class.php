@@ -15,6 +15,9 @@ class bbPress_Notify_noSpam_Controller_Admin_Core extends bbPress_Notify_noSpam 
 		
 		// Notification meta boxes if needed
 		add_action( 'add_meta_boxes', array( $this, 'add_notification_meta_box' ), 10 );
+		
+		// Required by BuddyPress bridge Add-on and others.
+		do_action( 'bbpnns_register_settings' );
 	}
 	
 	/**

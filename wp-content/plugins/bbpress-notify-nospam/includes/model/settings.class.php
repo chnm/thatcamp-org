@@ -53,6 +53,7 @@ class bbPress_Notify_noSpam_Model_Settings {
      */
     private $override_bbp_forum_subscriptions = false;
     private $override_bbp_topic_subscriptions = false;
+    private $include_bbp_forum_subscriptions_in_replies = false;
 //     'bbpnns_hijack_bbp_subscriptions_forum',
 //     'bbpnns_hijack_bbp_subscriptions_topic',
     
@@ -158,17 +159,18 @@ class bbPress_Notify_noSpam_Model_Settings {
     			$this->newreply_email_body    = __( "Hello!\nA new reply has been posted by [reply-author].\nTopic title: [reply-title]\nTopic url: [reply-url]\n\nExcerpt:\n[reply-excerpt]", 'bbPress_Notify_noSpam' ) ;
     	}
     	
-    	if ( 'all' === $key || 'newtopic_recipients' === $key )
-    	{
-    		if ( empty( $this->newtopic_recipients ) )
-    			$this->newtopic_recipients = array( 'administrator' => __( 'Administrator' ) );
-    	}
+    	// Remove this default as we want to allow no roles to be selected
+//     	if ( 'all' === $key || 'newtopic_recipients' === $key )
+//     	{
+//     		if ( empty( $this->newtopic_recipients ) )
+//     			$this->newtopic_recipients = array( 'administrator' );
+//     	}
     	
-    	if ( 'all' === $key || 'newreply_recipients' === $key )
-    	{
-    		if ( empty( $this->newreply_recipients ) )
-    			$this->newreply_recipients = array( 'administrator' => __( 'Administrator' ) );
-    	}
+//     	if ( 'all' === $key || 'newreply_recipients' === $key )
+//     	{
+//     		if ( empty( $this->newreply_recipients ) )
+//     			$this->newreply_recipients = array( 'administrator' );
+//     	}
     }
     
     
@@ -192,6 +194,7 @@ class bbPress_Notify_noSpam_Model_Settings {
             'default_reply_notification_checkbox' => __( 'Default Reply Notification Checkbox', 'bbPress_Notify_noSpam' ) ,
             'override_bbp_forum_subscriptions'    => __( 'Override bbPress Forum Subscriptions', 'bbPress_Notify_noSpam' ) ,
             'override_bbp_topic_subscriptions'    => __( 'Override bbPress Topic Subscriptions', 'bbPress_Notify_noSpam' ) ,
+            'include_bbp_forum_subscriptions_in_replies' => __( 'Also notify <em>forum</em> subscribers of new replies', 'bbPress_Notify_noSpam' ) ,
             'notify_authors_topic'                => __( 'Notify Authors of their Topics', 'bbPress_Notify_noSpam' ) ,
             'notify_authors_reply'                => __( 'Notify Authors of their Replies', 'bbPress_Notify_noSpam' ) ,
             'hidden_forum_topic_override'         => __( 'Only Notify Admins if Forum is Hidden', 'bbPress_Notify_noSpam' ) ,
@@ -209,7 +212,23 @@ class bbPress_Notify_noSpam_Model_Settings {
      */
     public function __get( $key )
     {
-        return $this->{$key};
+    	$value = $this->{$key};
+    	
+    	// Fix badly converted recipients array on the fly.
+    	if ( 'newtopic_recipients' === $key || 'newreply_recipients' === $key )
+    	{
+    		if ( ! empty( $value ) && ! isset( $value[0] ) )
+    		{
+    			$value = array_keys( $value );
+    		}
+    	}
+    	elseif( ( 'newtopic_email_subject' === $key || 'newreply_email_subject' === $key ) && $this->encode_subject )
+    	{
+    		// De-entitize HTML if UTF-8 subjects have been set
+    		$value = html_entity_decode( $value );
+    	}
+    	
+        return $value;
     }
     
     
@@ -284,6 +303,7 @@ class bbPress_Notify_noSpam_Model_Settings {
             case 'default_reply_notification_checkbox':
             case 'override_bbp_forum_subscriptions':
             case 'override_bbp_topic_subscriptions':
+            case 'include_bbp_forum_subscriptions_in_replies':
             case 'notify_authors_topic':
             case 'notify_authors_reply':
             case 'hidden_forum_topic_override':

@@ -1,7 +1,7 @@
 <?php
 /**
  * @group bbpnns
- * @group bbpnns_notify
+ * @group bbPress_Notify_noSpam
  */
 require_once( ABSPATH . '/wp-content/plugins/bbpress/bbpress.php' );
 require_once( ABSPATH . '/wp-content/plugins/bbpress-notify-nospam/bbpress-notify-nospam.php' );
@@ -11,6 +11,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	public $forum_id;
 	public $topic_id;
 	public $reply_id;
+	public $author;
 	
 	public $topic_body;
 	public $topic_body_regex;
@@ -27,11 +28,11 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	{
 		parent::setUp();
 		
-		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
+		$this->author = $user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
 		
 		// Set up the body templates
-		$this->topic_body = "<p>This is <br> a <br /> test &#039; paragraph for topic forum [topic-forum], URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
-		$this->reply_body = "<p>This is <br> a <br /> test &#039; paragraph for reply forum [reply-forum], Topic URL: [topic-url], URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
+		$this->topic_body = "<p>This is <br> a <br /> test &#039; paragraph for topic forum [topic-forum], Date: [date format=\"Y-m-d H:i:s\"], URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
+		$this->reply_body = "<p>This is <br> a <br /> test &#039; paragraph for reply forum [reply-forum], Date: [date format=\"Y-m-d H:i:s\"], Topic URL: [topic-url], URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		
 		// Create new forum
 		$this->forum_id = bbp_insert_forum( 
@@ -77,8 +78,8 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		
 		// Set up the expected body regexes
-		$this->topic_body_regex = "<p>This is <br> a <br \/> test ' paragraph for topic forum test-forum, URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, and Author: {$user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
-		$this->reply_body_regex = "<p>This is <br> a <br \/> test ' paragraph for reply forum test-forum, Topic URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, URL: http:\/\/wp_plugins\/\?p={$this->reply_id}, and Author: {$user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		$this->topic_body_regex = "<p>This is <br> a <br \/> test ' paragraph for topic forum test-forum, Date: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}, URL: http:\/\/wp_plugins\/.*?, and Author: {$user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		$this->reply_body_regex = "<p>This is <br> a <br \/> test ' paragraph for reply forum test-forum, Date: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}, Topic URL: http:\/\/wp_plugins\/.*?, URL: http:\/\/wp_plugins\/.*, and Author: {$user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
 		
 		$this->child = new bbPress_Notify_noSpam_Child();
 	}
@@ -92,6 +93,75 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		remove_all_filters( 'bbpnns_skip_topic_notification' );
 	}
 	
+	public function test_construct()
+	{
+		$bbpnns = new bbPress_Notify_noSpam();
+		
+		$this->assertEquals( 0, has_action('init', array( $bbpnns, 'init') ) );
+	}
+	
+	public function test_common_core_actions_filters()
+	{
+	    $ccc = $this->child->load_lib( 'controller/common_core', [], $force=true );
+	    
+	    $this->assertTrue( (bool) has_action( 'save_post', [ $ccc, 'notify_on_save' ] ) );
+	    $this->assertTrue( (bool) has_action( 'bbpnns_dry_run_trace', [ $ccc, 'trace' ] ) );
+	    $this->assertTrue( (bool) has_filter( 'bbpress_notify_recipients_hidden_forum', [ $ccc, 'munge_newpost_recipients' ] ) );
+	    $this->assertTrue( (bool) has_filter( 'bbpnns_available_tags', [ $ccc, 'get_available_tags' ] ) );
+	    $this->assertTrue( (bool) has_filter( 'bbpnns_available_topic_tags', [ $ccc, 'get_available_topic_tags' ] ) );
+	    $this->assertTrue( (bool) has_filter( 'bbpnns_available_reply_tags', [ $ccc, 'get_available_reply_tags' ] ) );
+	    $this->assertTrue( (bool) has_filter( 'bbpnns_is_in_effect', [ $ccc, 'bbpnns_is_in_effect' ] ) );
+	    
+	    
+	    $dao = $this->child->load_lib( 'dal/settings_dao' );
+	    $settings = $dao->load();
+	    
+	    foreach ( [true,false] as $bool )
+	    {
+            remove_all_filters( 'bbp_forum_subscription_mail_message' );
+            remove_all_filters( 'bbp_subscription_mail_message' );
+	        
+            $settings->background_notifications         = $bool;
+            $settings->override_bbp_forum_subscriptions = $bool;
+            $settings->override_bbp_topic_subscriptions = $bool;
+	       
+            $dao->save( $settings );
+	       
+            $ccc = $this->child->load_lib( 'controller/common_core', [], $force=true );
+
+            if ( $bool )
+            {
+                $this->assertTrue( (bool) has_action( 'bbp_new_topic', [$ccc, 'bg_notify_new_topic'] ) );
+                $this->assertTrue( (bool) has_action( 'bbp_approved_topic', [$ccc, 'bg_notify_new_topic'] ) );
+                $this->assertTrue( (bool) has_action( 'bbp_new_topic', [$ccc, 'bg_filter_topic_recipients'] ) );
+                $this->assertTrue( (bool) has_action( 'bbpress_notify_bg_topic', [$ccc, 'notify_new_topic'] ) );
+                
+                $this->assertTrue( (bool) has_action( 'bbp_new_reply', [$ccc, 'bg_notify_new_reply'] ) );
+                $this->assertTrue( (bool) has_action( 'bbp_approved_reply', [$ccc, 'bg_notify_new_reply'] ) );
+                $this->assertTrue( (bool) has_action( 'bbp_new_reply', [$ccc, 'bg_filter_reply_recipients'] ) );
+                $this->assertTrue( (bool) has_action( 'bbpress_notify_bg_reply', [$ccc, 'notify_new_reply'] ) );
+                
+                
+                $this->assertTrue( (bool) has_filter( 'bbp_forum_subscription_mail_message', '__return_false' ) );
+                $this->assertTrue( (bool) has_action( 'plugins_loaded', [$ccc, 'remove_core_forum_notification'] ) );
+                
+                $this->assertTrue( (bool) has_filter( 'bbp_subscription_mail_message', '__return_false' ) );
+                $this->assertTrue( (bool) has_action( 'plugins_loaded', [$ccc, 'remove_core_topic_notification'] ) );
+            }
+            else
+            {
+                $this->assertTrue( (bool) has_action( 'bbp_new_topic', [$ccc, 'notify_new_topic'] ) );
+                $this->assertTrue( (bool) has_action( 'bbp_approved_topic', [$ccc, 'notify_new_topic'] ) );
+                
+                $this->assertTrue( (bool) has_action( 'bbp_new_reply', [$ccc, 'notify_new_reply'] ) );
+                $this->assertTrue( (bool) has_action( 'bbp_approved_reply', [$ccc, 'notify_new_reply'] ) );
+                
+                $this->assertFalse( (bool) has_filter( 'bbp_forum_subscription_mail_message', '__return_false' ) );
+                $this->assertFalse( (bool) has_action( 'plugins_loaded', [$ccc, 'remove_core_forum_notification'] ) );
+            }
+	    }
+	}
+	
 	public function test_available_tags()
 	{
 		$bbpnns = $this->child->load_lib( 'controller/common_core' );
@@ -103,6 +173,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$this->assertNotEmpty( $tags, 'Available tags are not empty' );
 		
 		$this->assertTrue( (bool) strpos( $tags, '[topic-forum]' ), 'Once missing [topic-forum] is available.' );
+		$this->assertTrue( (bool) strpos( $tags, '[date]' ), '[date] tag is there for topics' );
 		
 		
 		$tags = $bbpnns->get_available_reply_tags( null );
@@ -116,6 +187,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$this->assertTrue( (bool) strpos( $tags, '[topic-excerpt]' ), '[topic-excerpt] tag is there for replies' );
 		$this->assertTrue( (bool) strpos( $tags, '[topic-author]' ), '[topic-author] tag is there for replies' );
 		$this->assertTrue( (bool) strpos( $tags, '[topic-author-email]' ), '[topic-author-email] tag is there for replies' );
+		$this->assertTrue( (bool) strpos( $tags, '[date]' ), '[date] tag is there for replies' );
 	}
 	
 	
@@ -143,7 +215,86 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', $expected, 'topic', $this->forum_id );
 		
 		$this->assertEquals( $recipients, array('administrator'), 'Filter returns \'administrator\' array element for non-hidden forum' );
+	}
+	
+	
+	public function test_get_recipients()
+	{
+	    $subscriber_id = $this->factory->user->create( array( 'role' => 'subscriber' ) );
+	    $admin_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
+	    
+	    $dao = $this->child->load_lib( 'dal/settings_dao' );
+	    $orig_settings = $settings = $dao->load();
+	    
+	    $settings->newreply_recipients = array( 'administrator' );
+	    $settings->override_bbp_topic_subscriptions = true;
+	    $settings->include_bbp_forum_subscriptions_in_replies = true;
+	    $settings->notify_authors_topic = false;
+	    $settings->notify_authors_reply = false;
+	    $dao->save($settings);
+	    
+	    add_filter( 'bbp_get_forum_subscribers', function( $users ) use ( $subscriber_id ){
+	        return [ $subscriber_id ];
+	    }, 10, 1 );
+	    
+	    $bbpnns = $this->child->load_lib( 'controller/common_core');
+	    
+	    $recipients = $bbpnns->get_recipients( $this->forum_id, 'reply', $this->topic_id, $this->author->ID  );
+	    
+        $this->assertTrue( isset( $recipients[$admin_id] ), 'Got admin' );
+        $this->assertTrue( isset( $recipients[$subscriber_id] ), 'Got extra subscriber' );
+        $this->assertFalse( isset( $recipients[$this->author->ID] ), 'Author is not in recipient list' );
+        
+        $settings->notify_authors_topic = true;
+        $settings->notify_authors_reply = true;
+        $dao->save( $settings );
+        
+        // Reload to get fresh settings
+        $bbpnns = $this->child->load_lib( 'controller/common_core', [], $force=1);
+        $recipients = $bbpnns->get_recipients( $this->forum_id, 'reply', $this->topic_id, $this->author->ID  );
+        $this->assertTrue( isset( $recipients[$this->author->ID]), 'Author ID was added to recipient list' );
+        
+
+        $dao->save( $orig_settings );
+        
+	    remove_all_filters( 'bbp_get_forum_subscribers' );
+	}
+	
+	public function test_bg_filter_reply_recipients()
+	{
+		$dao = $this->child->load_lib( 'dal/settings_dao' );
+		$settings = $dao->load();
 		
+		$settings->newreply_recipients = array( 'administrator' );
+		$dao->save($settings);
+		
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
+		
+		$bbpnns->bg_filter_reply_recipients( $this->reply_id, $this->topic_id, $this->forum_id );
+		
+		$this->assertNotEmpty( $bbpnns->queued_recipients, 'Queued Recipients was populated' );
+		$this->assertTrue( ! isset( $bbpnns->queued_recipients[0] ), 'Keys are user_ids' );
+		
+		$this->assertTrue( (bool) has_filter( 'bbp_topic_subscription_user_ids', array( $bbpnns, 'filter_queued_recipients' ) ) );
+	}
+	
+	
+	public function test_bg_filter_topic_recipients()
+	{
+		$dao = $this->child->load_lib( 'dal/settings_dao' );
+		$settings = $dao->load();
+		
+		$settings->newtopic_recipients = array( 'administrator' );
+		$dao->save($settings);
+		
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
+	
+		$bbpnns->bg_filter_topic_recipients( $this->topic_id, $this->forum_id );
+	
+		$this->assertNotEmpty( $bbpnns->queued_recipients, 'Queued Recipients was populated' );
+		$this->assertTrue( ! isset( $bbpnns->queued_recipients[0] ), 'Keys are user_ids' );
+	
+		$this->assertTrue( (bool) has_filter( 'bbp_forum_subscription_user_ids', array( $bbpnns, 'filter_queued_recipients' ) ) );
 	}
 	
 	
@@ -164,6 +315,8 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 // 		delete_option( 'bbpress_notify_newtopic_recipients' );
 		$settings->newtopic_recipients = array();
+		$settings->notify_authors_topic = false;
+		$settings->notify_authors_reply = false;
 		$dao->save( $settings );
 		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
 		
@@ -256,6 +409,22 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	}
 	
 	
+	public function test_filter_queued_recipients()
+	{
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
+		
+		// This populates queued_recipients needed by filter_queued_recipients
+		$bbpnns->bg_filter_reply_recipients( $this->reply_id, $this->topic_id, $this->forum_id );
+		
+		// Given a core recipient list, remove those who are in our queued_recipients.
+		// Note that for our test, we're using the same list in the expected format, so the result will be an empty list.
+		$core_recipient_list = array_keys( $bbpnns->queued_recipients );
+		$clean = $bbpnns->filter_queued_recipients( $core_recipient_list );
+		
+		$this->assertEmpty( $clean, 'Affected recipients were filtered out');
+	}
+	
+
 	public function test_send_notification()
 	{
 		$roles = array( 'administrator' );
@@ -299,23 +468,12 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$result = array_intersect_key( $recipients, $got_recipients );
 		
 		$this->assertTrue( ! empty ( $result ), 'Filtered send_notification returns users' );
+		
+		$this->assertNotEmpty( $bbpnns->queued_recipients, 'Queued Recipients was populated' );
+		
+		$this->assertTrue( (bool) has_filter( 'bbp_forum_subscription_user_ids', array( $bbpnns, 'filter_queued_recipients' ) ) );
+		$this->assertTrue( (bool) has_filter( 'bbp_topic_subscription_user_ids', array( $bbpnns, 'filter_queued_recipients' ) ) );
 	}
-	
-	
-// 	public function test_build_email()
-// 	{
-// 		$type    = 'reply';
-// 		$subject = 'Vinny&#39;s test with quotes';
-// 		$body    = 'This is a test';
-		
-// 		update_option( "bbpress_notify_new{$type}_email_subject", $subject );
-// 		update_option( "bbpress_notify_new{$type}_email_body", $body );
-		
-// 		$bbpnns = $this->child->load_lib( 'controller/common_core' );
-// 		list( $email_subject, $email_body ) = $bbpnns->_build_email( 'reply', $this->reply_id );
-		
-// 		var_dump($email_subject, $email_body);
-// 	}
 	
 	
 	public function test_notify_on_publish_future_post()
@@ -481,39 +639,75 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 
 		$this->assertTrue( (bool) has_filter( 'bbpnns_is_in_effect', array( $bbpnns, 'bbpnns_is_in_effect' ) ), 'Filter found' );
+
+		$dao = $this->child->load_lib( 'dal/settings_dao' );
+		$settings = $dao->load();
 		
-		delete_option( 'bbpress_notify_newtopic_recipients' );
-		delete_option( 'bbpress_notify_newreply_recipients' );
-		delete_option( 'bbpnns_hijack_bbp_subscriptions_forum' );
-		delete_option( 'bbpnns_hijack_bbp_subscriptions_topic' );
+		$settings->newtopic_recipients = [];
+		$settings->newreply_recipients = [];
+		$settings->override_bbp_forum_subscriptions = 
+		$settings->override_bbp_topic_subscriptions = 
+		$settings->notify_authors_topic = 
+		$settings->notify_authors_reply = false;
+
+		$dao->save($settings);
+		$bbpnns = $this->child->load_lib( 'controller/common_core', [], $reload=true );
 		
 		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
+		$this->assertFalse( $bbpnns->bbpnns_is_in_effect( null, $user->ID ) );
 		
-		$this->assertFalse( apply_filters( 'bbpnns_is_in_effect', false ) );
+		$settings->override_bbp_forum_subscriptions = true;
+		$dao->save($settings);
+		$bbpnns = $this->child->load_lib( 'controller/common_core', [], $reload=true );
+		$this->assertTrue( $bbpnns->bbpnns_is_in_effect( null, $user->ID ) );
 		
-		update_option( 'bbpnns_hijack_bbp_subscriptions_forum', true );
-		unset( $bbpnns->override_forum );
+		$settings->override_bbp_forum_subscriptions = false;
+		$settings->override_bbp_topic_subscriptions = true;
+		$bbpnns = $this->child->load_lib( 'controller/common_core', [], $reload=true );
+		$this->assertTrue( $bbpnns->bbpnns_is_in_effect( null, $user->ID ) );
+		
+		$settings->override_bbp_topic_subscriptions = false;
+		$settings->notify_authors_topic = true;
+		$bbpnns = $this->child->load_lib( 'controller/common_core', [], $reload=true );
+		$this->assertTrue( $bbpnns->bbpnns_is_in_effect( null, $user->ID ) );
 
-		$this->assertTrue( apply_filters( 'bbpnns_is_in_effect', false, $user->ID ) );
-		delete_option( 'bbpnns_hijack_bbp_subscriptions_forum' );
-		delete_option( 'bbpnns_hijack_bbp_subscriptions_topic' );
+		$settings->notify_authors_topic = false;
+		$settings->notify_authors_reply = true;
+		$bbpnns = $this->child->load_lib( 'controller/common_core', [], $reload=true );
+		$this->assertTrue( $bbpnns->bbpnns_is_in_effect( null, $user->ID ) );
 		
-		update_option( 'bbpnns_hijack_bbp_subscriptions_topic', true );
-		unset( $bbpnns->override_forum );
-		unset( $bbpnns->override_topic );
+		$settings->notify_authors_reply = false;
+		$settings->newtopic_recipients = ['administrator'];
+		$bbpnns = $this->child->load_lib( 'controller/common_core', [], $reload=true );
+		$this->assertTrue( $bbpnns->bbpnns_is_in_effect( null, $user->ID ) );
 		
-		$this->assertTrue( apply_filters( 'bbpnns_is_in_effect', false, $user->ID ) );
-		delete_option( 'bbpnns_hijack_bbp_subscriptions_forum' );
-		delete_option( 'bbpnns_hijack_bbp_subscriptions_topic' );
 		
-		unset( $bbpnns->override_forum );
-		unset( $bbpnns->override_topic );
-		
-		$recipients = array( 'administrator' );
-		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
-		
-		$this->assertTrue( apply_filters( 'bbpnns_is_in_effect', false, $user->ID ) );
-		
+		$settings->newtopic_recipients = [];
+		$settings->newreply_recipients = ['administrator'];
+		$bbpnns = $this->child->load_lib( 'controller/common_core', [], $reload=true );
+		$this->assertTrue( $bbpnns->bbpnns_is_in_effect( null, $user->ID ) );
+	}
+	
+	public function test_dry_run_trace()
+	{
+	    remove_all_filters( 'bbpnns_dry_run_trace_info' );
+	    remove_all_actions( 'bbpnns_dry_run_trace' );
+	    
+	    $bbpnns = $this->child->load_lib( 'controller/common_core', [], true );
+	    
+	    $this->assertTrue( (bool) has_action( 'bbpnns_dry_run_trace', array( $bbpnns, 'trace' ) ) );
+	    
+	    $message = 'Testing trace action';
+	    
+	    do_action( 'bbpnns_dry_run_trace', $message );
+	    
+	    $messages = apply_filters( 'bbpnns_dry_run_trace_info', [] );
+	    
+	    $this->assertNotEmpty( $messages, 'Messages not empty' );
+	    $this->assertEquals( 1, count($messages), 'Got one message back' );
+	    $this->assertRegexp( '/^\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\] \[\d+\] ' . $message . '/', $messages[0], 'Got expected message');
+	    
+	    remove_all_filters( 'bbpnns_dry_run_trace_info' );
 	}
 	
 	

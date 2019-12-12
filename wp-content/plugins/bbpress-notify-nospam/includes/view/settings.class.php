@@ -86,7 +86,8 @@ class bbPress_Notify_noSpam_View_Settings extends bbPress_Notify_noSpam {
 		$stash['active_tab']  = isset( $_GET['tab'] ) ? $_GET['tab'] : 'general';
 		$stash['sidebar']     = '';
 		$stash['pagehook']    = $this->pagehook = apply_filters('bbpnns_settings_pagehook', null);
-
+		$stash['has_sidebar'] = false; // start out as false. hooks may change this later.
+		
 		// Use bbpnns_settings_registered_tabs filter and bbpnns_settings_nav_$tab to add more elements to the screen
 		$this->render_template( 'plugin_settings', $stash );
 	}
@@ -116,7 +117,7 @@ class bbPress_Notify_noSpam_View_Settings extends bbPress_Notify_noSpam {
 				$title = __( 'Replies Settings', 'bbPress_Notify_noSpam' ) ;
 				break;
 			case 'support':
-				$title = __( 'Support', 'bbPress_Notify_noSpam' ) ;
+				$title = __( 'Support Info', 'bbPress_Notify_noSpam' ) ;
 				break;
 // 			case 'addons':
 // 				$title = __( 'Add-ons', 'bbPress_Notify_noSpam' ) ;
@@ -141,7 +142,7 @@ class bbPress_Notify_noSpam_View_Settings extends bbPress_Notify_noSpam {
 	 */
 	public function render_general_box( $stash )
 	{
-		if ( $stash->has_sidebar )
+		if ( isset( $stash->has_sidebar ) && $stash->has_sidebar )
 		{
 			ob_start();
 			
@@ -162,7 +163,7 @@ class bbPress_Notify_noSpam_View_Settings extends bbPress_Notify_noSpam {
 		wp_enqueue_script( 'bbpnns-select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js', array( 'jquery' ), $ver=false, $footer=true );
 		wp_enqueue_style( 'bbpnns-select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css', array(), $ver=false );
 		
-		if ( $stash->has_sidebar )
+		if ( isset( $stash->has_sidebar ) && $stash->has_sidebar )
 		{
 			ob_start();
 			
@@ -184,7 +185,7 @@ class bbPress_Notify_noSpam_View_Settings extends bbPress_Notify_noSpam {
 		wp_enqueue_script( 'bbpnns-select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js', array( 'jquery' ), $ver=false, $footer=true );
 		wp_enqueue_style( 'bbpnns-select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css', array(), $ver=false );
 		
-		if ( $stash->has_sidebar )
+		if ( isset( $stash->has_sidebar ) && $stash->has_sidebar )
 		{
 			ob_start();
 		
@@ -203,7 +204,10 @@ class bbPress_Notify_noSpam_View_Settings extends bbPress_Notify_noSpam {
 	 */
 	public function render_support_box( $stash )
 	{
-		if ( $stash->has_sidebar )
+	    wp_enqueue_script( 'bbpnns-select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js', array( 'jquery' ), $ver=false, $footer=true );
+	    wp_enqueue_style( 'bbpnns-select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css', array(), $ver=false );
+	    
+		if ( isset( $stash->has_sidebar ) && $stash->has_sidebar ) 
 		{
 			ob_start();
 		
@@ -214,7 +218,8 @@ class bbPress_Notify_noSpam_View_Settings extends bbPress_Notify_noSpam {
 		
 		$stash->support_vars = apply_filters( 'bbpnns_support_info', $this->get_support_info() );
 		
-		$this->render_template( 'settings/support_body', $stash );
+		$this->render_template( 'settings/support/support_box', $stash );
+		$this->render_template( 'settings/support/dry_run_box', $stash );
 	}
 	
 	
