@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Broken Link Checker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-06-16 15:34:13+0000\n"
+"PO-Revision-Date: 2019-05-11 08:46:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,259 +11,58 @@ msgstr ""
 "Language: fr\n"
 "Project-Id-Version: Plugins - Broken Link Checker - Stable (latest release)\n"
 
-#: core/core.php:111
-msgid "Every 10 minutes"
-msgstr "Toutes les 10 minutes"
+#. Author URI of the plugin
+msgid "https://managewp.com"
+msgstr "https://managewp.com"
+
+#. Author of the plugin
+msgid "ManageWP"
+msgstr "ManageWP"
 
 #: core/core.php:1431
 msgid "Enter the keys of acf fields you want to check (one per line). If a field contains HTML code, prefix its name with <code>html:</code>. For example, <code>html:field_586a3eaa4091b</code>."
 msgstr "Saisissez les noms des champs que vous souhaitez vérifier (un par ligne). Si un champ contient du code HTML, préfixez son nom par <code>html:</code>. Par exemple, <code>html:field_586a3eaa4091b</code>."
 
-#. Plugin URI of the plugin/theme
+#: core/core.php:111
+msgid "Every 10 minutes"
+msgstr "Toutes les 10 minutes"
+
+#. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/broken-link-checker/"
 msgstr "https://fr.wordpress.org/plugins/broken-link-checker/"
 
-#. Author of the plugin/theme
-msgid "Janis Elsts, Vladimir Prelovac"
-msgstr "Janis Elsts, Vladimir Prelovac"
+#. Description of the plugin
+msgid "Checks your blog for broken links and missing images and notifies you on the dashboard if any are found."
+msgstr "Recherche dans votre site les liens cassés et les images manquantes et vous en informe dans le tableau de bord si elle en trouve."
 
-#: includes/extra-strings.php:2
-msgctxt "module name"
-msgid "Basic HTTP"
-msgstr "Basic HTTP"
-
-#: includes/extra-strings.php:3
-msgctxt "module name"
-msgid "Blogroll items"
-msgstr "Liens"
-
-#: includes/extra-strings.php:4
-msgctxt "module name"
-msgid "Comments"
-msgstr "Commentaires"
-
-#: includes/extra-strings.php:12
-msgctxt "module name"
-msgid "HTML images"
-msgstr "Images HTML"
-
-#: includes/extra-strings.php:13
-msgctxt "module name"
-msgid "HTML links"
-msgstr "Liens HTML"
-
-#: includes/extra-strings.php:18
-msgctxt "module name"
-msgid "YouTube API"
-msgstr "YouTube API"
-
-#: includes/extra-strings.php:19
-msgctxt "module name"
-msgid "Posts"
-msgstr "Articles"
-
-#: includes/extra-strings.php:20
-msgctxt "module name"
-msgid "Pages"
-msgstr "Pages"
-
-#: includes/link-query.php:46
-msgctxt "filter name"
-msgid "Warnings"
-msgstr "Avertissements"
-
-#: includes/link-query.php:47
-msgid "Warnings"
-msgstr "Avertissements"
-
-#: includes/links.php:502
-msgid "Link is broken."
-msgstr "Le lien est cassé."
-
-#: includes/links.php:504
-msgid "Link is valid."
-msgstr "Le lien est valide."
-
-#: includes/links.php:733 includes/links.php:835 includes/links.php:869
-msgid "Link is not valid"
-msgstr "Lien non valide"
-
-#: includes/links.php:1007
-msgctxt "link status"
-msgid "Unknown"
-msgstr "Inconnu"
-
-#: includes/links.php:1020 modules/checkers/http.php:316
-#: modules/extras/mediafire.php:115 modules/extras/youtube.php:132
-#: modules/extras/youtube.php:229
-msgid "Unknown Error"
-msgstr "Erreur inconnue"
-
-#: includes/links.php:1047
-msgid "False positive"
-msgstr "Faux positif"
-
-#: includes/links.php:1050 modules/extras/rapidshare.php:145
-#: modules/extras/rapidshare.php:151 modules/extras/rapidshare.php:178
-#: modules/extras/youtube.php:138 modules/extras/youtube.php:215
-msgctxt "link status"
-msgid "OK"
-msgstr "Ok"
-
-#: includes/utility-class.php:246
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] "%d seconde"
-msgstr[1] "%d secondes"
-
-#: includes/utility-class.php:247
-msgid "%d second ago"
-msgid_plural "%d seconds ago"
-msgstr[0] "%d seconde"
-msgstr[1] "%d secondes"
-
-#: includes/utility-class.php:250
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d minute"
-msgstr[1] "%d minutes"
-
-#: includes/utility-class.php:254
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d heure"
-msgstr[1] "%d heures"
-
-#: includes/utility-class.php:255
-msgid "%d hour ago"
-msgid_plural "%d hours ago"
-msgstr[0] "%d heure"
-msgstr[1] "%d heures"
-
-#: includes/utility-class.php:258
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] "%d jour"
-msgstr[1] "%d jours"
-
-#: includes/utility-class.php:259
-msgid "%d day ago"
-msgid_plural "%d days ago"
-msgstr[0] "%d jour"
-msgstr[1] "%d jours"
-
-#: includes/utility-class.php:262
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] "%d mois"
-msgstr[1] "%d mois"
-
-#: includes/utility-class.php:263
-msgid "%d month ago"
-msgid_plural "%d months ago"
-msgstr[0] "%d mois"
-msgstr[1] "%d mois"
-
-#: modules/checkers/http.php:466
-msgid "Using Snoopy"
-msgstr "Utilise Snoopy"
-
-#: modules/containers/blogroll.php:21
-msgid "Bookmark"
-msgstr "Marque-page"
-
-#: modules/containers/blogroll.php:27 modules/containers/blogroll.php:46
-msgid "Edit this bookmark"
-msgstr "Modifier ce marque-page"
-
-#: modules/containers/comment.php:159 modules/containers/comment.php:201
-msgid "Edit comment"
-msgstr "Modifier le commentaire"
-
-#: modules/containers/comment.php:172
-msgid "View comment"
-msgstr "Voir le commentaire"
-
-#: modules/containers/comment.php:189
-msgid "Comment"
-msgstr "Commentaire"
-
-#: modules/containers/acf_field.php:234 modules/containers/custom_field.php:216
-msgid "Edit this post"
-msgstr "Modifier cet article"
-
-#: modules/extras/googlevideo-embed.php:24
-msgid "GoogleVideo Video"
-msgstr "GoogleVideo Vid&eacute;o"
-
-#: modules/extras/mediafire.php:109
-msgid "Permission Denied"
-msgstr "Permission refusée"
-
-#: modules/extras/rapidshare.php:158
-msgid "RS Server Down"
-msgstr "Serveur RS non accessible"
+#: modules/parsers/metadata.php:119 modules/parsers/acf_field.php:120
+msgid "Custom field"
+msgstr "Champ personnalisé"
 
 #: modules/parsers/image.php:186
 msgid "Image"
 msgstr "Image"
 
-#. Description of the plugin/theme
-msgid "Checks your blog for broken links and missing images and notifies you on the dashboard if any are found."
-msgstr "Recherche dans votre site les liens cassés et les images manquantes et vous en informe dans le Tableau de bord si elle en trouve."
-
-#: modules/checkers/http.php:293
-msgid "Server Not Found"
-msgstr "Serveur non trouvé"
-
-#: includes/link-query.php:27
-msgid "No links found (yet)"
-msgstr "Aucun lien trouvé (pour le moment)"
-
-#: includes/link-query.php:38
-msgid "No broken links found"
-msgstr "Aucun lien cassé trouvé"
-
-#: includes/extra-strings.php:7
-msgctxt "module name"
-msgid "Embedded GoogleVideo videos"
-msgstr "Vidéos GoogleVideo intégrées"
-
-#: includes/extra-strings.php:6
-msgctxt "module name"
-msgid "Embedded DailyMotion videos"
-msgstr "Vidéos DailyMotion intégrées"
-
-#: includes/extra-strings.php:10
-msgctxt "module name"
-msgid "Embedded YouTube videos"
-msgstr "Vidéos YouTube intégrées"
-
-#: includes/extra-strings.php:11
-msgctxt "module name"
-msgid "Embedded YouTube videos (old embed code)"
-msgstr "Vidéos YouTube intégrées (ancienne méthode)"
-
-#: includes/extra-strings.php:16
-msgctxt "module name"
-msgid "RapidShare API"
-msgstr "API RapidShare"
-
-#: includes/link-query.php:68
-msgid "No dismissed links found"
-msgstr "Aucun lien écarté trouvé"
-
-#: includes/link-query.php:67
-msgid "Dismissed Links"
-msgstr "Liens écartés"
-
-#: includes/link-query.php:66
-msgid "Dismissed"
-msgstr "Écarté"
-
 #: modules/extras/youtube.php:263
 msgid "Unknown YouTube API response received."
 msgstr "Réponse inconnue reçue de l’API YouTube."
+
+#: modules/extras/youtube.php:214
+msgid "Playlist OK"
+msgstr "Liste de lecture OK"
+
+#: modules/extras/youtube.php:205
+msgid "Video Restricted"
+msgstr "Accès restreint à la vidéo"
+
+#: modules/extras/youtube.php:199
+msgid "Video status : %s%s"
+msgstr "État de la vidéo : %s%s"
+
+#: modules/extras/youtube.php:189
+msgctxt "link status"
+msgid "Empty Playlist"
+msgstr "Liste de lecture vide"
 
 #: modules/extras/youtube.php:188
 msgid "This playlist has no entries or all entries have been deleted."
@@ -277,6 +76,14 @@ msgstr "Accès restreint à la liste de lecture"
 msgid "Playlist Not Found"
 msgstr "Liste de lecture non trouvée"
 
+#: modules/extras/youtube.php:149 modules/extras/youtube.php:152
+msgid "Video Not Found"
+msgstr "Vidéo non trouvée"
+
+#: modules/extras/youtube.php:137
+msgid "Video OK"
+msgstr "Vidéo OK"
+
 #: modules/extras/youtube-playlist-embed.php:25
 msgid "Embedded YouTube playlist"
 msgstr "Liste de lecture YouTube intégrée"
@@ -285,67 +92,21 @@ msgstr "Liste de lecture YouTube intégrée"
 msgid "YouTube Playlist"
 msgstr "Liste de lecture YouTube"
 
-#: includes/extra-strings.php:9
-msgctxt "module name"
-msgid "Embedded YouTube playlists (old embed code)"
-msgstr "Listes de lecture YouTube intégrées (ancienne méthode)"
-
-#: modules/extras/youtube.php:189
-msgctxt "link status"
-msgid "Empty Playlist"
-msgstr "Liste de lecture vide"
-
-#: modules/extras/youtube.php:214
-msgid "Playlist OK"
-msgstr "Liste de lecture OK"
-
-#: modules/extras/rapidshare.php:51
-msgid "Using RapidShare API"
-msgstr "API RapidShare"
+#: modules/extras/youtube-embed.php:25 modules/extras/youtube-iframe.php:26
+msgid "Embedded YouTube video"
+msgstr "Vidéo YouTube intégrée"
 
 #: modules/extras/youtube-embed.php:24 modules/extras/youtube-iframe.php:25
 msgid "YouTube Video"
 msgstr "Vidéo YouTube"
 
+#: modules/extras/vimeo-embed.php:25
+msgid "Embedded Vimeo video"
+msgstr "Vidéo Vimeo intégrée"
+
 #: modules/extras/vimeo-embed.php:24
 msgid "Vimeo Video"
 msgstr "Vidéo Vimeo"
-
-#: modules/extras/youtube.php:199
-msgid "Video status : %s%s"
-msgstr "État de la vidéo : %s%s"
-
-#: modules/extras/youtube.php:205
-msgid "Video Restricted"
-msgstr "Accès restreint à la vidéo"
-
-#: modules/extras/youtube.php:137
-msgid "Video OK"
-msgstr "Vidéo OK"
-
-#: modules/extras/youtube.php:149 modules/extras/youtube.php:152
-msgid "Video Not Found"
-msgstr "Vidéo non trouvée"
-
-#: includes/links.php:842
-msgid "This link is not a redirect"
-msgstr "Ce lien n’est pas une redirection."
-
-#: includes/links.php:750
-msgid "This link can not be edited because it is not used anywhere on this site."
-msgstr "Ce lien ne peut pas être modifié car il n’est pas utilisé sur ce site."
-
-#: includes/links.php:271
-msgid "The plugin doesn't know how to check this type of link."
-msgstr "L’extension ne sait pas comment vérifier ce type de lien."
-
-#: includes/link-query.php:82
-msgid "Search Results"
-msgstr "Résultats de la recherche"
-
-#: includes/link-query.php:57
-msgid "Redirected Links"
-msgstr "Liens redirigés"
 
 #: modules/extras/rapidshare.php:189
 msgid "RapidShare API error: %s"
@@ -355,41 +116,6 @@ msgstr "Erreur dans l’API RapidShare : %s"
 msgid "RapidShare : %s"
 msgstr "RapidShare : %s"
 
-#: modules/extras/mediafire.php:97 modules/extras/mediafire.php:103
-#: modules/extras/rapidshare.php:139
-msgid "Not Found"
-msgstr "Non trouvé"
-
-#: includes/links.php:1044
-msgid "Not checked"
-msgstr "Non vérifié"
-
-#: includes/link-query.php:48
-msgid "No warnings found"
-msgstr "Aucun avertissement trouvé"
-
-#: includes/link-query.php:58
-msgid "No redirects found"
-msgstr "Aucune redirection trouvée"
-
-#: includes/link-query.php:83 includes/link-query.php:130
-msgid "No links found for your query"
-msgstr "Aucun lien trouvé pour votre requête"
-
-#: modules/checkers/http.php:357 modules/checkers/http.php:439
-msgid "HTTP code : %d"
-msgstr "Code HTTP : %d"
-
-#: includes/extra-strings.php:15
-msgctxt "module name"
-msgid "Plaintext URLs"
-msgstr "URL en mode texte"
-
-#: includes/extra-strings.php:17
-msgctxt "module name"
-msgid "Smart YouTube httpv:// URLs"
-msgstr "Smart YouTube httpv:// URL"
-
 #: modules/extras/rapidshare.php:172
 msgid "File Locked"
 msgstr "Fichier verrouillé"
@@ -398,93 +124,62 @@ msgstr "Fichier verrouillé"
 msgid "File Blocked"
 msgstr "Fichier bloqué"
 
-#: modules/containers/comment.php:168
-msgctxt "verb"
-msgid "Trash"
-msgstr "Corbeille"
+#: modules/extras/rapidshare.php:158
+msgid "RS Server Down"
+msgstr "Serveur RS non accessible"
 
-#: includes/extra-strings.php:14
-msgctxt "module name"
-msgid "MediaFire API"
-msgstr "API MediaFire"
+#: modules/extras/rapidshare.php:51
+msgid "Using RapidShare API"
+msgstr "Utilisation de l’API RapidShare"
 
-#: modules/checkers/http.php:309
-msgid "Connection Failed"
-msgstr "La connexion a échoué."
+#: modules/extras/mediafire.php:109
+msgid "Permission Denied"
+msgstr "Permission refusée"
 
-#: includes/links.php:776
-msgid "Failed to create a DB entry for the new URL."
-msgstr "La création d’une entrée dans la base de données pour la nouvelle URL a échoué."
-
-#: modules/containers/comment.php:74
-msgid "Failed to delete comment %d"
-msgstr "La suppression du commentaire %d a échoué."
-
-#: modules/containers/blogroll.php:97
-msgid "Updating bookmark %d failed"
-msgstr "La mise à jour du lien %d a échoué."
-
-#: modules/containers/comment.php:53
-msgid "Updating comment %d failed"
-msgstr "La mise à jour du commentaire %d a échoué."
-
-#: modules/extras/youtube-embed.php:25 modules/extras/youtube-iframe.php:26
-msgid "Embedded YouTube video"
-msgstr "Vidéo YouTube intégrée"
-
-#: modules/extras/embed-parser-base.php:197
-msgid "Embedded videos can't be edited using Broken Link Checker. Please edit or replace the video in question manually."
-msgstr "Les vidéos intégrées ne peuvent pas être modifiées avec Broken Link Checker. Veuillez modifier ou remplacer la vidéo manuellement."
-
-#: modules/extras/vimeo-embed.php:25
-msgid "Embedded Vimeo video"
-msgstr "Vidéo Vimeo intégrée"
-
-#: includes/extra-strings.php:8
-msgctxt "module name"
-msgid "Embedded Vimeo videos"
-msgstr "Vidéos Vimeo intégrées"
+#: modules/extras/rapidshare.php:139 modules/extras/mediafire.php:97
+#: modules/extras/mediafire.php:103
+msgid "Not Found"
+msgstr "Non trouvé"
 
 #: modules/extras/googlevideo-embed.php:25
 msgid "Embedded GoogleVideo video"
 msgstr "Vidéo GoogleVideo intégrée"
 
+#: modules/extras/googlevideo-embed.php:24
+msgid "GoogleVideo Video"
+msgstr "GoogleVideo Vid&eacute;o"
+
+#: modules/extras/embed-parser-base.php:197
+msgid "Embedded videos can't be edited using Broken Link Checker. Please edit or replace the video in question manually."
+msgstr "Les vidéos intégrées ne peuvent pas être modifiées avec Broken Link Checker. Veuillez modifier ou remplacer la vidéo manuellement."
+
 #: modules/extras/dailymotion-embed.php:24
 msgid "Embedded DailyMotion video"
 msgstr "Vidéo DailyMotion intégrée"
-
-#: includes/link-query.php:26
-msgid "Detected Links"
-msgstr "Liens détectés"
 
 #: modules/extras/dailymotion-embed.php:23
 msgid "DailyMotion Video"
 msgstr "Vidéo DailyMotion"
 
-#: includes/extra-strings.php:5
-msgctxt "module name"
-msgid "Custom fields"
-msgstr "Champs personnalisés"
+#: modules/containers/dummy.php:34 modules/containers/dummy.php:45
+msgid "I don't know how to edit a '%s' [%d]."
+msgstr "Pas de méthode pour modifier « %s » [%d]."
 
-#: modules/parsers/acf_field.php:120 modules/parsers/metadata.php:119
-msgid "Custom field"
-msgstr "Champ personnalisé"
+#: modules/containers/custom_field.php:250 modules/containers/acf_field.php:258
+msgid "View \"%s\""
+msgstr "Voir « %s »"
 
-#: includes/instances.php:105 includes/instances.php:161
-msgid "Container %s[%d] not found"
-msgstr "Contenu %s[%d] non trouvé"
+#: modules/containers/custom_field.php:216 modules/containers/acf_field.php:234
+msgid "Edit this post"
+msgstr "Modifier cet article"
 
-#: modules/containers/comment.php:95
-msgid "Can't move comment %d to the trash"
-msgstr "Impossible de mettre le commentaire %d à la corbeille"
+#: modules/containers/custom_field.php:115 modules/containers/acf_field.php:132
+msgid "Failed to delete the meta field '%s' on %s [%d]"
+msgstr "La suppression du champ meta « %s » dans %s [%d] a échoué."
 
-#: includes/link-query.php:36
-msgid "Broken"
-msgstr "Cassé"
-
-#: includes/link-query.php:25
-msgid "All"
-msgstr "Tous"
+#: modules/containers/custom_field.php:85 modules/containers/acf_field.php:102
+msgid "Failed to update the meta field '%s' on %s [%d]"
+msgstr "La mise à jour du champ meta « %s » dans %s [%d] a échoué."
 
 #: modules/containers/comment.php:383
 msgid "%d comment moved to the Trash."
@@ -498,104 +193,56 @@ msgid_plural "%d comments have been deleted."
 msgstr[0] "%d commentaire supprimé."
 msgstr[1] "%d commentaires supprimés."
 
+#: modules/containers/comment.php:189
+msgid "Comment"
+msgstr "Commentaire"
+
+#: modules/containers/comment.php:172
+msgid "View comment"
+msgstr "Voir le commentaire"
+
+#: modules/containers/comment.php:168
+msgctxt "verb"
+msgid "Trash"
+msgstr "Corbeille"
+
+#: modules/containers/comment.php:168
+msgid "Move this comment to the trash"
+msgstr "Déplacer ce commentaire dans la corbeille"
+
+#: modules/containers/comment.php:166
+msgid "Delete Permanently"
+msgstr "Supprimer définitivement"
+
+#: modules/containers/comment.php:159 modules/containers/comment.php:201
+msgid "Edit comment"
+msgstr "Modifier le commentaire"
+
+#: modules/containers/comment.php:95
+msgid "Can't move comment %d to the trash"
+msgstr "Impossible de mettre le commentaire %d à la corbeille"
+
+#: modules/containers/comment.php:74
+msgid "Failed to delete comment %d"
+msgstr "La suppression du commentaire %d a échoué."
+
+#: modules/containers/comment.php:53
+msgid "Updating comment %d failed"
+msgstr "La mise à jour du commentaire %d a échoué."
+
 #: modules/containers/blogroll.php:298
 msgid "%d blogroll link deleted."
 msgid_plural "%d blogroll links deleted."
 msgstr[0] "%d lien supprimé."
 msgstr[1] "%d liens supprimés."
 
-#: includes/any-post.php:769
-msgid "%d \"%s\" moved to the Trash."
-msgid_plural "%d \"%s\" moved to the Trash."
-msgstr[0] "%d \"%s\" mis à la corbeille."
-msgstr[1] "%d \"%s\" mis à la corbeille."
-
-#: includes/any-post.php:746
-msgid "%d \"%s\" deleted."
-msgid_plural "%d \"%s\" deleted."
-msgstr[0] "%d \"%s\" supprimé."
-msgstr[1] "%d \"%s\" supprimés."
-
-#: includes/any-post.php:765
-msgid "%d post moved to the Trash."
-msgid_plural "%d posts moved to the Trash."
-msgstr[0] "%d article mis à la corbeille."
-msgstr[1] "%d articles mis à la corbeille."
-
-#: includes/any-post.php:767
-msgid "%d page moved to the Trash."
-msgid_plural "%d pages moved to the Trash."
-msgstr[0] "%d page mise à la corbeille."
-msgstr[1] "%d pages mises à la corbeille."
-
-#: includes/link-query.php:56
-msgid "Redirects"
-msgstr "Redirection"
-
-#: includes/containers.php:122
-msgid "%d '%s' has been deleted"
-msgid_plural "%d '%s' have been deleted"
-msgstr[0] "%d ‘%s’ supprimé"
-msgstr[1] "%d ‘%s’ supprimés"
-
-#: includes/utility-class.php:251
-msgid "%d minute ago"
-msgid_plural "%d minutes ago"
-msgstr[0] "Il y a %d minute"
-msgstr[1] "Il y a %d minutes"
-
-#: includes/any-post.php:744
-msgid "%d page deleted."
-msgid_plural "%d pages deleted."
-msgstr[0] "%d page supprimée."
-msgstr[1] "%d pages supprimées."
-
-#: includes/any-post.php:742
-msgid "%d post deleted."
-msgid_plural "%d posts deleted."
-msgstr[0] "%d article supprimé."
-msgstr[1] "%d articles supprimés."
-
-#: modules/checkers/http.php:359 modules/checkers/http.php:441
-msgid "(No response)"
-msgstr "(aucune réponse)"
-
-#: includes/any-post.php:614 modules/containers/acf_field.php:341
-#: modules/containers/custom_field.php:336
-msgid "Can't move post \"%s\" (%d) to the trash because the trash feature is disabled"
-msgstr "Impossible de mettre l’article « %s » (%d)  à la corbeille car cette fonctionnalité n’est pas activée."
-
-#: includes/containers.php:888 includes/containers.php:906
-msgid "Container type '%s' not recognized"
-msgstr "Le type de contenu « %s » n’est pas reconnu."
-
-#: includes/links.php:224
-msgid "The plugin script was terminated while trying to check the link."
-msgstr "Le script de l’extension a été interrompue lors de la vérification du lien."
-
-#: modules/checkers/http.php:377
-msgid "Most likely the connection timed out or the domain doesn't exist."
-msgstr "Il semblerait que la connexion a expiré ou que le domaine n’existe pas."
-
 #: modules/containers/blogroll.php:128
 msgid "Failed to delete blogroll link \"%s\" (%d)"
 msgstr "La suppression du lien « %s » (%d) a échoué."
 
-#: modules/containers/acf_field.php:258 modules/containers/custom_field.php:250
-msgid "View \"%s\""
-msgstr "Voir « %s »"
-
-#: includes/parsers.php:117
-msgid "Editing is not implemented in the '%s' parser"
-msgstr "La modification n’est pas disponible dans l’analyseur « %s »."
-
-#: modules/containers/acf_field.php:132 modules/containers/custom_field.php:115
-msgid "Failed to delete the meta field '%s' on %s [%d]"
-msgstr "La suppression du champ meta « %s » dans %s [%d] a échoué."
-
-#: modules/containers/acf_field.php:102 modules/containers/custom_field.php:85
-msgid "Failed to update the meta field '%s' on %s [%d]"
-msgstr "La mise à jour du champ meta « %s » dans %s [%d] a échoué."
+#: modules/containers/blogroll.php:97
+msgid "Updating bookmark %d failed"
+msgstr "La mise à jour du lien %d a échoué."
 
 #: modules/containers/blogroll.php:47
 msgid ""
@@ -605,448 +252,543 @@ msgstr ""
 "Vous êtes sur le point de supprimer ce lien « %s »\n"
 "« Annuler » pour le conserver, « OK » pour le supprimer."
 
-#: modules/containers/comment.php:168
-msgid "Move this comment to the trash"
-msgstr "Déplacer ce commentaire dans la corbeille"
+#: modules/containers/blogroll.php:27 modules/containers/blogroll.php:46
+msgid "Edit this bookmark"
+msgstr "Modifier ce marque-page"
 
-#: includes/any-post.php:634 modules/containers/acf_field.php:353
-#: modules/containers/custom_field.php:355
-msgid "Failed to move post \"%s\" (%d) to the trash"
-msgstr "Le déplacement de l’article « %s » (%d) dans la corbeille a échoué."
+#: modules/containers/blogroll.php:21
+msgid "Bookmark"
+msgstr "Marque-page"
 
-#: modules/containers/comment.php:166
-msgid "Delete Permanently"
-msgstr "Supprimer définitivement"
+#: modules/checkers/http.php:465
+msgid "Using Snoopy"
+msgstr "Utilisation de Snoopy"
 
-#: modules/checkers/http.php:448
+#: modules/checkers/http.php:447
 msgid "Request timed out."
 msgstr "Temps dépassé pour la requête."
 
-#: includes/instances.php:114 includes/instances.php:170
-msgid "Parser '%s' not found."
-msgstr "Analyseur « %s » non trouvé."
+#: modules/checkers/http.php:376
+msgid "Most likely the connection timed out or the domain doesn't exist."
+msgstr "Il semblerait que la connexion a expiré ou que le domaine n’existe pas."
 
-#: includes/links.php:896 includes/links.php:933
-msgid "Couldn't delete the link's database record"
-msgstr "Impossible de supprimer l’enregistrement pour le lien dans la base de données."
+#: modules/checkers/http.php:358 modules/checkers/http.php:440
+msgid "(No response)"
+msgstr "(aucune réponse)"
+
+#: modules/checkers/http.php:356 modules/checkers/http.php:438
+msgid "HTTP code : %d"
+msgstr "Code HTTP : %d"
+
+#: modules/checkers/http.php:308
+msgid "Connection Failed"
+msgstr "La connexion a échoué."
+
+#: modules/checkers/http.php:292
+msgid "Server Not Found"
+msgstr "Serveur non trouvé"
+
+#: includes/utility-class.php:263
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] "Il y a %d mois"
+msgstr[1] "Il y a %d mois"
+
+#: includes/utility-class.php:262
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] "%d mois"
+msgstr[1] "%d mois"
+
+#: includes/utility-class.php:259
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "Il y a %d jour"
+msgstr[1] "Il y a %d jours"
+
+#: includes/utility-class.php:258
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d jour"
+msgstr[1] "%d jours"
+
+#: includes/utility-class.php:255
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] "Il y a %d heure"
+msgstr[1] "Il y a %d heures"
+
+#: includes/utility-class.php:254
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d heure"
+msgstr[1] "%d heures"
+
+#: includes/utility-class.php:251
+msgid "%d minute ago"
+msgid_plural "%d minutes ago"
+msgstr[0] "Il y a %d minute"
+msgstr[1] "Il y a %d minutes"
+
+#: includes/utility-class.php:250
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minute"
+msgstr[1] "%d minutes"
+
+#: includes/utility-class.php:247
+msgid "%d second ago"
+msgid_plural "%d seconds ago"
+msgstr[0] "Il y a %d seconde"
+msgstr[1] "Il y a %d secondes"
+
+#: includes/utility-class.php:246
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] "%d seconde"
+msgstr[1] "%d secondes"
 
 #: includes/parsers.php:132
 msgid "Unlinking is not implemented in the '%s' parser"
 msgstr "Délier n’est pas disponible dans l’analyseur « %s »."
 
-#: modules/containers/dummy.php:34 modules/containers/dummy.php:45
-msgid "I don't know how to edit a '%s' [%d]."
-msgstr "Pas de méthode pour modifier « %s » [%d]."
+#: includes/parsers.php:117
+msgid "Editing is not implemented in the '%s' parser"
+msgstr "La modification n’est pas disponible dans l’analyseur « %s »."
 
-#: core/core.php:2837
-msgctxt "for the \"Detected X unique URLs in Y links\" message"
-msgid "%d unique URL"
-msgid_plural "%d unique URLs"
-msgstr[0] "%d URL unique détectée"
-msgstr[1] "%d URL uniques détectées"
+#: modules/extras/youtube.php:138 modules/extras/youtube.php:215
+#: modules/extras/rapidshare.php:145 modules/extras/rapidshare.php:151
+#: modules/extras/rapidshare.php:178 includes/links.php:1052
+msgctxt "link status"
+msgid "OK"
+msgstr "Ok"
 
-#: core/core.php:351
-msgid "Go to Broken Links"
-msgstr "Aller aux liens cassés"
+#: includes/links.php:1049
+msgid "False positive"
+msgstr "Faux positif"
 
-#: core/core.php:681
-msgid "Look For Links In"
-msgstr "Rechercher des liens dans"
+#: includes/links.php:1046
+msgid "Not checked"
+msgstr "Non vérifié"
 
-#: core/core.php:683
-msgid "Protocols & APIs"
-msgstr "Protocoles & APIs"
+#: modules/checkers/http.php:315 modules/extras/youtube.php:132
+#: modules/extras/youtube.php:229 modules/extras/mediafire.php:115
+#: includes/links.php:1022
+msgid "Unknown Error"
+msgstr "Erreur inconnue"
 
-#: core/core.php:699
-msgid "Broken Link Checker Options"
-msgstr "Options de Broken Link Checker"
-
-#: core/core.php:776
-msgid "Every %s hours"
-msgstr "Toutes les %s heures"
-
-#: core/core.php:792
-msgid "E-mail notifications"
-msgstr "E-mail de notification"
-
-#: core/core.php:813
-msgid "Notification e-mail address"
-msgstr "Adresse e-mail pour la notification"
-
-#: core/core.php:832
-msgid "Link tweaks"
-msgstr "Mettre en forme les liens"
-
-#: core/core.php:842 core/core.php:873
-msgid "Edit CSS"
-msgstr "Modifier le CSS"
-
-#: core/core.php:919
-msgctxt "settings page"
-msgid "Suggestions"
-msgstr "Suggestions"
-
-#: core/core.php:924
-msgid "Suggest alternatives to broken links"
-msgstr "Proposer des alternatives aux liens cassés"
-
-#: core/core.php:930
-msgctxt "settings page"
-msgid "Warnings"
-msgstr "Avertissements"
-
-#: core/core.php:953
-msgid "Look for links in"
-msgstr "Rechercher des liens dans"
-
-#: core/core.php:997
-msgid "Link types"
-msgstr "Type du lien"
-
-#: core/core.php:1010
-msgid "Exclusion list"
-msgstr "Liste des exclusions"
-
-#: core/core.php:1048 includes/links.php:1024
-msgid "Timeout"
-msgstr "Timeout"
-
-#: core/core.php:1054 core/core.php:1141 core/core.php:3463
-msgid "%s seconds"
-msgstr "%s secondes"
-
-#: core/core.php:1070
-msgid "Link monitor"
-msgstr "Surveillance des liens"
-
-#: core/core.php:1099
-msgctxt "dashboard widget visibility"
-msgid "Administrator"
-msgstr "Administrateur"
-
-#: core/core.php:1100
-msgctxt "dashboard widget visibility"
-msgid "Editor and above"
-msgstr "Editeur et plus"
-
-#: core/core.php:1117
-msgctxt "settings page"
-msgid "Show link actions"
-msgstr "Actions en masse"
-
-#: core/core.php:1161
-msgid "Server load limit"
-msgstr "Taux de charge limite du serveur"
-
-#: core/core.php:1240
-msgctxt "log file location"
-msgid "Default"
-msgstr "Défaut"
-
-#: core/core.php:1284
-msgid "Save Changes"
-msgstr "Enregistrer les modifications"
-
-#: core/core.php:1335
-msgid "Configure"
-msgstr "Configurer"
-
-#: core/core.php:1722
-msgid "Replaced %d redirect with a direct link"
-msgid_plural "Replaced %d redirects with direct links"
-msgstr[0] "Remplacement de la redirection %d par un lien direct"
-msgstr[1] "Remplacement des redirections %d par des liens directs"
-
-#: core/core.php:2149 core/core.php:2208
-msgid "Couldn't modify link %d"
-msgstr "Impossible de modifier le lien %d"
-
-#: core/core.php:2280
-msgctxt "admin notice under Tools - Broken links - Warnings"
-msgid "Hide notice"
-msgstr "Cacher les informations"
-
-#: core/core.php:2311
-msgid "Table columns"
-msgstr "Colonnes du tableau"
-
-#: core/core.php:2337
-msgid "links"
-msgstr "liens"
-
-#: core/core.php:2338 includes/admin/table-printer.php:171
-msgid "Apply"
-msgstr "Appliquer"
-
-#: core/core.php:2342
-msgid "Misc"
-msgstr "Divers"
-
-#: core/core.php:2841
-msgctxt "for the \"Detected X unique URLs in Y links\" message"
-msgid "%d link"
-msgid_plural "%d links"
-msgstr[0] "%d lien"
-msgstr[1] "%d liens"
-
-#: core/core.php:2862
-msgid "No links detected."
-msgstr "Aucun lien détecté."
-
-#: core/core.php:2888
-msgctxt "current load"
+#: includes/links.php:1009
+msgctxt "link status"
 msgid "Unknown"
 msgstr "Inconnu"
 
-#. #-#-#-#-#  broken-link-checker-code.pot (Broken Link Checker 1.11.5) 
-#. #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: core/core.php:3352
-msgid "Broken Link Checker"
-msgstr "Broken Link Checker"
+#: includes/links.php:898 includes/links.php:935
+msgid "Couldn't delete the link's database record"
+msgstr "Impossible de supprimer l’enregistrement pour le lien dans la base de données."
 
-#: core/core.php:3372
-msgid "PHP version"
-msgstr "Version PHP"
+#: includes/links.php:844
+msgid "This link is not a redirect"
+msgstr "Ce lien n’est pas une redirection."
 
-#: core/core.php:3378
-msgid "MySQL version"
-msgstr "Version MySQL"
+#: includes/links.php:778
+msgid "Failed to create a DB entry for the new URL."
+msgstr "La création d’une entrée dans la base de données pour la nouvelle URL a échoué."
 
-#: core/core.php:3391
-msgid "You have an old version of CURL. Redirect detection may not work properly."
-msgstr "Vous avez une vieille version de CURL. Les détections des redirections pourraient ne pas fonctionner correctement."
+#: includes/links.php:752
+msgid "This link can not be edited because it is not used anywhere on this site."
+msgstr "Ce lien ne peut pas être modifié car il n’est pas utilisé sur ce site."
 
-#: core/core.php:3403 core/core.php:3419 core/core.php:3424
-msgid "Not installed"
-msgstr "Pas installé"
+#: includes/links.php:735 includes/links.php:837 includes/links.php:871
+msgid "Link is not valid"
+msgstr "Lien non valide"
 
-#: core/core.php:3406
-msgid "CURL version"
-msgstr "Version de CURL"
+#: includes/links.php:504
+msgid "Link is valid."
+msgstr "Le lien est valide."
 
-#: core/core.php:3412
-msgid "Installed"
-msgstr "Installé"
+#: includes/links.php:502
+msgid "Link is broken."
+msgstr "Le lien est cassé."
 
-#: core/core.php:3436
-msgid "On"
-msgstr "Activé"
+#: includes/links.php:271
+msgid "The plugin doesn't know how to check this type of link."
+msgstr "L’extension ne sait pas comment vérifier ce type de lien."
 
-#: core/core.php:3437
-msgid "Redirects may be detected as broken links when safe_mode is on."
-msgstr "Les redirections peuvent être détectées comme des liens cassés quand le safe_mode est activé."
+#: includes/links.php:224
+msgid "The plugin script was terminated while trying to check the link."
+msgstr "Le script de l’extension a été interrompue lors de la vérification du lien."
 
-#: core/core.php:3442 core/core.php:3456
-msgid "Off"
-msgstr "Désactivé"
+#: includes/link-query.php:83 includes/link-query.php:130
+msgid "No links found for your query"
+msgstr "Aucun lien trouvé pour votre requête"
 
-#: core/core.php:3450
-msgid "On ( %s )"
-msgstr "Activé ( %s )"
+#: includes/link-query.php:82
+msgid "Search Results"
+msgstr "Résultats de la recherche"
 
-#: core/core.php:3451
-msgid "Redirects may be detected as broken links when open_basedir is on."
-msgstr "Les redirections peuvent être détectées comme des liens cassés quand open_basedir est activé."
+#: includes/link-query.php:68
+msgid "No dismissed links found"
+msgstr "Aucun lien écarté trouvé"
 
-#: core/core.php:3469
-msgid "Database character set"
-msgstr "Jeu de caractères de la base de données"
+#: includes/link-query.php:67
+msgid "Dismissed Links"
+msgstr "Liens écartés"
 
-#: core/init.php:256
-msgid "Once Weekly"
-msgstr "Une fois par semaine"
+#: includes/link-query.php:66
+msgid "Dismissed"
+msgstr "Écarté"
 
-#: core/init.php:262
-msgid "Twice a Month"
-msgstr "Deux fois par mois"
+#: includes/link-query.php:58
+msgid "No redirects found"
+msgstr "Aucune redirection trouvée"
 
-#: includes/any-post.php:426 modules/containers/acf_field.php:248
-#: modules/containers/blogroll.php:46 modules/containers/comment.php:159
-#: modules/containers/custom_field.php:230
-msgid "Edit"
-msgstr "Modifier"
+#: includes/link-query.php:57
+msgid "Redirected Links"
+msgstr "Liens redirigés"
 
-#: includes/any-post.php:443 modules/containers/acf_field.php:254
-#: modules/containers/blogroll.php:47 modules/containers/custom_field.php:245
-msgid "Delete"
-msgstr "Supprimer"
+#: includes/link-query.php:56
+msgid "Redirects"
+msgstr "Redirection"
 
-#: includes/any-post.php:484 modules/containers/acf_field.php:248
-#: modules/containers/custom_field.php:230
+#: includes/link-query.php:48
+msgid "No warnings found"
+msgstr "Aucun avertissement trouvé"
+
+#: includes/link-query.php:47
+msgid "Warnings"
+msgstr "Avertissements"
+
+#: includes/link-query.php:46
+msgctxt "filter name"
+msgid "Warnings"
+msgstr "Avertissements"
+
+#: includes/link-query.php:38
+msgid "No broken links found"
+msgstr "Aucun lien cassé trouvé"
+
+#: includes/link-query.php:36
+msgid "Broken"
+msgstr "Cassé"
+
+#: includes/link-query.php:27
+msgid "No links found (yet)"
+msgstr "Aucun lien trouvé (pour le moment)"
+
+#: includes/link-query.php:26
+msgid "Detected Links"
+msgstr "Liens détectés"
+
+#: includes/link-query.php:25
+msgid "All"
+msgstr "Tous"
+
+#: includes/instances.php:114 includes/instances.php:170
+msgid "Parser '%s' not found."
+msgstr "Analyseur « %s » non trouvé."
+
+#: includes/instances.php:105 includes/instances.php:161
+msgid "Container %s[%d] not found"
+msgstr "Contenu %s[%d] non trouvé"
+
+#: includes/extra-strings.php:20
+msgctxt "module name"
+msgid "Pages"
+msgstr "Pages"
+
+#: includes/extra-strings.php:19
+msgctxt "module name"
+msgid "Posts"
+msgstr "Articles"
+
+#: includes/extra-strings.php:18
+msgctxt "module name"
+msgid "YouTube API"
+msgstr "YouTube API"
+
+#: includes/extra-strings.php:17
+msgctxt "module name"
+msgid "Smart YouTube httpv:// URLs"
+msgstr "Smart YouTube httpv:// URL"
+
+#: includes/extra-strings.php:16
+msgctxt "module name"
+msgid "RapidShare API"
+msgstr "API RapidShare"
+
+#: includes/extra-strings.php:15
+msgctxt "module name"
+msgid "Plaintext URLs"
+msgstr "URL en mode texte"
+
+#: includes/extra-strings.php:14
+msgctxt "module name"
+msgid "MediaFire API"
+msgstr "API MediaFire"
+
+#: includes/extra-strings.php:13
+msgctxt "module name"
+msgid "HTML links"
+msgstr "Liens HTML"
+
+#: includes/extra-strings.php:12
+msgctxt "module name"
+msgid "HTML images"
+msgstr "Images HTML"
+
+#: includes/extra-strings.php:11
+msgctxt "module name"
+msgid "Embedded YouTube videos (old embed code)"
+msgstr "Vidéos YouTube intégrées (ancienne méthode)"
+
+#: includes/extra-strings.php:10
+msgctxt "module name"
+msgid "Embedded YouTube videos"
+msgstr "Vidéos YouTube intégrées"
+
+#: includes/extra-strings.php:9
+msgctxt "module name"
+msgid "Embedded YouTube playlists (old embed code)"
+msgstr "Listes de lecture YouTube intégrées (ancienne méthode)"
+
+#: includes/extra-strings.php:8
+msgctxt "module name"
+msgid "Embedded Vimeo videos"
+msgstr "Vidéos Vimeo intégrées"
+
+#: includes/extra-strings.php:7
+msgctxt "module name"
+msgid "Embedded GoogleVideo videos"
+msgstr "Vidéos GoogleVideo intégrées"
+
+#: includes/extra-strings.php:6
+msgctxt "module name"
+msgid "Embedded DailyMotion videos"
+msgstr "Vidéos DailyMotion intégrées"
+
+#: includes/extra-strings.php:5
+msgctxt "module name"
+msgid "Custom fields"
+msgstr "Champs personnalisés"
+
+#: includes/extra-strings.php:4
+msgctxt "module name"
+msgid "Comments"
+msgstr "Commentaires"
+
+#: includes/extra-strings.php:3
+msgctxt "module name"
+msgid "Blogroll items"
+msgstr "Liens"
+
+#: includes/extra-strings.php:2
+msgctxt "module name"
+msgid "Basic HTTP"
+msgstr "Basic HTTP"
+
+#: includes/containers.php:888 includes/containers.php:906
+msgid "Container type '%s' not recognized"
+msgstr "Le type de contenu « %s » n’est pas reconnu."
+
+#: includes/containers.php:122
+msgid "%d '%s' has been deleted"
+msgid_plural "%d '%s' have been deleted"
+msgstr[0] "%d « %s » a été supprimé"
+msgstr[1] "%d « %s » ont été supprimés"
+
+#: includes/any-post.php:799
+msgid "%d \"%s\" moved to the Trash."
+msgid_plural "%d \"%s\" moved to the Trash."
+msgstr[0] "%d « %s » mis à la corbeille."
+msgstr[1] "%d « %s » mis à la corbeille."
+
+#: includes/any-post.php:797
+msgid "%d page moved to the Trash."
+msgid_plural "%d pages moved to the Trash."
+msgstr[0] "%d page mise à la corbeille."
+msgstr[1] "%d pages mises à la corbeille."
+
+#: includes/any-post.php:795
+msgid "%d post moved to the Trash."
+msgid_plural "%d posts moved to the Trash."
+msgstr[0] "%d article mis à la corbeille."
+msgstr[1] "%d articles mis à la corbeille."
+
+#: includes/any-post.php:776
+msgid "%d \"%s\" deleted."
+msgid_plural "%d \"%s\" deleted."
+msgstr[0] "%d « %s » supprimé."
+msgstr[1] "%d « %s » supprimés."
+
+#: includes/any-post.php:774
+msgid "%d page deleted."
+msgid_plural "%d pages deleted."
+msgstr[0] "%d page supprimée."
+msgstr[1] "%d pages supprimées."
+
+#: includes/any-post.php:772
+msgid "%d post deleted."
+msgid_plural "%d posts deleted."
+msgstr[0] "%d article supprimé."
+msgstr[1] "%d articles supprimés."
+
+#: modules/containers/custom_field.php:355 modules/containers/acf_field.php:353
+#: includes/any-post.php:664
+msgid "Failed to move post \"%s\" (%d) to the trash"
+msgstr "Le déplacement de l’article « %s » (%d) dans la corbeille a échoué."
+
+#: modules/containers/custom_field.php:336 modules/containers/acf_field.php:341
+#: includes/any-post.php:644
+msgid "Can't move post \"%s\" (%d) to the trash because the trash feature is disabled"
+msgstr "Impossible de mettre l’article « %s » (%d)  à la corbeille car cette fonctionnalité n’est pas activée."
+
+#: modules/containers/custom_field.php:317 modules/containers/acf_field.php:327
+#: includes/any-post.php:625
+msgid "Failed to delete post \"%s\" (%d)"
+msgstr "La suppression de l’article « %s » (%d) a échoué."
+
+#: includes/any-post.php:588
+msgid "Updating post %d failed"
+msgstr "La mise à jour de l’article %d a échoué."
+
+#: modules/containers/comment.php:43 modules/containers/blogroll.php:83
+#: includes/any-post.php:578
+msgid "Nothing to update"
+msgstr "Rien à mettre à jour"
+
+#: modules/containers/custom_field.php:230 modules/containers/acf_field.php:248
+#: includes/any-post.php:514
 msgid "Edit this item"
 msgstr "Modifier cet objet"
 
-#: includes/admin/search-form.php:32 includes/link-query.php:81
-msgid "Search"
-msgstr "Rechercher"
+#: modules/containers/custom_field.php:250 modules/containers/comment.php:172
+#: modules/containers/acf_field.php:258 includes/any-post.php:495
+msgid "View"
+msgstr "Voir"
 
-#: includes/admin/links-page-js.php:370
-msgctxt "link text"
-msgid "(None)"
-msgstr "(Aucun)"
+#: includes/any-post.php:494
+msgid "View &#8220;%s&#8221;"
+msgstr "Voir « %s »"
 
-#: includes/admin/links-page-js.php:371
-msgctxt "link text"
-msgid "(Multiple links)"
-msgstr "(Liens multiples)"
+#: includes/any-post.php:487
+msgid "Preview"
+msgstr "Prévisualiser"
 
-#: includes/admin/links-page-js.php:938
-msgid "Select one or more links to edit."
-msgstr "S&eacute;lectionner un ou plusieurs liens &agrave; modifier"
+#: includes/any-post.php:486
+msgid "Preview &#8220;%s&#8221;"
+msgstr "Prévisualiser « %s »"
 
-#: includes/admin/search-form.php:16
-msgid "Save This Search As a Filter"
-msgstr "Enregistrer cette recherche comme un filtre"
+#: modules/containers/custom_field.php:245 modules/containers/acf_field.php:254
+#: modules/containers/blogroll.php:47 includes/any-post.php:473
+msgid "Delete"
+msgstr "Supprimer"
 
-#: includes/admin/search-form.php:26
-msgid "Delete This Filter"
-msgstr "Supprimer ce filtre"
+#: modules/containers/custom_field.php:243 modules/containers/acf_field.php:254
+#: includes/any-post.php:471
+msgid "Delete this item permanently"
+msgstr "Supprimer cet objet définitivement"
 
-#: includes/admin/search-form.php:42
-msgid "Link text"
-msgstr "Texte du lien"
+#: modules/containers/custom_field.php:238 modules/containers/acf_field.php:252
+#: includes/any-post.php:466
+msgid "Trash"
+msgstr "Corbeille"
 
-#: includes/admin/search-form.php:45 includes/admin/table-printer.php:216
-msgid "URL"
-msgstr "URL"
+#: modules/containers/custom_field.php:236 modules/containers/acf_field.php:252
+#: includes/any-post.php:464
+msgid "Move this item to the Trash"
+msgstr "Déplacer cet élément vers la corbeille"
 
-#: includes/admin/search-form.php:48 includes/admin/table-printer.php:545
-msgid "HTTP code"
-msgstr "Code HTTP"
-
-#: includes/admin/search-form.php:68 includes/admin/search-form.php:85
-msgid "Link type"
-msgstr "Type du lien"
-
-#: includes/admin/search-form.php:70
-msgid "Any"
-msgstr "Tous"
-
-#: includes/admin/search-form.php:112
-msgid "Search Links"
-msgstr "Liens de recherche"
-
-#: includes/admin/search-form.php:113 includes/admin/table-printer.php:369
-#: includes/admin/table-printer.php:754 includes/admin/table-printer.php:879
-msgid "Cancel"
-msgstr "Annuler"
-
-#: includes/admin/table-printer.php:223
-msgid "Source"
-msgstr "Source"
-
-#: includes/admin/table-printer.php:229
-msgid "Link Text"
-msgstr "Texte du lien"
-
-#: includes/admin/table-printer.php:236
-msgid "Redirect URL"
-msgstr "Redirections"
-
-#: includes/admin/table-printer.php:287
-msgid "Bulk Actions"
-msgstr "Actions en masse"
-
-#: includes/admin/table-printer.php:313
-msgid "&laquo;"
-msgstr "&laquo;"
-
-#: includes/admin/table-printer.php:314
-msgid "&raquo;"
-msgstr "&raquo;"
-
-#: includes/admin/table-printer.php:322
-msgid "Displaying %s&#8211;%s of <span class=\"current-link-count\">%s</span>"
-msgstr "Affichage %s&#8211;%s sur <span class=\"current-link-count\">%s</span>"
-
-#: includes/admin/table-printer.php:345
-msgid "Bulk Edit URLs"
-msgstr "Modifier les URL en masse"
-
-#: includes/admin/table-printer.php:347
-msgid "Find"
-msgstr "Trouver"
-
-#: includes/admin/table-printer.php:351
-msgid "Replace with"
-msgstr "Remplacer par"
-
-#: includes/admin/table-printer.php:371 includes/admin/table-printer.php:880
-msgid "Update"
+#: modules/containers/custom_field.php:230 modules/containers/comment.php:159
+#: modules/containers/acf_field.php:248 modules/containers/blogroll.php:46
+#: includes/any-post.php:456
+msgid "Edit"
 msgstr "Modifier"
 
-#: includes/admin/table-printer.php:535
-msgid "Never"
-msgstr "Jamais"
-
-#: includes/admin/table-printer.php:552
-msgid "%2.3f seconds"
-msgstr "%2.3f secondes"
-
-#: includes/admin/table-printer.php:555
-msgid "Final URL"
-msgstr "URL finale"
-
-#: includes/admin/table-printer.php:560
-msgid "Redirect count"
-msgstr "Nombre de redirections"
-
-#: includes/admin/table-printer.php:593
-msgid "Log"
-msgstr "Journal"
-
-#: includes/admin/table-printer.php:685
-msgid "Edit this link"
-msgstr "Modifier ce lien"
-
-#: includes/admin/table-printer.php:687
-msgid "Remove this link from all posts"
-msgstr "Supprimer ce lien de tous les articles"
-
-#: includes/admin/table-printer.php:707
-msgid "Undismiss this link"
-msgstr "Reprendre ce lien"
-
-#: includes/admin/table-printer.php:708
-msgid "Undismiss"
-msgstr "Reprendre"
-
-#: includes/admin/table-printer.php:721
-msgid "Replace this redirect with a direct link"
-msgstr "Remplacement de la redirection par un lien direct"
-
-#: includes/admin/table-printer.php:859
-msgctxt "inline editor title"
-msgid "Edit Link"
-msgstr "Modifier le lien"
-
-#: includes/admin/table-printer.php:862
-msgctxt "inline link editor"
-msgid "Text"
-msgstr "Texte"
-
-#: includes/admin/table-printer.php:867
-msgctxt "inline link editor"
-msgid "URL"
-msgstr "URL"
+#: includes/admin/table-printer.php:892
+msgid "Use this URL"
+msgstr "Utiliser cette URL"
 
 #: includes/admin/table-printer.php:872
 msgctxt "inline link editor"
 msgid "Suggestions"
 msgstr "Suggestions"
 
-#: includes/admin/table-printer.php:892
-msgid "Use this URL"
-msgstr "Utiliser cette URL"
+#: includes/admin/table-printer.php:867
+msgctxt "inline link editor"
+msgid "URL"
+msgstr "URL"
 
-#: core/core.php:902
-msgid "Stop search engines from following broken links"
-msgstr "Arrêter le suivi des liens cassés par les moteurs de recherche"
+#: includes/admin/table-printer.php:862
+msgctxt "inline link editor"
+msgid "Text"
+msgstr "Texte"
 
-#: includes/admin/links-page-js.php:540
-msgid "The link could not be modified."
-msgstr "Le lien ne peut pas être modifié."
+#: includes/admin/table-printer.php:859
+msgctxt "inline editor title"
+msgid "Edit Link"
+msgstr "Modifier le lien"
+
+#: includes/admin/table-printer.php:782
+msgid "[An orphaned link! This is a bug.]"
+msgstr "[Lien orphelin ! C’est un bug.]"
+
+#: includes/admin/table-printer.php:755
+msgid "Update URL"
+msgstr "Modifier l’URL"
+
+#: includes/admin/table-printer.php:721
+msgid "Replace this redirect with a direct link"
+msgstr "Remplacement de la redirection par un lien direct"
+
+#: includes/admin/table-printer.php:708
+msgid "Undismiss"
+msgstr "Reprendre"
+
+#: includes/admin/table-printer.php:707
+msgid "Undismiss this link"
+msgstr "Reprendre ce lien"
+
+#: includes/admin/table-printer.php:701
+msgid "Hide this link and do not report it again unless its status changes"
+msgstr "Masquer ce lien et ne plus le mentionner tant que son état n’a pas changé"
+
+#: includes/admin/table-printer.php:693
+msgid "Remove this link from the list of broken links and mark it as valid"
+msgstr "Supprimer ce lien de la liste des liens cassés et le marquer comme étant valide"
+
+#: includes/admin/table-printer.php:687
+msgid "Remove this link from all posts"
+msgstr "Supprimer ce lien de tous les articles"
+
+#: includes/admin/table-printer.php:685
+msgid "Edit this link"
+msgstr "Modifier ce lien"
+
+#: includes/admin/table-printer.php:664
+msgctxt "link in the \"Status\" column"
+msgid "Details"
+msgstr "Détails"
+
+#: includes/admin/table-printer.php:652
+msgid "Broken for"
+msgstr "Cassé depuis"
+
+#: includes/admin/table-printer.php:636
+msgctxt "checked how long ago"
+msgid "Checked"
+msgstr "Vérifié depuis"
+
+#: includes/admin/table-printer.php:618 includes/admin/table-printer.php:663
+msgid "Show more info about this link"
+msgstr "Afficher plus d’informations concernant ce lien"
+
+#: includes/admin/table-printer.php:593
+msgid "Log"
+msgstr "Journal"
+
+#: includes/admin/table-printer.php:582
+msgid "This link has been broken for %s."
+msgstr "Ce lien est cassé depuis %s."
 
 #: includes/admin/table-printer.php:574
 msgid "This link has failed %d time."
@@ -1054,576 +796,174 @@ msgid_plural "This link has failed %d times."
 msgstr[0] "Ce lien a échoué %d fois."
 msgstr[1] "Ce lien a échoué %d fois."
 
-#: includes/admin/links-page-js.php:615
-msgid "Error: Link URL must not be empty."
-msgstr "Erreur : l’URL du lien ne doit pas être vide."
+#: includes/admin/table-printer.php:565
+msgid "Instance count"
+msgstr "Nombre d’instances"
 
-#: core/core.php:2821
-msgid "No broken links found."
-msgstr "Aucun lien cassé trouvé."
+#: includes/admin/table-printer.php:560
+msgid "Redirect count"
+msgstr "Nombre de redirections"
 
-#: core/core.php:938
-msgid "Turning off this option will make the plugin report all problems as broken links."
-msgstr "Décochez cette option et l’extension signalera tous les problèmes comme des liens cassés."
+#: includes/admin/table-printer.php:555
+msgid "Final URL"
+msgstr "URL finale"
 
-#: core/core.php:1273
-msgid "The \"Nuclear Option\". Click this button to make the plugin empty its link database and recheck the entire site from scratch."
-msgstr "L’option nucléaire. Appuyez sur ce bouton pour que l’extension vide sa base de liens et revérifie tout le site depuis le début."
-
-#: core/core.php:400 includes/admin/links-page-js.php:111
-#: includes/admin/table-printer.php:694
-msgid "Not broken"
-msgstr "Non cassé"
-
-#: core/core.php:2218
-msgid "%d link dismissed"
-msgid_plural "%d links dismissed"
-msgstr[0] "%d lien écarté"
-msgstr[1] "%d liens écartés"
-
-#: core/core.php:2383 core/core.php:2945 core/core.php:2987 core/core.php:3021
-#: core/core.php:3122 core/core.php:3166 core/core.php:3228
-msgid "You're not allowed to do that!"
-msgstr "Vous n’êtes pas autorisé à faire cela !"
-
-#: core/core.php:3425
-msgid "You must have either CURL or Snoopy installed for the plugin to work!"
-msgstr "CURL ou Snoopy doit être installé pour que l’extension fonctionne !"
-
-#: core/core.php:3271
-msgid "You don't have sufficient privileges to access this information!"
-msgstr "Vous n’avez pas assez de droits pour obtenir cette information !"
-
-#: includes/admin/table-printer.php:755
-msgid "Update URL"
-msgstr "Modifier l’URL"
-
-#: core/core.php:3611 core/core.php:3730
-msgid "[%s] Broken links detected"
-msgstr "[%s] liens cassés trouvés"
-
-#: core/core.php:1627
-msgid "You must enter a filter name!"
-msgstr "Vous devez saisir un nom de filtre !"
-
-#: core/core.php:3681
-msgid "You can see all broken links here:"
-msgstr "Vous pouvez voir tous les liens cassés ici :"
-
-#: core/core.php:682
-msgid "Which Links To Check"
-msgstr "Quels liens vérifier"
-
-#: core/core.php:336
-msgid "View Broken Links"
-msgstr "Voir les liens cassés"
-
-#: core/core.php:2814
-msgid "View broken links"
-msgstr "Voir les liens cassés"
-
-#: includes/any-post.php:465 modules/containers/acf_field.php:258
-#: modules/containers/comment.php:172 modules/containers/custom_field.php:250
-msgid "View"
-msgstr "Voir"
-
-#: includes/any-post.php:558
-msgid "Updating post %d failed"
-msgstr "La mise à jour de l’article %d a échoué."
-
-#: core/core.php:399 includes/admin/links-page-js.php:713
-#: includes/admin/table-printer.php:293 includes/admin/table-printer.php:688
-msgid "Unlink"
-msgstr "Délier"
-
-#: core/core.php:2141 core/core.php:2961
-msgid "This link was manually marked as working by the user."
-msgstr "Ce lien a été manuellement marqué comme valide par l’utilisateur."
-
-#: includes/admin/table-printer.php:582
-msgid "This link has been broken for %s."
-msgstr "Ce lien est cassé depuis %s."
-
-#: core/core.php:1152
-msgid "The plugin works by periodically launching a background job that parses your posts for links, checks the discovered URLs, and performs other time-consuming tasks. Here you can set for how long, at most, the link monitor may run each time before stopping."
-msgstr "Cette extension fonctionne en lançant périodiquement un processus en arrière-plan. Il recherche les liens dans les articles, vérifie les URL découvertes, et effectue d’autres tâches consommatrices de temps. Vous pouvez définir ici le temps maximal pendant lequel le processus peut s’exécuter avant de s’arrêter."
-
-#: includes/admin/links-page-js.php:702
-msgid "The plugin failed to remove the link."
-msgstr "La suppression du lien a échoué."
-
-#: includes/admin/links-page-js.php:543
-msgid "The following error(s) occurred :"
-msgstr "L’erreur suivante est survenue :"
-
-#: includes/admin/links-page-js.php:705
-msgid "The following error(s) occured :"
-msgstr "L’erreur suivante est survenue :"
-
-#: core/core.php:650
-msgid "Thank you for your donation!"
-msgstr "Merci pour votre don !"
-
-#: core/core.php:1200
-msgid "Target resource usage"
-msgstr "Niveau d’utilisation des ressources"
-
-#: core/core.php:741 includes/admin/table-printer.php:211
-msgid "Status"
-msgstr "État"
-
-#: core/core.php:3667
-msgid "Source : %s"
-msgstr "Source : %s"
-
-#: core/core.php:1094
-msgid "Show the dashboard widget for"
-msgstr "Afficher le widget sur le Tableau de bord"
-
-#: core/core.php:2330
-msgid "Show on screen"
-msgstr "Afficher à l’écran"
-
-#: includes/admin/table-printer.php:618 includes/admin/table-printer.php:663
-msgid "Show more info about this link"
-msgstr "Afficher plus d’informations concernant ce lien"
-
-#: core/core.php:743 includes/admin/options-page-js.php:56
-msgid "Show debug info"
-msgstr "Afficher les informations de débogage"
-
-#: core/core.php:369
-msgid "Settings"
-msgstr "Réglages"
-
-#: core/core.php:798
-msgid "Send me e-mail notifications about newly detected broken links"
-msgstr "Me prévenir par e-mail des nouveaux liens cassés"
-
-#: core/core.php:806
-msgid "Send authors e-mail notifications about broken links in their posts"
-msgstr "Prévenir par e-mail les auteurs qui ont des liens cassés dans leurs articles"
-
-#: core/core.php:1078
-msgid "Run continuously while the Dashboard is open"
-msgstr "Vérifier en continu tant que le Tableau de bord est affiché"
-
-#: core/core.php:1086
-msgid "Run hourly in the background"
-msgstr "Vérifier toutes les heures en arrière-plan"
+#: includes/admin/table-printer.php:552
+msgid "%2.3f seconds"
+msgstr "%2.3f secondes"
 
 #: includes/admin/table-printer.php:550
 msgid "Response time"
 msgstr "Temps de réponse"
 
-#: includes/admin/table-printer.php:693
-msgid "Remove this link from the list of broken links and mark it as valid"
-msgstr "Supprimer ce lien de la liste des liens cassés et le marquer comme étant valide"
-
-#: includes/admin/table-printer.php:363
-msgid "Regular expression"
-msgstr "Expression régulière"
-
-#: core/core.php:402 includes/admin/table-printer.php:289
-#: includes/admin/table-printer.php:714
-msgid "Recheck"
-msgstr "Revérifier"
-
-#: core/core.php:1269
-msgid "Re-check all pages"
-msgstr "Revérifier toutes les pages"
-
-#: includes/any-post.php:457
-msgid "Preview"
-msgstr "Prévisualiser"
-
-#: includes/admin/table-printer.php:526
-msgid "Post published on"
-msgstr "Article publié le"
-
-#: core/core.php:964
-msgid "Post statuses"
-msgstr "État de l’article"
-
-#: includes/admin/links-page-js.php:691
-msgid "%d instances of the link were successfully unlinked."
-msgstr "%d occurrences ont bien été déliées."
-
-#: core/core.php:2953 core/core.php:2995 core/core.php:3036 core/core.php:3132
-#: core/core.php:3181 core/core.php:3243
-msgid "Oops, I can't find the link %d"
-msgstr "Oups, impossible de trouver le lien %d"
-
-#: includes/any-post.php:548 modules/containers/blogroll.php:83
-#: modules/containers/comment.php:43
-msgid "Nothing to update"
-msgstr "Rien à mettre à jour"
-
-#: core/core.php:1190
-msgid "Not available"
-msgstr "Non disponible"
-
-#: core/core.php:1744
-msgid "None of the selected links are redirects!"
-msgstr "Aucun des liens sélectionnés ne sont des redirections !"
-
-#: includes/admin/links-page-js.php:430
-msgctxt "link suggestions"
-msgid "No suggestions available."
-msgstr "Aucune suggestion disponible."
-
-#: core/core.php:1135
-msgid "Max. execution time"
-msgstr "Temps maximal d’exécution :"
-
-#: includes/admin/table-printer.php:291
-msgid "Mark as not broken"
-msgstr "Marquer comme non cassé"
-
-#: core/core.php:1231
-msgid "Log file location"
-msgstr "Emplacement des journaux"
-
-#: core/core.php:1218
-msgid "Logging"
-msgstr "Journalisation"
-
-#: core/core.php:1192
-msgid "Load limiting only works on Linux-like systems where <code>/proc/loadavg</code> is present and accessible."
-msgstr "L’utilisation de la limite de charge ne fonctionne que sur les systèmes de type Linux où <code>/proc/loadavg</code> est présent et autorisé."
-
-#: includes/admin/search-form.php:74
-msgid "Links used in"
-msgstr "Liens utilisés dans"
-
-#: core/core.php:1063
-msgid "Links that take longer than this to load will be marked as broken."
-msgstr "Les liens qui prennent plus de temps que cela à se charger seront marqués comme cassés."
-
-#: core/core.php:3666
-msgid "Link URL : <a href=\"%s\">%s</a>"
-msgstr "URL du lien : <a href=\"%s\">%s</a>"
-
-#: core/core.php:3665
-msgid "Link text : %s"
-msgstr "Texte du lien : %s"
-
-#: includes/admin/search-form.php:51
-msgid "Link status"
-msgstr "État du lien"
+#: includes/admin/table-printer.php:535
+msgid "Never"
+msgstr "Jamais"
 
 #: includes/admin/table-printer.php:531
 msgid "Link last checked"
 msgstr "Dernière vérification"
 
-#: core/core.php:314
-msgid "Link Checker Settings"
-msgstr "Réglages du vérificateur de liens"
+#: includes/admin/table-printer.php:526
+msgid "Post published on"
+msgstr "Article publié le"
 
-#: core/core.php:315
-msgid "Link Checker"
-msgstr "Vérificateur de liens"
+#: includes/admin/table-printer.php:371 includes/admin/table-printer.php:880
+msgid "Update"
+msgstr "Modifier"
 
-#: core/core.php:1631
-msgid "Invalid search query."
-msgstr "Requête non valide."
-
-#: core/core.php:3488
-msgid "If this value is zero even after several page reloads you have probably encountered a bug."
-msgstr "Si cette valeur est à zéro même après plusieurs rechargements, vous avez probablement rencontré un bug."
-
-#: includes/admin/links-page-js.php:697
-msgid "However, %d instances couldn't be removed."
-msgstr "Cependant, %d occurrences ne peuvent pas être supprimées."
-
-#: includes/admin/links-page-js.php:534
-msgid "However, %d instances couldn't be edited and still point to the old URL."
-msgstr "Cependant, %d occurrences n’ont pas été mises à jour et pointent vers l’ancienne URL."
-
-#: includes/admin/table-printer.php:701
-msgid "Hide this link and do not report it again unless its status changes"
-msgstr "Masquer ce lien et ne plus le mentionner tant que son état n’a pas changé"
-
-#: includes/admin/options-page-js.php:54
-msgid "Hide debug info"
-msgstr "Masquer les informations de débogage"
-
-#: core/core.php:3656
-msgid "Here's a list of the new broken links: "
-msgstr "Ici se trouve une liste des nouveaux liens cassés :"
-
-#: core/core.php:2815
-msgid "Found %d broken link"
-msgid_plural "Found %d broken links"
-msgstr[0] "%d lien cassé trouvé"
-msgstr[1] "%d liens cassés trouvés"
-
-#: core/core.php:1266
-msgid "Forced recheck"
-msgstr "Forcer une revérification"
-
-#: includes/admin/table-printer.php:290
-msgid "Fix redirects"
-msgstr "Réparer les redirections"
-
-#: core/core.php:1668
-msgid "Filter ID not specified."
-msgstr "ID du filtre non spécifié."
-
-#: core/core.php:1675
-msgid "Filter deleted"
-msgstr "Filtre supprimé"
-
-#: includes/any-post.php:436 modules/containers/acf_field.php:252
-#: modules/containers/custom_field.php:238
-msgid "Trash"
-msgstr "Corbeille"
-
-#: core/core.php:1101
-msgctxt "dashboard widget visibility"
-msgid "Nobody (disables the widget)"
-msgstr "Personne (désactive le widget)"
-
-#: core/core.php:2357
-msgid "Highlight links broken for at least %s days"
-msgstr "Mettre en surbrillance les liens cassés depuis au moins %s jours"
-
-#: core/core.php:680
-msgid "General"
-msgstr "Général"
-
-#: core/core.php:403 includes/admin/table-printer.php:722
-msgctxt "link action; replace one redirect with a direct link"
-msgid "Fix redirect"
-msgstr "Réparer les redirections"
-
-#: core/init.php:338
-msgid "Broken Link Checker installation failed. Try deactivating and then reactivating the plugin."
-msgstr "L’installation de Broken Link Checker a échoué. Essayez de désactiver puis de réactiver l’extension."
-
-#: core/core.php:1733
-msgid "Failed to fix %d redirect"
-msgid_plural "Failed to fix %d redirects"
-msgstr[0] "La réparation de la redirection %d a échoué."
-msgstr[1] "La réparation des redirections %d a échoué."
-
-#: core/core.php:3298
-msgid "Failed to load link details (%s)"
-msgstr "Le chargement des détails du lien (%s) a échoué."
-
-#: core/core.php:1933
-msgid "Failed to remove %d link"
-msgid_plural "Failed to remove %d links"
-msgstr[0] "Le retrait du lien %d a échoué."
-msgstr[1] "Le retrait des liens %d a échoué."
-
-#: core/core.php:1833
-msgid "Failed to update %d link."
-msgid_plural "Failed to update %d links."
-msgstr[0] "La mise à jour du lien %d a échoué."
-msgstr[1] "La mise à jour des liens %d a échoué."
-
-#: core/core.php:889
-msgid "Example : Lorem ipsum <span %s>removed link</span>, dolor sit amet."
-msgstr "Exemple : Lorem ipsum <span %s>lien supprimé</span>, dolor sit amet."
-
-#: core/core.php:858
-msgid "Example : Lorem ipsum <a %s>broken link</a>, dolor sit amet."
-msgstr "Exemple : Lorem ipsum <a %s>lien cassé</a>, dolor sit amet."
-
-#: core/core.php:1003
-msgid "Error : All link parsers missing!"
-msgstr "Erreur : tous les analyseurs de liens sont absents !"
-
-#: core/core.php:785
-msgid "Existing links will be checked this often. New links will usually be checked ASAP."
-msgstr "Les liens existants sont vérifiés en fonction de ce réglage. Les nouveaux liens sont généralement vérifiés dès que possible."
-
-#: core/core.php:1417
-msgid "Enter the names of custom fields you want to check (one per line). If a field contains HTML code, prefix its name with <code>html:</code>. For example, <code>html:field_name</code>."
-msgstr "Saisissez les noms des champs personnalisés que vous souhaitez tester (un par ligne). Si un champ contient du code HTML, préfixez son nom avec <code>html:</code>. Par exemple <code>html:nom_du_champ</code>."
-
-#: includes/admin/links-page-js.php:931
-msgid "Enter a search string first."
-msgstr "Saisissez d’abord une chaîne de recherche."
-
-#: includes/admin/links-page-js.php:751
-msgid "Enter a name for the new custom filter"
-msgstr "Saisissez un nom pour le nouveau filtre de recherche."
-
-#: core/core.php:1224
-msgid "Enable logging"
-msgstr "Activer la journalisation"
-
-#: core/core.php:398 includes/admin/table-printer.php:288
-#: includes/admin/table-printer.php:685
-msgid "Edit URL"
-msgstr "Modifier l’URL"
-
-#: core/core.php:1011
-msgid "Don't check links where the URL contains any of these words (one per line) :"
-msgstr "Ne pas vérifier les liens dont l’URL contient n’importe lequel de ces mots (un par ligne) :"
-
-#: core/core.php:2064
-msgid "Didn't find anything to delete!"
-msgstr "Rien à supprimer !"
-
-#: includes/admin/table-printer.php:664
-msgctxt "link in the \"Status\" column"
-msgid "Details"
-msgstr "Détails"
-
-#: core/core.php:1562 core/core.php:1646 core/core.php:1678
-msgid "Database error : %s"
-msgstr "Erreur de base de données : %s"
-
-#: core/core.php:1254
-msgctxt "log file location"
-msgid "Custom"
-msgstr "Personnalisé"
-
-#: core/core.php:1176
-msgid "Current load : %s"
-msgstr "Charge courante : %s"
-
-#: core/core.php:658
-msgid "Complete site recheck started."
-msgstr "La vérification complète a commencé."
-
-#: includes/admin/table-printer.php:188
-msgid "Compact View"
-msgstr "Vue compacte"
-
-#: core/core.php:2366
-msgid "Color-code status codes"
-msgstr "Code couleur des états"
-
-#: core/core.php:1029
-msgid "Check links using"
-msgstr "Vérifier les liens en utilisant"
-
-#: core/core.php:771
-msgid "Check each link"
-msgstr "Vérifier chaque lien"
-
-#: core/core.php:2286
-msgctxt "a link from the admin notice under Tools - Broken links - Warnings"
-msgid "Change warning settings"
-msgstr "Modifier les réglages d’avertissement"
+#: includes/admin/table-printer.php:363
+msgid "Regular expression"
+msgstr "Expression régulière"
 
 #: includes/admin/table-printer.php:359
 msgid "Case sensitive"
 msgstr "Respecter la casse"
 
-#: core/core.php:320 includes/link-query.php:37
-msgid "Broken Links"
-msgstr "Liens cassés"
+#: includes/admin/table-printer.php:351
+msgid "Replace with"
+msgstr "Remplacer par"
 
-#: core/core.php:3616
-msgid "Broken Link Checker has detected %d new broken link on your site."
-msgid_plural "Broken Link Checker has detected %d new broken links on your site."
-msgstr[0] "Broken Link Checker a trouvé %d nouveau lien cassé dans votre site."
-msgstr[1] "Broken Link Checker a trouvé %d nouveaux liens cassés dans votre site."
+#: includes/admin/table-printer.php:347
+msgid "Find"
+msgstr "Trouver"
 
-#: core/core.php:3735
-msgid "Broken Link Checker has detected %d new broken link in your posts."
-msgid_plural "Broken Link Checker has detected %d new broken links in your posts."
-msgstr[0] "Broken Link Checker a trouvé %d nouveau lien cassé dans vos articles."
-msgstr[1] "Broken Link Checker a trouvé %d nouveaux liens cassés dans vos articles."
+#: includes/admin/table-printer.php:345
+msgid "Bulk Edit URLs"
+msgstr "Modifier les URL en masse"
 
-#: includes/admin/table-printer.php:652
-msgid "Broken for"
-msgstr "Cassé depuis"
+#: includes/admin/table-printer.php:322
+msgid "Displaying %s&#8211;%s of <span class=\"current-link-count\">%s</span>"
+msgstr "Affichage %s&#8211;%s sur <span class=\"current-link-count\">%s</span>"
 
-#: core/core.php:223
-msgid "Automatically expand the widget if broken links have been detected"
-msgstr "Déplier automatiquement le widget si des liens cassés ont été détectés"
+#: includes/admin/table-printer.php:314
+msgid "&raquo;"
+msgstr "&raquo;"
 
-#: core/core.php:869
-msgid "Apply custom formatting to removed links"
-msgstr "Appliquer un formatage spécifique aux liens supprimés"
+#: includes/admin/table-printer.php:313
+msgid "&laquo;"
+msgstr "&laquo;"
 
-#: core/core.php:838
-msgid "Apply custom formatting to broken links"
-msgstr "Appliquer un formatage spécifique aux liens cassés"
+#: includes/admin/table-printer.php:298
+msgid "Delete sources"
+msgstr "Supprimer les sources"
 
-#: core/core.php:3071
-msgid "An unexpected error occurred!"
-msgstr "Une erreur inattendue a eu lieu !"
+#: includes/admin/table-printer.php:296
+msgid "Move sources to Trash"
+msgstr "Déplacer les sources vers la corbeille"
 
-#: core/core.php:3141
-msgid "An unexpected error occured!"
-msgstr "Une erreur inattendue a eu lieu !"
+#: includes/admin/table-printer.php:291
+msgid "Mark as not broken"
+msgstr "Marquer comme non cassé"
 
-#: core/core.php:684
-msgid "Advanced"
-msgstr "Options avancées"
+#: includes/admin/table-printer.php:290
+msgid "Fix redirects"
+msgstr "Réparer les redirections"
 
-#: core/core.php:1822
-msgid "%d link updated."
-msgid_plural "%d links updated."
-msgstr[0] "%d lien mis à jour."
-msgstr[1] "%d liens mis à jour."
+#: includes/admin/table-printer.php:287
+msgid "Bulk Actions"
+msgstr "Actions en masse"
 
-#: core/core.php:1922
-msgid "%d link removed"
-msgid_plural "%d links removed"
-msgstr[0] "%d lien supprimé"
-msgstr[1] "%d liens supprimés"
+#: includes/admin/table-printer.php:236
+msgid "Redirect URL"
+msgstr "Redirections"
 
-#: core/core.php:2159
-msgid "%d link marked as not broken"
-msgid_plural "%d links marked as not broken"
-msgstr[0] "%d lien marqué comme non cassé"
-msgstr[1] "%d liens marqués comme non cassés"
+#: includes/admin/table-printer.php:229
+msgid "Link Text"
+msgstr "Texte du lien"
 
-#: core/core.php:2042
-msgid "%d item was skipped because it can't be moved to the Trash. You need to delete it manually."
-msgid_plural "%d items were skipped because they can't be moved to the Trash. You need to delete them manually."
-msgstr[0] "%d lien a été ignoré parce qu’il ne peut pas être mis à la corbeille. Vous devez le supprimer manuellement."
-msgstr[1] "%d liens ont été ignorés parce qu’ils ne peuvent pas être mis à la corbeille. Vous devez les supprimer manuellement."
+#: includes/admin/table-printer.php:223
+msgid "Source"
+msgstr "Source"
 
-#: core/core.php:2275
-msgid "The \"Warnings\" page lists problems that are probably temporary or suspected to be false positives.<br> Warnings that persist for a long time will usually be reclassified as broken links."
-msgstr "La page des avertissements liste les problèmes qui sont probablement temporaires ou des faux positifs.<br>Les avertissements qui persistent sur une longue période seront reclassifiés comme des liens cassés."
+#: includes/admin/table-printer.php:193
+msgid "Detailed View"
+msgstr "Vue détaillée"
 
-#: includes/admin/table-printer.php:636
-msgctxt "checked how long ago"
-msgid "Checked"
-msgstr "Vérifié depuis"
+#: includes/admin/table-printer.php:188
+msgid "Compact View"
+msgstr "Vue compacte"
 
-#: includes/admin/table-printer.php:782
-msgid "[An orphaned link! This is a bug.]"
-msgstr "[Lien orphelin ! C’est un bug.]"
+#: includes/admin/search-form.php:113 includes/admin/table-printer.php:369
+#: includes/admin/table-printer.php:754 includes/admin/table-printer.php:879
+msgid "Cancel"
+msgstr "Annuler"
 
-#: includes/admin/links-page-js.php:528
-msgid "%d instances of the link were successfully modified."
-msgstr "%d occurrences du lien ont bien été modifiées."
+#: includes/admin/search-form.php:112
+msgid "Search Links"
+msgstr "Liens de recherche"
 
-#: core/core.php:2094
-msgid "%d link scheduled for rechecking"
-msgid_plural "%d links scheduled for rechecking"
-msgstr[0] "%d lien programmé pour un nouveau contrôle."
-msgstr[1] "%d liens programmés pour un nouveau contrôle."
+#: includes/admin/search-form.php:74
+msgid "Links used in"
+msgstr "Liens utilisés dans"
 
-#: core/core.php:2828
-msgid "%d URL in the work queue"
-msgid_plural "%d URLs in the work queue"
-msgstr[0] "%d URL dans la file d’attente."
-msgstr[1] "%d URL dans la file d’attente."
+#: includes/admin/search-form.php:70
+msgid "Any"
+msgstr "Tous"
 
-#: includes/admin/links-page-js.php:431
-msgctxt "link suggestions"
-msgid "Archived page from %s (via the Wayback Machine)"
-msgstr "Page d’archive de %s (par la Wayback Machine)"
+#: includes/admin/search-form.php:68 includes/admin/search-form.php:85
+msgid "Link type"
+msgstr "Type du lien"
 
-#: includes/admin/links-page-js.php:787
-msgid ""
-"Are you sure you want to delete all posts, bookmarks or other items that contain any of the selected links? This action can't be undone.\n"
-"'Cancel' to stop, 'OK' to delete"
-msgstr ""
-"Confirmez-vous vouloir supprimer tous les articles, liens et autres éléments qui contiennent les liens sélectionnés ? Cette action ne pourra pas être annulée.\n"
-"« Annuler » pour les conserver, « OK » pour les supprimer."
+#: includes/admin/search-form.php:51
+msgid "Link status"
+msgstr "État du lien"
+
+#: includes/admin/search-form.php:48 includes/admin/table-printer.php:545
+msgid "HTTP code"
+msgstr "Code HTTP"
+
+#: includes/admin/search-form.php:45 includes/admin/table-printer.php:216
+msgid "URL"
+msgstr "URL"
+
+#: includes/admin/search-form.php:42
+msgid "Link text"
+msgstr "Texte du lien"
+
+#: includes/link-query.php:81 includes/admin/search-form.php:32
+msgid "Search"
+msgstr "Rechercher"
+
+#: includes/admin/search-form.php:26
+msgid "Delete This Filter"
+msgstr "Supprimer ce filtre"
+
+#: includes/admin/search-form.php:16
+msgid "Save This Search As a Filter"
+msgstr "Enregistrer cette recherche comme un filtre"
+
+#: includes/admin/options-page-js.php:54
+msgid "Hide debug info"
+msgstr "Masquer les informations de débogage"
+
+#: includes/admin/links-page-js.php:938
+msgid "Select one or more links to edit."
+msgstr "S&eacute;lectionner un ou plusieurs liens &agrave; modifier"
+
+#: includes/admin/links-page-js.php:931
+msgid "Enter a search string first."
+msgstr "Saisissez d’abord une chaîne de recherche."
 
 #: includes/admin/links-page-js.php:801
 msgid ""
@@ -1633,71 +973,13 @@ msgstr ""
 "Confirmez-vous vouloir retirer les liens sélectionnés ? Cette action ne pourra pas être annulée.\n"
 "« Annuler » pour les conserver, « OK » pour les retirer."
 
-#: core/core.php:861 core/core.php:892
-msgid "Click \"Save Changes\" to update example output."
-msgstr "Appuyez sur « Enregistrer les modifications » pour mettre à jour l’exemple."
-
-#: includes/any-post.php:441 modules/containers/acf_field.php:254
-#: modules/containers/custom_field.php:243
-msgid "Delete this item permanently"
-msgstr "Supprimer cet objet définitivement"
-
-#: includes/admin/table-printer.php:193
-msgid "Detailed View"
-msgstr "Vue détaillée"
-
-#: core/core.php:196 includes/admin/options-page-js.php:18
-msgid "[ Network error ]"
-msgstr "[Erreur réseau]"
-
-#: core/core.php:2968 core/core.php:3006
-msgid "Oops, couldn't modify the link!"
-msgstr "Aïe, impossible de modifier le lien !"
-
-#: core/core.php:3045 core/core.php:3055
-msgid "Oops, the new URL is invalid!"
-msgstr "Aïe, la nouvelle URL n’est pas valide !"
-
-#: core/init.php:342
-msgid "Please activate the plugin separately on each site. Network activation is not supported."
-msgstr "Veuillez activer l’extension séparément sur chaque site. L’activation en réseau n’est pas prise en charge."
-
-#: core/core.php:1181
-msgid "Link checking will be suspended if the average <a href=\"%s\">server load</a> rises above this number. Leave this field blank to disable load limiting."
-msgstr "La vérification des liens sera suspendue si la <a href=\"%s\">charge moyenne du serveur</a>  dépasse ce taux. Laissez ce champ vide pour ne pas utiliser de limite de charge."
-
-#: includes/admin/db-upgrade.php:97
-msgid "Failed to delete old DB tables. Database error : %s"
-msgstr "La suppression des anciennes tables dans la base de données a échoué. Erreur : %s"
-
-#: core/core.php:908
-msgctxt "\"Link tweaks\" settings"
-msgid "These settings only apply to the content of posts, not comments or custom fields."
-msgstr "Ces réglages s’appliquent uniquement au contenu des articles, pas aux commentaires ni aux champs personnalisés."
-
-#: includes/any-post.php:434 modules/containers/acf_field.php:252
-#: modules/containers/custom_field.php:236
-msgid "Move this item to the Trash"
-msgstr "Déplacer cet élément vers la corbeille"
-
-#: includes/admin/table-printer.php:296
-msgid "Move sources to Trash"
-msgstr "Déplacer les sources vers la corbeille"
-
-#: core/core.php:3647
-msgid "Here's a list of the first %d broken links:"
-msgid_plural "Here's a list of the first %d broken links:"
-msgstr[0] "Voici %d nouveau lien cassé :"
-msgstr[1] "Voici les %d nouveaux liens cassés :"
-
-#: core/core.php:1641
-msgid "Filter \"%s\" created"
-msgstr "Filtre « %s » créé"
-
-#: includes/any-post.php:595 modules/containers/acf_field.php:327
-#: modules/containers/custom_field.php:317
-msgid "Failed to delete post \"%s\" (%d)"
-msgstr "La suppression de l’article « %s » (%d) a échoué."
+#: includes/admin/links-page-js.php:787
+msgid ""
+"Are you sure you want to delete all posts, bookmarks or other items that contain any of the selected links? This action can't be undone.\n"
+"'Cancel' to stop, 'OK' to delete"
+msgstr ""
+"Confirmez-vous vouloir supprimer tous les articles, liens et autres éléments qui contiennent les liens sélectionnés ? Cette action ne pourra pas être annulée.\n"
+"« Annuler » pour les conserver, « OK » pour les supprimer."
 
 #: includes/admin/links-page-js.php:763
 msgid ""
@@ -1707,77 +989,797 @@ msgstr ""
 "Vous êtes sur le point de supprimer le filtre courant.\n"
 "« Annuler » pour le conserver, « OK » pour le supprimer."
 
-#: core/core.php:935
-msgid "Show uncertain or minor problems as \"warnings\" instead of \"broken\""
-msgstr "Afficher les problèmes incertains ou mineurs comme des « avertissements » au lieu de « cassés »"
+#: includes/admin/links-page-js.php:751
+msgid "Enter a name for the new custom filter"
+msgstr "Saisissez un nom pour le nouveau filtre de recherche."
 
-#: includes/any-post.php:464
-msgid "View &#8220;%s&#8221;"
-msgstr "Voir « %s »"
+#: includes/admin/links-page-js.php:705
+msgid "The following error(s) occured :"
+msgstr "L’erreur suivante est survenue :"
 
-#: includes/any-post.php:456
-msgid "Preview &#8220;%s&#8221;"
-msgstr "Prévisualiser « %s »"
+#: includes/admin/links-page-js.php:702
+msgid "The plugin failed to remove the link."
+msgstr "La suppression du lien a échoué."
 
-#: includes/admin/links-page-js.php:64 includes/admin/links-page-js.php:653
-msgid "Wait..."
-msgstr "Attendez…"
+#: includes/admin/links-page-js.php:697
+msgid "However, %d instances couldn't be removed."
+msgstr "Cependant, %d occurrences ne peuvent pas être supprimées."
 
-#: core/core.php:172 includes/admin/links-page-js.php:45
-msgid "Loading..."
-msgstr "Chargement…"
+#: includes/admin/links-page-js.php:691
+msgid "%d instances of the link were successfully unlinked."
+msgstr "%d occurrences ont bien été déliées."
 
-#: core/core.php:401 includes/admin/table-printer.php:292
-#: includes/admin/table-printer.php:702
-msgid "Dismiss"
-msgstr "Ignorer"
+#: includes/admin/links-page-js.php:615
+msgid "Error: Link URL must not be empty."
+msgstr "Erreur : l’URL du lien ne doit pas être vide."
 
-#: core/core.php:825
-msgid "Leave empty to use the e-mail address specified in Settings &rarr; General."
-msgstr "Laissez vide pour utiliser l’adresse e-mail spécifiée dans Réglages \t Général."
+#: includes/admin/links-page-js.php:543
+msgid "The following error(s) occurred :"
+msgstr "L’erreur suivante est survenue :"
 
-#: core/core.php:644
-msgid "Settings saved."
-msgstr "Réglages enregistrés"
+#: includes/admin/links-page-js.php:540
+msgid "The link could not be modified."
+msgstr "Le lien ne peut pas être modifié."
 
-#: core/core.php:2847
-msgid "Detected %1$s in %2$s and still searching..."
-msgstr "%1$s détectés parmi %2$s. Recherche toujours en cours…"
+#: includes/admin/links-page-js.php:534
+msgid "However, %d instances couldn't be edited and still point to the old URL."
+msgstr "Cependant, %d occurrences n’ont pas été mises à jour et pointent vers l’ancienne URL."
 
-#: core/core.php:2831
-msgid "No URLs in the work queue."
-msgstr "Aucune URL dans la file d’attente."
+#: includes/admin/links-page-js.php:528
+msgid "%d instances of the link were successfully modified."
+msgstr "%d occurrences du lien ont bien été modifiées."
 
-#: core/core.php:3027
-msgid "Error : link_id or new_url not specified"
-msgstr "Erreur : link_id ou new_url non spécifié !"
+#: includes/admin/links-page-js.php:431
+msgctxt "link suggestions"
+msgid "Archived page from %s (via the Wayback Machine)"
+msgstr "Page d’archive de %s (par la Wayback Machine)"
 
-#: core/core.php:2971 core/core.php:3009 core/core.php:3158 core/core.php:3172
-#: core/core.php:3234
-msgid "Error : link_id not specified"
-msgstr "Erreur : link_id non spécifié"
-
-#: core/core.php:2860
-msgid "Searching your blog for links..."
-msgstr "Recherche des liens de votre site…"
-
-#: core/core.php:2853
-msgid "Detected %1$s in %2$s."
-msgstr "%1$s détectés parmi %2$s."
-
-#: core/core.php:3284
-msgid "Error : link ID not specified"
-msgstr "Erreur : ID du lien non spécifié"
+#: includes/admin/links-page-js.php:430
+msgctxt "link suggestions"
+msgid "No suggestions available."
+msgstr "Aucune suggestion disponible."
 
 #: includes/admin/links-page-js.php:429
 msgctxt "link suggestions"
 msgid "Searching..."
 msgstr "Rechercher…"
 
-#: includes/admin/table-printer.php:298
-msgid "Delete sources"
-msgstr "Supprimer les sources"
+#: includes/admin/links-page-js.php:371
+msgctxt "link text"
+msgid "(Multiple links)"
+msgstr "(Liens multiples)"
 
-#: includes/admin/table-printer.php:565
-msgid "Instance count"
-msgstr "Nombre d’instances"
+#: includes/admin/links-page-js.php:370
+msgctxt "link text"
+msgid "(None)"
+msgstr "(Aucun)"
+
+#: includes/admin/links-page-js.php:64 includes/admin/links-page-js.php:653
+msgid "Wait..."
+msgstr "Attendez…"
+
+#: includes/admin/db-upgrade.php:97
+msgid "Failed to delete old DB tables. Database error : %s"
+msgstr "La suppression des anciennes tables dans la base de données a échoué. Erreur : %s"
+
+#: core/init.php:342
+msgid "Please activate the plugin separately on each site. Network activation is not supported."
+msgstr "Veuillez activer l’extension séparément sur chaque site. L’activation en réseau n’est pas prise en charge."
+
+#: core/init.php:338
+msgid "Broken Link Checker installation failed. Try deactivating and then reactivating the plugin."
+msgstr "L’installation de Broken Link Checker a échoué. Essayez de désactiver puis de réactiver l’extension."
+
+#: core/init.php:262
+msgid "Twice a Month"
+msgstr "Deux fois par mois"
+
+#: core/init.php:256
+msgid "Once Weekly"
+msgstr "Une fois par semaine"
+
+#: core/core.php:3756
+msgid "Broken Link Checker has detected %d new broken link in your posts."
+msgid_plural "Broken Link Checker has detected %d new broken links in your posts."
+msgstr[0] "Broken Link Checker a trouvé %d nouveau lien cassé dans vos articles."
+msgstr[1] "Broken Link Checker a trouvé %d nouveaux liens cassés dans vos articles."
+
+#: core/core.php:3702
+msgid "You can see all broken links here:"
+msgstr "Vous pouvez voir tous les liens cassés ici :"
+
+#: core/core.php:3688
+msgid "Source : %s"
+msgstr "Source : %s"
+
+#: core/core.php:3687
+msgid "Link URL : <a href=\"%s\">%s</a>"
+msgstr "URL du lien : <a href=\"%s\">%s</a>"
+
+#: core/core.php:3686
+msgid "Link text : %s"
+msgstr "Texte du lien : %s"
+
+#: core/core.php:3677
+msgid "Here's a list of the new broken links: "
+msgstr "Ici se trouve une liste des nouveaux liens cassés :"
+
+#: core/core.php:3668
+msgid "Here's a list of the first %d broken links:"
+msgid_plural "Here's a list of the first %d broken links:"
+msgstr[0] "Voici %d nouveau lien cassé :"
+msgstr[1] "Voici les %d nouveaux liens cassés :"
+
+#: core/core.php:3637
+msgid "Broken Link Checker has detected %d new broken link on your site."
+msgid_plural "Broken Link Checker has detected %d new broken links on your site."
+msgstr[0] "Broken Link Checker a trouvé %d nouveau lien cassé dans votre site."
+msgstr[1] "Broken Link Checker a trouvé %d nouveaux liens cassés dans votre site."
+
+#: core/core.php:3632 core/core.php:3751
+msgid "[%s] Broken links detected"
+msgstr "[%s] liens cassés trouvés"
+
+#: core/core.php:3509
+msgid "If this value is zero even after several page reloads you have probably encountered a bug."
+msgstr "Si cette valeur est à zéro même après plusieurs rechargements, vous avez probablement rencontré un bug."
+
+#: core/core.php:3490
+msgid "Database character set"
+msgstr "Jeu de caractères de la base de données"
+
+#: core/core.php:3472
+msgid "Redirects may be detected as broken links when open_basedir is on."
+msgstr "Les redirections peuvent être détectées comme des liens cassés quand open_basedir est activé."
+
+#: core/core.php:3471
+msgid "On ( %s )"
+msgstr "Activé ( %s )"
+
+#: core/core.php:3463 core/core.php:3477
+msgid "Off"
+msgstr "Désactivé"
+
+#: core/core.php:3458
+msgid "Redirects may be detected as broken links when safe_mode is on."
+msgstr "Les redirections peuvent être détectées comme des liens cassés quand le safe_mode est activé."
+
+#: core/core.php:3457
+msgid "On"
+msgstr "Activé"
+
+#: core/core.php:3446
+msgid "You must have either CURL or Snoopy installed for the plugin to work!"
+msgstr "CURL ou Snoopy doit être installé pour que l’extension fonctionne !"
+
+#: core/core.php:3433
+msgid "Installed"
+msgstr "Installé"
+
+#: core/core.php:3427
+msgid "CURL version"
+msgstr "Version de CURL"
+
+#: core/core.php:3424 core/core.php:3440 core/core.php:3445
+msgid "Not installed"
+msgstr "Pas installé"
+
+#: core/core.php:3412
+msgid "You have an old version of CURL. Redirect detection may not work properly."
+msgstr "Vous avez une vieille version de CURL. Les détections des redirections pourraient ne pas fonctionner correctement."
+
+#: core/core.php:3399
+msgid "MySQL version"
+msgstr "Version MySQL"
+
+#: core/core.php:3393
+msgid "PHP version"
+msgstr "Version PHP"
+
+#. Plugin Name of the plugin
+#: core/core.php:3373
+msgid "Broken Link Checker"
+msgstr "Broken Link Checker"
+
+#: core/core.php:3319
+msgid "Failed to load link details (%s)"
+msgstr "Le chargement des détails du lien (%s) a échoué."
+
+#: core/core.php:3305
+msgid "Error : link ID not specified"
+msgstr "Erreur : ID du lien non spécifié"
+
+#: core/core.php:3292
+msgid "You don't have sufficient privileges to access this information!"
+msgstr "Vous n’avez pas assez de droits pour obtenir cette information !"
+
+#: core/core.php:3157
+msgid "An unexpected error occured!"
+msgstr "Une erreur inattendue a eu lieu !"
+
+#: core/core.php:3087
+msgid "An unexpected error occurred!"
+msgstr "Une erreur inattendue a eu lieu !"
+
+#: core/core.php:3061 core/core.php:3071
+msgid "Oops, the new URL is invalid!"
+msgstr "Aïe, la nouvelle URL n’est pas valide !"
+
+#: core/core.php:3043
+msgid "Error : link_id or new_url not specified"
+msgstr "Erreur : link_id ou new_url non spécifié !"
+
+#: core/core.php:2984 core/core.php:3025 core/core.php:3174 core/core.php:3188
+#: core/core.php:3250
+msgid "Error : link_id not specified"
+msgstr "Erreur : link_id non spécifié"
+
+#: core/core.php:2981 core/core.php:3022
+msgid "Oops, couldn't modify the link!"
+msgstr "Aïe, impossible de modifier le lien !"
+
+#: core/core.php:2961 core/core.php:3008 core/core.php:3052 core/core.php:3148
+#: core/core.php:3197 core/core.php:3259
+msgid "Oops, I can't find the link %d"
+msgstr "Oups, impossible de trouver le lien %d."
+
+#: core/core.php:2896
+msgctxt "current load"
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: core/core.php:2870
+msgid "No links detected."
+msgstr "Aucun lien détecté."
+
+#: core/core.php:2868
+msgid "Searching your blog for links..."
+msgstr "Recherche des liens de votre site…"
+
+#: core/core.php:2861
+msgid "Detected %1$s in %2$s."
+msgstr "%1$s détectés parmi %2$s."
+
+#: core/core.php:2855
+msgid "Detected %1$s in %2$s and still searching..."
+msgstr "%1$s détectés parmi %2$s. Recherche toujours en cours…"
+
+#: core/core.php:2849
+msgctxt "for the \"Detected X unique URLs in Y links\" message"
+msgid "%d link"
+msgid_plural "%d links"
+msgstr[0] "%d lien"
+msgstr[1] "%d liens"
+
+#: core/core.php:2845
+msgctxt "for the \"Detected X unique URLs in Y links\" message"
+msgid "%d unique URL"
+msgid_plural "%d unique URLs"
+msgstr[0] "%d URL unique détectée"
+msgstr[1] "%d URL uniques détectées"
+
+#: core/core.php:2839
+msgid "No URLs in the work queue."
+msgstr "Aucune URL dans la file d’attente."
+
+#: core/core.php:2836
+msgid "%d URL in the work queue"
+msgid_plural "%d URLs in the work queue"
+msgstr[0] "%d URL dans la file d’attente."
+msgstr[1] "%d URL dans la file d’attente."
+
+#: core/core.php:2829
+msgid "No broken links found."
+msgstr "Aucun lien cassé trouvé."
+
+#: core/core.php:2823
+msgid "Found %d broken link"
+msgid_plural "Found %d broken links"
+msgstr[0] "%d lien cassé trouvé"
+msgstr[1] "%d liens cassés trouvés"
+
+#: core/core.php:2822
+msgid "View broken links"
+msgstr "Voir les liens cassés"
+
+#: core/core.php:2389 core/core.php:2953 core/core.php:3000 core/core.php:3037
+#: core/core.php:3138 core/core.php:3182 core/core.php:3244
+msgid "You're not allowed to do that!"
+msgstr "Vous n’êtes pas autorisé à faire cela !"
+
+#: core/core.php:2372
+msgid "Color-code status codes"
+msgstr "Code couleur des états"
+
+#: core/core.php:2363
+msgid "Highlight links broken for at least %s days"
+msgstr "Mettre en surbrillance les liens cassés depuis au moins %s jours"
+
+#: core/core.php:2348
+msgid "Misc"
+msgstr "Divers"
+
+#: core/core.php:2344 includes/admin/table-printer.php:171
+msgid "Apply"
+msgstr "Appliquer"
+
+#: core/core.php:2343
+msgid "links"
+msgstr "liens"
+
+#: core/core.php:2336
+msgid "Show on screen"
+msgstr "Afficher à l’écran"
+
+#: core/core.php:2317
+msgid "Table columns"
+msgstr "Colonnes du tableau"
+
+#: core/core.php:2292
+msgctxt "a link from the admin notice under Tools - Broken links - Warnings"
+msgid "Change warning settings"
+msgstr "Modifier les réglages d’avertissement"
+
+#: core/core.php:2286
+msgctxt "admin notice under Tools - Broken links - Warnings"
+msgid "Hide notice"
+msgstr "Cacher les informations"
+
+#: core/core.php:2281
+msgid "The \"Warnings\" page lists problems that are probably temporary or suspected to be false positives.<br> Warnings that persist for a long time will usually be reclassified as broken links."
+msgstr "La page des avertissements liste les problèmes qui sont probablement temporaires ou des faux positifs.<br>Les avertissements qui persistent sur une longue période seront reclassifiés comme des liens cassés."
+
+#: core/core.php:2224
+msgid "%d link dismissed"
+msgid_plural "%d links dismissed"
+msgstr[0] "%d lien écarté"
+msgstr[1] "%d liens écartés"
+
+#: core/core.php:2162
+msgid "%d link marked as not broken"
+msgid_plural "%d links marked as not broken"
+msgstr[0] "%d lien marqué comme non cassé"
+msgstr[1] "%d liens marqués comme non cassés"
+
+#: core/core.php:2151 core/core.php:2213
+msgid "Couldn't modify link %d"
+msgstr "Impossible de modifier le lien %d."
+
+#: core/core.php:2143 core/core.php:2969
+msgid "This link was manually marked as working by the user."
+msgstr "Ce lien a été manuellement marqué comme valide par l’utilisateur."
+
+#: core/core.php:2094
+msgid "%d link scheduled for rechecking"
+msgid_plural "%d links scheduled for rechecking"
+msgstr[0] "%d lien programmé pour un nouveau contrôle."
+msgstr[1] "%d liens programmés pour un nouveau contrôle."
+
+#: core/core.php:2064
+msgid "Didn't find anything to delete!"
+msgstr "Rien à supprimer !"
+
+#: core/core.php:2042
+msgid "%d item was skipped because it can't be moved to the Trash. You need to delete it manually."
+msgid_plural "%d items were skipped because they can't be moved to the Trash. You need to delete them manually."
+msgstr[0] "%d lien a été ignoré parce qu’il ne peut pas être mis à la corbeille. Vous devez le supprimer manuellement."
+msgstr[1] "%d liens ont été ignorés parce qu’ils ne peuvent pas être mis à la corbeille. Vous devez les supprimer manuellement."
+
+#: core/core.php:1933
+msgid "Failed to remove %d link"
+msgid_plural "Failed to remove %d links"
+msgstr[0] "Le retrait du lien %d a échoué."
+msgstr[1] "Le retrait des liens %d a échoué."
+
+#: core/core.php:1922
+msgid "%d link removed"
+msgid_plural "%d links removed"
+msgstr[0] "%d lien supprimé"
+msgstr[1] "%d liens supprimés"
+
+#: core/core.php:1833
+msgid "Failed to update %d link."
+msgid_plural "Failed to update %d links."
+msgstr[0] "La mise à jour du lien %d a échoué."
+msgstr[1] "La mise à jour des liens %d a échoué."
+
+#: core/core.php:1822
+msgid "%d link updated."
+msgid_plural "%d links updated."
+msgstr[0] "%d lien mis à jour."
+msgstr[1] "%d liens mis à jour."
+
+#: core/core.php:1744
+msgid "None of the selected links are redirects!"
+msgstr "Aucun des liens sélectionnés ne sont des redirections !"
+
+#: core/core.php:1733
+msgid "Failed to fix %d redirect"
+msgid_plural "Failed to fix %d redirects"
+msgstr[0] "La réparation de la redirection %d a échoué."
+msgstr[1] "La réparation des redirections %d a échoué."
+
+#: core/core.php:1722
+msgid "Replaced %d redirect with a direct link"
+msgid_plural "Replaced %d redirects with direct links"
+msgstr[0] "Remplacement de la redirection %d par un lien direct"
+msgstr[1] "Remplacement des redirections %d par des liens directs"
+
+#: core/core.php:1675
+msgid "Filter deleted"
+msgstr "Filtre supprimé"
+
+#: core/core.php:1668
+msgid "Filter ID not specified."
+msgstr "ID du filtre non spécifié."
+
+#: core/core.php:1641
+msgid "Filter \"%s\" created"
+msgstr "Filtre « %s » créé"
+
+#: core/core.php:1631
+msgid "Invalid search query."
+msgstr "Requête non valide."
+
+#: core/core.php:1627
+msgid "You must enter a filter name!"
+msgstr "Vous devez saisir un nom de filtre !"
+
+#: core/core.php:1562 core/core.php:1646 core/core.php:1678
+msgid "Database error : %s"
+msgstr "Erreur de base de données : %s"
+
+#: core/core.php:1417
+msgid "Enter the names of custom fields you want to check (one per line). If a field contains HTML code, prefix its name with <code>html:</code>. For example, <code>html:field_name</code>."
+msgstr "Saisissez les noms des champs personnalisés que vous souhaitez tester (un par ligne). Si un champ contient du code HTML, préfixez son nom avec <code>html:</code>. Par exemple <code>html:nom_du_champ</code>."
+
+#: core/core.php:1335
+msgid "Configure"
+msgstr "Configurer"
+
+#: core/core.php:1284
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: core/core.php:1273
+msgid "The \"Nuclear Option\". Click this button to make the plugin empty its link database and recheck the entire site from scratch."
+msgstr "L’option nucléaire. Appuyez sur ce bouton pour que l’extension vide sa base de liens et revérifie tout le site depuis le début."
+
+#: core/core.php:1269
+msgid "Re-check all pages"
+msgstr "Revérifier toutes les pages"
+
+#: core/core.php:1266
+msgid "Forced recheck"
+msgstr "Forcer une revérification"
+
+#: core/core.php:1254
+msgctxt "log file location"
+msgid "Custom"
+msgstr "Personnalisé"
+
+#: core/core.php:1240
+msgctxt "log file location"
+msgid "Default"
+msgstr "Défaut"
+
+#: core/core.php:1231
+msgid "Log file location"
+msgstr "Emplacement des journaux"
+
+#: core/core.php:1224
+msgid "Enable logging"
+msgstr "Activer la journalisation"
+
+#: core/core.php:1218
+msgid "Logging"
+msgstr "Journalisation"
+
+#: core/core.php:1200
+msgid "Target resource usage"
+msgstr "Niveau d’utilisation des ressources"
+
+#: core/core.php:1192
+msgid "Load limiting only works on Linux-like systems where <code>/proc/loadavg</code> is present and accessible."
+msgstr "L’utilisation de la limite de charge ne fonctionne que sur les systèmes de type Linux où <code>/proc/loadavg</code> est présent et autorisé."
+
+#: core/core.php:1190
+msgid "Not available"
+msgstr "Non disponible"
+
+#: core/core.php:1181
+msgid "Link checking will be suspended if the average <a href=\"%s\">server load</a> rises above this number. Leave this field blank to disable load limiting."
+msgstr "La vérification des liens sera suspendue si la <a href=\"%s\">charge moyenne du serveur</a>  dépasse ce taux. Laissez ce champ vide pour ne pas utiliser de limite de charge."
+
+#: core/core.php:1176
+msgid "Current load : %s"
+msgstr "Charge courante : %s"
+
+#: core/core.php:1161
+msgid "Server load limit"
+msgstr "Taux de charge limite du serveur"
+
+#: core/core.php:1152
+msgid "The plugin works by periodically launching a background job that parses your posts for links, checks the discovered URLs, and performs other time-consuming tasks. Here you can set for how long, at most, the link monitor may run each time before stopping."
+msgstr "Cette extension fonctionne en lançant périodiquement un processus en arrière-plan. Il recherche les liens dans les articles, vérifie les URL découvertes, et effectue d’autres tâches consommatrices de temps. Vous pouvez définir ici le temps maximal pendant lequel le processus peut s’exécuter avant de s’arrêter."
+
+#: core/core.php:1135
+msgid "Max. execution time"
+msgstr "Temps maximal d’exécution :"
+
+#: core/core.php:1117
+msgctxt "settings page"
+msgid "Show link actions"
+msgstr "Actions en masse"
+
+#: core/core.php:1101
+msgctxt "dashboard widget visibility"
+msgid "Nobody (disables the widget)"
+msgstr "Personne (désactive le widget)"
+
+#: core/core.php:1100
+msgctxt "dashboard widget visibility"
+msgid "Editor and above"
+msgstr "Editeur et plus"
+
+#: core/core.php:1099
+msgctxt "dashboard widget visibility"
+msgid "Administrator"
+msgstr "Administrateur"
+
+#: core/core.php:1094
+msgid "Show the dashboard widget for"
+msgstr "Afficher le widget de tableau de bord sur"
+
+#: core/core.php:1086
+msgid "Run hourly in the background"
+msgstr "Vérifier toutes les heures en arrière-plan"
+
+#: core/core.php:1078
+msgid "Run continuously while the Dashboard is open"
+msgstr "Exécuter continuellement tant que le tableau de bord est ouvert"
+
+#: core/core.php:1070
+msgid "Link monitor"
+msgstr "Surveillance des liens"
+
+#: core/core.php:1063
+msgid "Links that take longer than this to load will be marked as broken."
+msgstr "Les liens qui prennent plus de temps que cela à se charger seront marqués comme cassés."
+
+#: core/core.php:1054 core/core.php:1141 core/core.php:3484
+msgid "%s seconds"
+msgstr "%s secondes"
+
+#: core/core.php:1048 includes/links.php:1026
+msgid "Timeout"
+msgstr "Timeout"
+
+#: core/core.php:1029
+msgid "Check links using"
+msgstr "Vérifier les liens en utilisant"
+
+#: core/core.php:1011
+msgid "Don't check links where the URL contains any of these words (one per line) :"
+msgstr "Ne pas vérifier les liens dont l’URL contient n’importe lequel de ces mots (un par ligne) :"
+
+#: core/core.php:1010
+msgid "Exclusion list"
+msgstr "Liste des exclusions"
+
+#: core/core.php:1003
+msgid "Error : All link parsers missing!"
+msgstr "Erreur : tous les analyseurs de liens sont absents !"
+
+#: core/core.php:997
+msgid "Link types"
+msgstr "Type du lien"
+
+#: core/core.php:964
+msgid "Post statuses"
+msgstr "État de l’article"
+
+#: core/core.php:953
+msgid "Look for links in"
+msgstr "Rechercher des liens dans"
+
+#: core/core.php:938
+msgid "Turning off this option will make the plugin report all problems as broken links."
+msgstr "Décochez cette option et l’extension signalera tous les problèmes comme des liens cassés."
+
+#: core/core.php:935
+msgid "Show uncertain or minor problems as \"warnings\" instead of \"broken\""
+msgstr "Afficher les problèmes incertains ou mineurs comme des « avertissements » au lieu de « cassés »"
+
+#: core/core.php:930
+msgctxt "settings page"
+msgid "Warnings"
+msgstr "Avertissements"
+
+#: core/core.php:924
+msgid "Suggest alternatives to broken links"
+msgstr "Proposer des alternatives aux liens cassés"
+
+#: core/core.php:919
+msgctxt "settings page"
+msgid "Suggestions"
+msgstr "Suggestions"
+
+#: core/core.php:908
+msgctxt "\"Link tweaks\" settings"
+msgid "These settings only apply to the content of posts, not comments or custom fields."
+msgstr "Ces réglages s’appliquent uniquement au contenu des articles, pas aux commentaires ni aux champs personnalisés."
+
+#: core/core.php:902
+msgid "Stop search engines from following broken links"
+msgstr "Arrêter le suivi des liens cassés par les moteurs de recherche"
+
+#: core/core.php:889
+msgid "Example : Lorem ipsum <span %s>removed link</span>, dolor sit amet."
+msgstr "Exemple : Lorem ipsum <span %s>lien supprimé</span>, dolor sit amet."
+
+#: core/core.php:869
+msgid "Apply custom formatting to removed links"
+msgstr "Appliquer un formatage spécifique aux liens supprimés"
+
+#: core/core.php:861 core/core.php:892
+msgid "Click \"Save Changes\" to update example output."
+msgstr "Appuyez sur « Enregistrer les modifications » pour mettre à jour l’exemple."
+
+#: core/core.php:858
+msgid "Example : Lorem ipsum <a %s>broken link</a>, dolor sit amet."
+msgstr "Exemple : Lorem ipsum <a %s>lien cassé</a>, dolor sit amet."
+
+#: core/core.php:842 core/core.php:873
+msgid "Edit CSS"
+msgstr "Modifier le CSS"
+
+#: core/core.php:838
+msgid "Apply custom formatting to broken links"
+msgstr "Appliquer un formatage spécifique aux liens cassés"
+
+#: core/core.php:832
+msgid "Link tweaks"
+msgstr "Mettre en forme les liens"
+
+#: core/core.php:825
+msgid "Leave empty to use the e-mail address specified in Settings &rarr; General."
+msgstr "Laissez vide pour utiliser l’adresse e-mail spécifiée dans Réglages \t Général."
+
+#: core/core.php:813
+msgid "Notification e-mail address"
+msgstr "Adresse e-mail pour la notification"
+
+#: core/core.php:806
+msgid "Send authors e-mail notifications about broken links in their posts"
+msgstr "Prévenir par e-mail les auteurs qui ont des liens cassés dans leurs articles"
+
+#: core/core.php:798
+msgid "Send me e-mail notifications about newly detected broken links"
+msgstr "Me prévenir par e-mail des nouveaux liens cassés"
+
+#: core/core.php:792
+msgid "E-mail notifications"
+msgstr "E-mail de notification"
+
+#: core/core.php:785
+msgid "Existing links will be checked this often. New links will usually be checked ASAP."
+msgstr "Les liens existants sont vérifiés en fonction de ce réglage. Les nouveaux liens sont généralement vérifiés dès que possible."
+
+#: core/core.php:776
+msgid "Every %s hours"
+msgstr "Toutes les %s heures"
+
+#: core/core.php:771
+msgid "Check each link"
+msgstr "Vérifier chaque lien"
+
+#: core/core.php:743 includes/admin/options-page-js.php:56
+msgid "Show debug info"
+msgstr "Afficher les informations de débogage"
+
+#: core/core.php:741 includes/admin/table-printer.php:211
+msgid "Status"
+msgstr "État"
+
+#: core/core.php:699
+msgid "Broken Link Checker Options"
+msgstr "Options de Broken Link Checker"
+
+#: core/core.php:684
+msgid "Advanced"
+msgstr "Options avancées"
+
+#: core/core.php:683
+msgid "Protocols & APIs"
+msgstr "Protocoles & APIs"
+
+#: core/core.php:682
+msgid "Which Links To Check"
+msgstr "Quels liens vérifier"
+
+#: core/core.php:681
+msgid "Look For Links In"
+msgstr "Rechercher des liens dans"
+
+#: core/core.php:680
+msgid "General"
+msgstr "Général"
+
+#: core/core.php:658
+msgid "Complete site recheck started."
+msgstr "La vérification complète a commencé."
+
+#: core/core.php:650
+msgid "Thank you for your donation!"
+msgstr "Merci pour votre don !"
+
+#: core/core.php:644
+msgid "Settings saved."
+msgstr "Réglages enregistrés"
+
+#: core/core.php:403 includes/admin/table-printer.php:722
+msgctxt "link action; replace one redirect with a direct link"
+msgid "Fix redirect"
+msgstr "Réparer les redirections"
+
+#: core/core.php:402 includes/admin/table-printer.php:289
+#: includes/admin/table-printer.php:714
+msgid "Recheck"
+msgstr "Revérifier"
+
+#: core/core.php:401 includes/admin/table-printer.php:292
+#: includes/admin/table-printer.php:702
+msgid "Dismiss"
+msgstr "Ignorer"
+
+#: core/core.php:400 includes/admin/links-page-js.php:111
+#: includes/admin/table-printer.php:694
+msgid "Not broken"
+msgstr "Non cassé"
+
+#: core/core.php:399 includes/admin/links-page-js.php:713
+#: includes/admin/table-printer.php:293 includes/admin/table-printer.php:688
+msgid "Unlink"
+msgstr "Délier"
+
+#: core/core.php:398 includes/admin/table-printer.php:288
+#: includes/admin/table-printer.php:685
+msgid "Edit URL"
+msgstr "Modifier l’URL"
+
+#: core/core.php:369
+msgid "Settings"
+msgstr "Réglages"
+
+#: core/core.php:351
+msgid "Go to Broken Links"
+msgstr "Aller aux liens cassés"
+
+#: core/core.php:336
+msgid "View Broken Links"
+msgstr "Voir les liens cassés"
+
+#: core/core.php:320 includes/link-query.php:37
+msgid "Broken Links"
+msgstr "Liens cassés"
+
+#: core/core.php:315
+msgid "Link Checker"
+msgstr "Vérificateur de liens"
+
+#: core/core.php:314
+msgid "Link Checker Settings"
+msgstr "Réglages du vérificateur de liens"
+
+#: core/core.php:223
+msgid "Automatically expand the widget if broken links have been detected"
+msgstr "Déplier automatiquement le widget si des liens cassés ont été détectés"
+
+#: core/core.php:196 includes/admin/options-page-js.php:18
+msgid "[ Network error ]"
+msgstr "[Erreur réseau]"
+
+#: core/core.php:172 includes/admin/links-page-js.php:45
+msgid "Loading..."
+msgstr "Chargement…"

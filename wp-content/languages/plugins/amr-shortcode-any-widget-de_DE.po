@@ -1,0 +1,112 @@
+# Translation of Plugins - amr shortcode any widget - Development (trunk) in German
+# This file is distributed under the same license as the Plugins - amr shortcode any widget - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-03-22 08:31:52+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - amr shortcode any widget - Development (trunk)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://webdesign.anmari.com"
+msgstr "http://webdesign.anmari.com"
+
+#. Author of the plugin/theme
+msgid "anmari"
+msgstr "anmari"
+
+#. Description of the plugin/theme
+msgid "Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget \"widget name\" ] [do_widget id=widgetnamedashed-n ]or include a whole widget area [do_widget_area]. Please read: <a href=\"https://wordpress.org/plugins/amr-shortcode-any-widget/installation/\">Installation</a> and <a href=\"https://wordpress.org/plugins/amr-shortcode-any-widget/faq/\">FAQ</a>."
+msgstr "Füge jedes Widget in irgend eine Seite irgend eines Themes ein.  [do_widget widgetname ] oder [do_widget widgetname ][do_widget id=widgetnamedashed-n ] oder schließe einen ganzen Widgetbereich ein [do_widget_area]. Bitte lies: <a href=\"https://wordpress.org/plugins/amr-shortcode-any-widget/installation/\">Installation</a> und <a href=\"https://wordpress.org/plugins/amr-shortcode-any-widget/faq/\">FAQ</a>."
+
+#. Plugin URI of the plugin/theme
+msgid "http://webdesign.anmari.com/shortcode-any-widget/"
+msgstr "http://webdesign.anmari.com/shortcode-any-widget/"
+
+#. Plugin Name of the plugin/theme
+msgid "amr shortcode any widget"
+msgstr "amr shortcode any widget"
+
+#: amr-shortcode-any-widget.php:310
+msgid "Sidebar to hold widgets and their settings. These widgets will be used in a shortcode.  This sidebars widgets should be saved with your theme settings now."
+msgstr "Seitenleiste, um Widgets und deren Einstellungen zu halten. Diese Widgets werden in einem Shortcode verwendet.  Diese Seitenleisten-Widgets sollten nun mit den Einstellungen deines Themes gespeichert werden."
+
+#: amr-admin-form-html.php:186
+msgid "Support forums"
+msgstr "Hilfe-Foren"
+
+#: amr-admin-form-html.php:186
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "Wenn du irgendwelche Probleme mit diesem Plugin oder gute Ideen für Verbesserungen oder neue Funktionen hast, sprich bitte darüber in den "
+
+#: amr-admin-form-html.php:174
+msgid "NB: Using something like the twenty-fourteen theme? you might end up with white text on a white background.  Tweak the widget classes or the html of the wrap or title. If that fails, adjust your css."
+msgstr "Beachte: Wenn du so etwas wie das Twenty-Fourteen Theme benutzt, könntest du mit weißem Text auf weißem Hintergrund enden. Dann kannst du entweder die Widget-Klassen verändern, das umschließende HTML oder das des Titels. Wenn auch das fehlschlägt, passe dein CSS an."
+
+#: amr-admin-form-html.php:171
+msgid "[do_widget_area] or [do_widget_area widget_area=sidebar-1]"
+msgstr "[do_widget_area] oder [do_widget_area widget_area=Seitenleiste-1]"
+
+#: amr-admin-form-html.php:164
+msgid "Create a page with do_widget_area shortcode"
+msgstr "Erstelle eine Seite mit dem Shortcode do_widget_area."
+
+#: amr-admin-form-html.php:156
+msgid "Create a page with do_widget_area shortcode without the widget_area class"
+msgstr "Erstelle eine Seite mit dem Shortcode do_widget_area ohne die Klasse widget_area."
+
+#: amr-admin-form-html.php:148
+msgid "To add a widget area - all widgets in the widget area:"
+msgstr "Um einen Widget-Bereich hinzuzufügen - alle Widgets im Widget-Bereich:"
+
+#: amr-admin-form-html.php:137
+msgid "To add multiple instances of the same widget:"
+msgstr "Um mehrere Instanzen desselben Widgets hinzuzufügen:"
+
+#: amr-admin-form-html.php:102
+msgid "Create a page with do_widget shortcode"
+msgstr "Erstelle eine Seite mit dem Shortcode do_widget."
+
+#: amr-admin-form-html.php:95
+msgid "Create a page with do_widget shortcode and remove widget_classes"
+msgstr "Erstelle eine Seite mit dem Shortcode do_widget und entferne die widget_classes."
+
+#: amr-admin-form-html.php:89
+msgid "[do_widget \"tag cloud\"] or [do_widget id=widgetid]"
+msgstr "[do_widget \"Schlagwörter Wolke\"] oder [do_widget id=widgetid]"
+
+#: amr-admin-form-html.php:86 amr-admin-form-html.php:168
+msgid "Examples:"
+msgstr "Beispiele:"
+
+#: amr-admin-form-html.php:85
+msgid "Add the shortcode [do_widget widgetname] to a page."
+msgstr "Füge den Shortcode [do_widget widgetname] zu einer Seite hinzu."
+
+#: amr-admin-form-html.php:81
+msgid "To add a single widget to a page"
+msgstr "So fügst du ein einzelnes Widget zu einer Seite hinzu."
+
+#: amr-admin-form-html.php:74
+msgid "Go to widgets"
+msgstr "Gehe zu den Widgets."
+
+#: amr-admin-form-html.php:69
+msgid "Set the widgets parameters if there are any."
+msgstr "Setze die Widgets-Parameter, falls vorhanden."
+
+#: amr-admin-form-html.php:65
+msgid "Drag the widgets you want to use to the shortcodes sidebar."
+msgstr "Ziehe die Widgets, die du verwenden möchtest, in die Shortcodes-Seitenleiste."
+
+#: amr-admin-form-html.php:63
+msgid "Test your widget in a normal sidebar first."
+msgstr "Prüfe dein Widget zuerst in einer normalen Seitenleiste."
+
+#: amr-admin-form-html.php:37
+msgid "Settings"
+msgstr "Einstellungen"
