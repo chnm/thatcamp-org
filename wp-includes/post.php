@@ -775,7 +775,7 @@ function get_page_statuses() {
 /**
  * Return statuses for privacy requests.
  *
- * @since 5.0.0
+ * @since 4.9.6
  *
  * @return array
  */
@@ -1881,6 +1881,39 @@ function delete_post_meta_by_key( $post_meta_key ) {
 		wp_cache_set( 'last_changed', microtime(), 'posts' );
 	}
 	return $deleted;
+}
+
+/**
+ * Registers a meta key for posts.
+ *
+ * @since 4.9.8
+ *
+ * @param string $post_type Post type to register a meta key for. Pass an empty string
+ *                          to register the meta key across all existing post types.
+ * @param string $meta_key  The meta key to register.
+ * @param array  $args      Data used to describe the meta key when registered. See
+ *                          {@see register_meta()} for a list of supported arguments.
+ * @return bool True if the meta key was successfully registered, false if not.
+ */
+function register_post_meta( $post_type, $meta_key, array $args ) {
+	$args['object_subtype'] = $post_type;
+
+	return register_meta( 'post', $meta_key, $args );
+}
+
+/**
+ * Unregisters a meta key for posts.
+ *
+ * @since 4.9.8
+ *
+ * @param string $post_type Post type the meta key is currently registered for. Pass
+ *                          an empty string if the meta key is registered across all
+ *                          existing post types.
+ * @param string $meta_key  The meta key to unregister.
+ * @return bool True on success, false if the meta key was not previously registered.
+ */
+function unregister_post_meta( $post_type, $meta_key ) {
+	return unregister_meta_key( 'post', $meta_key, $post_type );
 }
 
 /**

@@ -270,7 +270,9 @@ final class WP_Screen {
 
 			switch ( $base ) {
 				case 'post' :
-					if ( isset( $_GET['post'] ) )
+					if ( isset( $_GET['post'] ) && isset( $_POST['post_ID'] ) && (int) $_GET['post'] !== (int) $_POST['post_ID'] )
+						wp_die( __( 'A post ID mismatch has been detected.' ), __( 'Sorry, you are not allowed to edit this item.' ), 400 );
+					elseif ( isset( $_GET['post'] ) )
 						$post_id = (int) $_GET['post'];
 					elseif ( isset( $_POST['post_ID'] ) )
 						$post_id = (int) $_POST['post_ID'];
@@ -1020,7 +1022,10 @@ final class WP_Screen {
 					update_user_meta( get_current_user_id(), 'show_welcome_panel', $welcome_checked );
 				} else {
 					$welcome_checked = get_user_meta( get_current_user_id(), 'show_welcome_panel', true );
-					if ( 2 == $welcome_checked && wp_get_current_user()->user_email != get_option( 'admin_email' ) ) {
+					if ( '' === $welcome_checked ) {
+						$welcome_checked = '1';
+					}
+					if ( '2' === $welcome_checked && wp_get_current_user()->user_email != get_option( 'admin_email' ) ) {
 						$welcome_checked = false;
 					}
 				}
@@ -1028,6 +1033,7 @@ final class WP_Screen {
 				echo '<input type="checkbox" id="wp_welcome_panel-hide"' . checked( (bool) $welcome_checked, true, false ) . ' />';
 				echo _x( 'Welcome', 'Welcome panel' ) . "</label>\n";
 			}
+
 		?>
 		</fieldset>
 		<?php

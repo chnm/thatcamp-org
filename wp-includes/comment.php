@@ -3110,6 +3110,8 @@ function wp_handle_comment_submission( $comment_data ) {
 			) {
 				kses_remove_filters(); // start with a clean slate
 				kses_init_filters(); // set up the filters
+				remove_filter( 'pre_comment_content', 'wp_filter_post_kses' );
+				add_filter( 'pre_comment_content', 'wp_filter_kses' );
 			}
 		}
 	} else {
@@ -3324,6 +3326,7 @@ function wp_comments_personal_data_eraser( $email_address, $page = 1 ) {
 		)
 	);
 
+	/* translators: Name of a comment's author after being anonymized. */
 	$anon_author = __( 'Anonymous' );
 	$messages    = array();
 
@@ -3331,9 +3334,9 @@ function wp_comments_personal_data_eraser( $email_address, $page = 1 ) {
 		$anonymized_comment                         = array();
 		$anonymized_comment['comment_agent']        = '';
 		$anonymized_comment['comment_author']       = $anon_author;
-		$anonymized_comment['comment_author_email'] = wp_privacy_anonymize_data( 'email', $comment->comment_author_email );
+		$anonymized_comment['comment_author_email'] = '';
 		$anonymized_comment['comment_author_IP']    = wp_privacy_anonymize_data( 'ip', $comment->comment_author_IP );
-		$anonymized_comment['comment_author_url']   = wp_privacy_anonymize_data( 'url', $comment->comment_author_url );
+		$anonymized_comment['comment_author_url']   = '';
 		$anonymized_comment['user_id']              = 0;
 
 		$comment_id = (int) $comment->comment_ID;
