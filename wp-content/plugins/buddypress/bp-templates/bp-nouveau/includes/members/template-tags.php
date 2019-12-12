@@ -339,7 +339,7 @@ function bp_nouveau_members_loop_buttons( $args = array() ) {
 
 				remove_filter( 'bp_get_add_friend_button', 'bp_nouveau_members_catch_button_args', 100, 1 );
 
-				if ( ! empty( bp_nouveau()->members->button_args ) ) {
+				if ( isset( bp_nouveau()->members->button_args ) && bp_nouveau()->members->button_args ) {
 					$button_args = bp_nouveau()->members->button_args;
 
 					$buttons['member_friendship'] = array(
@@ -392,7 +392,7 @@ function bp_nouveau_members_loop_buttons( $args = array() ) {
 
 				remove_filter( 'bp_get_send_public_message_button', 'bp_nouveau_members_catch_button_args', 100, 1 );
 
-				if ( ! empty( bp_nouveau()->members->button_args ) ) {
+				if ( isset( bp_nouveau()->members->button_args ) && bp_nouveau()->members->button_args ) {
 					$button_args = bp_nouveau()->members->button_args;
 
 					/*
@@ -435,7 +435,7 @@ function bp_nouveau_members_loop_buttons( $args = array() ) {
 
 				remove_filter( 'bp_get_send_message_button_args', 'bp_nouveau_members_catch_button_args', 100, 1 );
 
-				if ( ! empty( bp_nouveau()->members->button_args ) ) {
+				if ( isset( bp_nouveau()->members->button_args ) && bp_nouveau()->members->button_args ) {
 					$button_args = bp_nouveau()->members->button_args;
 
 					/*
@@ -456,7 +456,7 @@ function bp_nouveau_members_loop_buttons( $args = array() ) {
 							'class' => $parent_class,
 						),
 						'button_attr'       => array(
-							'href'  => trailingslashit( bp_loggedin_user_domain() . bp_get_messages_slug() ) . '#compose?r=' . bp_core_get_username( $user_id ),
+							'href'  => trailingslashit( bp_loggedin_user_domain() . bp_get_messages_slug() ) . 'compose?r=' . bp_core_get_username( $user_id ),
 							'id'    => false,
 							'class' => $button_args['link_class'],
 							'rel'   => '',

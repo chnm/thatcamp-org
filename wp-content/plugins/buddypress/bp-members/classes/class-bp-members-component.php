@@ -232,12 +232,21 @@ class BP_Members_Component extends BP_Component {
 		 */
 		if ( bp_displayed_user_has_front_template() ) {
 			$bp->default_component = 'front';
-		} elseif ( defined( 'BP_DEFAULT_COMPONENT' ) && BP_DEFAULT_COMPONENT ) {
-			$bp->default_component = BP_DEFAULT_COMPONENT;
 		} elseif ( bp_is_active( 'activity' ) && isset( $bp->pages->activity ) ) {
 			$bp->default_component = bp_get_activity_slug();
 		} else {
 			$bp->default_component = ( 'xprofile' === $bp->profile->id ) ? 'profile' : $bp->profile->id;
+		}
+
+		if ( defined( 'BP_DEFAULT_COMPONENT' ) && BP_DEFAULT_COMPONENT ) {
+			$default_component = BP_DEFAULT_COMPONENT;
+			if ( 'profile' === $default_component ) {
+				$default_component = 'xprofile';
+			}
+
+			if ( bp_is_active( $default_component ) ) {
+				$bp->default_component = BP_DEFAULT_COMPONENT;
+			}
 		}
 
 		/** Canonical Component Stack ****************************************
@@ -446,5 +455,24 @@ class BP_Members_Component extends BP_Component {
 		) );
 
 		parent::setup_cache_groups();
+	}
+
+	/**
+	 * Init the BP REST API.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @param array $controllers Optional. See BP_Component::rest_api_init() for
+	 *                           description.
+	 */
+	public function rest_api_init( $controllers = array() ) {
+		parent::rest_api_init( array(
+			/**
+			 * As the Members component is always loaded,
+			 * let's register the Components endpoint here.
+			 */
+			'BP_REST_Components_Endpoint',
+			'BP_REST_Members_Endpoint',
+		) );
 	}
 }

@@ -105,6 +105,11 @@ window.bp = window.bp || {};
 			if ( typeof window.tinyMCE === 'undefined' || window.tinyMCE.activeEditor === null || typeof window.tinyMCE.activeEditor === 'undefined' ) {
 				return;
 			} else {
+				// Mentions isn't available, so bail.
+				if ( _.isEmpty( exports.mentions ) ) {
+					return;
+				}
+
 				$( window.tinyMCE.activeEditor.contentDocument.activeElement )
 					.atwho( 'setIframe', $( '#message_content_ifr' )[0] )
 					.bp_mentions( {
@@ -530,11 +535,20 @@ window.bp = window.bp || {};
 		},
 
 		addMentions: function() {
+			var sendToInput = $( this.el ).find( '#send-to-input' ),
+			    mention = bp.Nouveau.getLinkParams( null, 'r' ) || null;
+
 			// Add autocomplete to send_to field
-			$( this.el ).find( '#send-to-input' ).bp_mentions( {
+			sendToInput.bp_mentions( {
 				data: [],
 				suffix: ' '
 			} );
+
+			// Check for mention
+			if ( ! _.isNull( mention ) ) {
+				sendToInput.val( '@' + _.escape( mention ) + ' ' );
+				sendToInput.focus();
+			}
 		},
 
 		resetFields: function( model ) {
@@ -619,7 +633,7 @@ window.bp = window.bp || {};
 			if ( errors.length ) {
 				var feedback = '';
 				_.each( errors, function( e ) {
-					feedback += '<div class="bp-feedback error"><span class="bp-icon" aria-hidden="true"></span><p>'+BP_Nouveau.messages.errors[ e ] + '</p></div>';
+					feedback += BP_Nouveau.messages.errors[ e ] + '<br/>';
 				} );
 
 				bp.Nouveau.Messages.displayFeedback( feedback, 'error' );

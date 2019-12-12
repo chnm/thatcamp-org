@@ -141,7 +141,7 @@ function bp_friends_format_activity_action_friendship_accepted( $action, $activi
 	$initiator_link = bp_core_get_userlink( $activity->user_id );
 	$friend_link    = bp_core_get_userlink( $activity->secondary_item_id );
 
-	$action = sprintf( __( '%1$s and %2$s are now friends', 'buddypress' ), $initiator_link, $friend_link );
+	$action = sprintf( esc_html__( '%1$s and %2$s are now friends', 'buddypress' ), $initiator_link, $friend_link );
 
 	// Backward compatibility for legacy filter
 	// The old filter has the $friendship object passed to it. We want to
@@ -175,7 +175,7 @@ function bp_friends_format_activity_action_friendship_created( $action, $activit
 	$initiator_link = bp_core_get_userlink( $activity->user_id );
 	$friend_link    = bp_core_get_userlink( $activity->secondary_item_id );
 
-	$action = sprintf( __( '%1$s and %2$s are now friends', 'buddypress' ), $initiator_link, $friend_link );
+	$action = sprintf( esc_html__( '%1$s and %2$s are now friends', 'buddypress' ), $initiator_link, $friend_link );
 
 	// Backward compatibility for legacy filter
 	// The old filter has the $friendship object passed to it. We want to
@@ -409,3 +409,15 @@ function bp_friends_delete_activity_on_user_delete( $user_id = 0 ) {
 	) );
 }
 add_action( 'friends_remove_data', 'bp_friends_delete_activity_on_user_delete' );
+
+/**
+ * Remove friendship activity item when a friendship is deleted.
+ *
+ * @since 3.2.0
+ *
+ * @param int $friendship_id ID of the friendship.
+ */
+function bp_friends_delete_activity_on_friendship_delete( $friendship_id ) {
+	friends_delete_activity( array( 'item_id' => $friendship_id, 'type' => 'friendship_created', 'user_id' => 0 ) );
+}
+add_action( 'friends_friendship_deleted', 'bp_friends_delete_activity_on_friendship_delete' );

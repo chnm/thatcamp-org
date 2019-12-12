@@ -27,7 +27,23 @@ function bp_core_register_common_scripts() {
 	 * eg. French (France) locale for WP is fr_FR. Here, we try to find fr-fr.js
 	 *     (this file doesn't exist).
 	 */
-	$locale = sanitize_file_name( strtolower( get_locale() ) );
+	$wp_locale = sanitize_file_name( strtolower( get_locale() ) );
+
+	// WP uses ISO 639-2 or -3 codes for some locales, which we must translate back to ISO 639-1.
+	$iso_locales = array(
+		'bel' => 'be',
+		'bre' => 'br',
+		'kir' => 'ky',
+		'mri' => 'mi',
+		'ssw' => 'ss',
+	);
+
+	if ( isset( $iso_locales[ $wp_locale ] ) ) {
+		$locale = $iso_locales[ $wp_locale ];
+	} else {
+		$locale = $wp_locale;
+	}
+
 	$locale = str_replace( '_', '-', $locale );
 	if ( file_exists( buddypress()->core->path . "bp-core/js/vendor/moment-js/locale/{$locale}{$min}.js" ) ) {
 		$moment_locale_url = $url . "vendor/moment-js/locale/{$locale}{$min}.js";
@@ -140,7 +156,7 @@ function bp_core_register_common_styles() {
 	foreach ( $styles as $id => $style ) {
 		wp_register_style( $id, $style['file'], $style['dependencies'], bp_get_version() );
 
-		wp_style_add_data( $id, 'rtl', true );
+		wp_style_add_data( $id, 'rtl', 'replace' );
 		if ( $min ) {
 			wp_style_add_data( $id, 'suffix', $min );
 		}
@@ -536,12 +552,7 @@ function bp_core_enqueue_livestamp() {
 	 */
 	if ( wp_script_is( 'bp-moment-locale', 'registered' ) ) {
 		wp_enqueue_script( 'bp-moment-locale' );
-
-		if ( function_exists( 'wp_add_inline_script' ) ) {
-			wp_add_inline_script ( 'bp-livestamp', bp_core_moment_js_config() );
-		} else {
-			add_action( 'wp_footer', '_bp_core_moment_js_config_footer', 20 );
-		}
+		wp_add_inline_script ( 'bp-livestamp', bp_core_moment_js_config() );
 	}
 
 	wp_enqueue_script( 'bp-livestamp' );
@@ -567,21 +578,4 @@ jQuery(function() {
 EOD;
 
 	return $inline_js;
-}
-
-/**
- * Print moment.js config in page footer.
- *
- * Will be removed once we set our minimum version of WP 4.5.
- *
- * @since 2.7.0
- *
- * @access private
- */
-function _bp_core_moment_js_config_footer() {
-	if ( ! wp_script_is( 'bp-moment-locale' ) ) {
-		return;
-	}
-
-	printf( '<script>%s</script>', bp_core_moment_js_config() );
 }

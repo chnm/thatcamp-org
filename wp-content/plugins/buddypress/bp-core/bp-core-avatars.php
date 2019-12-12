@@ -476,7 +476,7 @@ function bp_core_fetch_avatar( $args = '' ) {
 	$legacy_group_avatar_name = ( 'full' == $params['type'] ) ? '-groupavatar-full' : '-groupavatar-thumb';
 
 	// Check for directory.
-	if ( file_exists( $avatar_folder_dir ) ) {
+	if ( ! $params['force_default'] && file_exists( $avatar_folder_dir ) ) {
 
 		// Open directory.
 		if ( $av_dir = opendir( $avatar_folder_dir ) ) {
@@ -637,6 +637,7 @@ function bp_core_fetch_avatar( $args = '' ) {
 		// Custom Gravatar URL args.
 		if ( ! empty( $params['force_default'] ) ) {
 			$url_args['f'] = 'y';
+			$url_args['d'] = $params['default'];
 		}
 		if ( ! empty( $params['rating'] ) ) {
 			$url_args['r'] = strtolower( $params['rating'] );
@@ -653,7 +654,7 @@ function bp_core_fetch_avatar( $args = '' ) {
 		$default_grav = apply_filters( 'bp_core_avatar_default', $default_grav, $params );
 
 		// Only set default image if 'Gravatar Logo' is not requested.
-		if ( 'gravatar_default' !== $default_grav ) {
+		if ( ! $params['force_default'] && 'gravatar_default' !== $default_grav ) {
 			$url_args['d'] = $default_grav;
 		}
 
@@ -835,7 +836,7 @@ function bp_avatar_ajax_delete() {
 	// Handle delete.
 	if ( bp_core_delete_existing_avatar( array( 'item_id' => $avatar_data['item_id'], 'object' => $avatar_data['object'] ) ) ) {
 		$return = array(
-			'avatar' => html_entity_decode( bp_core_fetch_avatar( array(
+			'avatar' => esc_url( bp_core_fetch_avatar( array(
 				'object'  => $avatar_data['object'],
 				'item_id' => $avatar_data['item_id'],
 				'html'    => false,
@@ -1273,7 +1274,7 @@ function bp_avatar_ajax_set() {
 
 		} else {
 			$return = array(
-				'avatar' => html_entity_decode( bp_core_fetch_avatar( array(
+				'avatar' => esc_url( bp_core_fetch_avatar( array(
 					'object'  => $avatar_data['object'],
 					'item_id' => $avatar_data['item_id'],
 					'html'    => false,
@@ -1330,7 +1331,7 @@ function bp_avatar_ajax_set() {
 	// Handle crop.
 	if ( bp_core_avatar_handle_crop( $r ) ) {
 		$return = array(
-			'avatar' => html_entity_decode( bp_core_fetch_avatar( array(
+			'avatar' => esc_url( bp_core_fetch_avatar( array(
 				'object'  => $avatar_data['object'],
 				'item_id' => $avatar_data['item_id'],
 				'html'    => false,

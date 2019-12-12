@@ -101,6 +101,12 @@ function bp_nouveau_ajax_mark_activity_favorite() {
 		wp_send_json_error();
 	}
 
+	$activity_id   = (int) $_POST['id'];
+	$activity_item = new BP_Activity_Activity( $activity_id );
+	if ( ! bp_activity_user_can_read( $activity_item, bp_loggedin_user_id() ) ) {
+		wp_send_json_error();
+	}
+
 	if ( bp_activity_add_user_favorite( $_POST['id'] ) ) {
 		$response = array( 'content' => __( 'Remove Favorite', 'buddypress' ) );
 
@@ -142,7 +148,7 @@ function bp_nouveau_ajax_unmark_activity_favorite() {
 	}
 
 	if ( bp_activity_remove_user_favorite( $_POST['id'] ) ) {
-		$response = array( 'content' => __( 'Favorite', 'buddypress' ) );
+		$response = array( 'content' => __( 'Mark as Favorite', 'buddypress' ) );
 
 		$fav_count = (int) bp_get_total_favorite_count_for_user( bp_loggedin_user_id() );
 
@@ -354,6 +360,12 @@ function bp_nouveau_ajax_new_activity_comment() {
 		wp_send_json_error( $response );
 	}
 
+	$activity_id   = (int) $_POST['form_id'];
+	$activity_item = new BP_Activity_Activity( $activity_id );
+	if ( ! bp_activity_user_can_read( $activity_item ) ) {
+		wp_send_json_error( $response );
+	}
+
 	$comment_id = bp_activity_new_comment( array(
 		'activity_id' => $_POST['form_id'],
 		'content'     => $_POST['content'],
@@ -452,7 +464,7 @@ function bp_nouveau_ajax_get_activity_objects() {
 	}
 
 	if ( empty( $response ) ) {
-		wp_send_json_error( array( 'error' => __( 'No activites were found.', 'buddypress' ) ) );
+		wp_send_json_error( array( 'error' => __( 'No activities were found.', 'buddypress' ) ) );
 	} else {
 		wp_send_json_success( $response );
 	}
@@ -527,7 +539,7 @@ function bp_nouveau_ajax_post_update() {
 		}
 
 	} else {
-		/** This filter is documented in bp-activity/bp-activity-actions.php */
+		/** This filter is documented in bp-activity/actions/post.php */
 		$activity_id = apply_filters( 'bp_activity_custom_update', false, $object, $item_id, $_POST['content'] );
 	}
 

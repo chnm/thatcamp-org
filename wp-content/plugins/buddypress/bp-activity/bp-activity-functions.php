@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
  * @return bool True if activity directory page is found, otherwise false.
  */
 function bp_activity_has_directory() {
-	return (bool) !empty( buddypress()->pages->activity->id );
+	return isset( buddypress()->pages->activity->id ) && buddypress()->pages->activity->id;
 }
 
 /**
@@ -1523,7 +1523,7 @@ function bp_activity_generate_action_string( $activity ) {
  * @return string $action
  */
 function bp_activity_format_activity_action_activity_update( $action, $activity ) {
-	$action = sprintf( __( '%s posted an update', 'buddypress' ), bp_core_get_userlink( $activity->user_id ) );
+	$action = sprintf( esc_html__( '%s posted an update', 'buddypress' ), bp_core_get_userlink( $activity->user_id ) );
 
 	/**
 	 * Filters the formatted activity action update string.
@@ -1546,7 +1546,7 @@ function bp_activity_format_activity_action_activity_update( $action, $activity 
  * @return string $action
  */
 function bp_activity_format_activity_action_activity_comment( $action, $activity ) {
-	$action = sprintf( __( '%s posted a new activity comment', 'buddypress' ), bp_core_get_userlink( $activity->user_id ) );
+	$action = sprintf( esc_html__( '%s posted a new activity comment', 'buddypress' ), bp_core_get_userlink( $activity->user_id ) );
 
 	/**
 	 * Filters the formatted activity action comment string.
@@ -1589,19 +1589,22 @@ function bp_activity_format_activity_action_custom_post_type_post( $action, $act
 		$post_url = $activity->post_url;
 	}
 
+	$post_link = '<a href="' . esc_url( $post_url ) . '">' . esc_html_x( 'item', 'Default text for the post type name', 'buddypress' ) . '</a>';
+
 	if ( is_multisite() ) {
-		$blog_link = '<a href="' . esc_url( $blog_url ) . '">' . get_blog_option( $activity->item_id, 'blogname' ) . '</a>';
+		$blog_link = '<a href="' . esc_url( $blog_url ) . '">' . esc_html( get_blog_option( $activity->item_id, 'blogname' ) ) . '</a>';
 
 		if ( ! empty( $bp->activity->track[ $activity->type ]->new_post_type_action_ms ) ) {
-			$action = sprintf( $bp->activity->track[ $activity->type ]->new_post_type_action_ms, $user_link, $post_url, $blog_link );
+			$action = sprintf( $bp->activity->track[ $activity->type ]->new_post_type_action_ms, $user_link, esc_url( $post_url ), $blog_link );
 		} else {
-			$action = sprintf( _x( '%1$s wrote a new <a href="%2$s">item</a>, on the site %3$s', 'Activity Custom Post Type post action', 'buddypress' ), $user_link, esc_url( $post_url ), $blog_link );
+
+			$action = sprintf( esc_html_x( '%1$s wrote a new %2$s, on the site %3$s', 'Activity Custom Post Type post action', 'buddypress' ), $user_link, $post_link, $blog_link );
 		}
 	} else {
 		if ( ! empty( $bp->activity->track[ $activity->type ]->new_post_type_action ) ) {
 			$action = sprintf( $bp->activity->track[ $activity->type ]->new_post_type_action, $user_link, $post_url );
 		} else {
-			$action = sprintf( _x( '%1$s wrote a new <a href="%2$s">item</a>', 'Activity Custom Post Type post action', 'buddypress' ), $user_link, esc_url( $post_url ) );
+			$action = sprintf( esc_html_x( '%1$s wrote a new %2$s', 'Activity Custom Post Type post action', 'buddypress' ), $user_link, $post_link );
 		}
 	}
 
@@ -1639,6 +1642,7 @@ function bp_activity_format_activity_action_custom_post_type_comment( $action, $
 	}
 
 	$user_link = bp_core_get_userlink( $activity->user_id );
+	$post_link = '<a href="' . esc_url( $activity->primary_link ) . '">' . esc_html_x( 'item', 'Default text for the post type name', 'buddypress' ) . '</a>';
 
 	if ( is_multisite() ) {
 		$blog_link = '<a href="' . esc_url( get_home_url( $activity->item_id ) ) . '">' . get_blog_option( $activity->item_id, 'blogname' ) . '</a>';
@@ -1646,13 +1650,13 @@ function bp_activity_format_activity_action_custom_post_type_comment( $action, $
 		if ( ! empty( $bp->activity->track[ $activity->type ]->new_post_type_comment_action_ms ) ) {
 			$action = sprintf( $bp->activity->track[ $activity->type ]->new_post_type_comment_action_ms, $user_link, $activity->primary_link, $blog_link );
 		} else {
-			$action = sprintf( _x( '%1$s commented on the <a href="%2$s">item</a>, on the site %3$s', 'Activity Custom Post Type comment action', 'buddypress' ), $user_link, $activity->primary_link, $blog_link );
+			$action = sprintf( esc_html_x( '%1$s commented on the %2$s, on the site %3$s', 'Activity Custom Post Type comment action', 'buddypress' ), $user_link, $post_link, $blog_link );
 		}
 	} else {
 		if ( ! empty( $bp->activity->track[ $activity->type ]->new_post_type_comment_action ) ) {
 			$action = sprintf( $bp->activity->track[ $activity->type ]->new_post_type_comment_action, $user_link, $activity->primary_link );
 		} else {
-			$action = sprintf( _x( '%1$s commented on the <a href="%2$s">item</a>', 'Activity Custom Post Type post comment action', 'buddypress' ), $user_link, $activity->primary_link );
+			$action = sprintf( esc_html_x( '%1$s commented on the %2$s', 'Activity Custom Post Type post comment action', 'buddypress' ), $user_link, $post_link );
 		}
 	}
 
@@ -1919,10 +1923,12 @@ function bp_activity_add( $args = '' ) {
 	 * Fires at the end of the execution of adding a new activity item, before returning the new activity item ID.
 	 *
 	 * @since 1.1.0
+	 * @since 4.0.0 Added the `$activity_id` parameter.
 	 *
-	 * @param array $r Array of parsed arguments for the activity item being added.
+	 * @param array $r           Array of parsed arguments for the activity item being added.
+	 * @param int   $activity_id The id of the activity item being added.
 	 */
-	do_action( 'bp_activity_add', $r );
+	do_action( 'bp_activity_add', $r, $activity->id );
 
 	return $activity->id;
 }
@@ -3917,38 +3923,6 @@ function bp_activity_do_heartbeat() {
 }
 
 /**
- * AJAX endpoint for Suggestions API lookups.
- *
- * @since 2.1.0
- */
-function bp_ajax_get_suggestions() {
-	if ( ! bp_is_user_active() || empty( $_GET['term'] ) || empty( $_GET['type'] ) ) {
-		wp_send_json_error( 'missing_parameter' );
-		exit;
-	}
-
-	$args = array(
-		'term' => sanitize_text_field( $_GET['term'] ),
-		'type' => sanitize_text_field( $_GET['type'] ),
-	);
-
-	// Support per-Group suggestions.
-	if ( ! empty( $_GET['group-id'] ) ) {
-		$args['group_id'] = absint( $_GET['group-id'] );
-	}
-
-	$results = bp_core_get_suggestions( $args );
-
-	if ( is_wp_error( $results ) ) {
-		wp_send_json_error( $results->get_error_message() );
-		exit;
-	}
-
-	wp_send_json_success( $results );
-}
-add_action( 'wp_ajax_bp_get_suggestions', 'bp_ajax_get_suggestions' );
-
-/**
  * Detect a change in post type status, and initiate an activity update if necessary.
  *
  * @since 2.2.0
@@ -4164,3 +4138,103 @@ function bp_activity_transition_post_type_comment_status( $new_status, $old_stat
 	remove_filter( 'bp_akismet_get_activity_types', $comment_akismet_history );
 }
 add_action( 'transition_comment_status', 'bp_activity_transition_post_type_comment_status', 10, 3 );
+
+/**
+ * Finds and exports personal data associated with an email address from the Activity tables.
+ *
+ * @since 4.0.0
+ *
+ * @param string $email_address  The user's email address.
+ * @param int    $page           Batch number.
+ * @return array An array of personal data.
+ */
+function bp_activity_personal_data_exporter( $email_address, $page ) {
+	$number = 50;
+
+	$email_address = trim( $email_address );
+
+	$data_to_export = array();
+
+	$user = get_user_by( 'email', $email_address );
+
+	if ( ! $user ) {
+		return array(
+			'data' => array(),
+			'done' => true,
+		);
+	}
+
+	$activities = bp_activity_get( array(
+		'display_comments' => 'stream',
+		'per_page'         => $number,
+		'page'             => $page,
+		'show_hidden'      => true,
+		'filter'           => array(
+			'user_id' => $user->ID,
+		),
+	) );
+
+	$user_data_to_export = array();
+	$activity_actions    = bp_activity_get_actions();
+
+	foreach ( $activities['activities'] as $activity ) {
+		if ( ! empty( $activity_actions->{$activity->component}->{$activity->type}['format_callback'] ) ) {
+			$description = call_user_func( $activity_actions->{$activity->component}->{$activity->type}['format_callback'], '', $activity );
+		} elseif ( ! empty( $activity->action ) ) {
+			$description = $activity->action;
+		} else {
+			$description = $activity->type;
+		}
+
+		$item_data = array(
+			array(
+				'name'  => __( 'Activity Date', 'buddypress' ),
+				'value' => $activity->date_recorded,
+			),
+			array(
+				'name'  => __( 'Activity Description', 'buddypress' ),
+				'value' => $description,
+			),
+			array(
+				'name'  => __( 'Activity URL', 'buddypress' ),
+				'value' => bp_activity_get_permalink( $activity->id, $activity ),
+			),
+		);
+
+		if ( ! empty( $activity->content ) ) {
+			$item_data[] = array(
+				'name'  => __( 'Activity Content', 'buddypress' ),
+				'value' => $activity->content,
+			);
+		}
+
+		/**
+		 * Filters the data associated with an activity item when assembled for a WP personal data export.
+		 *
+		 * Plugins that register activity types whose `action` string doesn't adequately
+		 * describe the activity item for the purposes of data export may filter the activity
+		 * item data here.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param array                $item_data Array of data describing the activity item.
+		 * @param BP_Activity_Activity $activity  Activity item.
+		 */
+		$item_data = apply_filters( 'bp_activity_personal_data_export_item_data', $item_data, $activity );
+
+		$data_to_export[] = array(
+			'group_id'    => 'bp_activity',
+			'group_label' => __( 'Activity', 'buddypress' ),
+			'item_id'     => "bp-activity-{$activity->id}",
+			'data'        => $item_data,
+		);
+	}
+
+	// Tell core if we have more items to process.
+	$done = count( $activities['activities'] ) < $number;
+
+	return array(
+		'data' => $data_to_export,
+		'done' => $done,
+	);
+}

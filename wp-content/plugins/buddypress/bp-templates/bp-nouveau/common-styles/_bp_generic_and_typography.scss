@@ -1,5 +1,6 @@
 // BP Generic elements, Typography and Images.
-// @version 3.0.0
+// @since 3.0.0
+// @version 5.0.0
 
 // ========= Generic Sitewide elements ========
 body {
@@ -14,12 +15,27 @@ body {
 			}
 		} // close * the kitchen sink of elements
 
+		// 'Boxes' i.e display:block when given definition with borders
+		// look nice if corners subtly rounded by a couple of pixels
+		div,
+		dl,
+		li,
+		textarea,
+		select,
+		input[type="search"],
+		input[type="submit"],
+		input[type="reset"] {
+
+			@include border-radius(2px);
+		}
+
+
 		// Some themes have a negative left margin on the blockquote element??
 		#item-body,
 		.bp-lists {
 
 			blockquote {
-				margin-left: $marg-sml;
+				margin-left: 0;
 			}
 		}
 
@@ -51,10 +67,10 @@ body.buddypress {
 			max-width: none;
 		}
 
-		.entry-content {
+		.entry-content,
+		.entry .entry-content > * {
 			float: none;
 			max-width: none;
-			//padding: 0 $pad-xlrg;
 		}
 
 		// 2017 has a very large top padding we'll reduce that for bp screens
@@ -110,6 +126,11 @@ body.buddypress { // add weight
 			// some themes add padding top lets manage that generically sitewide
 			padding: 0;
 		}
+
+		// Specific to Twenty Nineteen
+		h2:before {
+			display: none;
+		}
 	}
 }
 
@@ -127,20 +148,6 @@ body.buddypress { // add weight
 	.avatar {
 		border-radius: 50%;
 	}
-}
-
-// 'Boxes' i.e display:block when given definition with borders
-// look nice if corners subtly rounded by a couple of pixels
-div,
-dl,
-li,
-textarea,
-select,
-input[type="search"],
-input[type="submit"],
-input[type="reset"] {
-
-	@include border-radius(2px);
 }
 
 // ====== BP Typographic Elements ======

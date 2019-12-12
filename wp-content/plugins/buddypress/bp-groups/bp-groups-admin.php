@@ -202,7 +202,7 @@ function bp_groups_admin_load() {
 	) );
 	wp_enqueue_style( 'bp_groups_admin_css', $bp->plugin_url . "bp-groups/admin/css/admin{$min}.css", array(), bp_get_version() );
 
-	wp_style_add_data( 'bp_groups_admin_css', 'rtl', true );
+	wp_style_add_data( 'bp_groups_admin_css', 'rtl', 'replace' );
 	if ( $min ) {
 		wp_style_add_data( 'bp_groups_admin_css', 'suffix', $min );
 	}
@@ -861,13 +861,24 @@ function bp_groups_admin_edit_metabox_settings( $item ) {
  * @param BP_Groups_Group $item The BP_Groups_Group object for the current group.
  */
 function bp_groups_admin_edit_metabox_add_new_members( $item ) {
+	if ( bp_is_large_install() ) {
+		$class  = '';
+		$notice = __( 'Enter a comma-separated list of user logins.', 'buddypress' );
+	} else {
+		$class  = 'bp-suggest-user';
+		$notice = '';
+	}
+
 	?>
 
 	<label for="bp-groups-new-members" class="screen-reader-text"><?php
 		/* translators: accessibility text */
 		_e( 'Add new members', 'buddypress' );
 	?></label>
-	<input name="bp-groups-new-members" type="text" id="bp-groups-new-members" class="bp-suggest-user" placeholder="<?php esc_attr_e( 'Enter a comma-separated list of user logins.', 'buddypress' ) ?>" />
+	<input name="bp-groups-new-members" type="text" id="bp-groups-new-members" class="<?php echo esc_attr( $class ); ?>" placeholder="" />
+	<?php if ( $notice ) : ?>
+		<p class="description"><?php echo esc_html( $notice ); ?></p>
+	<?php endif; ?>
 	<ul id="bp-groups-new-members-list"></ul>
 	<?php
 }
@@ -880,6 +891,24 @@ function bp_groups_admin_edit_metabox_add_new_members( $item ) {
  * @param BP_Groups_Group $item The BP_Groups_Group object for the current group.
  */
 function bp_groups_admin_edit_metabox_members( $item ) {
+	// Use the BP REST API if it supported.
+	if ( bp_rest_api_is_available() && bp_groups_has_manage_group_members_templates() ) {
+		wp_enqueue_script( 'bp-group-manage-members' );
+		wp_localize_script(
+			'bp-group-manage-members',
+			'bpGroupManageMembersSettings',
+			bp_groups_get_group_manage_members_script_data( $item->id )
+		);
+
+		bp_get_template_part( 'common/js-templates/group-members/index' );
+
+		/**
+		 * Echo out the JavaScript variable.
+		 * This seems to be required by the autocompleter, leaving this here for now...
+		 */
+		echo '<script type="text/javascript">var group_id = "' . esc_js( $item->id ) . '";</script>';
+		return;
+	}
 
 	// Pull up a list of group members, so we can separate out the types
 	// We'll also keep track of group members here to place them into a
@@ -1241,7 +1270,7 @@ function bp_groups_admin_get_usernames_from_ids( $user_ids = array() ) {
 function bp_groups_admin_autocomplete_handler() {
 
 	// Bail if user user shouldn't be here, or is a large network.
-	if ( ! bp_current_user_can( 'bp_moderate' ) || ( is_multisite() && wp_is_large_network( 'users' ) ) ) {
+	if ( ! bp_current_user_can( 'bp_moderate' ) || bp_is_large_install() ) {
 		wp_die( -1 );
 	}
 

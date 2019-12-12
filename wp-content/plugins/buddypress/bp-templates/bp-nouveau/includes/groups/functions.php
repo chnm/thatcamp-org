@@ -3,7 +3,7 @@
  * Groups functions
  *
  * @since 3.0.0
- * @version 3.1.0
+ * @version 5.0.0
  */
 
 // Exit if accessed directly.
@@ -68,11 +68,18 @@ function bp_nouveau_groups_enqueue_scripts() {
 		' );
 	}
 
-	if ( ! bp_is_group_invites() && ! ( bp_is_group_create() && bp_is_group_creation_step( 'group-invites' ) ) ) {
-		return;
+	if ( bp_is_group_invites() || ( bp_is_group_create() && bp_is_group_creation_step( 'group-invites' ) ) ) {
+		wp_enqueue_script( 'bp-nouveau-group-invites' );
 	}
 
-	wp_enqueue_script( 'bp-nouveau-group-invites' );
+	if ( bp_rest_api_is_available() && bp_is_group_admin_page() && bp_is_group_admin_screen( 'manage-members' ) ) {
+		wp_enqueue_script( 'bp-group-manage-members' );
+		wp_localize_script(
+			'bp-group-manage-members',
+			'bpGroupManageMembersSettings',
+			bp_groups_get_group_manage_members_script_data( bp_get_current_group_id() )
+		);
+	}
 }
 
 /**
@@ -224,7 +231,7 @@ function bp_nouveau_prepare_group_potential_invites_for_js( $user ) {
 		if ( bp_is_item_admin() ) {
 			$response['can_edit'] = true;
 		} else {
-			$response['can_edit'] = in_array( bp_loggedin_user_id(), $inviter_ids );
+			$response['can_edit'] = in_array( bp_loggedin_user_id(), $inviter_ids, true );
 		}
 	}
 
@@ -255,6 +262,11 @@ function bp_nouveau_get_group_potential_invites( $args = array() ) {
 	) );
 
 	if ( empty( $r['group_id'] ) ) {
+		return false;
+	}
+
+	// Check the current user's access to the group.
+	if ( ! bp_groups_user_can_send_invites( $r['group_id'] ) ) {
 		return false;
 	}
 

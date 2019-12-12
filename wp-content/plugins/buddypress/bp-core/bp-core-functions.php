@@ -2548,14 +2548,15 @@ function bp_core_get_components( $type = 'all' ) {
  * @return mixed A URL or an array of dummy pages.
  */
 function bp_nav_menu_get_loggedin_pages() {
+	$bp = buddypress();
 
 	// Try to catch the cached version first.
-	if ( ! empty( buddypress()->wp_nav_menu_items->loggedin ) ) {
-		return buddypress()->wp_nav_menu_items->loggedin;
+	if ( ! empty( $bp->wp_nav_menu_items->loggedin ) ) {
+		return $bp->wp_nav_menu_items->loggedin;
 	}
 
 	// Pull up a list of items registered in BP's primary nav for the member.
-	$bp_menu_items = buddypress()->members->nav->get_primary();
+	$bp_menu_items = $bp->members->nav->get_primary();
 
 	// Some BP nav menu items will not be represented in bp_nav, because
 	// they are not real BP components. We add them manually here.
@@ -2590,11 +2591,11 @@ function bp_nav_menu_get_loggedin_pages() {
 		);
 	}
 
-	if ( empty( buddypress()->wp_nav_menu_items ) ) {
+	if ( empty( $bp->wp_nav_menu_items ) ) {
 		buddypress()->wp_nav_menu_items = new stdClass;
 	}
 
-	buddypress()->wp_nav_menu_items->loggedin = $page_args;
+	$bp->wp_nav_menu_items->loggedin = $page_args;
 
 	return $page_args;
 }
@@ -2614,10 +2615,11 @@ function bp_nav_menu_get_loggedin_pages() {
  * @return mixed A URL or an array of dummy pages.
  */
 function bp_nav_menu_get_loggedout_pages() {
+	$bp = buddypress();
 
 	// Try to catch the cached version first.
-	if ( ! empty( buddypress()->wp_nav_menu_items->loggedout ) ) {
-		return buddypress()->wp_nav_menu_items->loggedout;
+	if ( ! empty( $bp->wp_nav_menu_items->loggedout ) ) {
+		return $bp->wp_nav_menu_items->loggedout;
 	}
 
 	$bp_menu_items = array();
@@ -2664,11 +2666,11 @@ function bp_nav_menu_get_loggedout_pages() {
 		);
 	}
 
-	if ( empty( buddypress()->wp_nav_menu_items ) ) {
-		buddypress()->wp_nav_menu_items = new stdClass;
+	if ( empty( $bp->wp_nav_menu_items ) ) {
+		$bp->wp_nav_menu_items = new stdClass;
 	}
 
-	buddypress()->wp_nav_menu_items->loggedout = $page_args;
+	$bp->wp_nav_menu_items->loggedout = $page_args;
 
 	return $page_args;
 }
@@ -2766,6 +2768,40 @@ function bp_core_get_suggestions( $args ) {
 	 */
 	return apply_filters( 'bp_core_get_suggestions', $retval, $args );
 }
+
+/**
+ * AJAX endpoint for Suggestions API lookups.
+ *
+ * @since 2.1.0
+ * @since 4.0.0 Moved here to make sure this function is available
+ *              even if the Activity component is not active.
+ */
+function bp_ajax_get_suggestions() {
+	if ( ! bp_is_user_active() || empty( $_GET['term'] ) || empty( $_GET['type'] ) ) {
+		wp_send_json_error( 'missing_parameter' );
+		exit;
+	}
+
+	$args = array(
+		'term' => sanitize_text_field( $_GET['term'] ),
+		'type' => sanitize_text_field( $_GET['type'] ),
+	);
+
+	// Support per-Group suggestions.
+	if ( ! empty( $_GET['group-id'] ) ) {
+		$args['group_id'] = absint( $_GET['group-id'] );
+	}
+
+	$results = bp_core_get_suggestions( $args );
+
+	if ( is_wp_error( $results ) ) {
+		wp_send_json_error( $results->get_error_message() );
+		exit;
+	}
+
+	wp_send_json_success( $results );
+}
+add_action( 'wp_ajax_bp_get_suggestions', 'bp_ajax_get_suggestions' );
 
 /**
  * Set data from the BP root blog's upload directory.
@@ -3189,7 +3225,7 @@ function bp_send_email( $email_type, $to, $args = array() ) {
 	 */
 	$delivery_class = apply_filters( 'bp_send_email_delivery_class', 'BP_PHPMailer', $email_type, $to, $args );
 	if ( ! class_exists( $delivery_class ) ) {
-		return new WP_Error( 'missing_class', __CLASS__, $this );
+		return new WP_Error( 'missing_class', 'No class found by that name', $delivery_class );
 	}
 
 	$delivery = new $delivery_class();
@@ -3234,6 +3270,26 @@ function bp_send_email( $email_type, $to, $args = array() ) {
  * @return array
  */
 function bp_email_get_appearance_settings() {
+	/* translators: This is the copyright text for email footers. 1. Copyright year, 2. Site name */
+	$footer_text = array(
+		sprintf(
+			_x( '&copy; %1$s %2$s', 'email', 'buddypress' ),
+			date_i18n( 'Y' ),
+			bp_get_option( 'blogname' )
+		)
+	);
+
+	if ( version_compare( $GLOBALS['wp_version'], '4.9.6', '>=' ) ) {
+		$privacy_policy_url = get_privacy_policy_url();
+		if ( $privacy_policy_url ) {
+			$footer_text[] = sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( $privacy_policy_url ),
+				esc_html__( 'Privacy Policy', 'buddypress' )
+			);
+		}
+	}
+
 	$default_args = array(
 		'body_bg'           => '#FFFFFF',
 		'body_text_color'   => '#555555',
@@ -3248,12 +3304,7 @@ function bp_email_get_appearance_settings() {
 		'header_text_size'  => 30,
 		'direction'         => is_rtl() ? 'right' : 'left',
 
-		'footer_text' => sprintf(
-			/* translators: email disclaimer, e.g. "© 2016 Site Name". */
-			_x( '&copy; %s %s', 'email', 'buddypress' ),
-			date_i18n( 'Y' ),
-			bp_get_option( 'blogname' )
-		),
+		'footer_text' => implode( ' &middot; ', $footer_text ),
 	);
 
 	$options = bp_parse_args(
@@ -3385,9 +3436,9 @@ function bp_email_get_schema() {
 			/* translators: do not remove {} brackets or translate its contents. */
 			'post_title'   => __( '[{{{site.name}}}] Activate your account', 'buddypress' ),
 			/* translators: do not remove {} brackets or translate its contents. */
-			'post_content' => __( "Thanks for registering!\n\nTo complete the activation of your account, go to the following link: <a href=\"{{{activate.url}}}\">{{{activate.url}}}</a>", 'buddypress' ),
+			'post_content' => __( "Thanks for registering!\n\nTo complete the activation of your account, go to the following link and click on the <strong>Activate</strong> button:\n<a href=\"{{{activate.url}}}\">{{{activate.url}}}</a>\n\nIf the 'Activation Key' field is empty, copy and paste the following into the field - {{key}}", 'buddypress' ),
 			/* translators: do not remove {} brackets or translate its contents. */
-			'post_excerpt' => __( "Thanks for registering!\n\nTo complete the activation of your account, go to the following link: {{{activate.url}}}", 'buddypress' )
+			'post_excerpt' => __( "Thanks for registering!\n\nTo complete the activation of your account, go to the following link and click on the 'Activate' button: {{{activate.url}}}\n\nIf the 'Activation Key' field is empty, copy and paste the following into the field - {{key}}", 'buddypress' )
 		),
 		'core-user-registration-with-blog' => array(
 			/* translators: do not remove {} brackets or translate its contents. */
@@ -3428,7 +3479,7 @@ function bp_email_get_schema() {
 			/* translators: do not remove {} brackets or translate its contents. */
 			'post_title'   => __( '[{{{site.name}}}] You have an invitation to the group: "{{group.name}}"', 'buddypress' ),
 			/* translators: do not remove {} brackets or translate its contents. */
-			'post_content' => __( "<a href=\"{{{inviter.url}}}\">{{inviter.name}}</a> has invited you to join the group: &quot;{{group.name}}&quot;.\n<a href=\"{{{invites.url}}}\">Go here to accept your invitation</a> or <a href=\"{{{group.url}}}\">visit the group</a> to learn more.", 'buddypress' ),
+			'post_content' => __( "<a href=\"{{{inviter.url}}}\">{{inviter.name}}</a> has invited you to join the group: &quot;{{group.name}}&quot;.\n{{invite.message}}\n<a href=\"{{{invites.url}}}\">Go here to accept your invitation</a> or <a href=\"{{{group.url}}}\">visit the group</a> to learn more.", 'buddypress' ),
 			/* translators: do not remove {} brackets or translate its contents. */
 			'post_excerpt' => __( "{{inviter.name}} has invited you to join the group: \"{{group.name}}\".\n\nTo accept your invitation, visit: {{{invites.url}}}\n\nTo learn more about the group, visit: {{{group.url}}}.\nTo view {{inviter.name}}'s profile, visit: {{{inviter.url}}}", 'buddypress' ),
 		),
@@ -3444,7 +3495,7 @@ function bp_email_get_schema() {
 			/* translators: do not remove {} brackets or translate its contents. */
 			'post_title'   => __( '[{{{site.name}}}] Membership request for group: {{group.name}}', 'buddypress' ),
 			/* translators: do not remove {} brackets or translate its contents. */
-			'post_content' => __( "<a href=\"{{{profile.url}}}\">{{requesting-user.name}}</a> wants to join the group &quot;{{group.name}}&quot;. As you are an administrator of this group, you must either accept or reject the membership request.\n\n<a href=\"{{{group-requests.url}}}\">Go here to manage this</a> and all other pending requests.", 'buddypress' ),
+			'post_content' => __( "<a href=\"{{{profile.url}}}\">{{requesting-user.name}}</a> wants to join the group &quot;{{group.name}}&quot;.\n {{request.message}}\n As you are an administrator of this group, you must either accept or reject the membership request.\n\n<a href=\"{{{group-requests.url}}}\">Go here to manage this</a> and all other pending requests.", 'buddypress' ),
 			/* translators: do not remove {} brackets or translate its contents. */
 			'post_excerpt' => __( "{{requesting-user.name}} wants to join the group \"{{group.name}}\". As you are the administrator of this group, you must either accept or reject the membership request.\n\nTo manage this and all other pending requests, visit: {{{group-requests.url}}}\n\nTo view {{requesting-user.name}}'s profile, visit: {{{profile.url}}}", 'buddypress' ),
 		),
@@ -3848,4 +3899,52 @@ function bp_get_allowedtags() {
  */
 function bp_strip_script_and_style_tags( $string ) {
 	return preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $string );
+}
+
+/**
+ * Checks whether the current installation is "large".
+ *
+ * By default, an installation counts as "large" if there are 10000 users or more.
+ * Filter 'bp_is_large_install' to adjust.
+ *
+ * @since 4.1.0
+ *
+ * @return bool
+ */
+function bp_is_large_install() {
+	// Use the Multisite function if available.
+	if ( function_exists( 'wp_is_large_network' ) ) {
+		$is_large = wp_is_large_network( 'users' );
+	} else {
+		$is_large = bp_core_get_total_member_count() > 10000;
+	}
+
+	/**
+	 * Filters whether the current installation is "large".
+	 *
+	 * @since 4.1.0
+	 *
+	 * @param bool $is_large True if the network is "large".
+	 */
+	return (bool) apply_filters( 'bp_is_large_install', $is_large );
+}
+
+/**
+ * Returns the upper limit on the "max" item count, for widgets that support it.
+ *
+ * @since 5.0.0
+ *
+ * @param string $widget_class Optional. Class name of the calling widget.
+ * @return int
+ */
+function bp_get_widget_max_count_limit( $widget_class = '' ) {
+	/**
+	 * Filters the upper limit on the "max" item count, for widgets that support it.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @param int    $count        Defaults to 50.
+	 * @param string $widget_class Class name of the calling widget.
+	 */
+	return apply_filters( 'bp_get_widget_max_count_limit', 50, $widget_class );
 }
