@@ -18,6 +18,14 @@
 			}
 		} );
 
+		if ( 'v3' == gglcptch.options.version ) {
+			grecaptcha.ready( function() {
+				grecaptcha.execute( gglcptch.options.sitekey, {action: 'BWS_reCaptcha_pro'}).then(function( token ) {
+					document.querySelectorAll( "#g-recaptcha-response" ).forEach( elem => ( elem.value = token ) );
+				});
+			});
+		}
+
 		/*
 		 * display reCaptcha for others blocks
 		 * this part is neccessary because
@@ -190,9 +198,7 @@
 
 				gglcptch_index = grecaptcha.render( container, parameters );
 			$( '#' + container ).data( 'gglcptch_index', gglcptch_index );
-		}
-
-		if ( 'invisible' == gglcptch_version ) {
+		} else if ( 'invisible' == gglcptch_version ) {
 			var block = $( '#' + container ),
 				form = block.closest( 'form' ),
 				parameters = params ? params : { 'sitekey' : gglcptch.options.sitekey, 'size' : gglcptch.options.size, 'tabindex' : 9999 },
@@ -295,11 +301,11 @@
 						if ( gglcptch.hasClass( 'gglcptch_v1' ) ) {
 							Recaptcha.reload();
 						} else if ( gglcptch.hasClass( 'gglcptch_v3' ) ) {
-								grecaptcha.ready(function() {
-									grecaptcha.execute( get_site_key(), {action: 'BWS_reCaptcha_pro'}).then(function(token) {
-										document.querySelectorAll( "#g-recaptcha-response" ).forEach( elem => ( elem.value = token ) );
-									});
+							grecaptcha.ready(function() {
+								grecaptcha.execute( get_site_key(), {action: 'BWS_reCaptcha_pro'}).then(function(token) {
+									document.querySelectorAll( "#g-recaptcha-response" ).forEach( elem => ( elem.value = token ) );
 								});
+							});
 						} else {
 							grecaptcha.reset( gglcptch.find( '.gglcptch_recaptcha' ).data( 'gglcptch_index' ) );
 						}
@@ -454,5 +460,5 @@ if ( typeof Marionette != "undefined" ) {
 		}
     });
 
-new bwsrecaptchaFieldController();
+	new bwsrecaptchaFieldController();
 }

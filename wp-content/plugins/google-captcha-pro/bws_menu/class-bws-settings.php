@@ -988,15 +988,11 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 
 												$zip_name = explode( '/', $bws_license_plugin );
 
-												if ( ! function_exists( 'curl_init' ) ) {
-													$received_content = file_get_contents( $url );
-												} else {
-													$args = array(
-													        'method' 	  => 'POST',
-													        'timeout'     => 100
-                                                    );
-													$received_content = wp_remote_post( $url, $args );
-												}
+												$args = array(
+											        'method' 	  => 'POST',
+											        'timeout'     => 100
+                                                );
+												$received_content = wp_remote_post( $url, $args );
 												if ( ! $received_content['body'] ) {
 													$error = __( "Failed to download the zip archive. Please, upload the plugin manually.", 'bestwebsoft' );
 												} else {

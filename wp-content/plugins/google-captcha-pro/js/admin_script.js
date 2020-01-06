@@ -19,7 +19,7 @@
 			$( 'input[name="gglcptch_network_apply"]' ).change( function() { gglcptch_network_apply() });
 		}
 
-        $(	"#gglcptch_score_v3").change(function() {
+        $( "#gglcptch_score_v3" ).change(function() {
             var score;
             score = $(this).val();
             $("#gglcptch_score_out_v3").text(score);
@@ -100,9 +100,9 @@
 		$( '.gglcptch-add-reason-button[name=gglcptch_reason_submit]' ).on( "click", function( event ) {
 			event.preventDefault();
 			var parent = $( this ).parent(),
-				ip = $( this ).closest( 'tr' ).find( '.check-column input' ).val(),
+				ip_id = $( this ).closest( 'tr' ).find( '.check-column input' ).val(),
 				reason = parent.find( '.gglcptch-add-reason-textarea' ).val();
-			gglcptch_update_reason( ip, reason );
+			gglcptch_update_reason( ip_id, reason );
 			parent.find( '.gglcptch-add-reason-button, .gglcptch-add-reason-textarea' ).hide();
 			parent.find( '.gglcptch-add-reason, .gglcptch_edit_reason_link' ).show();
 		} );
@@ -201,25 +201,24 @@
 } )( jQuery );
 
 /**
- * Update add reason for whitelist/blacklist
- * @param		string		ip				reason of which ip is edited
- * @param		string		table			what table need to be updated (blacklist, whitelist)
+ * Update add reason for whitelist
+ * @param		int			ip_id			reason of which ip is edited
  * @param		string		reason			reason text
  * @return		void
  */
-function gglcptch_update_reason( ip, reason ) {
+function gglcptch_update_reason( ip_id, reason ) {
 	( function( $ ) {
 		$.ajax( {
 			type: 'POST',
 			url: ajaxurl,
 			data: {
 				action: 'gglcptch_update_reason',
-				gglcptch_edit_ip:	ip,
+				gglcptch_edit_ip_id:	ip_id,
 				gglcptch_reason:	reason,
 				gglcptch_nonce:	gglcptchScriptVars.gglcptch_ajax_nonce
 			},
 			success: function( result ) {
-				var parent_row	= $( '.check-column input[value="' + ip + '"]' ).closest( 'tr' );
+				var parent_row	= $( '.check-column input[value="' + ip_id + '"]' ).closest( 'tr' );
 				var reason_display = parent_row.find( '.gglcptch-add-reason' );
 				var reason_textarea = parent_row.find( '.gglcptch-add-reason-textarea' );
 				var old_color = reason_display.css( 'color' );

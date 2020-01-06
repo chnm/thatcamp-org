@@ -7,21 +7,21 @@
 if ( ! function_exists( 'gglcptch_update_reason' ) ) {
 	function gglcptch_update_reason() {
 		global $wpdb;
-		if ( ! empty( $_POST['gglcptch_edit_ip'] ) ) {
+		if ( ! empty( $_POST['gglcptch_edit_ip_id'] ) ) {
 			check_ajax_referer( 'gglcptch_ajax_nonce_value', 'gglcptch_nonce' );
-			$ip			= esc_html( $_POST['gglcptch_edit_ip'] );
+			$ip_id		= intval( $_POST['gglcptch_edit_ip_id'] );
 
 			$message_list = array(
-				'reason_update_success'		=> sprintf( __( 'The reason for %s has been updated successfully', 'google-captcha-pro' ), $ip ),
-				'reason_update_error'		=> __( 'Error while updating reason for', 'google-captcha-pro' ) . $ip,
-				'reason_untouched'			=> __( 'No changes was made', 'google-captcha-pro' )
+				'reason_update_success'		=> __( 'The reason has been updated successfully.', 'google-captcha-pro' ),
+				'reason_update_error'		=> __( 'Error while updating reason.', 'google-captcha-pro' ),
+				'reason_untouched'			=> __( 'No changes was made.', 'google-captcha-pro' )
 			);
 
-			$add_reason	= ! empty( $_POST['gglcptch_reason'] ) ? stripslashes( esc_html( trim( $_POST['gglcptch_reason'], " \r\n\t,;" ) ) ) : '';
+			$add_reason	= ! empty( $_POST['gglcptch_reason'] ) ? stripslashes( sanitize_text_field( $_POST['gglcptch_reason'] ) ) : '';
 			$n = $wpdb->update(
 				$wpdb->prefix . 'gglcptch_whitelist',
 				array( 'add_reason' => $add_reason ),
-				array( 'ip' => $ip )
+				array( 'id' => $ip_id )
 			);
 			if ( !! $n ) {
 				/* if number of touched rows != 0/false */

@@ -3,8 +3,6 @@
  * Displays the content on the plugin settings page
  */
 
-require_once( dirname( dirname( __FILE__ ) ) . '/bws_menu/class-bws-settings.php' );
-
 if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 	class Gglcptch_Settings_Tabs extends Bws_Settings_Tabs {
 		private $keys, $versions, $forms, $sections, $themes;
@@ -74,7 +72,7 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 
 			$this->sections = gglcptch_get_sections();
 
-			/* Google captcha themes */
+			/* reCaptcha themes */
 			$this->themes = array(
 				array( 'red', 'Red' ),
 				array( 'white', 'White' ),
@@ -102,7 +100,7 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 		 * @return array    The action results
 		 */
 		public function save_options() {
-			global $wpdb;
+			global $wpdb, $gglcptch_languages;
 
 			$message = $notice = $error = '';
 
@@ -130,16 +128,17 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 					$this->options['need_keys_verified_check'] = true;
 				}
 
-				$this->options['whitelist_message']			= stripslashes( esc_html( $_POST['gglcptch_whitelist_message'] ) );
-				$this->options['public_key']				= trim( stripslashes( esc_html( $_POST['gglcptch_public_key'] ) ) );
-				$this->options['private_key']				= trim( stripslashes( esc_html( $_POST['gglcptch_private_key'] ) ) );
+				$this->options['whitelist_message']			= stripslashes( sanitize_text_field( $_POST['gglcptch_whitelist_message'] ) );
+				$this->options['public_key']				= stripslashes( sanitize_text_field( $_POST['gglcptch_public_key'] ) );
+				$this->options['private_key']				= stripslashes( sanitize_text_field( $_POST['gglcptch_private_key'] ) );
 
 				$this->options['recaptcha_version']	        = in_array( $_POST['gglcptch_recaptcha_version'], array( 'v2', 'invisible', 'v3' ) ) ? $_POST['gglcptch_recaptcha_version']: 'v2';
-				$this->options['theme_v2']		            = stripslashes( esc_html( $_POST['gglcptch_theme_v2'] ) );
+				$this->options['theme_v2']		            = stripslashes( sanitize_text_field( $_POST['gglcptch_theme_v2'] ) );
 
 				$this->options['size_v2']					= 'compact' == $_POST['gglcptch_size_v2'] ? 'compact' : 'normal';
-				$this->options['language']					= isset( $_POST['gglcptch_language'] ) ? stripslashes( esc_html( $_POST['gglcptch_language'] ) ) : 'en';
-				$this->options['use_multilanguage_locale']	= isset( $_POST['gglcptch_use_multilanguage_locale'] ) ? stripslashes( esc_html( $_POST['gglcptch_use_multilanguage_locale'] ) ) : 0;
+				$this->options['language']					= ( isset( $_POST['gglcptch_language'] ) && array_key_exists( $_POST['gglcptch_language'], $gglcptch_languages) ) ? $_POST['gglcptch_language'] : 'en';
+
+				$this->options['use_multilanguage_locale']	= isset( $_POST['gglcptch_use_multilanguage_locale'] ) ? 1 : 0;
                 $this->options['score_v3']                  = isset( $_POST['gglcptch_score_v3'] ) ? (float)$_POST['gglcptch_score_v3'] : 0.5;
 				$this->options['disable_submit']			= isset( $_POST['gglcptch_disable_submit'] ) ? 1 : 0;
 				$this->options['hide_badge']                = isset( $_POST['gglcptch_hide_badge'] ) ? 1 : 0;
@@ -195,25 +194,25 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 		 */
 		public function tab_settings() {
 			global $gglcptch_languages, $wp_version; ?>
-			<h3 class="bws_tab_label"><?php _e( 'Google Captcha Settings', 'google-captcha-pro' ); ?></h3>
+			<h3 class="bws_tab_label"><?php _e( 'reCaptcha Settings', 'google-captcha-pro' ); ?></h3>
 			<?php $this->help_phrase(); ?>
 			<hr>
 			<?php if ( $this->forbid_view ) { ?>
-				<div class="error inline bws_visible"><p><strong><?php _e( "Notice:", 'google-captcha-pro' ); ?></strong> <strong><?php _e( "It is prohibited to view Google Captcha Pro settings on this site in the Google Captcha Pro network settings.", 'google-captcha-pro' ); ?></strong></p></div>
+				<div class="error inline bws_visible"><p><strong><?php _e( "Notice:", 'google-captcha-pro' ); ?></strong> <strong><?php _e( "It is prohibited to view reCaptcha Pro settings on this site in the reCaptcha Pro network settings.", 'google-captcha-pro' ); ?></strong></p></div>
 			<?php } else {
 				if ( ! empty( $this->change_permission_attr ) ) { ?>
-					<div class="error inline bws_visible"><p><strong><?php _e( "Notice:", 'google-captcha-pro' ); ?></strong> <strong><?php _e( "It is prohibited to change Google Captcha Pro settings on this site in the Google Captcha Pro network settings.", 'google-captcha-pro' ); ?></strong></p></div>
+					<div class="error inline bws_visible"><p><strong><?php _e( "Notice:", 'google-captcha-pro' ); ?></strong> <strong><?php _e( "It is prohibited to change reCaptcha Pro settings on this site in the reCaptcha Pro network settings.", 'google-captcha-pro' ); ?></strong></p></div>
 				<?php }
 				if ( $this->is_network_options ) { ?>
 					<table class="form-table gglcptch_network_settings">
 						<tr valign="top">
-							<th scope="row"><?php _e( 'Apply network settings', 'google-captcha-pro' ); ?></th>
+							<th scope="row"><?php _e( 'Apply Network Settings', 'google-captcha-pro' ); ?></th>
 							<td>
 								<fieldset>
-									<label><input<?php echo $this->change_permission_attr; ?>  type="radio" name="gglcptch_network_apply" value="all" <?php if ( "all" == $this->options['network_apply'] ) echo 'checked="checked"'; ?> /> <?php _e( 'Apply to all sites and use by default', 'google-captcha-pro' ); ?> <span class="bws_info">(<?php _e( 'All current settings on separate sites will be replaced', 'google-captcha-pro' ); ?>)</span></label><br />
+									<label><input<?php echo $this->change_permission_attr; ?>  type="radio" name="gglcptch_network_apply" value="all" <?php if ( "all" == $this->options['network_apply'] ) echo 'checked="checked"'; ?> /> <?php _e( 'Apply to all sites and use by default', 'google-captcha-pro' ); ?> <span class="bws_info">(<?php _e( 'All current settings on separate sites will be replaced.', 'google-captcha-pro' ); ?>)</span></label><br />
 									<div class="bws_network_apply_all">
-										<label><input<?php echo $this->change_permission_attr; ?>  type="checkbox" name="gglcptch_network_change" value="1" <?php if ( 1 == $this->options['network_change'] ) echo 'checked="checked"'; ?> /> <?php _e( 'Allow changing the settings on separate websites', 'google-captcha-pro' ); ?></label><br />
-										<label><input<?php echo $this->change_permission_attr; ?>  type="checkbox" name="gglcptch_network_view" value="1" <?php if ( 1 == $this->options['network_view'] ) echo 'checked="checked"'; ?> /> <?php _e( 'Allow viewing the settings on separate websites', 'google-captcha-pro' ); ?></label><br />
+										<label><input<?php echo $this->change_permission_attr; ?>  type="checkbox" name="gglcptch_network_change" value="1" <?php if ( 1 == $this->options['network_change'] ) echo 'checked="checked"'; ?> /> <?php _e( 'Allow changing the settings on separate websites.', 'google-captcha-pro' ); ?></label><br />
+										<label><input<?php echo $this->change_permission_attr; ?>  type="checkbox" name="gglcptch_network_view" value="1" <?php if ( 1 == $this->options['network_view'] ) echo 'checked="checked"'; ?> /> <?php _e( 'Allow viewing the settings on separate websites.', 'google-captcha-pro' ); ?></label><br />
 									</div>
 									<label><input<?php echo $this->change_permission_attr; ?>  type="radio" name="gglcptch_network_apply" value="default" <?php if ( "default" == $this->options['network_apply'] ) echo 'checked="checked"'; ?> /> <?php _e( 'By default', 'google-captcha-pro' ); ?> <span class="bws_info">(<?php _e( 'Settings will be applied to newly added websites by default', 'google-captcha-pro' ); ?>)</span></label><br />
 									<label><input<?php echo $this->change_permission_attr; ?>  type="radio" name="gglcptch_network_apply" value="off" <?php if ( "off" == $this->options['network_apply'] ) echo 'checked="checked"'; ?> /> <?php _e( 'Do not apply', 'google-captcha-pro' ); ?> <span class="bws_info">(<?php _e( 'Change the settings on separate sites of the multisite only', 'google-captcha-pro' ); ?>)</span></label>
@@ -448,10 +447,10 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 		public function display_metabox() { ?>
 			<div class="postbox">
 				<h3 class="hndle">
-					<?php _e( 'Google Captcha Shortcode', 'google-captcha-pro' ); ?>
+					<?php _e( 'reCaptcha Shortcode', 'google-captcha-pro' ); ?>
 				</h3>
 				<div class="inside">
-					<?php _e( "Add Google Captcha to your posts or pages using the following shortcode:", 'google-captcha-pro' ); ?>
+					<?php _e( "Add reCaptcha to your posts or pages using the following shortcode:", 'google-captcha-pro' ); ?>
 					<?php bws_shortcode_output( '[bws_google_captcha]' ); ?>
 				</div>
 			</div>
