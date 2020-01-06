@@ -22,6 +22,18 @@ jQuery(document).ready(function($){
 		  placeholder: "<?php esc_attr_e( 'Select one or more Roles', 'bbPress_Notify_noSpam' ) ;?>",
 		  allowClear: true
 		});
+
+	$("#forums_auto_subscribe_to_topics").on('click', function(){
+		if ( $(this).prop( 'checked' ) && ! $("#override_bbp_forum_subscriptions").prop( 'checked' ) ) {
+			$("#override_bbp_forum_subscriptions").prop( 'checked', true );
+		}
+	});
+
+	$("#override_bbp_forum_subscriptions").on( 'click', function(){
+		if ( ! $(this).prop( 'checked' ) ) {
+			$("#forums_auto_subscribe_to_topics").prop( 'checked', false );
+		}
+	});
 });
 
 </script>
@@ -75,12 +87,20 @@ jQuery(document).ready(function($){
 			<th scope="row"><?php _e( 'bbPress Forums Subscriptions Override', 'bbPress_Notify_noSpam' ) ;?></th>
 			<td>
 				<label>
-					<input type="checkbox" name="<?php echo $this->settings_name; ?>[override_bbp_forum_subscriptions]" value="1"
+					<input id="override_bbp_forum_subscriptions" type="checkbox" name="<?php echo $this->settings_name; ?>[override_bbp_forum_subscriptions]" value="1"
 					<?php checked( $stash->settings->override_bbp_forum_subscriptions ); ?> >
 					       <?php _e( 'Override Subscriptions to Forums.', 'bbPress_Notify_noSpam' ) ; ?>
 					       <br><br>
 					       <span class="description"><?php _e( 'Enable this option if you want bbPress Notify (No-Spam) to handle bbPress subscriptions to Forums (new topics).
 The bbPress Setting "Allow users to subscribe to forums and topics" must also be enabled for this to work.<br><a target="_blank" href="https://usestrict.net/2013/02/bbpress-notify-nospam/#subscriptions">Click here to learn more.</a>', 'bbPress_Notify_noSpam' ) ;?></span>
+				</label>
+				<br><br>
+				<label style="margin-left:2em;">
+					<input type="checkbox" id="forums_auto_subscribe_to_topics" name="<?php echo $this->settings_name; ?>[forums_auto_subscribe_to_topics]" value="1"
+					<?php checked( $stash->settings->forums_auto_subscribe_to_topics ); ?> >
+					       <?php _e( 'Automatically subscribe all forum subscribers to newly created topics.', 'bbPress_Notify_noSpam' ) ; ?>
+					       <br><br>
+					       <span class="description" style="margin-left:2em;"><?php _e( 'Enabling this option will pull all of the forum subscribers and automatically subscribe them to the new topic so that they get notifications of new replies as well. They can unsubscribe from the topic later to stop receiving reply notifications.', 'bbPress_Notify_noSpam' ) ;?></span>
 				</label>
 			</td>
 		</tr>
@@ -138,7 +158,7 @@ The bbPress Setting "Allow users to subscribe to forums and topics" must also be
 		</tr>
 		
 		<input type="hidden" name="bbpnns_nullable_fields" 
-value="default_topic_notification_checkbox,override_bbp_forum_subscriptions,notify_authors_topic,hidden_forum_topic_override,newtopic_recipients" />
+value="default_topic_notification_checkbox,override_bbp_forum_subscriptions,notify_authors_topic,hidden_forum_topic_override,newtopic_recipients,forums_auto_subscribe_to_topics" />
 		
 		<?php do_action( 'bbpnns_settings_topics_box_after_last_row' ); ?>
 		

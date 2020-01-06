@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$form_data['form_email'] = $value;
 
 		// validate subject
-		if ($subject_setting != "yes") {
+		if ($subject_setting != 'yes') {
 			$value = stripslashes($post_data['form_subject']);
 			if ( strlen($value)<2 ) {
 				$error_class['form_subject'] = true;
@@ -62,9 +62,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$form_data['form_lastname'] = $value;
 
 		// validate privacy
-		if ($privacy_setting == "yes") {
+		if ($privacy_setting == 'yes') {
 			$value = $post_data['form_privacy'];
-			if ( $value !=  "yes" ) {
+			if ( $value !=  'yes' ) {
 				$error_class['form_privacy'] = true;
 				$error = true;
 			}

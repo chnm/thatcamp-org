@@ -66,7 +66,7 @@ function vscf_shortcode($vscf_atts) {
 	$submit_name_id = 'vscf_send';
 
 	// form anchor
-	if ($anchor_setting == "yes") {
+	if ($anchor_setting == 'yes') {
 		$anchor_begin = '<div id="vscf-anchor">';
 		$anchor_end = '</div>';
 	} else {
@@ -77,12 +77,12 @@ function vscf_shortcode($vscf_atts) {
 	// processing form
 	if (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['vscf_send']) && isset( $_POST['vscf_nonce'] ) && wp_verify_nonce( $_POST['vscf_nonce'], 'vscf_nonce_action' ) ) {
 		// sanitize input
-		if ($subject_setting != "yes") {
+		if ($subject_setting != 'yes') {
 			$subject_value = sanitize_text_field($_POST['vscf_subject']);
 		} else {
 			$subject_value = '';
 		}
-		if($privacy_setting == "yes") {
+		if($privacy_setting == 'yes') {
 			$privacy_value = sanitize_key($_POST['vscf_privacy']);
 		} else {
 			$privacy_value = '';
@@ -195,7 +195,7 @@ function vscf_widget_shortcode($vscf_atts) {
 	$submit_name_id = 'vscf_widget_send';
 
 	// form anchor
-	if ($anchor_setting == "yes") {
+	if ($anchor_setting == 'yes') {
 		$anchor_begin = '<div id="vscf-anchor">';
 		$anchor_end = '</div>';
 	} else {
@@ -206,12 +206,12 @@ function vscf_widget_shortcode($vscf_atts) {
 	// processing form
 	if (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['vscf_widget_send']) && isset( $_POST['vscf_widget_nonce'] ) && wp_verify_nonce( $_POST['vscf_widget_nonce'], 'vscf_widget_nonce_action' ) ) {
 		// sanitize input
-		if ($subject_setting != "yes") {
+		if ($subject_setting != 'yes') {
 			$subject_value = sanitize_text_field($_POST['vscf_subject']);
 		} else {
 			$subject_value = '';
 		}
-		if($privacy_setting == "yes") {
+		if($privacy_setting == 'yes') {
 			$privacy_value = sanitize_key($_POST['vscf_privacy']);
 		} else {
 			$privacy_value = '';

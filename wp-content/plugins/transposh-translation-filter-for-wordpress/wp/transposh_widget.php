@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.5
+ * Transposh v1.0.6
  * http://transposh.org/
  *
- * Copyright 2019, Team Transposh
+ * Copyright 2020, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Sat, 28 Sep 2019 01:34:13 +0300
+ * Date: Wed, 01 Jan 2020 13:14:23 +0200
  */
 
 /*
@@ -288,9 +288,10 @@ class transposh_plugin_widget extends WP_Widget {
 
         // widget default title
         //echo $before_widget . $before_title . __('Translation', TRANSPOSH_TEXT_DOMAIN) . $after_title; - hmm? po/mo?
-        if (isset($before_widget))
+        if (isset($before_widget)) {
             echo $before_widget;
-        if ($instance['title']) {
+        }
+        if (isset($instance['title']) && $instance['title']) {
             /* TRANSLATORS: no need to translate this string */
             echo $before_title . __($instance['title'], TRANSPOSH_TEXT_DOMAIN) . $after_title;
         }

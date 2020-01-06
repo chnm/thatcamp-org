@@ -2,8 +2,8 @@
 Contributors: ironikus
 Tags: hide, email, email address, mailto, antispam, protect, spambot, encode, encrypt, obfuscate, email link, protection
 Requires at least: 4.7
-Tested up to: 5.2.3
-Stable tag: 3.1.0
+Tested up to: 5.3.2
+Stable tag: 3.1.1
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -108,6 +108,11 @@ Filter given content to protect mailto links, shortcodes and plain emails (accor
 ?>`
 
 == Changelog ==
+
+= 3.1.1 = 
+* Feature: Soft-Encode all HTML tags + new settings item (This will prevent complex plugins from breaking)
+* Dev: New filter for randomization of javascript escaping methods
+
 = 3.1.0 =
 * Feature: Exclude script tags from being encoded
 * Fix: Revalidate and strip escape sequences for encode_escape function

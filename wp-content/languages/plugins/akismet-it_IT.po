@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Akismet Anti-Spam - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-17 12:16:25+0000\n"
+"PO-Revision-Date: 2020-01-04 22:35:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,6 +14,14 @@ msgstr ""
 #: views/enter.php:8
 msgid "Enter your API key"
 msgstr "Inserisci la tua chiave API"
+
+#: views/connect-jp.php:66
+msgid "Set up a different account"
+msgstr "Configura un account diverso"
+
+#: views/setup.php:5
+msgid "Set up your Akismet account to enable spam filtering on this site."
+msgstr "Configura il tuo account Akismet per abilitare il filtro spam su questo sito web."
 
 #: views/setup.php:1
 msgid "Set Up Akismet"

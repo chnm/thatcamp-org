@@ -16,14 +16,12 @@ class bbPress_Notify_noSpam_Model_Settings {
      * @var bool
      */
     private $encode_subject = false;
-//     'bbpress_notify_encode_subject',
     
     /**
      * The type of message to be sent out. plain, html, multipart 
      * @var unknown
      */
     private $email_type = 'html';
-//     'bbpress_notify_message_type',
 
     
     /**
@@ -33,8 +31,6 @@ class bbPress_Notify_noSpam_Model_Settings {
     private $newtopic_background = false;
     private $newreply_background = false;
     private $background_notifications = false;
-//     'bbpress_notify_newtopic_background',
-//     'bbpress_notify_newreply_background',
     
     
     /**
@@ -43,8 +39,6 @@ class bbPress_Notify_noSpam_Model_Settings {
      */
     private $default_topic_notification_checkbox = false;
     private $default_reply_notification_checkbox = false;
-//     "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification",
-//     "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification",
     
     
     /**
@@ -54,8 +48,7 @@ class bbPress_Notify_noSpam_Model_Settings {
     private $override_bbp_forum_subscriptions = false;
     private $override_bbp_topic_subscriptions = false;
     private $include_bbp_forum_subscriptions_in_replies = false;
-//     'bbpnns_hijack_bbp_subscriptions_forum',
-//     'bbpnns_hijack_bbp_subscriptions_topic',
+    private $forums_auto_subscribe_to_topics = false;
     
     
     /**
@@ -64,8 +57,6 @@ class bbPress_Notify_noSpam_Model_Settings {
      */
     private $newtopic_recipients = array();
     private $newreply_recipients = array();
-//     'bbpress_notify_newtopic_recipients',
-//     'bbpress_notify_newreply_recipients',
     
     
     /**
@@ -74,8 +65,6 @@ class bbPress_Notify_noSpam_Model_Settings {
      */
     private $notify_authors_topic = false;
     private $notify_authors_reply = false;
-//     'bbpnns_notify_authors_topic',
-//     'bbpnns_notify_authors_reply',
     
     
     /**
@@ -92,14 +81,10 @@ class bbPress_Notify_noSpam_Model_Settings {
      */
     private $newtopic_email_subject = '';
     private $newreply_email_subject = '';
-//     'bbpress_notify_newtopic_email_subject',
-//     'bbpress_notify_newreply_email_subject',
     
     
     private $newtopic_email_body = '';
     private $newreply_email_body = '';
-//     'bbpress_notify_newtopic_email_body',
-//     'bbpress_notify_newreply_email_body',
 
     
     /**
@@ -195,6 +180,7 @@ class bbPress_Notify_noSpam_Model_Settings {
             'override_bbp_forum_subscriptions'    => __( 'Override bbPress Forum Subscriptions', 'bbPress_Notify_noSpam' ) ,
             'override_bbp_topic_subscriptions'    => __( 'Override bbPress Topic Subscriptions', 'bbPress_Notify_noSpam' ) ,
             'include_bbp_forum_subscriptions_in_replies' => __( 'Also notify <em>forum</em> subscribers of new replies', 'bbPress_Notify_noSpam' ) ,
+            'forums_auto_subscribe_to_topics'     => __( 'Automatically subscribe forum subscribers to new topics.', 'bbPress_Notify_noSpam' ) ,
             'notify_authors_topic'                => __( 'Notify Authors of their Topics', 'bbPress_Notify_noSpam' ) ,
             'notify_authors_reply'                => __( 'Notify Authors of their Replies', 'bbPress_Notify_noSpam' ) ,
             'hidden_forum_topic_override'         => __( 'Only Notify Admins if Forum is Hidden', 'bbPress_Notify_noSpam' ) ,
@@ -304,6 +290,7 @@ class bbPress_Notify_noSpam_Model_Settings {
             case 'override_bbp_forum_subscriptions':
             case 'override_bbp_topic_subscriptions':
             case 'include_bbp_forum_subscriptions_in_replies':
+            case 'forums_auto_subscribe_to_topics':
             case 'notify_authors_topic':
             case 'notify_authors_reply':
             case 'hidden_forum_topic_override':

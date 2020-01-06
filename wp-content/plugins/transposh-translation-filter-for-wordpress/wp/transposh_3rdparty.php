@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.5
+ * Transposh v1.0.6
  * http://transposh.org/
  *
- * Copyright 2019, Team Transposh
+ * Copyright 2020, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Sat, 28 Sep 2019 01:34:13 +0300
+ * Date: Wed, 01 Jan 2020 13:14:23 +0200
  */
 
 /*
@@ -30,6 +30,11 @@ class transposh_3rdparty {
         // supercache invalidation of pages - first lets find if supercache is here
         if (function_exists('wp_super_cache_init')) {
             add_action('transposh_translation_posted', array(&$this, 'super_cache_invalidate'));
+        }
+
+        // W3TC cache invalitadion
+        if (function_exists('w3tc_pgcache_flush_post')) {
+            add_action('transposh_translation_posted', array(&$this, 'w3tc_invalidate'));
         }
 
         // buddypress compatability
@@ -96,13 +101,24 @@ class transposh_3rdparty {
         @unlink($meta_pathname);
 
         // go at edit pages too
-        $GLOBALS['wp_cache_request_uri'] .="?edit=1";
+        $GLOBALS['wp_cache_request_uri'] .= "?edit=1";
         extract(wp_super_cache_init());
         tp_logger(wp_super_cache_init());
         tp_logger("attempting delete of edit_wp_cache: $cache_file");
         @unlink($cache_file);
         tp_logger("attempting delete of edit_wp_cache_meta: $meta_pathname");
         @unlink($meta_pathname);
+    }
+
+    function w3tc_invalidate() {
+        tp_logger("W3TC invalidate:".$_SERVER['HTTP_REFERER']);
+        $id = url_to_postid($_SERVER['HTTP_REFERER']);
+        if (is_numeric($id)) {
+            tp_logger("W3TC invalidate post id: $id");
+            w3tc_pgcache_flush_post($id);
+        } else {
+            w3tc_pgcache_flush();
+        }
     }
 
     /**

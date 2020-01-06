@@ -5,11 +5,11 @@ Author URI: https://www.usestrict.net/
 Plugin URI: https://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 5.3
+Tested up to: 5.3.1
 Text Domain: bbPress_Notify_noSpam
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.6.1
+Stable tag: 2.8
 Requires PHP: 5.6
 
 
@@ -94,7 +94,14 @@ We've made a parnership with ISIPP.com, securing their SuretyMail Email certific
 4. The settings page - Support tab
 
 
-== Changelog ==
+== Changelog ===
+= 2.8 =
+* Added new feature - Auto subscribe forum users to newly created topic so they also get replies notifications. See bbPress Notify (No-Spam) > Settings > Topics tab > bbPress Forums Subscriptions Override section.
+* Added i18n files. 
+
+= 2.7 =
+* Work around membership plugins blocking content during mailouts.
+
 = 2.6.1 =
 * Added support for bbpress 2.6 moderation functionality.
 

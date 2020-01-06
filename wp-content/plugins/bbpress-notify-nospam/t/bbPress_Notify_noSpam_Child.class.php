@@ -16,6 +16,12 @@ class bbPress_Notify_noSpam_Child extends bbPress_Notify_noSpam {
 		$bbPress_Notify_noSpam = new bbPress_Notify_noSpam();
 		
 		$this->settings_name = $bbPress_Notify_noSpam->settings_name;
+		
+		if ( function_exists( 'bbp_setup_engagements' ) )
+		{
+		    bbpress();
+		    bbp_setup_engagements();
+		}
 	}
 	
 	public function get_env()

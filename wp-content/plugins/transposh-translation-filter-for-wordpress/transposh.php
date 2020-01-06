@@ -5,7 +5,7 @@
   Plugin URI: http://transposh.org/
   Description: Translation filter for WordPress, After enabling please set languages at the <a href="admin.php?page=tp_main">the options page</a> Want to help? visit our development site at <a href="http://trac.transposh.org/">trac.transposh.org</a>.
   Author: Team Transposh
-  Version: 1.0.5
+  Version: 1.0.6
   Author URI: http://transposh.org/
   License: GPL (http://www.gnu.org/licenses/gpl.txt)
   Text Domain: transposh
@@ -13,14 +13,14 @@
  */
 
 /*
- * Transposh v1.0.5
+ * Transposh v1.0.6
  * http://transposh.org/
  *
- * Copyright 2019, Team Transposh
+ * Copyright 2020, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Sat, 28 Sep 2019 01:34:13 +0300
+ * Date: Wed, 01 Jan 2020 13:14:23 +0200
  */
 
 //avoid direct calls to this file where wp core files not present
@@ -2018,7 +2018,7 @@ class transposh_plugin {
 
         $args = array(
             'slug' => $this->transposh_plugin_basename,
-            'version' => '1.0.5', //$checked_data->checked[$this->transposh_file_location],
+            'version' => '1.0.6', //$checked_data->checked[$this->transposh_file_location],
         );
         $request_string = array(
             'body' => array(

@@ -196,6 +196,11 @@ class WP_Mailto_Links_Settings{
 						'label' => WPMT()->helpers->translate( 'no script tags', 'wpmt-settings-filter_hook-label' ),
 						'description' => WPMT()->helpers->translate( 'Check this option if you face issues with encoded script tags. This will deactivate protection for script tags.', 'wpmt-settings-filter_hook-tip' )
 					),
+					'no_attribute_validation' => array(
+						'advanced' 	  => true,
+						'label' => __( 'html attributes without soft encoding.', 'wp-mailto-links' ),
+						'description' => __( 'Do not soft-filter all html attributes. This might optimizes the performance, but can break the site if other plugins use your email in attribute tags.', 'wp-mailto-links' )
+					),
 				 ),
 				'required'    => false,
 			),

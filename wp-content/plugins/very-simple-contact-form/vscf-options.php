@@ -92,7 +92,9 @@ add_action( 'admin_init', 'vscf_admin_init' );
 function vscf_field_callback_22() {
 	$placeholder = esc_attr( get_option( 'admin_email' ) );
 	$value = esc_attr( get_option( 'vscf-setting-22' ) );
-	echo "<input type='text' size='40' name='vscf-setting-22' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-22' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_1() {
@@ -154,92 +156,120 @@ function vscf_field_callback_21() {
 function vscf_field_callback_5() {
 	$placeholder = esc_attr__( 'Name', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-5' ) );
-	echo "<input type='text' size='40' name='vscf-setting-5' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-5' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_6() {
 	$placeholder = esc_attr__( 'Email', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-6' ) );
-	echo "<input type='text' size='40' name='vscf-setting-6' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-6' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_7() {
 	$placeholder = esc_attr__( 'Subject', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-7' ) );
-	echo "<input type='text' size='40' name='vscf-setting-7' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-7' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_8() {
 	$placeholder = esc_attr__( 'Enter number %s', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-8' ) );
-	echo "<input type='text' size='40' name='vscf-setting-8' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-8' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_9() {
 	$placeholder = esc_attr__( 'Message', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-9' ) );
-	echo "<input type='text' size='40' name='vscf-setting-9' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-9' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_18() {
 	$placeholder = esc_attr__( 'I consent to having this website collect my personal data via this form.', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-18' ) );
-	echo "<input type='text' size='40' name='vscf-setting-18' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-18' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_10() {
 	$placeholder = esc_attr__( 'Submit', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-10' ) );
-	echo "<input type='text' size='40' name='vscf-setting-10' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-10' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_11() {
 	$placeholder = esc_attr__( 'Please enter at least 2 characters', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-11' ) );
-	echo "<input type='text' size='40' name='vscf-setting-11' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-11' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_13() {
 	$placeholder = esc_attr__( 'Please enter a valid email', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-13' ) );
-	echo "<input type='text' size='40' name='vscf-setting-13' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-13' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_20() {
 	$placeholder = esc_attr__( 'Please enter at least 2 characters', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-20' ) );
-	echo "<input type='text' size='40' name='vscf-setting-20' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-20' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_14() {
 	$placeholder = esc_attr__( 'Please enter the correct number', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-14' ) );
-	echo "<input type='text' size='40' name='vscf-setting-14' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-14' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_12() {
 	$placeholder = esc_attr__( 'Please enter at least 10 characters', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-12' ) );
-	echo "<input type='text' size='40' name='vscf-setting-12' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-12' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_15() {
 	$placeholder = esc_attr__( 'Error! Could not send form. This might be a server issue.', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-15' ) );
-	echo "<input type='text' size='40' name='vscf-setting-15' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-15' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_16() {
 	$placeholder = esc_attr__( 'Thank you! You will receive a response as soon as possible.', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-16' ) );
-	echo "<input type='text' size='40' name='vscf-setting-16' placeholder='$placeholder' value='$value' />";
+	?>
+	<input type='text' size='40' name='vscf-setting-16' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
+	<?php
 }
 
 function vscf_field_callback_17() {
 	$placeholder = esc_attr__( 'Thank you! You will receive a response as soon as possible.', 'very-simple-contact-form' );
 	$value = esc_attr( get_option( 'vscf-setting-17' ) );
-	echo "<input type='text' size='40' name='vscf-setting-17' placeholder='$placeholder' value='$value' />";
 	?>
+	<input type='text' size='40' name='vscf-setting-17' placeholder='<?php echo $placeholder; ?>' value='<?php echo $value; ?>' />
 	<p><i><?php esc_attr_e( 'Displayed in the confirmation email to sender.', 'very-simple-contact-form' ); ?></i></p>
 	<?php
 }

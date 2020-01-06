@@ -1,8 +1,9 @@
 === Very Simple Contact Form ===
 Contributors: Guido07111975
-Version: 10.8
+Version: 10.9
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Requires PHP: 5.6
 Requires at least: 4.7
 Tested up to: 5.3
 Stable tag: trunk
@@ -28,24 +29,14 @@ It's also possible to list form submissions in your dashboard.
 After installation add shortcode [contact] on a page or use the widget to display your form.
 
 = Settingspage =
-Via Settings > VSCF you can:
-
-* Change admin email address
-* Keep form submissions and settings when uninstalling plugin
-* Activate the listing of form submissions in your dashboard
-* Disable subject field
-* Activate confirmation email to sender
-* Activate a privacy consent checkbox on form
-* Disable collection of IP address
-* Activate form anchor (scroll back to form position after submit)
-* Change form labels and messages
+You can personalize your form via the settingspage. This page can be found via Settings > VSCF.
 
 Settings and labels can be overridden when using the relevant (shortcode) attributes below.
 
 This can be useful when having multiple contact forms on your website.
 
 = Shortcode attributes =
-You can add attributes to the shortcode mentioned above.
+You can also personalize your form by adding attributes to the shortcode mentioned above.
 
 Misc:
 
@@ -103,14 +94,14 @@ SMTP (Simple Mail Transfer Protocol) is an internet standard for sending emails.
 
 WordPress supports the PHP `mail()` function by default, but when using SMTP there's less chance your form submissions are being marked as spam.
 
-You should install an additional plugin for this. You could install for example:
+You should install an additional plugin for this, such as:
 
 * [Post SMTP](https://wordpress.org/plugins/post-smtp/)
 * [WP mail SMTP](https://wordpress.org/plugins/wp-mail-smtp/)
 * [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/)
 * [Gmail SMTP](https://wordpress.org/plugins/gmail-smtp/)
 
-Because I'm not the developer of these SMTP plugins, I will not give support. And use them at your own risk.
+Use these plugins at your own risk. For support visit the relevant plugin forum.
 
 = Uninstall =
 If you uninstall plugin via dashboard all form submissions and settings will be removed from database.
@@ -192,12 +183,12 @@ They might advice you to install a SMTP plugin. For more info check the "SMTP" s
 * Install another contact form plugin to determine whether it's caused by my plugin or something else
 * In case you're using a SMTP plugin, please check their settingspage for mistakes
 
-= Does this plugin has anti-spam features? =
+= Does this plugin have anti-spam features? =
 Of course, the native WordPress sanitizing and escaping functions are included.
 
 It also contains 2 hidden honeypot fields and a simple numeric captcha.
 
-= Does VSCF meet the conditions of the GDPR? =
+= Does this plugin meet the conditions of the GDPR? =
 The General Data Protection Regulation (GDPR) is a regulation in EU law on data protection and privacy for all individuals within the European Union.
 
 I did my best to meet the conditions of the GDPR:
@@ -221,6 +212,10 @@ Please open a topic in plugin forum.
 
 
 == Changelog ==
+= Version 10.9 =
+* Display privacy consent info in submission only when feature is activated
+* Minor changes in code
+
 = Version 10.8 =
 * Removed files vscf-page-shortcode and vscf-widget-shortcode
 * Added file vscf-shortcodes instead
@@ -238,9 +233,6 @@ Please open a topic in plugin forum.
 = Version 10.5 =
 * Added extra CSS class to each field group
 * This makes form customization much easier
-
-= Version 10.4 =
-* Fix: undefined index
 
 For all versions please check file changelog.
 

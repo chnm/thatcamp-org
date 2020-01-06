@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<label for="vscf_email">'.esc_attr($email_label).': <span class="'.(isset($error_class['form_email']) ? "vscf-error" : "vscf-hide").'" >'.esc_attr($error_email_label).'</span></label>
 			<input type="email" name="vscf_email" id="vscf_email" '.(isset($error_class['form_email']) ? ' class="form-control vscf-error"' : ' class="form-control"').' value="'.esc_attr($form_data['form_email']).'" />
 		</div>
-		'. (($subject_setting != "yes") ? '
+		'. (($subject_setting != 'yes') ? '
 			<div class="form-group vscf-subject-group">
 				<label for="vscf_subject">'.esc_attr($subject_label).': <span class="'.(isset($error_class['form_subject']) ? "vscf-error" : "vscf-hide").'" >'.esc_attr($error_subject_label).'</span></label>
 				<input type="text" name="vscf_subject" id="vscf_subject" '. (isset($error_class['form_subject']) ? ' class="form-control vscf-error"' : ' class="form-control"').' value="'.esc_attr($form_data['form_subject']).'" />
@@ -35,10 +35,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<label for="vscf_message">'.esc_attr($message_label).': <span class="'.(isset($error_class['form_message']) ? "vscf-error" : "vscf-hide").'" >'.esc_attr($error_message_label).'</span></label>
 			<textarea name="vscf_message" id="vscf_message" rows="10" '.(isset($error_class['form_message']) ? ' class="form-control vscf-error"' : ' class="form-control"').'>'.esc_textarea($form_data['form_message']).'</textarea>
 		</div>
-		'. (($privacy_setting == "yes") ? '
+		'. (($privacy_setting == 'yes') ? '
 			<div class="form-group vscf-privacy-group">
 				<input type="hidden" name="vscf_privacy" id="vscf_privacy_hidden" value="no" />
-				<label><input type="checkbox" name="vscf_privacy" id="vscf_privacy" class="custom-control-input" value="yes" '.checked( esc_attr($form_data['form_privacy']), "yes", false ).' /> <span class="'.(isset($error_class['form_privacy']) ? "vscf-error" : "").'" >'.esc_attr($privacy_label).'</span></label>
+				<label><input type="checkbox" name="vscf_privacy" id="vscf_privacy" class="custom-control-input" value="yes" '.checked( esc_attr($form_data['form_privacy']), "yes", false ).' /> <span '.(isset($error_class['form_privacy']) ? 'class="vscf-error"' : '').'>'.esc_attr($privacy_label).'</span></label>
 			</div>
 		' : '') .'
 		<div class="form-group vscf-hide">

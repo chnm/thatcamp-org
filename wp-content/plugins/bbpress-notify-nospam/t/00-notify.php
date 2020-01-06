@@ -28,6 +28,8 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	{
 		parent::setUp();
 		
+		$this->child = new bbPress_Notify_noSpam_Child();
+		
 		$this->author = $user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
 		
 		// Set up the body templates
@@ -313,7 +315,6 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		// Non-spam, empty recipients returns -2
 		bbp_unspam_topic( $this->topic_id );
 		
-// 		delete_option( 'bbpress_notify_newtopic_recipients' );
 		$settings->newtopic_recipients = array();
 		$settings->notify_authors_topic = false;
 		$settings->notify_authors_reply = false;
@@ -323,7 +324,6 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$status = $bbpnns->notify_new_topic( $this->topic_id, $this->forum_id );
 		$this->assertEquals( -2, $status, 'Empty Recipients -2' );
 		
-// 		update_option( 'bbpress_notify_newtopic_email_body', $this->topic_body );
 		$settings->newtopic_email_body = $this->topic_body;
 		$dao->save($settings);
 		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
@@ -331,14 +331,19 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		// Non-spam, non-empty recipents
 		$recipients = array( 'administrator', 'subscriber' );
 		
-// 		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
 		$settings->newtopic_recipients = $recipients;
+		$settings->forums_auto_subscribe_to_topics = true;
+		$settings->override_bbp_forum_subscriptions = true;
 		$dao->save( $settings );
-		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
 		
+		add_filter( 'bbpnns_skip_user_subscription', '__return_false' );
+		
+		bbp_add_user_forum_subscription( 1, $this->forum_id );
+		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
 		$arry = $bbpnns->notify_new_topic( $this->topic_id, $this->forum_id );
 		$this->assertTrue( is_array( $arry ), 'Good notify returns array in test mode' );
-
+		$this->assertTrue( bbp_is_user_subscribed_to_topic(1,$this->topic_id ), 'User 1 got subscribed to topic_id' );
+		
 		list( $recipients, $body ) = $arry;
 		
 		$author_id = bbp_get_topic_author_id( $this->topic_id );
@@ -351,6 +356,8 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		add_filter( 'bbpnns_skip_topic_notification', '__return_true' );
 		$status = $bbpnns->notify_new_topic( $this->topic_id, $this->forum_id );
 		$this->assertEquals( -3, $status, 'Force skip -3' );
+		
+		remove_filter( 'bbpnns_skip_user_subscription', '__return_false' );
 		
 	}
 	

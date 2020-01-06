@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Graphene package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-19 15:54:32+0000\n"
+"PO-Revision-Date: 2019-12-31 07:32:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -416,7 +416,7 @@ msgstr "¡Todos los comentarios han sido cargados!"
 msgid "Fetching %1$s of %2$s comments left ..."
 msgid_plural "Fetching %1$s of %2$s comments left ..."
 msgstr[0] "Recuperando %1$s de %2$s comentarios restantes..."
-msgstr[1] ""
+msgstr[1] "Recuperando %1$s de %2$s comentarios restantes..."
 
 #: inc/scripts.php:124
 msgid "All loaded!"
@@ -527,7 +527,7 @@ msgstr "URL del icono del servicio de medios sociales"
 
 #: admin/user.php:86 admin/user.php:167
 msgid "Will be displayed on your front-facing author profile page. Recommended to use \"City, Country\" format, e.g. \"Lisbon, Portugal\"."
-msgstr "Se mostrará en tu página pública de perfil de autor. Se recomienda usar el formato \"Ciudad, País\", p. ej. \"Lisboa, Portugal\"."
+msgstr "Se mostrará en tu página pública de perfil de autor. Se recomienda usar el formato «Ciudad, País», p. ej. «Madrid, España»."
 
 #: admin/user.php:81 admin/user.php:163
 msgid "Current location"
@@ -619,7 +619,7 @@ msgstr "Imprimir"
 
 #: admin/customizer/options-general.php:669
 msgid "Disable \"Return to top\" button"
-msgstr "No mostrar el enlace \"Volver al inicio\""
+msgstr "No mostrar el enlace «Volver arriba»"
 
 #: admin/customizer/options-general.php:591
 msgid "The analytics code will be added inside the %s element of all pages in this site."
@@ -757,7 +757,7 @@ msgstr "px"
 
 #: admin/customizer/options-general.php:231
 msgid "Make sure you select \"Custom image\" in the slider image option above to use this image."
-msgstr "Asegúrate de marcar la opción \"Imagen personalizada\" en la opción de imagen del carrusel para utilizar esta imagen."
+msgstr "Asegúrate de marcar la opción «Imagen personalizada» en la opción de imagen del carrusel para utilizar esta imagen."
 
 #: admin/customizer/options-general.php:228
 msgid "Custom slider image"
@@ -785,7 +785,7 @@ msgstr "Seleccionar categorías"
 #: admin/customizer/options-general.php:158
 #: admin/customizer/options-general.php:358
 msgid "Enter ID of posts and/or pages to be displayed, separated by comma.<br / >Applicable only if \"Show specific posts/pages\" is selected above.<br />Example: <code>1,13,45,33</code>"
-msgstr "Escribe los IDs de las entradas y/o páginas a mostrar, separados por coma.<br / >Sólo aplica si se elige arriba \"Mostrar entradas/páginas específicas\".<br />Ejemplo: <code>1,13,45,33</code>"
+msgstr "Escribe los IDs de las entradas y/o páginas a mostrar, separados por coma.<br / >Sólo aplica si se elige arriba «Mostrar entradas/páginas específicas».<br />Ejemplo: <code>1,13,45,33</code>"
 
 #: inc/loop.php:989
 msgid "Tags"
@@ -1068,8 +1068,8 @@ msgstr "<strong>Lo sentimos, pero no hemos podido encontrar nada</strong>. Inté
 #: search-404.php:31
 msgid "I've done a courtesy search for the term %1$s for you and found a total of %2$s result. See if you can find what you're looking for below."
 msgid_plural "I've done a courtesy search for the term %1$s for you and found a total of %2$s results. See if you can find what you're looking for below."
-msgstr[0] "Hemos llevado a cabo una búsqueda de cortesía correspondiente al término que has utilizado, '%1$s', y hemos encontrado %2$s resultado. Comprueba si puedes encontrar lo que estabas buscando en la lista que aparece a continuación."
-msgstr[1] "Hemos llevado a cabo una búsqueda de cortesía correspondiente al término que has utilizado, '%1$s', y hemos encontrado %2$s resultados. Comprueba si puedes encontrar lo que estabas buscando en la lista que aparece a continuación."
+msgstr[0] "Hemos llevado a cabo una búsqueda de cortesía correspondiente al término «%1$s» y hemos encontrado %2$s resultado. Comprueba si puedes encontrar lo que estabas buscando en la lista que aparece a continuación."
+msgstr[1] "Hemos llevado a cabo una búsqueda de cortesía correspondiente al término «%1$s» y hemos encontrado %2$s resultados. Comprueba si puedes encontrar lo que estabas buscando en la lista que aparece a continuación."
 
 #: search-404.php:26
 msgid "Suggested results"
@@ -1079,8 +1079,8 @@ msgstr "Sugerencias"
 #: search-404.php:17
 msgid "Found %1$s search result for keyword: %2$s"
 msgid_plural "Found %1$s search results for keyword: %2$s"
-msgstr[0] "Se ha encontrado %1$s resultado correspondiente a la cadena de búsqueda: '%2$s'"
-msgstr[1] "Se han encontrado %1$s resultados correspondientes a la cadena de búsqueda: '%2$s'"
+msgstr[0] "Se ha encontrado %1$s resultado correspondiente a la cadena de búsqueda: «%2$s»"
+msgstr[1] "Se han encontrado %1$s resultados correspondientes a la cadena de búsqueda: «%2$s»"
 
 #: inc/loop.php:911
 msgid "By %s"
@@ -1125,7 +1125,7 @@ msgstr "(Sin título)"
 
 #: inc/setup.php:311
 msgid "Dynamically added widget area. This widget area is attached to the %s action hook."
-msgstr "Área de widgets añadida de forma dinámica. Esta área de widgets se adjuntará al \"action hook\" %s"
+msgstr "Área de widgets añadida de forma dinámica. Esta área de widgets se adjuntará al «action hook» %s"
 
 #: inc/setup.php:291
 msgid "The header widget area."
@@ -1481,7 +1481,7 @@ msgstr "Activar el área de widgets de la cabecera"
 
 #: admin/customizer/options-general.php:431
 msgid "<strong>Important:</strong> This widget area is unstyled, as it is often used for advertisement banners, etc. If you enable it, make sure you style it to your needs using the Custom CSS option."
-msgstr "<strong>Importante:</strong> esta área de widgets no tiene estilos, y normalmente se utiliza para anuncios y elementos similares. Si la activas, asegúrate de que le asignas los estilos adecuados, mediante la opción \"CSS personalizado\"."
+msgstr "<strong>Importante:</strong> esta área de widgets no tiene estilos, y normalmente se utiliza para anuncios y elementos similares. Si la activas, asegúrate de que le asignas los estilos adecuados, mediante la opción «CSS personalizado»."
 
 #: admin/customizer/options-general.php:414
 msgid "Hide listing"
@@ -1501,7 +1501,7 @@ msgstr "Ocultar la caja de la página superior si el contenido está vacío"
 
 #: admin/customizer/options-general.php:373
 msgid "Overrides the global WordPress Discussion Setting called \"Allow people to post comments on new articles\" and also the \"Allow comments\" option for individual posts/pages."
-msgstr "Aviso: esta opción anula la configuración global de WordPress denominada \"Permite que se publiquen comentarios en los artículos nuevos\" y también la opción \"Permitir comentarios\" en las entradas o páginas individuales."
+msgstr "Aviso: esta opción anula la configuración global de WordPress denominada «Permite que se publiquen comentarios en los artículos nuevos» y también la opción «Permitir comentarios» en las entradas o páginas individuales."
 
 #: admin/customizer/options-general.php:377
 msgid "Disable completely"
@@ -1595,7 +1595,7 @@ msgstr "Excluir las categorías de los listados de entradas"
 
 #: admin/customizer/options-general.php:171
 msgid "All posts within the categories selected here will be displayed on the slider. Usage example: create a new category \"Featured\" and assign all posts to be displayed on the slider to that category, and then select that category here."
-msgstr "Todas las entradas que pertenezcan a la categoría seleccionada se mostrarán en el pase de diapositivas. Ejemplo: crea una nueva categoría, llamada \"Destacados\", asigna a dicha categoría todas las entradas que quieras mostrar en el pase de diapositivas, y a continuación selecciona la categoría aquí."
+msgstr "Todas las entradas que pertenezcan a la categoría seleccionada se mostrarán en el pase de diapositivas. Ejemplo: crea una nueva categoría, llamada «Destacados», asigna a dicha categoría todas las entradas que quieras mostrar en el pase de diapositivas, y a continuación selecciona la categoría aquí."
 
 #: admin/customizer/options-general.php:168
 msgid "Categories to display"
@@ -1645,7 +1645,7 @@ msgstr "Mantener en los resúmenes las siguientes etiquetas HTML"
 
 #: admin/customizer/options-display.php:162
 msgid "Show More link for manual excerpts"
-msgstr "Mostrar el enlace \"Continuar leyendo\" para los resúmenes manuales"
+msgstr "Mostrar el enlace «Seguir leyendo» para los extractos manuales"
 
 #: admin/customizer/options-display.php:156
 msgid "Show full content in archive pages"
@@ -1883,15 +1883,15 @@ msgstr "Para ver una relación visual de la ubicación de los ganchos de acción
 
 #: admin/customizer/controls.php:175
 msgid "All action hooks available in the Graphene Theme are listed below. Click on the filename to display all the action hooks available in that file. Then, tick the checkbox next to an action hook to make a widget area available for that action hook."
-msgstr "Todos los \"action hooks\" del tema Graphene figuran a continuación. Haz clic sobre el nombre del fichero para mostrar todos los \"action hooks\" disponibles para él. A continuación, marca la casilla situada al lado del \"action hook\", para hacer que un área de widgets esté disponible para dicho elemento."
+msgstr "Todos los «action hooks» del tema Graphene figuran a continuación. Haz clic sobre el nombre del fichero para mostrar todos los «action hooks» disponibles para él. A continuación, marca la casilla situada al lado del «action hook», para hacer que un área de widgets esté disponible para dicho elemento."
 
 #: admin/customizer/controls.php:174
 msgid "This option enables you to place virtually any content anywhere in the theme, by attaching widget areas to the theme's action hooks."
-msgstr "Esta opción te permite colocar prácticamente cualquier clase de contenido hasta en el último rincón del tema. Para ello, hay que asociar las áreas de widgets a los \"action hooks\" del tema."
+msgstr "Esta opción te permite colocar prácticamente cualquier clase de contenido hasta en el último rincón del tema. Para ello, hay que asociar las áreas de widgets a los «action hooks» del tema."
 
 #: admin/customizer/options-advanced.php:31
 msgid "Action Hooks Widget Areas"
-msgstr "Áreas de widgets asociadas a \"action hooks\""
+msgstr "Áreas de widgets asociadas a ganchos de acción"
 
 #: admin/customizer/options-advanced.php:20
 msgid "Code to insert into the <head> element"
@@ -1903,7 +1903,7 @@ msgstr "Etiquetas <head> personalizadas"
 
 #: admin/feature-pointers.php:12
 msgid "But no worries! If you're a seasoned user of the Graphene theme, or whenever you feel ready to further customise your site, just click on the \"Show all options\" link, and they will magically appear to you."
-msgstr "Pero no te debes preocuparte. Si eres un usuario con experiencia en el tema Graphene, o cuando te sientas listo para personalizar tu sitio, basta con que hagas clic en el enlace \"Mostrar todas las opciones\", y estas aparecerán como por arte de magia."
+msgstr "Pero no te debes preocuparte. Si eres un usuario con experiencia en el tema Graphene, o cuando te sientas listo para personalizar tu sitio, basta con que hagas clic en el enlace «Mostrar todas las opciones», y estas aparecerán como por arte de magia."
 
 #: admin/feature-pointers.php:11
 msgid "We know how too many options can really be daunting to new users, so we've hidden them."
@@ -1984,7 +1984,7 @@ msgstr "URL para el pase de diapositivas personalizado"
 
 #: admin/custom-fields.php:115
 msgid "Make sure you select Custom URL in the slider image option above to use this custom url."
-msgstr "Asegúrate de que has seleccionado el valor de \"URL personalizada\" en la opción de \"Imagen del pase de diapositivas\"."
+msgstr "Asegúrate de que has seleccionado el valor de «URL personalizada» en la opción de «Imagen del pase de diapositivas»."
 
 #: admin/custom-fields.php:111
 msgid "Custom slider image URL"
@@ -2049,7 +2049,7 @@ msgstr "Lo sentimos, pero no tienes los permisos necesarios para modificar las o
 
 #: 404.php:44
 msgid "Searching for the terms <strong>%s</strong> ..."
-msgstr "Buscando los términos <strong>'%s'</strong> ..."
+msgstr "Buscando los términos <strong>«%s»</strong> ..."
 
 #: 404.php:41
 msgid "Automated search"
@@ -2069,7 +2069,7 @@ msgstr "Error 404 - Página no encontrada"
 
 #: 404.php:24
 msgid "Searching for: <span>%s</span>"
-msgstr "Buscando '<span>%s</span>'"
+msgstr "Buscando <span>«%s»</span>"
 
 #. Author of the theme
 msgid "Graphene Themes Solutions"

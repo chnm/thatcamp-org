@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Very Simple Contact Form
  * Description: This is a lightweight plugin to create a customized contact form. Add shortcode [contact] on a page or use the widget to display your form.
- * Version: 10.8
+ * Version: 10.9
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GNU General Public License v3 or later
@@ -36,7 +36,7 @@ add_action( 'widgets_init', 'register_vscf_widget' );
 
 // form submissions
 $list_submissions_setting = get_option('vscf-setting-2');
-if ($list_submissions_setting == "yes") {
+if ($list_submissions_setting == 'yes') {
 	// create submission post type
 	function vscf_custom_postype() {
 		$vscf_args = array(
@@ -156,7 +156,7 @@ function vscf_widget_random_number() {
 	return $widget_number;
 }
 
-// redirect if sending succeeded
+// redirect when sending succeeds
 function vscf_redirect_success() {
 	$current_url = $_SERVER['REQUEST_URI'];
 	if (strpos($current_url, '?') == true) {
@@ -185,7 +185,7 @@ function vscf_widget_redirect_success() {
 	return $url_with_param;
 }
 
-// redirect if sending failed
+// redirect when sending fails
 function vscf_redirect_error() {
 	$current_url = $_SERVER['REQUEST_URI'];
 	if (strpos($current_url, '?') == true) {
@@ -217,7 +217,7 @@ function vscf_widget_redirect_error() {
 // form anchor
 function vscf_anchor_footer() {
 	$anchor_setting = get_option('vscf-setting-21');
-	if ($anchor_setting == "yes") {
+	if ($anchor_setting == 'yes') {
 		echo '<script type="text/javascript">';
 		echo 'if(document.getElementById("vscf-anchor")) { document.getElementById("vscf-anchor").scrollIntoView({behavior:"smooth", block:"center"}); }';
 		echo '</script>';

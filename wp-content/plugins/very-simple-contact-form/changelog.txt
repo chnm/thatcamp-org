@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+= Version 10.9 =
+* Display privacy consent info in submission only when feature is activated
+* Minor changes in code
+
 = Version 10.8 =
 * Removed files vscf-page-shortcode and vscf-widget-shortcode
 * Added file vscf-shortcodes instead

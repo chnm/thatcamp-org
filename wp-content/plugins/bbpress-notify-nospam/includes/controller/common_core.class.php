@@ -8,6 +8,7 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
     public $bbpress_topic_post_type;
     public $bbpress_reply_post_type;
     public $settings;
+    private $doing_cron = false;
     
     /**
      * Used to store the recipients who have already gotten or will get our notifications (in case of bg notifications),
@@ -744,7 +745,7 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
         
         $this->trace( 'In get_recipients, loaded recipients by role: ' . print_r(['total_users' => count($recipients), 
                                                                                   'IDs' => join(', ', array_keys( (array)$recipients ) )],1) );
-        
+
         // Core subscribers logic
         $subscrp_active = bbp_is_subscriptions_active();
         $subscribers    = array();
@@ -752,6 +753,7 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
         {
             $this->trace( 'Loading forum subscribers for topic notification.' );
             $subscribers = bbp_get_forum_subscribers( $forum_id );
+            $this->forum_subscribers = $subscribers; // We'll use this later
         }
         elseif( $this->settings->override_bbp_topic_subscriptions && $subscrp_active && 'reply' === $type )
         {
@@ -1175,11 +1177,33 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
         add_filter( "bbp_forum_subscription_user_ids", array( $this, 'filter_queued_recipients' ), 10, 1 );
         add_filter( "bbp_topic_subscription_user_ids", array( $this, 'filter_queued_recipients' ), 10, 1 );
         
+        $this->doing_cron = (defined('DOING_CRON') && DOING_CRON);
+        
         // Try to bypass timeout issues
-        if ( defined('DOING_CRON') && DOING_CRON )
+        if ( $this->doing_cron )
         {
             $old_time_limit = ini_get('max_execution_time');
             set_time_limit(0);
+            $this->orig_user_id = get_current_user_id();
+        }
+        
+        // Maybe auto-subscribe user, but only when saving a new topic from the front-end.
+        if ( $this->settings->forums_auto_subscribe_to_topics && 
+             ! empty( $this->forum_subscribers ) &&
+             'topic' === $type &&
+             ! doing_action('save_post') )
+        {
+            if ( true === apply_filters( 'bbpnns_skip_user_subscription', $is_dry_run ) )
+            {
+                $this->trace( sprintf( 'Would have auto-subscribed %d forum subscriber(s) to the topic.', count($this->forum_subscribers) ) );
+            }
+            else
+            {
+                foreach ( $this->forum_subscribers as $user_id )
+                {
+                    bbp_add_user_topic_subscription( $user_id, $post_id );
+                }
+            }
         }
         
         $this->trace( sprintf( 'Entering mailout loop for %d users.', count($recipients) ) );
@@ -1206,6 +1230,12 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
             
             if ( ! empty( $email ) && false === $is_dry_run )
             {
+                if ( $this->doing_cron )
+                {
+                    // Only set this if running in the background for security purposes.
+                    wp_set_current_user( $recipient_id );
+                }
+                
                 $this->wp_mail_error = null;
                 
                 /**
@@ -1299,9 +1329,10 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
 
     
         // Put back original time limit
-        if ( defined('DOING_CRON') && DOING_CRON )
+        if ( $this->doing_cron )
         {
             set_time_limit( $old_time_limit );
+            wp_set_current_user( $this->orig_user_id );
         }
         
         do_action( 'bbpnns_after_email_sent_all_users', $recipients, $subject, $body );

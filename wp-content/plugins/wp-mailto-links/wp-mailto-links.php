@@ -1,7 +1,7 @@
 <?php
  /**
  * Plugin Name:    WP Mailto Links - Hide & Protect Emails
- * Version:        3.1.0
+ * Version:        3.1.1
  * Plugin URI:     https://wordpress.org/plugins/wp-mailto-links/
  * Description:    Protect & encode email addresses and mailto links from spambots & spamming. Easy to use - encodes emails out-of-the-box.
  * Author:         Ironikus
@@ -22,7 +22,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 define( 'WPMT_NAME',           'WP Mailto Links' );
 
 // Plugin version.
-define( 'WPMT_VERSION',        '3.1.0' );
+define( 'WPMT_VERSION',        '3.1.1' );
 
 // Determines if the plugin is loaded
 define( 'WPMT_SETUP',          true );

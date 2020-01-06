@@ -85,8 +85,8 @@ The bbPress Setting "Allow users to subscribe to forums and replies" must also b
 					<input type="checkbox" id="include_bbp_forum_subscriptions_in_replies" name="<?php echo $this->settings_name; ?>[include_bbp_forum_subscriptions_in_replies]" value="1"
 					<?php checked( $stash->settings->include_bbp_forum_subscriptions_in_replies ); ?> >
 					       <?php _e( 'Also notify <em>forum</em> subscribers of new replies.', 'bbPress_Notify_noSpam' ) ; ?>
-					       <br>
-					       <span class="description" style="margin-left:2em;"><?php _e( 'Enabling this option will include the forum\'s subscribers in new replies. This may make some people angry. You have been warned!', 'bbPress_Notify_noSpam' ) ;?></span>
+					       <br><br>
+					       <span class="description" style="margin-left:2em;"><?php _e( 'Enabling this option will include the forum\'s subscribers in new replies, <strong>without</strong> subscribing them, and therefore without option to opt-out without the Opt Out Add-on. Consider using the Topics option instead.', 'bbPress_Notify_noSpam' ) ;?></span>
 				</label>
 			</td>
 		</tr>
