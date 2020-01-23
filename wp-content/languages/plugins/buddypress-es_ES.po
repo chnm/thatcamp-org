@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - BuddyPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-01-06 15:38:21+0000\n"
+"PO-Revision-Date: 2020-01-20 08:17:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3569,7 +3569,7 @@ msgstr "Este campo puede ser visto por: %s"
 
 #: bp-templates/bp-nouveau/buddypress/members/single/notifications.php:10
 msgid "Notifications menu"
-msgstr "Menú de notificaciones"
+msgstr "Menú de avisos"
 
 #: bp-templates/bp-nouveau/buddypress/members/single/messages.php:9
 msgid "Messages menu"
@@ -3830,7 +3830,7 @@ msgstr "Añadir nuevo aviso"
 
 #: bp-messages/classes/class-bp-messages-notices-admin.php:197
 msgid "Manage notices shown at front end of your site to all logged-in users."
-msgstr "Gestionar las notificaciones que se muestran en la parte frontal de tu sitio para todos los usuarios que hayan iniciado sesión."
+msgstr "Gestionar los avisos que se muestran en la portada de tu sitio para todos los usuarios que hayan iniciado sesión."
 
 #: bp-messages/classes/class-bp-messages-notices-admin.php:102
 msgctxt "Admin Users menu"
@@ -4141,7 +4141,7 @@ msgstr "Grupos de campos de perfil"
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/unread.php:16
 msgid "Unread notifications"
-msgstr "Notificaciones sin leer"
+msgstr "Avisos sin leer"
 
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/members/single/messages.php:89
@@ -4415,11 +4415,11 @@ msgstr "El equipo de BuddyPress"
 
 #: bp-core/bp-core-functions.php:3756
 msgid "You can change this or any other email notification preferences in your email settings."
-msgstr "Puedes cambiar esta u otras preferencias de notificación de correos electrónicos en tus ajustes de correo."
+msgstr "Puedes cambiar esta u otras preferencias de avisos de correos electrónicos en tus ajustes de correo."
 
 #: bp-core/bp-core-functions.php:3728
 msgid "Please go to your notifications settings to unsubscribe from emails."
-msgstr "Por favor ve a los ajustes de notificaciones para cancelar la suscripción de correos electrónicos."
+msgstr "Por favor ve a los ajustes de avisos para cancelar la suscripción de correos electrónicos."
 
 #: bp-core/bp-core-functions.php:3717 bp-core/bp-core-functions.php:3723
 msgid "Please log in and go to your settings to unsubscribe from notification emails."
@@ -5737,7 +5737,7 @@ msgstr "La imagen de portada se usará para personalizar la cabecera de tu perfi
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/notifications-loop.php:34
 #: bp-templates/bp-nouveau/buddypress/members/single/notifications/notifications-loop.php:37
 msgid "Select this notification"
-msgstr "Seleccionar esta notificación"
+msgstr "Seleccionar este aviso"
 
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/members/single/messages/single.php:125
@@ -7117,31 +7117,31 @@ msgstr "Fecha de recepción"
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/notifications-loop.php:20
 #: bp-templates/bp-nouveau/buddypress/members/single/notifications/notifications-loop.php:19
 msgid "Notification"
-msgstr "Notificación"
+msgstr "Aviso"
 
 #: bp-themes/bp-default/members/single/notifications/feedback-no-notifications.php:23
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/feedback-no-notifications.php:33
 #: bp-templates/bp-nouveau/includes/functions.php:1037
 msgid "This member has no notifications."
-msgstr "Este miembro no tiene notificaciones."
+msgstr "Este miembro no tiene avisos."
 
 #: bp-themes/bp-default/members/single/notifications/feedback-no-notifications.php:19
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/feedback-no-notifications.php:29
 #: bp-templates/bp-nouveau/includes/functions.php:1096
 msgid "You have no notifications."
-msgstr "No tienes notificaciones."
+msgstr "No tienes avisos."
 
 #: bp-themes/bp-default/members/single/notifications/feedback-no-notifications.php:11
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/feedback-no-notifications.php:21
 #: bp-templates/bp-nouveau/includes/functions.php:1090
 msgid "This member has no unread notifications."
-msgstr "Este miembro no tiene notificaciones sin leer."
+msgstr "Este miembro no tiene avisos sin leer."
 
 #: bp-themes/bp-default/members/single/notifications/feedback-no-notifications.php:7
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/feedback-no-notifications.php:17
 #: bp-templates/bp-nouveau/includes/functions.php:1093
 msgid "You have no unread notifications."
-msgstr "No tienes notificaciones sin leer."
+msgstr "No tienes avisos sin leer."
 
 #: bp-themes/bp-default/members/single/messages/single.php:91
 #: bp-templates/bp-legacy/buddypress/members/single/messages/single.php:139
@@ -7177,7 +7177,7 @@ msgstr "Eres el único en esta conversación."
 #: bp-themes/bp-default/members/single/messages/notices-loop.php:54
 #: bp-templates/bp-legacy/buddypress/members/single/messages/notices-loop.php:96
 msgid "Sorry, no notices were found."
-msgstr "Lo sentimos, no hemos encontrado notificaciones."
+msgstr "Lo sentimos, no hemos encontrado avisos."
 
 #: bp-themes/bp-default/members/single/messages/notices-loop.php:43
 #: bp-themes/bp-default/members/single/messages/single.php:24
@@ -7202,7 +7202,7 @@ msgstr "No hemos encontrado mensajes."
 #: bp-notifications/bp-notifications-template.php:650
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:145
 msgid "Unread"
-msgstr "No leido"
+msgstr "Sin leer"
 
 #: bp-themes/bp-default/members/single/messages/messages-loop.php:43
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:119
@@ -8292,11 +8292,11 @@ msgstr "%s fue satisfactoriamente borrado"
 
 #: bp-settings/actions/notifications.php:44
 msgid "This user's notification settings have been saved."
-msgstr "La configuración de notificaciones del usuario han sido guardadas"
+msgstr "Los ajustes de avisos de este usuario se han guardado."
 
 #: bp-settings/actions/notifications.php:42
 msgid "Your notification settings have been saved."
-msgstr "Tus opciones de notificacion han sido guardadas"
+msgstr "Tus ajustes de avisos se han guardado."
 
 #: bp-settings/actions/general.php:234
 msgid "No changes were made to this account."
@@ -8364,13 +8364,13 @@ msgstr[1] "Viendo %1$s - %2$s de %3$s avisos"
 
 #: bp-notifications/bp-notifications-template.php:937
 msgid "Viewing 1 notification"
-msgstr "Mostrando 1 notificación"
+msgstr "Mostrando 1 aviso"
 
 #: bp-notifications/bp-notifications-functions.php:876
 #: bp-notifications/bp-notifications-template.php:558
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:143
 msgid "Read"
-msgstr "Leer"
+msgstr "Leído"
 
 #: bp-notifications/bp-notifications-template.php:474
 msgid "Date not found"
@@ -8394,76 +8394,76 @@ msgstr "Leer"
 #: bp-notifications/classes/class-bp-notifications-component.php:244
 msgctxt "My Account Notification sub nav"
 msgid "Unread"
-msgstr "No leídas"
+msgstr "No leídos"
 
 #: bp-notifications/classes/class-bp-notifications-component.php:243
 msgctxt "My Account Notification"
 msgid "Notifications"
-msgstr "Notificaciones"
+msgstr "Avisos"
 
 #: bp-notifications/classes/class-bp-notifications-component.php:198
 msgctxt "Notification screen nav"
 msgid "Read"
-msgstr "Leídas"
+msgstr "Leídos"
 
 #: bp-notifications/classes/class-bp-notifications-component.php:187
 msgctxt "Notification screen nav"
 msgid "Unread"
-msgstr "No leídas"
+msgstr "No leídos"
 
 #: bp-notifications/classes/class-bp-notifications-component.php:171
 msgctxt "Profile screen nav"
 msgid "Notifications"
-msgstr "Notificaciones"
+msgstr "Avisos"
 
 #: bp-notifications/classes/class-bp-notifications-component.php:122
 msgid "Search Notifications..."
-msgstr "Buscar notificaciones..."
+msgstr "Buscar avisos..."
 
 #: bp-notifications/classes/class-bp-notifications-component.php:28
 msgctxt "Page <title>"
 msgid "Notifications"
-msgstr "Notificaciones"
+msgstr "Avisos"
 
 #: bp-notifications/bp-notifications-adminbar.php:56
 msgid "No new notifications"
-msgstr "No hay nuevas notificaciones"
+msgstr "No hay nuevos avisos"
 
 #: bp-notifications/actions/bulk-manage.php:62
 msgid "Notifications marked as unread."
-msgstr "Notificaciones marcadas como no leídas."
+msgstr "Avisos marcados como no leídos."
 
 #: bp-notifications/actions/bulk-manage.php:55
 msgid "Notifications marked as read"
-msgstr "Notificaciones marcadas como leídas"
+msgstr "Avisos marcados como leídos"
 
 #: bp-notifications/actions/bulk-manage.php:48
 msgid "Notifications deleted."
-msgstr "Notificaciones eliminadas."
+msgstr "Avisos borrados."
 
 #: bp-notifications/actions/bulk-manage.php:36
 msgid "There was a problem managing your notifications."
-msgstr "Ha habido un problema al gestionar tus notificaciones."
+msgstr "Ha habido un problema al gestionar tus avisos."
 
 #: bp-notifications/actions/delete.php:38
 msgid "There was a problem deleting that notification."
-msgstr "Hubo un problema borrando esta notificación."
+msgstr "Hubo un problema borrando este aviso."
 
 #: bp-notifications/actions/delete.php:36
 msgid "Notification successfully deleted."
-msgstr "Notificación eliminada."
+msgstr "Aviso borrado correctamente."
 
 #: bp-notifications/screens/read.php:60
 msgid "Notification successfully marked unread."
-msgstr "Notificación marcada como NO leída."
+msgstr "Aviso marcado como no leído."
 
 #: bp-notifications/screens/read.php:62 bp-notifications/screens/unread.php:62
 msgid "There was a problem marking that notification."
-msgstr "Hubo un problema marcando la notificación"
+msgstr "Hubo un problema marcando ese aviso."
 
 #: bp-notifications/screens/unread.php:60
 msgid "Notification successfully marked read."
-msgstr "Notificación marcada como leída."
+msgstr "Aviso marcado como leído."
 
 #: bp-messages/classes/class-bp-messages-thread.php:854
 msgid "%s Recipients"
@@ -8642,15 +8642,15 @@ msgstr "Un usuario te envía un mensaje"
 
 #: bp-messages/actions/notices.php:72
 msgid "There was a problem deleting that notice."
-msgstr "Hubo un problema borrando la notificación"
+msgstr "Hubo un problema al borrar ese aviso."
 
 #: bp-messages/actions/notices.php:64
 msgid "There was a problem activating that notice."
-msgstr "Hubo un problema activando la notificación"
+msgstr "Hubo un problema al activar ese aviso."
 
 #: bp-messages/actions/notices.php:56
 msgid "There was a problem deactivating that notice."
-msgstr "Hubo un problema desactivando la notificación"
+msgstr "Hubo un problema al desactivar ese aviso."
 
 #: bp-messages/bp-messages-notifications.php:50
 msgid "You have %s new private message"
@@ -8696,7 +8696,7 @@ msgstr "Favorito"
 #: bp-messages/classes/class-bp-messages-component.php:239
 #: bp-messages/classes/class-bp-messages-component.php:332
 msgid "Inbox"
-msgstr "Entrada"
+msgstr "Bandeja de entrada"
 
 #: bp-core/classes/class-bp-admin.php:587
 #: bp-messages/bp-messages-notifications.php:263
@@ -9084,7 +9084,7 @@ msgstr "(menos de 24 horas atrás)"
 
 #: bp-members/classes/class-bp-members-admin.php:2165
 msgid "Last notified: %s"
-msgstr "Último notificado: %s"
+msgstr "Último avisado: %s"
 
 #: bp-members/classes/class-bp-members-admin.php:2068
 msgid "You are about to resend an activation email to the following accounts:"
@@ -9580,7 +9580,7 @@ msgstr "El más antiguo"
 #: bp-templates/bp-legacy/buddypress/members/index.php:92
 #: bp-templates/bp-nouveau/includes/template-tags.php:2109
 msgid "Order By:"
-msgstr "Ordenado por:"
+msgstr "Ordenar por:"
 
 #: bp-groups/bp-groups-template.php:3574
 msgid "This is a hidden group and only invited members can join."
@@ -9845,7 +9845,7 @@ msgstr "Ha habido un problema al actualizar los detalles del grupo. Por favor, v
 
 #: bp-groups/screens/single/request-membership.php:44
 msgid "Your membership request was sent to the group administrator successfully. You will be notified when the group administrator responds to your request."
-msgstr "Tu solicitud de adhesión fue enviada a los  administradores del grupo con éxito. Serás notificado cuando el  administrador del grupo responda a tu solicitud"
+msgstr "Tu solicitud de membresía se envió a los  administradores del grupo correctamente. Recibirás un aviso cuando el administrador del grupo responda a tu solicitud"
 
 #: bp-groups/screens/single/request-membership.php:42
 msgid "There was an error sending your group membership request. Please try again."
@@ -9914,23 +9914,23 @@ msgstr "Has sido ascendido a administrador del grupo «%s»"
 
 #: bp-groups/bp-groups-notifications.php:674
 msgid "You were promoted to an admin in %d groups"
-msgstr "Has sido ascendido a Administrador en el grupo %d "
+msgstr "Has sido ascendido a administrador en %d grupos "
 
 #: bp-groups/bp-groups-notifications.php:625
 msgid "Membership for group \"%s\" rejected"
-msgstr "Denegada Membresía para el grupo «%s»"
+msgstr "Rechazada la membresía para el grupo «%s»"
 
 #: bp-groups/bp-groups-notifications.php:586
 msgid "%d rejected group membership requests"
-msgstr "%d ha declinado la petición de membresía"
+msgstr "%d ha rechazado las peticiones de membresía"
 
 #: bp-groups/bp-groups-notifications.php:536
 msgid "Membership for group \"%s\" accepted"
-msgstr "Aceptada Membresía para el grupo «%s»"
+msgstr "Aceptada la membresía para el grupo «%s»"
 
 #: bp-groups/bp-groups-notifications.php:497
 msgid "%d accepted group membership requests"
-msgstr "%d ha aceptado la petición de membresía"
+msgstr "%d ha aceptado las peticiones de membresía"
 
 #: bp-groups/bp-groups-notifications.php:442
 msgid "%s requests group membership"
@@ -10975,7 +10975,7 @@ msgstr "&laquo;"
 #: bp-notifications/bp-notifications-template.php:1036
 #: bp-messages/bp-messages-template.php:1049
 msgid "Apply"
-msgstr "Aplicar cambios"
+msgstr "Aplicar"
 
 #: bp-notifications/bp-notifications-template.php:1027
 #: bp-templates/bp-nouveau/includes/notifications/template-tags.php:107
@@ -12388,7 +12388,7 @@ msgstr "Avisos"
 #: bp-core/admin/bp-core-admin-components.php:72
 #: bp-core/bp-core-functions.php:2469
 msgid "Allow your users to modify their account and notification settings directly from within their profiles."
-msgstr "Permite a tus usuarios modificar su cuenta y la configuración de notificaciones directamente desde su perfil."
+msgstr "Permite a tus usuarios modificar su cuenta y los ajustes de avisos directamente desde su perfil."
 
 #: bp-core/admin/bp-core-admin-components.php:71
 #: bp-core/bp-core-functions.php:2468

@@ -1545,6 +1545,7 @@ class wfUtils {
 	}
 	//Note this function may report files that are too big which actually are not too big but are unseekable and throw an error on fseek(). But that's intentional
 	public static function fileTooBig($file){ //Deals with files > 2 gigs on 32 bit systems which are reported with the wrong size due to integer overflow
+		if (!@is_file($file) || !@is_readable($file)) { return false; } //Only apply to readable files
 		wfUtils::errorsOff();
 		$fh = @fopen($file, 'r');
 		wfUtils::errorsOn();
@@ -1787,6 +1788,18 @@ class wfUtils {
 			$IPIncBin = sprintf('%032b', bindec($IPNetBin) + 1);
 		}
 		return $CIDRs;
+	}
+	
+	/**
+	 * This is a convenience function for sending a JSON response and ensuring that execution stops after sending
+	 * since wp_die() can be interrupted.
+	 * 
+	 * @param $response
+	 * @param int|null $status_code
+	 */
+	public static function send_json($response, $status_code = null) {
+		wp_send_json($response, $status_code);
+		die();
 	}
 
 	public static function setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly){

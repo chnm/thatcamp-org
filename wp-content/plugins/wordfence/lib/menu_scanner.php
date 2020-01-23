@@ -250,6 +250,7 @@ echo wfView::create('scanner/issue-wfPluginRemoved')->render();
 echo wfView::create('scanner/issue-wfPluginAbandoned')->render();
 echo wfView::create('scanner/issue-wfPluginVulnerable')->render();
 echo wfView::create('scanner/issue-file')->render();
+echo wfView::create('scanner/issue-skippedPaths')->render();
 echo wfView::create('scanner/issue-knownfile')->render();
 echo wfView::create('scanner/issue-configReadable')->render();
 echo wfView::create('scanner/issue-publiclyAccessible')->render();

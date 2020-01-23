@@ -98,7 +98,7 @@ class wordfenceURLHoover {
 		$this->currentHooverID = $id;
 		$this->_foundSome = 0;
 		$this->_excludedHosts = $excludedHosts;
-		@preg_replace_callback('/\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?«»“”‘’]))/i', array($this, 'captureURL'), $data);
+		@preg_replace_callback('_((?:(?:(?:\b[a-z+\.\-]+:)?//)(?:\S+(?::\S*)?@)?(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\xa1-\xff0-9]+-?)*[a-z\xa1-\xff0-9]+)(?:\.(?:[a-z\xa1-\xff0-9]+-?)*[a-z\xa1-\xff0-9]+)*(?:\.(?:[a-z\xa1-\xff]{2,})))(?::\d{2,5})?)(?:/[a-z0-9\-\_\.~\!\*\(\);\:@&\=\+\$,\?#\[\]%]*)*)_iS', array($this, 'captureURL'), $data);
 		$this->writeHosts();
 		return $this->_foundSome;
 	}
@@ -111,9 +111,25 @@ class wordfenceURLHoover {
 		$id = $this->currentHooverID;
 		$url = $matches[0];
 		$components = parse_url($url);
-		if (!isset($components['scheme']) || !preg_match('/^https?$/i', $components['scheme'])) {
-			return;
+		if (substr($url, 0, 2) != '//') {
+			if (!isset($components['scheme']) || !preg_match('/^https?$/i', $components['scheme'])) {
+				return;
+			}
 		}
+		else {
+			$url = 'http:' . $url;
+			if (preg_match('/\.([a-z0-9]+)$/i', $components['host'], $tld)) {
+				$tld = strtolower($tld[1]);
+				if (strpos(wfConfig::get('tldlist', ''), '|' . $tld . '|') === false) {
+					return;
+				}
+			}
+			else {
+				return;
+			}
+			wordfence::status(4, 'info', 'Found protocol-relative URL: ' . $url);
+		}
+		
 		foreach ($this->_excludedHosts as $h) {
 			if (strcasecmp($h, $components['host']) === 0) {
 				return;
@@ -397,6 +413,7 @@ class wordfenceURLHoover {
 			foreach ($paths as $p) {
 				$key = $h . $p;
 				$hashes[$key] = hash('sha256', $key, true);
+				break; //We no longer have any use for the extra path variants, so just include the primary one and exit the loop after
 			}
 		}
 		

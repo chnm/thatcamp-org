@@ -11,6 +11,14 @@ $secretOptionName = \WordfenceLS\Controller_Settings::OPTION_RECAPTCHA_SECRET;
 $secretValue = \WordfenceLS\Controller_Settings::shared()->get($secretOptionName);
 ?>
 <ul id="wfls-option-enable-auth-captcha" data-option="<?php echo esc_attr($enableOptionName); ?>" data-enabled-value="1" data-disabled-value="0" data-original-value="<?php echo $currentEnableValue ? '1' : '0'; ?>">
+	<?php if (class_exists('WooCommerce')): ?>
+	<li class="wfls-padding-no-bottom">
+		<ul class="wfls-option wfls-padding-no-bottom">
+			<li class="wfls-option-spacer"></li>
+			<li class="wfls-option-subtitle"><div class="wfls-inline-notice"><i class="<?php echo (WORDFENCE_LS_FROM_CORE ? 'wf-fa wf-fa-exclamation-triangle' : 'wfls-fa wfls-fa-exclamation-triangle'); ?>" aria-hidden="true"></i><span><?php _e('We\'ve detected that you\'re using WooCommerce. reCAPTCHA support is currently incompatible with the WooCommerce login page and should not be enabled. Support may be added in a future version.', 'wordfence-ls'); ?></span></div></li>
+		</ul>
+	</li>
+	<?php endif; ?>
 	<li>
 		<ul class="wfls-option wfls-padding-add-bottom-small">
 			<li id="wfls-enable-auth-captcha" class="wfls-option-checkbox<?php echo ($currentEnableValue ? ' wfls-checked' : ''); ?>" role="checkbox" aria-checked="<?php echo ($currentEnableValue ? 'true' : 'false'); ?>" tabindex="0"><i class="wfls-ion-ios-checkmark-empty" aria-hidden="true" aria-labelledby="wfls-enable-auth-captcha-label"></i></li>

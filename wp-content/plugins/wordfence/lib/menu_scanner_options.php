@@ -18,23 +18,38 @@ if (isset($_GET['source']) && wfPage::isValidPage($_GET['source'])) {
 				var hashes = WFAD.parseHashes();
 				var hash = hashes[hashes.length - 1];
 				var block = $('.wf-block[data-persistence-key="' + hash + '"]');
-				if (block) {
+				if (block && block.length) {
 					if (!block.hasClass('wf-active')) {
 						block.find('.wf-block-content').slideDown({
 							always: function() {
 								block.addClass('wf-active');
-								$('html, body').animate({
-									scrollTop: block.offset().top - 100
-								}, 1000);
+								
+								if (hashes.length > 1 && $('#' + hashes[hashes.length - 2]).hasClass('wf-option')) {
+									$('html, body').animate({
+										scrollTop: $('#' + hashes[hashes.length - 2]).offset().top - 100
+									}, 1000);
+								}
+								else {
+									$('html, body').animate({
+										scrollTop: block.offset().top - 100
+									}, 1000);
+								}
 							}
 						});
 
 						WFAD.ajax('wordfence_saveDisclosureState', {name: block.data('persistenceKey'), state: true}, function() {});
 					}
 					else {
-						$('html, body').animate({
-							scrollTop: block.offset().top - 100
-						}, 1000);
+						if (hashes.length > 1 && $('#' + hashes[hashes.length - 2]).hasClass('wf-option')) {
+							$('html, body').animate({
+								scrollTop: $('#' + hashes[hashes.length - 2]).offset().top - 100
+							}, 1000);
+						}
+						else {
+							$('html, body').animate({
+								scrollTop: block.offset().top - 100
+							}, 1000);
+						}
 					}
 					history.replaceState('', document.title, window.location.pathname + window.location.search);
 				}

@@ -789,27 +789,92 @@ class wfScanEngine {
 			sleep(2);
 		}
 	}
-	private function scan_knownFiles_init(){
-		$baseWPStuff = array( '.htaccess', 'index.php', 'license.txt', 'readme.html', 'wp-activate.php', 'wp-admin', 'wp-app.php', 'wp-blog-header.php', 'wp-comments-post.php', 'wp-config-sample.php', 'wp-content', 'wp-cron.php', 'wp-includes', 'wp-links-opml.php', 'wp-load.php', 'wp-login.php', 'wp-mail.php', 'wp-pass.php', 'wp-register.php', 'wp-settings.php', 'wp-signup.php', 'wp-trackback.php', 'xmlrpc.php');
-		$baseContents = scandir(ABSPATH);
-		if(! is_array($baseContents)){
-			throw new Exception("Wordfence could not read the contents of your base WordPress directory. This usually indicates your permissions are so strict that your web server can't read your WordPress directory.");
-		}
-		
-		$includeInKnownFilesScan = array();
-		$scanOutside = $this->scanController->scanOutsideWordPress();
-		if ($scanOutside) {
-			wordfence::status(2, 'info', "Including files that are outside the WordPress installation in the scan.");
-			$includeInKnownFilesScan[] = ''; //Ends up as a literal ABSPATH
-		}
-		else {
+	private function _scannedSkippedPaths() {
+		static $_cache = null;
+		if ($_cache === null) {
+			$baseWPStuff = array( '.htaccess', 'index.php', 'license.txt', 'readme.html', 'wp-activate.php', 'wp-admin', 'wp-app.php', 'wp-blog-header.php', 'wp-comments-post.php', 'wp-config-sample.php', 'wp-content', 'wp-cron.php', 'wp-includes', 'wp-links-opml.php', 'wp-load.php', 'wp-login.php', 'wp-mail.php', 'wp-pass.php', 'wp-register.php', 'wp-settings.php', 'wp-signup.php', 'wp-trackback.php', 'xmlrpc.php', '.well-known', 'cgi-bin');
+			$baseContents = scandir(ABSPATH);
+			if (!is_array($baseContents)) {
+				throw new Exception("Wordfence could not read the contents of your base WordPress directory. This usually indicates your permissions are so strict that your web server can't read your WordPress directory.");
+			}
+			
+			$scanOutside = $this->scanController->scanOutsideWordPress();
+			if ($scanOutside) {
+				$_cache = array('scanned' => array('' /* Ends up as a literal ABSPATH */), 'skipped' => array());
+				return $_cache;
+			}
+			
+			$scanned = array();
+			$skipped = array();
 			foreach ($baseContents as $file) { //Only include base files less than a meg that are files.
-				if($file == '.' || $file == '..'){ continue; }
+				if ($file == '.' || $file == '..') { continue; }
 				$fullFile = rtrim(ABSPATH, '/') . '/' . $file;
-				if (in_array($file, $baseWPStuff) || (@is_file($fullFile) && @is_readable($fullFile) && (!wfUtils::fileTooBig($fullFile)))) {
-					$includeInKnownFilesScan[] = $file;
+				if (!wfUtils::fileTooBig($fullFile)) { //Silently ignore files that are too large for the purposes of inclusion in the scan issue
+					if (in_array($file, $baseWPStuff) || (@is_file($fullFile) && @is_readable($fullFile))) {
+						$scanned[] = $file;
+					}
+					else {
+						$skipped[] = $file;
+					}
 				}
 			}
+			$_cache = array('scanned' => $scanned, 'skipped' => $skipped);
+		}
+		return $_cache;
+	}
+	private function scan_checkSkippedFiles() {
+		$haveIssues = wfIssues::STATUS_SECURE;
+		$status = wfIssues::statusStart("Checking for paths skipped due to scan settings");
+		$this->scanController->startStage(wfScanner::STAGE_MALWARE_SCAN);
+		
+		$paths = $this->_scannedSkippedPaths();
+		if (!empty($paths['skipped'])) {
+			$skippedList = '';
+			foreach ($paths['skipped'] as $index => $path) {
+				if ($index >= 10) {
+					$skippedList .= sprintf(__(', and %d more.', 'wordfence'), count($paths['skipped']) - 10);
+					break;
+				}
+				
+				if (!empty($skippedList)) {
+					if (count($paths['skipped']) == 2) {
+						$skippedList .= ' and ';
+					}
+					else if ($index == count($paths['skipped']) - 1) {
+						$skippedList .= ', and ';
+					}
+					else {
+						$skippedList .= ', ';
+					}
+				}
+				
+				$skippedList .= '~/' . esc_html($path);
+			}
+			
+			$c = count($paths['skipped']);
+			$key = "skippedPaths";
+			$added = $this->addIssue(
+				'skippedPaths',
+				wfIssues::SEVERITY_LOW,
+				$key,
+				$key,
+				sprintf($c == 1 ? __('%d path was skipped for the malware scan due to scan settings', 'wordfence') : __('%d paths were skipped for the malware scan due to scan settings', 'wordfence'), $c),
+				sprintf($c == 1 ? __('The option "Scan files outside your WordPress installation" is off by default, which means %d path and its file(s) will not be scanned for malware or unauthorized changes. To continue skipping this path, you may ignore this issue. Or to start scanning it, enable the option and subsequent scans will include it. Some paths may not be necessary to scan, so this is optional. <a href="%s" target="_blank" rel="noopener noreferrer">Learn More</a><br><br>The path skipped is %s', 'wordfence') : __('The option "Scan files outside your WordPress installation" is off by default, which means %d paths and their file(s) will not be scanned for malware or unauthorized changes. To continue skipping these paths, you may ignore this issue. Or to start scanning them, enable the option and subsequent scans will include them. Some paths may not be necessary to scan, so this is optional. <a href="%s" target="_blank" rel="noopener noreferrer">Learn More</a><br><br>The paths skipped are %s', 'wordfence'), $c, wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_RESULT_SKIPPED_PATHS), $skippedList),
+				array()
+			);
+			
+			if ($added == wfIssues::ISSUE_ADDED || $added == wfIssues::ISSUE_UPDATED) { $haveIssues = wfIssues::STATUS_PROBLEM; }
+			else if ($haveIssues != wfIssues::STATUS_PROBLEM && ($added == wfIssues::ISSUE_IGNOREP || $added == wfIssues::ISSUE_IGNOREC)) { $haveIssues = wfIssues::STATUS_IGNORED; }
+		}
+		
+		wfIssues::statusEnd($status, $haveIssues);
+		$this->scanController->completeStage(wfScanner::STAGE_MALWARE_SCAN, $haveIssues);
+	}
+	private function scan_knownFiles_init(){
+		$paths = $this->_scannedSkippedPaths();
+		$includeInKnownFilesScan = $paths['scanned'];
+		if ($this->scanController->scanOutsideWordPress()) {
+			wordfence::status(2, 'info', "Including files that are outside the WordPress installation in the scan.");
 		}
 
 		$this->status(2, 'info', "Getting plugin list from WordPress");
@@ -1638,7 +1703,7 @@ class wfScanEngine {
 							$longMsg .= ' It has unpatched security issues and may have compatibility problems with the current version of WordPress.';
 						}
 						else {
-							$longMsg .= ' It may have compatibility problems with the current version of WordPress or unknown security issues.';
+							$longMsg .= ' Plugins can be removed from wordpress.org for various reasons. This can include benign issues like a plugin author discontinuing development or moving the plugin distribution to their own site, but some might also be due to security issues. In any case, future updates may or may not be available, so it is worth investigating the cause and deciding whether to temporarily or permanently replace or remove the plugin.';
 						}
 						$longMsg .= ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_RESULT_PLUGIN_ABANDONED) . '" target="_blank" rel="noopener noreferrer">Get more information.</a>';
 						$added = $this->addIssue('wfPluginAbandoned', $severity, $key, $key, $shortMsg, $longMsg, $statusArray);
@@ -1672,7 +1737,7 @@ class wfScanEngine {
 									$longMsg = 'It has unpatched security issues and may have compatibility problems with the current version of WordPress.';
 								}
 								else {
-									$longMsg = 'It may have compatibility problems with the current version of WordPress or unknown security issues.';
+									$longMsg = 'Plugins can be removed from wordpress.org for various reasons. This can include benign issues like a plugin author discontinuing development or moving the plugin distribution to their own site, but some might also be due to security issues. In any case, future updates may or may not be available, so it is worth investigating the cause and deciding whether to temporarily or permanently replace or remove the plugin.';
 								}
 								$longMsg .= ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_RESULT_PLUGIN_REMOVED) . '" target="_blank" rel="noopener noreferrer">Get more information.</a>';
 								$added = $this->addIssue('wfPluginRemoved', wfIssues::SEVERITY_CRITICAL, $key, $key, $shortMsg, $longMsg, $pluginData);

@@ -120,9 +120,10 @@
 
 				var rawEmails = raw.replace(/\s/g, '').split(',');
 				for (var i = 0; i < rawEmails.length; i++) {
+					var e = rawEmails[i].toLowerCase();
 					//From https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address
-					if (/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(rawEmails[i]) && !this.isEmailBlacklisted(rawEmails[i])) {
-						emails.push(rawEmails[i]);
+					if (/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(rawEmails[i]) && !this.isEmailBlacklisted(e)) {
+						emails.push(e);
 					}
 				}
 				return emails;

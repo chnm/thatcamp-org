@@ -479,6 +479,7 @@ class wfScanner {
 	 * @return array
 	 */
 	private function _scanJobsForStage($stage) {
+		$always = array();
 		$options = array();
 		switch ($stage) {
 			case self::STAGE_SPAMVERTISING_CHECKS:
@@ -519,6 +520,11 @@ class wfScanner {
 				);
 				break;
 			case self::STAGE_MALWARE_SCAN:
+				if ($this->scanType() != self::SCAN_TYPE_QUICK) {
+					$always = array(
+						'checkSkippedFiles',
+					);
+				}
 				$options = array(
 					'scansEnabled_malware',
 					'scansEnabled_fileContents',
@@ -557,7 +563,7 @@ class wfScanner {
 			}
 		}
 		
-		return $filteredOptions;
+		return array_merge($filteredOptions, $always);
 	}
 	
 	/**
@@ -591,9 +597,9 @@ class wfScanner {
 				continue;
 			}
 			
-			$options = $this->_scanJobsForStage($stage);
-			if (count($options)) {
-				$parameters['expected'] = count($options);
+			$jobs = $this->_scanJobsForStage($stage);
+			if (count($jobs)) {
+				$parameters['expected'] = count($jobs);
 			}
 			else {
 				$parameters['status'] = self::STATUS_DISABLED;
@@ -862,6 +868,7 @@ class wfScanner {
 			'diskSpace' => array('scansEnabled_diskSpace'),
 			'wafStatus' => array('scansEnabled_wafStatus'),
 			'geoipSupport' => array('scansEnabled_geoipSupport'),
+			'checkSkippedFiles' => ($this->scanType() != self::SCAN_TYPE_QUICK), //Always runs except for quick
 			'knownFiles' => ($this->scanType() != self::SCAN_TYPE_QUICK), //Always runs except for quick, options are scansEnabled_core, scansEnabled_themes, scansEnabled_plugins, scansEnabled_coreUnknown, scansEnabled_malware
 			'checkReadableConfig' => array('scansEnabled_checkReadableConfig'),
 			'fileContents' => ($this->scanType() != self::SCAN_TYPE_QUICK), //Always runs except for quick, options are scansEnabled_fileContents and scansEnabled_fileContentsGSB

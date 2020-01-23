@@ -191,7 +191,7 @@ class wordfence {
 		$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
 		try {
 			$keyType = wfAPI::KEY_TYPE_FREE;
-			$keyData = $api->call('ping_api_key', array(), array('supportHash' => wfConfig::get('supportHash', ''), 'whitelistHash' => wfConfig::get('whitelistHash', '')));
+			$keyData = $api->call('ping_api_key', array(), array('supportHash' => wfConfig::get('supportHash', ''), 'whitelistHash' => wfConfig::get('whitelistHash', ''), 'tldlistHash' => wfConfig::get('tldlistHash', '')));
 			if (isset($keyData['_isPaidKey'])) {
 				$keyType = wfConfig::get('keyType');
 			}
@@ -245,6 +245,10 @@ class wordfence {
 			if (isset($keyData['_whitelist']) && isset($keyData['_whitelistHash'])) {
 				wfConfig::setJSON('whitelistPresets', $keyData['_whitelist']);
 				wfConfig::set('whitelistHash', $keyData['_whitelistHash']);
+			}
+			if (isset($keyData['_tldlist']) && isset($keyData['_tldlistHash'])) {
+				wfConfig::set('tldlist', $keyData['_tldlist']);
+				wfConfig::set('tldlistHash', $keyData['_tldlistHash']);
 			}
 			if (isset($keyData['scanSchedule']) && is_array($keyData['scanSchedule'])) {
 				wfConfig::set_ser('noc1ScanSchedule', $keyData['scanSchedule']);
@@ -1109,6 +1113,39 @@ SQL
 				exit(); //function above exits anyway
 			}
 		}
+
+		// Infinite WP Client - Authentication Bypass < 1.9.4.5
+		// https://wpvulndb.com/vulnerabilities/10011
+		$iwpRule = new wfWAFRule(wfWAF::getInstance(), 0x80000000, null, 'auth-bypass', 100, 'Infinite WP Client - Authentication Bypass < 1.9.4.5', 0, 'block', null);
+		wfWAF::getInstance()->setRules(wfWAF::getInstance()->getRules() + array(0x80000000 => $iwpRule));
+
+		if (strrpos(wfWAF::getInstance()->getRequest()->getRawBody(), '_IWP_JSON_PREFIX_') !== false) {
+			$iwpRequestDataArray = explode('_IWP_JSON_PREFIX_', wfWAF::getInstance()->getRequest()->getRawBody());
+			$iwpRequest = json_decode(trim(base64_decode($iwpRequestDataArray[1])), true);
+			if (is_array($iwpRequest)) {
+				if (array_key_exists('iwp_action', $iwpRequest) &&
+					($iwpRequest['iwp_action'] === 'add_site' || $iwpRequest['iwp_action'] === 'readd_site')
+				) {
+					require_once ABSPATH . '/wp-admin/includes/plugin.php';
+					if (is_plugin_active('iwp-client/init.php')) {
+						$iwpPluginData = get_plugin_data(WP_PLUGIN_DIR . '/iwp-client/init.php');
+						if (version_compare('1.9.4.5', $iwpPluginData['Version'], '>')) {
+							remove_action('setup_theme', 'iwp_mmb_set_request');
+						}
+					}
+
+					if ((is_multisite() ? get_site_option('iwp_client_action_message_id') : get_option('iwp_client_action_message_id')) &&
+						(is_multisite() ? get_site_option('iwp_client_public_key') : get_option('iwp_client_public_key'))
+					) {
+						wfWAF::getInstance()->getStorageEngine()->logAttack(array($iwpRule), 'request.rawBody',
+							wfWAF::getInstance()->getRequest()->getRawBody(),
+							wfWAF::getInstance()->getRequest(),
+							wfWAF::getInstance()->getRequest()->getMetadata()
+						);
+					}
+				}
+			}
+		}
 	}
 	public static function install_actions(){
 		register_activation_hook(WORDFENCE_FCPATH, 'wordfence::installPlugin');
@@ -1437,12 +1474,12 @@ SQL
 	}
 	public static function ajaxReceiver(){
 		if(! wfUtils::isAdmin()){
-			die(json_encode(array('errorMsg' => "You appear to have logged out or you are not an admin. Please sign-out and sign-in again.")));
+			wfUtils::send_json(array('errorMsg' => "You appear to have logged out or you are not an admin. Please sign-out and sign-in again."));
 		}
 		$func = (isset($_POST['action']) && $_POST['action']) ? $_POST['action'] : $_GET['action'];
 		$nonce = (isset($_POST['nonce']) && $_POST['nonce']) ? $_POST['nonce'] : $_GET['nonce'];
 		if(! wp_verify_nonce($nonce, 'wp-ajax')){
-			die(json_encode(array('errorMsg' => "Your browser sent an invalid security token to Wordfence. Please try reloading this page or signing out and in again.", 'tokenInvalid' => 1)));
+			wfUtils::send_json(array('errorMsg' => "Your browser sent an invalid security token to Wordfence. Please try reloading this page or signing out and in again.", 'tokenInvalid' => 1));
 		}
 		//func is e.g. wordfence_ticker so need to munge it
 		$func = str_replace('wordfence_', '', $func);
@@ -1459,16 +1496,16 @@ SQL
 			error_log("Wordfence ajax function return an array with 'nonce' already set. This could be a bug.");
 		}
 		$returnArr['nonce'] = wp_create_nonce('wp-ajax');
-		die(json_encode($returnArr));
+		wfUtils::send_json($returnArr);
 	}
 	public static function ajax_remoteVerifySwitchTo2FANew_callback() {
 		$payload = wfUtils::decodeJWT(wfConfig::get('new2FAMigrationNonce'));
 		if (empty($payload)) {
-			die('{}');
+			wfUtils::send_json(new stdClass()); //Ensures an object response
 		}
 		
 		$package = wfCrypt::noc1_encrypt($payload);
-		die(json_encode($package));
+		wfUtils::send_json($package);
 	}
 	public static function ajax_switchTo2FANew_callback() {
 		$migrate = (isset($_POST['migrate']) && wfUtils::truthyToBoolean($_POST['migrate']));
@@ -3292,7 +3329,7 @@ SQL
 		return $type;
 	}
 	public static function logoutAction(){
-		$userID = get_current_user_id();
+		$userID = self::getLog()->getCurrentRequest()->userID;
 		$userDat = get_user_by('id', $userID);
 		if(is_object($userDat)){
 			self::getLog()->logLogin('logout', 0, $userDat->user_login);
@@ -4677,38 +4714,19 @@ HTACCESS;
 		$jsonData = array(
 			'serverTime' => $serverTime,
 			'serverMicrotime' => microtime(true),
-			'msg' => wp_kses_data( (string) $wfdb->querySingle("SELECT msg FROM {$table_wfStatus} WHERE level < 3 AND ctime > (UNIX_TIMESTAMP() - 3600) ORDER BY ctime DESC LIMIT 1")),
+			'msg' => wp_kses_data((string) $wfdb->querySingle("SELECT msg FROM {$table_wfStatus} WHERE level < 3 AND ctime > (UNIX_TIMESTAMP() - 3600) ORDER BY ctime DESC LIMIT 1")),
 			);
 		$events = array();
-		$alsoGet = $_POST['alsoGet'];
-		if(preg_match('/^logList_(404|hit|human|ruser|crawler|gCrawler|loginLogout)$/', $alsoGet, $m)){
-			$type = $m[1];
-			$newestEventTime = $_POST['otherParams'];
-			$listType = 'hits';
-			if($type == 'loginLogout'){
-				$listType = 'logins';
-			}
-			$events = self::getLog()->getHits($listType, $type, $newestEventTime);
-		} else if ($alsoGet == 'liveTraffic') {
-			if (get_site_option('wordfence_syncAttackDataAttempts') > 10) {
-				self::syncAttackData(false);
-			}
-			$results = self::ajax_loadLiveTraffic_callback();
-			$events = $results['data'];
-			if (isset($results['sql'])) {
-				$jsonData['sql'] = $results['sql'];
-			}
+		if (get_site_option('wordfence_syncAttackDataAttempts') > 10) {
+			self::syncAttackData(false);
 		}
-		/*
-		$longest = 0;
-		foreach($events as $e){
-			$length = $e['domainLookupEnd'] + $e['connectEnd'] + $e['responseStart'] + $e['responseEnd'] + $e['domReady'] + $e['loaded'];
-			$longest = $length > $longest ? $length : $longest;
+		$results = self::ajax_loadLiveTraffic_callback();
+		$events = $results['data'];
+		if (isset($results['sql'])) {
+			$jsonData['sql'] = $results['sql'];
 		}
-		*/
+		
 		$jsonData['events'] = $events;
-		$jsonData['alsoGet'] = $alsoGet; //send it back so we don't load data if panel has changed
-		//$jsonData['longestLine'] = $longest;
 		return $jsonData;
 	}
 	public static function ajax_activityLogUpdate_callback() {
@@ -6950,6 +6968,8 @@ to your httpd.conf if using Apache, or find documentation on how to disable dire
 				(isset($_POST['author']) && (is_array($_POST['author']) || is_numeric(preg_replace('/[^0-9]/', '', $_POST['author']))))
 			)
 		) {
+			global $wp_query;
+			$wp_query->set_404();
 			status_header(404);
 			nocache_headers();
 			
@@ -7486,11 +7506,11 @@ to your httpd.conf if using Apache, or find documentation on how to disable dire
 	}
 	
 	public static function ajax_wafStatus_callback() {
-		if (isset($_REQUEST['nonce']) && hash_equals($_REQUEST['nonce'], wfConfig::get('wafStatusCallbackNonce', ''))) {
+		if (!empty($_REQUEST['nonce']) && hash_equals($_REQUEST['nonce'], wfConfig::get('wafStatusCallbackNonce', ''))) {
 			wfConfig::set('wafStatusCallbackNonce', '');
-			die(json_encode(array('active' => WFWAF_AUTO_PREPEND, 'subdirectory' => WFWAF_SUBDIRECTORY_INSTALL)));
+			wfUtils::send_json(array('active' => WFWAF_AUTO_PREPEND, 'subdirectory' => WFWAF_SUBDIRECTORY_INSTALL));
 		}
-		die(json_encode(false));
+		wfUtils::send_json(false);
 	}
 	
 	public static function ajax_installAutoPrepend_callback() {

@@ -86,6 +86,8 @@ if (!defined('WORDFENCE_LS_VERSION')) { exit; }
 							$('#wfls-activation-controls').crossfade($('#wfls-deactivation-controls'));
 							$('#wfls-recovery-code-count').text(response.text);
 							$('#wfls-activate-field').val('');
+
+							$('.wfls-notice[data-notice-type="wfls-will-be-required"]').find('.wfls-dismiss-link').trigger('click');
 							
 							if (!WFLS.savedRecoveryCodes) {
 								var prompt = $('#wfls-tmpl-recovery-skipped-prompt').tmpl({});

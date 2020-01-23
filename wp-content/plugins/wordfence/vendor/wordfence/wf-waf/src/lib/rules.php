@@ -775,6 +775,7 @@ class wfWAFRuleComparison implements wfWAFRuleInterface {
 				}
 				$totalRead = 0;
 				
+				$first = true;
 				$readsize = max(min(10 * 1024 * 1024, wfWAFUtils::iniSizeToBytes(ini_get('upload_max_filesize'))), 1 * 1024 * 1024);
 				while (!feof($fh)) {
 					$data = fread($fh, $readsize);
@@ -787,6 +788,10 @@ class wfWAFRuleComparison implements wfWAFRuleInterface {
 					foreach ($patterns as $index => $rule) {
 						if (@preg_match('/' . $rule . '/iS', null) === false) {
 							continue; //This PCRE version can't compile the rule
+						}
+						
+						if (!$first && substr($rule, 0, 1) == '^') {
+							continue; //Signature only applies to file beginning
 						}
 						
 						if (isset($commonStrings[$index])) {
@@ -806,6 +811,8 @@ class wfWAFRuleComparison implements wfWAFRuleInterface {
 							return true;
 						}
 					}
+					
+					$first = false;
 				}	
 			}
 		}

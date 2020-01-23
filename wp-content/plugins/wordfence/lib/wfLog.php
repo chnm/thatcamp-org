@@ -2023,6 +2023,8 @@ class wfErrorLogHandler {
 	public static function outputErrorLog($path) {
 		$errorLogs = self::getErrorLogs();
 		if (!isset($errorLogs[$path])) { //Only allow error logs we've identified
+			global $wp_query;
+			$wp_query->set_404();
 			status_header(404);
 			nocache_headers();
 			

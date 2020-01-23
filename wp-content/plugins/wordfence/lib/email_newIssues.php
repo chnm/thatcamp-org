@@ -65,6 +65,9 @@ foreach ($severitySections as $severityLevel => $severityLabel):
 	else if ($i['type'] == 'wafStatus') {
 		echo '<p>' . __('Firewall issues may be caused by file permission changes or other technical problems.', 'wordfence') . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_RESULT_WAF_DISABLED) . '" target="_blank" rel="nofollow noreferrer noopener">' . __('More Details and Instructions', 'wordfence') . '</a></p>';
     }
+	else if ($i['type'] == 'skippedPaths') {
+		echo '<p>' . __('Scanning additional paths is optional and is not always necessary.', 'wordfence') . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_RESULT_SKIPPED_PATHS) . '" target="_blank" rel="nofollow noreferrer noopener">' . __('Learn More', 'wordfence') . '</a></p>';
+	}
 
 	$showWPParagraph = !empty($i['tmplData']['vulnerable']) || isset($i['tmplData']['wpURL']);
 	if ($showWPParagraph) {

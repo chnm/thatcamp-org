@@ -24,6 +24,7 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		remove_filter( 'autohyperlink_urls_tlds',              array( $this, 'autohyperlink_urls_tlds' ) );
 		remove_filter( 'autohyperlink_urls_exclude_domains',   array( $this, 'autohyperlink_urls_exclude_domains' ) );
 		remove_filter( 'autohyperlink_urls_custom_exclusions', array( $this, 'autohyperlink_urls_custom_exclusions' ), 10, 3 );
+		remove_filter( 'autohyperlink_no_autolink_content_tags', array( $this, 'autohyperlink_no_autolink_content_tags' ) );
 	}
 
 
@@ -42,10 +43,12 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		);
 	}
 
-	public static function get_comment_filters() {
+	public static function get_acf_filters() {
 		return array(
-			array( 'get_comment_text' ),
-			array( 'get_comment_excerpt' ),
+			array( 'acf/format_value/type=text' ),
+			array( 'acf/format_value/type=textarea' ),
+			array( 'acf/format_value/type=url' ),
+			array( 'acf_the_content' ),
 		);
 	}
 
@@ -118,13 +121,16 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		);
 	}
 
-	public function data_script_and_style_tags_with_non_scheme_url() {
+	public function data_script_and_style_tags_with_url() {
 		return array(
 			array(
 				'<code>example.com</code>',
 			),
 			array(
 				'<code>aaa example.com bbb</code>',
+			),
+			array(
+				'<code>This has a URL http://example.com, ok.</code>',
 			),
 			array(
 				'<pre>example.com</pre>',
@@ -190,6 +196,16 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		return ! ( 'e' ===  $domain[0] );
 	}
 
+	public function autohyperlink_no_autolink_content_tags( $tags ) {
+		$tags = array_flip( $tags );
+		unset( $tags['pre'] );
+		$tags = array_flip( $tags );
+
+		$tags[] = 'blockquote';
+
+		return $tags;
+	}
+
 
 	//
 	//
@@ -203,19 +219,47 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 	}
 
 	public function test_plugin_framework_class_name() {
-		$this->assertTrue( class_exists( 'c2c_AutoHyperlinkURLs_Plugin_047' ) );
+		$this->assertTrue( class_exists( 'c2c_AutoHyperlinkURLs_Plugin_049' ) );
 	}
 
 	public function test_plugin_framework_version() {
-		$this->assertEquals( '047', c2c_AutoHyperlinkURLs::get_instance()->c2c_plugin_version() );
+		$this->assertEquals( '049', c2c_AutoHyperlinkURLs::get_instance()->c2c_plugin_version() );
 	}
 
 	public function test_get_version() {
-		$this->assertEquals( '5.2', c2c_AutoHyperlinkURLs::get_instance()->version() );
+		$this->assertEquals( '5.4.1', c2c_AutoHyperlinkURLs::get_instance()->version() );
 	}
 
 	public function test_instance_object_is_returned() {
 		$this->assertTrue( is_a( c2c_AutoHyperlinkURLs::get_instance(), 'c2c_AutoHyperlinkURLs' ) );
+	}
+
+	/**
+	 * @dataProvider get_default_filters
+	 */
+	public function test_hooks_default_filters( $filter ) {
+		$this->assertEquals( 9, has_filter( $filter, array( c2c_AutoHyperlinkURLs::get_instance(), 'hyperlink_urls' ) ) );
+	}
+
+	public function test_hooks_comment_text() {
+		$this->assertEquals( 9, has_filter( 'comment_text', array( c2c_AutoHyperlinkURLs::get_instance(), 'hyperlink_urls' ) ) );
+	}
+
+	/**
+	 * @dataProvider get_acf_filters
+	 */
+	public function test_hooks_acf_filters( $filter ) {
+		$this->set_option( array( 'enable_3p_advanced_custom_fields' => true ) );
+		c2c_AutoHyperlinkURLs::get_instance()->register_filters();
+
+		$this->assertEquals( 9, has_filter( $filter, array( c2c_AutoHyperlinkURLs::get_instance(), 'hyperlink_urls' ) ) );
+	}
+
+	/**
+	 * @dataProvider get_acf_filters
+	 */
+	public function test_does_not_hook_acf_filters_by_default( $filter ) {
+		$this->assertFalse( has_filter( $filter, array( c2c_AutoHyperlinkURLs::get_instance(), 'hyperlink_urls' ) ) );
 	}
 
 	/*
@@ -485,6 +529,16 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		);
 	}
 
+	public function test_does_not_autolink_within_links_KNOWN_FAILURE() {
+		$expected = array(
+			'My sites <a href="http://example.com/my-sites/">of example.com or http://example.com is known failure as of v5.2</a> dude?',
+		);
+
+		foreach ( $expected as $e ) {
+			$this->assertEquals( $e, c2c_autohyperlink_link_urls( $e ) );
+		}
+	}
+
 	public function test_url_without_uri_scheme_except_as_query_arg() {
 		$this->set_option( array( 'strip_protocol' => false ) );
 
@@ -497,8 +551,20 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		);
 	}
 
+	public function test_does_not_autolink_within_shortcode_tags_KNOWN_FAILURE() {
+		$expected = array(
+			'[code url="http://coffee2code.com"]some text[/code]',
+			'[code domain="coffee2code.com"]known failure as of v5.2[/code]',
+			'[code text="Learn my at coffee2code.com ok"]within shortcode attribute text[/code]',
+		);
+
+		foreach ( $expected as $e ) {
+			$this->assertEquals( $e, c2c_autohyperlink_link_urls( $e ) );
+		}
+	}
+
 	/**
-	 * @dataProvider data_script_and_style_tags_with_non_scheme_url
+	 * @dataProvider data_script_and_style_tags_with_url
 	 */
 	public function test_url_without_uri_scheme_in_code_tags( $tag ) {
 		$this->assertEquals( $tag, c2c_autohyperlink_link_urls( $tag ) );
@@ -528,6 +594,18 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 	public function test_autolink_email_with_tlds( $tld ) {
 		$this->test_basic_email_autolinking( "user@example.{$tld}" );
 	}
+
+	public function test_autolink_email_with_username_that_contains_a_domain() {
+		$usernames = array( 'test.com', 'user+test.com', 'test.com+user', 'test.composer', 'test.mil', 'test.millard' );
+
+		foreach ( $usernames as $username ) {
+			$this->assertEquals(
+				'<a href="mailto:' . $username . '@example.com" class="autohyperlink">' . $username . '@example.com</a>',
+				c2c_autohyperlink_link_urls( $username . '@example.com' )
+			);
+		}
+	}
+
 
 	public function test_does_not_autolink_already_linked_email() {
 		$text = '<a href="mailto:test@example.com">test@example.com</a>';
@@ -776,6 +854,7 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		// which would hyperlink the email address.
 		$expected = 'Comment containing example.com and <a href="mailto:user@example.com">user@example.com</a> that shoud not get linked.';
 
+		$this->assertFalse( has_filter( 'comment_text', array( c2c_AutoHyperlinkURLs::get_instance(), 'hyperlink_urls' ) ) );
 		$this->assertEquals(
 			wpautop( $expected ),
 			apply_filters( 'comment_text', $text )
@@ -1032,6 +1111,20 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 				c2c_autohyperlink_link_urls( $text )
 			);
 		}
+	}
+
+	public function test_filter_autohyperlink_no_autolink_content_tags() {
+		add_filter( 'autohyperlink_no_autolink_content_tags', array( $this, 'autohyperlink_no_autolink_content_tags' ) );
+
+		// Check that a default tag that wouldn't get autolinked now gets autolinked thanks to filter.
+		$this->assertEquals(
+			'<pre>This URL <a href="http://coffee2code.com" class="autohyperlink">coffee2code.com</a> should get linked now.</pre>',
+			c2c_autohyperlink_link_urls( '<pre>This URL http://coffee2code.com should get linked now.</pre>' )
+		);
+
+		// Check that a tag that would get autolinked now won't get autolinked thanks to filter.
+		$not_linked = '<blockquote>This URL http://coffee2code.com should get linked now</blockquote>';
+		$this->assertEquals( $not_linked, c2c_autohyperlink_link_urls( $not_linked ) );
 	}
 
 	/*

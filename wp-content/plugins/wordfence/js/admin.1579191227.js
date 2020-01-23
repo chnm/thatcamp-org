@@ -20,7 +20,7 @@
 			elementGeneratorIter: 1,
 			reloadConfigPage: false,
 			nonce: false,
-			tickerUpdatePending: false,
+			liveTrafficUpdatePending: false,
 			activityLogUpdatePending: false,
 			lastALogCtime: 0,
 			lastIssueUpdateTime: 0,
@@ -686,7 +686,6 @@
 			},
 			sectionInit: function() {
 				var self = this;
-				var startTicker = false;
 				this.mode = false;
 				if (jQuery('#wordfenceMode_dashboard:visible').length > 0) {
 					this.mode = 'dashboard';
@@ -694,7 +693,6 @@
 					this.mode = 'scan';
 				} else if (jQuery('#wordfenceMode_waf:visible').length > 0) {
 					this.mode = 'waf';
-					startTicker = true;
 				} else if (jQuery('#wordfenceMode_liveTraffic:visible').length > 0) {
 					this.mode = 'liveTraffic';
 					this.setupSwitches('wfLiveTrafficOnOff', 'liveTrafficEnabled', function() {
@@ -705,89 +703,23 @@
 						});
 					});
 
-					startTicker = true;
-
-				} else if (jQuery('#wordfenceMode_activity:visible').length > 0) {
-					this.mode = 'activity';
-					this.setupSwitches('wfLiveTrafficOnOff', 'liveTrafficEnabled', function() {
-					});
-					jQuery('#wfLiveTrafficOnOff').change(function() {
-						self.updateSwitch('wfLiveTrafficOnOff', 'liveTrafficEnabled', function() {
-							window.location.reload(true);
-						});
-					});
-
-					if (WordfenceAdminVars.liveTrafficEnabled) {
-						this.activityMode = 'hit';
-					} else {
-						this.activityMode = 'loginLogout';
-						this.switchTab(jQuery('#wfLoginLogoutTab'), 'wfTab1', 'wfDataPanel', 'wfActivity_loginLogout', function() {
-							WFAD.activityTabChanged();
-						});
+					this.updateLiveTraffic();
+					if (this.liveInt > 0) {
+						clearInterval(this.liveInt);
+						this.liveInt = 0;
 					}
-					startTicker = true;
-				} else if (jQuery('#wordfenceMode_options:visible').length > 0) {
-					this.mode = 'options';
-					this.updateTicker(true);
-					startTicker = true;
-				} else if (jQuery('#wordfenceMode_blockedIPs:visible').length > 0) {
-					this.mode = 'blocked';
-					this.staticTabChanged();
-					this.updateTicker(true);
-					startTicker = true;
-
-					var self = this;
-					var hasScrolled = false;
-					$(window).on('scroll', function() {
-						var win = $(this);
-						var wrapper = $('#wfActivity_' + self.activityMode);
-						// console.log(win.scrollTop() + window.innerHeight, liveTrafficWrapper.outerHeight() + liveTrafficWrapper.offset().top);
-						var currentScrollBottom = win.scrollTop() + window.innerHeight;
-						var scrollThreshold = wrapper.outerHeight() + wrapper.offset().top;
-						if (hasScrolled && !self.loadingBlockedIPs && currentScrollBottom >= scrollThreshold) {
-							// console.log('infinite scroll');
-							hasScrolled = false;
-
-							self.loadStaticPanelContent(true);
-						} else if (currentScrollBottom < scrollThreshold) {
-							hasScrolled = true;
-							// console.log('no infinite scroll');
-						}
-					});
+					this.liveInt = setInterval(function() {
+						self.updateLiveTraffic();
+					}, WordfenceAdminVars.actUpdateInterval);
 				} else if (jQuery('#wordfenceMode_twoFactor:visible').length > 0) {
 					this.mode = 'twoFactor';
-					startTicker = true;
 					this.loadTwoFactor();
-
-				} else if (jQuery('#wordfenceMode_countryBlocking:visible').length > 0) {
-					this.mode = 'countryBlocking';
-					startTicker = true;
-				} else if (jQuery('#wordfenceMode_rangeBlocking:visible').length > 0) {
-					this.mode = 'rangeBlocking';
-					startTicker = true;
-					this.calcRangeTotal();
-
 				} else if (jQuery('#wordfenceMode_whois:visible').length > 0) {
 					this.mode = 'whois';
-					startTicker = true;
 					this.calcRangeTotal();
-
 				} else if (jQuery('#wordfenceMode_scanScheduling:visible').length > 0) {
 					this.mode = 'scanScheduling';
 					this.sched_modeChange();
-				}
-				
-				if (this.mode) { //We are in a Wordfence page
-					if (startTicker) {
-						this.updateTicker();
-						if (this.liveInt > 0) {
-							clearInterval(this.liveInt);
-							this.liveInt = 0;
-						}
-						this.liveInt = setInterval(function() {
-							self.updateTicker();
-						}, WordfenceAdminVars.actUpdateInterval);
-					}
 				}
 			},
 			/**
@@ -1235,9 +1167,9 @@
 					}
 				}
 			},
-			updateTicker: function(forceUpdate) {
-				if ((!forceUpdate) && (this.tickerUpdatePending || (!this.windowHasFocus() && WordfenceAdminVars.allowsPausing == '1'))) {
-					if (!jQuery('body').hasClass('wordfenceLiveActivityPaused') && !this.tickerUpdatePending) {
+			updateLiveTraffic: function(forceUpdate) {
+				if ((!forceUpdate) && (this.liveTrafficUpdatePending || (!this.windowHasFocus() && WordfenceAdminVars.allowsPausing == '1'))) {
+					if (!jQuery('body').hasClass('wordfenceLiveActivityPaused') && !this.liveTrafficUpdatePending) {
 						jQuery('body').addClass('wordfenceLiveActivityPaused');
 					}
 					return;
@@ -1245,51 +1177,44 @@
 				if (jQuery('body').hasClass('wordfenceLiveActivityPaused')) {
 					jQuery('body').removeClass('wordfenceLiveActivityPaused');
 				}
-				this.tickerUpdatePending = true;
-				var self = this;
-				var alsoGet = '';
-				var otherParams = '';
-				var data = '';
+				this.liveTrafficUpdatePending = true;
+				
 				if (this.mode == 'liveTraffic') {
-					alsoGet = 'liveTraffic';
-					otherParams = this.newestActivityTime;
+					var self = this;
+					var otherParams = this.newestActivityTime;
+					var data = '';
+					
 					if (this.wfLiveTraffic) {
 						data += this.wfLiveTraffic.getCurrentQueryString({
 							since: this.newestActivityTime
 						});
 					}
 
-				} else if (this.mode == 'activity' && /^(?:404|hit|human|ruser|gCrawler|crawler|loginLogout)$/.test(this.activityMode)) {
-					alsoGet = 'logList_' + this.activityMode;
-					otherParams = this.newestActivityTime;
+					data += '&otherParams=' + encodeURIComponent(otherParams);
+					this.ajax('wordfence_ticker', data, function(res) {
+						self.handleLiveTrafficReturn(res);
+					}, function() {
+						self.liveTrafficUpdatePending = false;
+					}, true);
 				}
-				data += '&alsoGet=' + encodeURIComponent(alsoGet) + '&otherParams=' + encodeURIComponent(otherParams);
-				this.ajax('wordfence_ticker', data, function(res) {
-					self.handleTickerReturn(res);
-				}, function() {
-					self.tickerUpdatePending = false;
-				}, true);
 			},
-			handleTickerReturn: function(res) {
-				this.tickerUpdatePending = false;
-				var newMsg = "";
+			handleLiveTrafficReturn: function(res) {
+				this.liveTrafficUpdatePending = false;
+				this.serverTimestampOffset = (new Date().getTime() / 1000) - res.serverTime;
+				this.serverMicrotime = res.serverMicrotime;
+				
+				var newMsg = "Idle";
 				var oldMsg = jQuery('.wf-live-activity-message').text();
-				if (res.msg) {
-					newMsg = res.msg;
-				} else {
-					newMsg = "Idle";
-				}
+				if (res.msg) { newMsg = res.msg; }
 				if (newMsg && newMsg != oldMsg) {
 					jQuery('.wf-live-activity-message').hide().html(newMsg).fadeIn(200);
 				}
-				var haveEvents, newElem;
-				this.serverTimestampOffset = (new Date().getTime() / 1000) - res.serverTime;
-				this.serverMicrotime = res.serverMicrotime;
 
 				if (this.mode == 'liveTraffic') {
 					if (res.events.length > 0) {
 						this.newestActivityTime = res.events[0]['ctime'];
 					}
+					
 					if (typeof WFAD.wfLiveTraffic !== undefined) {
 						WFAD.wfLiveTraffic.prependListings(res.events, res);
 						this.reverseLookupIPs();
@@ -2331,18 +2256,9 @@
 				}
 				jQuery('#' + selectedContentID).fadeIn(func);
 			},
-			activityTabChanged: function() {
-				var mode = jQuery('.wfDataPanel:visible')[0].id.replace('wfActivity_', '');
-				if (!mode) {
-					return;
-				}
-				this.activityMode = mode;
-				this.reloadActivities();
-			},
-			reloadActivities: function() {
-				jQuery('#wfActivity_' + this.activityMode).html('<div class="wfLoadingWhite32"></div>');
+			reloadLiveTraffic: function() {
 				this.newestActivityTime = 0;
-				this.updateTicker(true);
+				this.updateLiveTraffic(true);
 			},
 			ucfirst: function(str) {
 				str = "" + str;
@@ -2772,7 +2688,7 @@
 					if (res.errorMsg) {
 						return;
 					} else {
-						self.reloadActivities();
+						self.reloadLiveTraffic();
 						typeof callback === 'function' && callback();
 					}
 				});
@@ -2790,7 +2706,7 @@
 				this.ajax('wordfence_unblockIP', {
 					IP: IP
 				}, function(res) {
-					self.reloadActivities();
+					self.reloadLiveTraffic();
 					typeof callback === 'function' && callback();
 				});
 			},
@@ -2799,7 +2715,7 @@
 				this.ajax('wordfence_unblockRange', {
 					id: id
 				}, function(res) {
-					self.reloadActivities();
+					self.reloadLiveTraffic();
 				});
 			},
 			unblockIPTwo: function(IP) {

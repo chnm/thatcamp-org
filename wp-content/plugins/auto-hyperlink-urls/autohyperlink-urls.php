@@ -1,14 +1,16 @@
 <?php
 /**
  * Plugin Name: Auto-hyperlink URLs
- * Version:     5.2
+ * Version:     5.4.1
  * Plugin URI:  http://coffee2code.com/wp-plugins/auto-hyperlink-urls/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
  * Text Domain: auto-hyperlink-urls
+ * License:     GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Description: Automatically turns plaintext URLs and email addresses into links.
  *
- * Compatible with WordPress 4.7 through 4.9+.
+ * Compatible with WordPress 4.7 through 5.3+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
@@ -16,7 +18,7 @@
  *
  * @package Auto_Hyperlink_URLs
  * @author  Scott Reilly
- * @version 5.2
+ * @version 5.4.1
  */
 
 /*
@@ -25,11 +27,26 @@
  * - More tests (incl. testing filters)
  * - Ability to truncate middle of link http://domain.com/som...file.php (config options for
  *   # of chars for first part, # of chars for ending, and truncation string?)
- * - Inline docs for all hooks.
+ * - Ability to link plain-text phone numbers.
+ *   See https://wordpress.org/support/topic/telephone-numbers-to-urls/
+ * - Ability to disable linking for non-protocoled links.
+ *   See https://wordpress.org/support/topic/more-option-please/
+ * - Ability to output icon denoting external links
+ *   See https://wordpress.org/support/topic/add-an-icon-for-external-links/
+ * - Ability to disable linking for a specific link. Could prefix link with special char,
+ *   e.g. !example.com or !http://example.com. A meta box could allow for explicit listing.
+ * - Consider using https://github.com/iamcal/lib_autolink to handle auto-linking.
+ * - Add support for Event Manager plugin
+ *   See https://wordpress.org/support/topic/support-events-managers-custom-post-types-events-and-locations/
+ *   See https://wordpress.org/support/topic/events-manager-23/
+ * - Add setting to disable ACF support? (Can already be done via filters.)
+ * - Add setting to specify additional filters to be handled by the plugin
+ *   Re: https://wordpress.org/support/topic/it-doesnt-work-226/
+ * - Default protocol-less URLs to 'https' instead of 'http' (possible controlled by setting)
  */
 
 /*
-	Copyright (c) 2004-2018 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2004-2020 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -52,7 +69,7 @@ if ( ! class_exists( 'c2c_AutoHyperlinkURLs' ) ) :
 
 require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'c2c-plugin.php' );
 
-final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
+final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_049 {
 
 	/**
 	 * Name of plugin's setting.
@@ -77,7 +94,7 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 	public static $tlds = array();
 
 	/**
-	 * Get singleton instance.
+	 * Returns singleton instance.
 	 *
 	 * @since 5.0
 	 */
@@ -93,7 +110,11 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 	 * Constructor.
 	 */
 	protected function __construct() {
-		parent::__construct( '5.2', 'autohyperlink-urls', 'c2c', __FILE__, array() );
+		parent::__construct( '5.4.1', 'autohyperlink-urls', 'c2c', __FILE__, array() );
+		// TODO: Temporary fix. The slug specified for the parent constructor
+		// should actually be this value, but at the very least it affects the
+		// plugin's setting name, so changing it requires a migration.
+		$this->id_base = 'auto-hyperlink-urls';
 		register_activation_hook( __FILE__, array( __CLASS__, 'activation' ) );
 
 		return self::$instance = $this;
@@ -195,21 +216,62 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 			'exclude_domains' => array(
 				'input'    => 'inline_textarea',
 				'datatype' => 'array',
-				'no_wrap'  => true, 'input_attributes' => 'rows="6"',
+				'no_wrap'  => true,
+				'input_attributes' => 'rows="6"',
 				'label'    => __( 'Exclude domains', 'auto-hyperlink-urls' ),
 				'help'     => __( 'List domains that should NOT get automatically hyperlinked. One domain per line. Do not include URI scheme (e.g. "http://") or trailing slash.', 'auto-hyperlink-urls' ),
+			),
+			'enable_3p_advanced_custom_fields' => array(
+				'input'    => 'checkbox',
+				'default'  => false,
+				'label'    => __( 'Enable support for plugin: Advanced Custom Fields?', 'auto-hyperlink-urls' ),
 			),
 		);
 	}
 
 	/**
-	 * Override the plugin framework's register_filters() to actually actions
+	 * Overrides the plugin framework's register_filters() to actually actions
 	 * against filters.
 	 */
 	public function register_filters() {
 		$options = $this->get_options();
+		$filters = array();
 
-		$filters = (array) apply_filters( 'c2c_autohyperlink_urls_filters', array( 'the_content', 'the_excerpt', 'widget_text' ) );
+		if ( $options[ 'enable_3p_advanced_custom_fields' ] ) {
+			/**
+			 * Filters Advanced Custom Field hooks that get processed for auto-
+			 * linkification.
+			 *
+			 * Supported hooks:
+			 *    'acf/format_value/type=text',
+			 *    'acf/format_value/type=textarea',
+			 *    'acf/format_value/type=url',
+			 *    'acf_the_content',
+			 *
+			 * @since 3.9
+			 *
+			 * @param array $filters The ACF filters that get processed for auto-
+			 *                       linkification. See filter inline docs for defaults.
+			 */
+			$filters = (array) apply_filters( 'c2c_autohyperlink_urls_acf_filters', array(
+				'acf/format_value/type=text',
+				'acf/format_value/type=textarea',
+				'acf/format_value/type=url',
+				//'acf/format_value/type=wysiwyg',
+				'acf_the_content',
+			) );
+		}
+
+		// Add in relevant stock WP filters.
+		$filters = array_merge( $filters, array( 'the_content', 'the_excerpt', 'widget_text' ) );
+
+		/**
+		 * Filters the list of filters that get processed for auto-hyperlinking.
+		 *
+		 * @param array $filters The list of filters. Default ['the_content', 'the_excerpt', 'widget_text'].
+		 */
+		$filters = (array) apply_filters( 'c2c_autohyperlink_urls_filters', $filters );
+
 		foreach( $filters as $filter ) {
 			add_filter( $filter, array( $this, 'hyperlink_urls' ), 9 );
 		}
@@ -232,7 +294,7 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 	}
 
 	/**
-	 * Returns the class name(s) to be used for links created by Autohyperlinks.
+	 * Returns the class name(s) to be used for links created by Auto-hyperlinks.
 	 *
 	 * Default value is 'autohyperlink'. Can be filtered via the
 	 * 'autohyperlink_urls_class' filter.
@@ -240,11 +302,18 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 	 * @return string Class to assign to link.
 	 */
 	public function get_class() {
+		/**
+		 * Filters the class name used for links created by Auto-hyperlinks.
+		 *
+		 * @since 3.5
+		 *
+		 * @param string $class The class name. Default 'autohyperlink'.
+		 */
 		return apply_filters( 'autohyperlink_urls_class', 'autohyperlink' );
 	}
 
 	/**
-	 * Returns the link attributes to be used for links created by Autohyperlinks.
+	 * Returns the link attributes to be used for links created by Auto-hyperlinks.
 	 *
 	 * Utilizes plugin options to determine if attributes such as 'target' and
 	 * 'nofollow' should be used. Calls get_class() to determine the
@@ -274,6 +343,15 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 			}
 		}
 
+		/**
+		 * Filters the attributes used for links created by Auto-hyperlinks.
+		 *
+		 * @since 3.5
+		 *
+		 * @param array  $attributes The link attributes.
+		 * @param string $context    The context for the link. Either 'url' or 'email'. Default 'url'.
+		 * @param string $title      The text for the link's title attribute.
+		 */
 		$link_attributes = (array) apply_filters( 'autohyperlink_urls_link_attributes', $link_attributes, $context, $title );
 
 		// Assemble the attributes into a string.
@@ -310,6 +388,14 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 			}
 		}
 
+		/**
+		 * Filters the list of recognized TLDs for auto-linking.
+		 *
+		 * @since 3.5
+		 *
+		 * @param string $tlds The '|'-separated string of TLDs. Default
+		 *                     'com|org|net|gov|edu|mil|us|info|biz|ws|name|mobi|cc|tv'`.
+		 */
 		$tlds = apply_filters( 'autohyperlink_urls_tlds', self::$tlds );
 
 		// Sanitize TLDs for use in regex.
@@ -359,6 +445,15 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 			$url = substr( esc_url( $ourl ), 7 );
 		}
 
+		/**
+		 * Filters link truncation.
+		 *
+		 * @since 3.5
+		 *
+		 * @param string $url          The potentially truncated URL.
+		 * @param string $original_url The full, original URL.
+		 * @param string $context      The context for the link. Either 'url' or 'email'. Default 'url'.
+		 */
 		return apply_filters( 'autohyperlink_urls_truncate_link', $url, $original_url, $context );
 	}
 
@@ -374,12 +469,22 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 	public function hyperlink_urls( $text, $args = array() ) {
 		$r               = '';
 		$textarr         = preg_split( '/(<[^<>]+>)/', $text, -1, PREG_SPLIT_DELIM_CAPTURE ); // split out HTML tags
-		$nested_code_pre = 0; // Keep track of how many levels link is nested inside <pre> or <code>
+		$nested_code_pre = 0; // Keep track of how many levels link is nested inside tags
 		foreach ( $textarr as $piece ) {
+			/**
+			 * Filters the HTML tags the contents of which will be excluded from
+			 * auto-linkification.
+			 *
+			 * @since 5.4
+			 *
+			 * @param $tags array Array of HTML tags. Default ['code', 'pre',
+			 *                    'script', 'style'].
+			 */
+			$no_content_autolink = (array) apply_filters( 'autohyperlink_no_autolink_content_tags', array( 'code', 'pre', 'script', 'style' ) );
 
-			if ( preg_match( '|^<code[\s>]|i', $piece ) || preg_match( '|^<pre[\s>]|i', $piece ) || preg_match( '|^<script[\s>]|i', $piece ) || preg_match( '|^<style[\s>]|i', $piece ) ) {
+			if ( preg_match( '#^<(' . implode( '|', array_map( 'preg_quote', $no_content_autolink ) )  . ')[\s>]#i', $piece ) ) {
 				$nested_code_pre++;
-			} elseif ( $nested_code_pre && ( '</code>' === strtolower( $piece ) || '</pre>' === strtolower( $piece ) || '</script>' === strtolower( $piece ) || '</style>' === strtolower( $piece ) ) ) {
+			} elseif ( $nested_code_pre && in_array( substr( strtolower( $piece ), 2, -1 ), $no_content_autolink ) ) {
 				$nested_code_pre--;
 			}
 
@@ -410,6 +515,15 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 
 				// Get the regex-style list of domain extensions that are acceptable for links without URI scheme.
 				$extensions = $this->get_tlds();
+
+				// Link email addresses, if enabled to do so.
+				if ( $options['hyperlink_emails'] ) {
+					$ret = preg_replace_callback(
+						'#(?!<.*?)([.0-9a-z_+-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,})(?![^<>]*?>)#i',
+						array( $this, 'do_hyperlink_email' ),
+						$ret
+					);
+				}
 
 				// Link links that don't have a URI scheme.
 				if ( ! $options['require_scheme'] ) {
@@ -446,15 +560,6 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 					$ret
 				);
 
-				// Link email addresses, if enabled to do so.
-				if ( $options['hyperlink_emails'] ) {
-					$ret = preg_replace_callback(
-						'#(?!<.*?)([.0-9a-z_+-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,})(?![^<>]*?>)#i',
-						array( $this, 'do_hyperlink_email' ),
-						$ret
-					);
-				}
-
 				// Remove temporarily added leading and trailing single spaces.
 				$ret = substr( $ret, 1, -1 );
 
@@ -465,7 +570,23 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 		} //foreach
 
 		// Remove links within links
-		return preg_replace( "#(<a\s+[^>]+>)(.*)<a\s+[^>]+>([^<]*)</a>([^>]*)</a>#iU", "$1$2$3$4</a>" , $r );
+		return preg_replace(
+			'#'
+				. '(<a\s+[^>]+>)'    // 1: Opening link tag with any number of attributes
+				. '('                // 2: Contents of the link tag
+				.     '(?:'          // Non-capturing group
+				.         '(?!</a>)' // Not followed by closing link tag
+				.         '.'        // Any character
+				.     ')'            // End of non-capturing group
+				.     '*'            // 0 or more characters
+				. ')'                // End of 2:
+				. '<a\s[^>]+>'       // Embedded opening link tag with any number of attributes
+				. '([^<]*)'          // 3: Contents of the embedded link tag
+				. '</a>'             // Closing embedded link tag
+			. '#iU',
+			'$1$2$3',
+			$r
+		);
 	}
 
 	/**
@@ -492,13 +613,28 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 			$domain = $parts['host'];
 		}
 
-		// Allow custom exclusions from hyperlinking.
+		/**
+		 * Filters Allow custom exclusions from hyperlinking.
+		 *
+		 * @since 5.0
+		 *
+		 * @param bool   $autolink Should the link be hyperlinked? Default true.
+		 * @param string $url      The URL to be hyperlinked.
+		 * @param string $domain   The domain/host part of the URL.
+		 */
 		if ( ! (bool) apply_filters( 'autohyperlink_urls_custom_exclusions', true, $url, $domain ) ) {
 			return false;
 		}
 
-		// Don't link domains explicitly excluded.
+		/**
+		 * Filters domains that are explicitly excluded from getting auto-linked.
+		 *
+		 * @since 5.0
+		 *
+		 * @param array $excluded_domains The excluded domains.
+		 */
 		$exclude_domains = (array) apply_filters( 'autohyperlink_urls_exclude_domains', $options['exclude_domains'] );
+
 		foreach ( $exclude_domains as $exclude ) {
 			if ( strcasecmp( $domain, $exclude ) == 0 ) {
 				return false;
@@ -509,9 +645,9 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 	}
 
 	/**
-	 * preg_replace_callback to create the replacement text for hyperlinks.
+	 * Callback to create the replacement text for hyperlinks.
 	 *
-	 * @param  array  $matches Matches as generated by a preg_replace_callback().
+	 * @param  array  $matches Matches as generated by a `preg_replace_callback()`.
 	 * @return string Replacement string.
 	 */
 	public function do_hyperlink_url( $matches ) {
@@ -571,7 +707,7 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 	 * Callback to create the replacement text for hyperlinks without
 	 * URI scheme.
 	 *
-	 * @param  array  $matches Matches as generated by a preg_replace_callback().
+	 * @param  array  $matches Matches as generated by a `reg_replace_callback()`.
 	 * @return string Replacement string
 	 */
 	public function do_hyperlink_url_no_uri_scheme( $matches ) {
@@ -598,7 +734,7 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 	/**
 	 * Callback to create the replacement text for emails.
 	 *
-	 * @param  array  $matches Matches as generated by a preg_replace_callback().
+	 * @param  array  $matches Matches as generated by a `preg_replace_callback()`.
 	 * @return string Replacement string.
 	 */
 	public function do_hyperlink_email( $matches ) {
@@ -613,7 +749,7 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
 	}
 } // end c2c_AutoHyperlinkURLs
 
-c2c_AutoHyperlinkURLs::get_instance();
+add_action( 'plugins_loaded', array( 'c2c_AutoHyperlinkURLs', 'get_instance' ) );
 
 endif; // end if !class_exists()
 
