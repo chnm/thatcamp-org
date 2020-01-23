@@ -24,7 +24,7 @@ class BWSrecaptcha extends NF_Abstracts_Field
     public function __construct()
     {
         parent::__construct();
-        $this->_nicename = __('BWS Google Captcha', 'google-captcha-pro');
+        $this->_nicename = __('BWS reCaptcha', 'google-captcha-pro');
         $this->_settings = $this->load_settings(
             array( 'label', 'label_pos' )
         );
@@ -37,7 +37,7 @@ class BWSrecaptcha extends NF_Abstracts_Field
         $settings['content'] = gglcptch_display();
         return $settings;
     }
-    /* Check Google Captcha in Ninja Forms */
+    /* Check reCaptcha in Ninja Forms */
     public function validate( $field, $data ) {
 
         if ( empty( $field['value'] ) && ! gglcptch_whitelisted_ip() ) {
@@ -60,7 +60,7 @@ function my_custom_file_path( $paths )
 
     return $paths;
 }
-/* Add Google Captcha in Ninja Forms Builder */
+/* Add reCaptcha in Ninja Forms Builder */
 add_filter('ninja_forms_register_fields', function($fields)
 {
     $is_user_logged_in = is_user_logged_in();

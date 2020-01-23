@@ -1,7 +1,7 @@
 <?php
 /**
  * Display content of "Whitelist" tab on settings page
- * @subpackage Google Captcha PRO
+ * @subpackage reCaptcha PRO
  * @since 1.27
  * @version 1.0.0
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 		 */
 		function display_content() {
 			global $wp_version, $gglcptch_options; ?>
-			<h1 class="wp-heading-inline"><?php _e( 'Google Captcha Whitelist', 'google-captcha-pro' ); ?></h1>
+			<h1 class="wp-heading-inline"><?php _e( 'reCaptcha Whitelist', 'google-captcha-pro' ); ?></h1>
 			<?php if ( ! ( isset( $_REQUEST['gglcptch_show_whitelist_form'] ) || isset( $_REQUEST['gglcptch_add_to_whitelist'] ) ) ) { ?>
 				<form method="post" action="admin.php?page=google-captcha-whitelist.php" style="display: inline;">
 					<button class="page-title-action" name="gglcptch_show_whitelist_form" value="on"<?php echo ( isset( $_POST['gglcptch_add_to_whitelist'] ) ) ? ' style="display: none;"' : ''; ?>><?php _e( 'Add New', 'google-captcha-pro' ); ?></button>
@@ -50,7 +50,7 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 			if ( isset( $_SERVER ) ) {
 				$sever_vars = array( 'HTTP_X_REAL_IP', 'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR' );
 				foreach ( $sever_vars as $var ) {
-					if ( isset( $_SERVER[ $var ] ) && ! empty( $_SERVER[ $var ] ) ) {
+					if ( ! empty( $_SERVER[ $var ] ) ) {
 						if ( filter_var( $_SERVER[ $var ], FILTER_VALIDATE_IP ) ) {
 							$my_ip = $_SERVER[ $var ];
 							break;
@@ -67,7 +67,7 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 
 			$this->display_notices();
 			$this->prepare_items(); ?>
-			<form class="form-table gglcptch_whitelist_form" method="post" action="admin.php?page=google-captcha-whitelist.php" <?php if ( ! ( isset( $_REQUEST['gglcptch_show_whitelist_form'] ) || isset( $_REQUEST['gglcptch_add_to_whitelist'] ) ) ) echo ' style="display: none;"'; ?>">
+			<form class="form-table gglcptch_whitelist_form" method="post" action="admin.php?page=google-captcha-whitelist.php" <?php if ( ! ( isset( $_REQUEST['gglcptch_show_whitelist_form'] ) || isset( $_REQUEST['gglcptch_add_to_whitelist'] ) ) ) echo ' style="display: none;"'; ?>>
 				<label><?php _e( 'IP to whitelist', 'google-captcha-pro' ); ?></label>
 				<br />
 				<textarea rows="2" cols="32" name="gglcptch_add_to_whitelist"></textarea>
@@ -132,7 +132,7 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 			}
 			$this->order       = isset( $_REQUEST['order'] ) && in_array( strtoupper( $_REQUEST['order'] ), array( 'ASC', 'DESC' ) ) ? $_REQUEST['order'] : '';
 			$this->paged       = isset( $_REQUEST['paged'] ) && is_numeric( $_REQUEST['paged'] ) ? $_REQUEST['paged'] : '';
-			$this->s           = isset( $_REQUEST['s'] ) ? esc_html( trim( $_REQUEST['s'] ) ) : '';
+			$this->s           = isset( $_REQUEST['s'] ) ? sanitize_text_field( $_REQUEST['s'] ) : '';
 			$this->per_page    = $this->get_items_per_page( 'gglcptch_per_page', 20 );
 
 			$columns               = $this->get_columns();
@@ -358,7 +358,8 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 				if ( empty( $list_ip ) ) {
 					$error = __( 'Invalid data. See allowed formats', 'google-captcha-pro' );
 				} else {
-					$reasons_list = isset( $_POST['gglcptch_add_to_whitelist_reason'] ) ? stripslashes( esc_html( trim( $_POST['gglcptch_add_to_whitelist_reason'], " \s\r\n\t,;" ) ) ) : '' ;
+					$reasons_list = isset( $_POST['gglcptch_add_to_whitelist_reason'] ) ? stripslashes( sanitize_textarea_field( $_POST['gglcptch_add_to_whitelist_reason'] ) ) : '' ;
+					
 					$reasons      = preg_split( "/[\r\n\t,;]+/", $reasons_list );
 					$time         = date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
 					$i            = 0;
@@ -393,8 +394,13 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 			/* Remove IP from database */
 			} elseif ( $bulk_action && check_admin_referer( $this->basename, 'gglcptch_nonce_name' ) ) {
 				if ( ! empty( $_REQUEST['id'] ) ) {
+					foreach ( $_REQUEST['id'] as $key => $value ) {
+						$_REQUEST['id'][ $key ] = intval( $value );
+					}
+					
 					$list   = implode( ',', $_REQUEST['id'] );
 					$result = $wpdb->query( "DELETE FROM `" . $wpdb->prefix . "gglcptch_whitelist` WHERE `id` IN (" . $list . ");" );
+					
 					if ( ! $wpdb->last_error ) {
 						$message = sprintf( _n( "%s IP was deleted successfully", "%s IPs were deleted successfully", $result, 'google-captcha-pro' ), $result );
 						$gglcptch_options['whitelist_is_empty'] = is_null( $wpdb->get_var( "SELECT `id` FROM `{$wpdb->prefix}gglcptch_whitelist` LIMIT 1" ) ) ? true : false;
@@ -404,7 +410,11 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 					}
 				}
 			} elseif ( isset( $_GET['gglcptch_remove'] ) && check_admin_referer( 'gglcptch_nonce_remove_' . $_GET['gglcptch_remove'] ) ) {
-				$wpdb->delete( $wpdb->prefix . "gglcptch_whitelist", array( 'id' => $_GET['gglcptch_remove'] ) );
+
+				$wpdb->delete( $wpdb->prefix . "gglcptch_whitelist",
+					array( 'id' => (int)$_GET['gglcptch_remove'] )
+				);
+				
 				if ( ! $wpdb->last_error ) {
 					$message = __( "One IP was deleted successfully", 'google-captcha-pro' );
 					$gglcptch_options['whitelist_is_empty'] = is_null( $wpdb->get_var( "SELECT `id` FROM `{$wpdb->prefix}gglcptch_whitelist` LIMIT 1" ) ) ? true : false;
@@ -418,7 +428,7 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 				if ( '' == $_REQUEST['s'] ) {
 					$error = __( 'You have not entered any IP in to the search form.', 'google-captcha-pro' );
 				} else {
-					$message = __( 'Search results for', 'google-captcha-pro' ) . '&nbsp;:&nbsp;' . esc_html( $_REQUEST['s'] );
+					$message = __( 'Search results for', 'google-captcha-pro' ) . '&nbsp;:&nbsp;' . sanitize_text_field( $_REQUEST['s'] );
 				}
 			} elseif ( isset( $_REQUEST['action'] ) && 'whitelist' == $_GET['action'] && ! empty( $_REQUEST['gglcptch_reason_submit'] ) ) {
 				$ip = $_REQUEST['gglcptch_reason_submit'];
@@ -548,7 +558,7 @@ if ( ! class_exists( 'Gglcptch_Pro_Whitelist' ) ) {
 
 		function edit_reason( $ip, $reason ) {
 			global $wpdb;
-			$db_reason = stripslashes( esc_html( trim( $reason, " \r\n\t,;" ) ) );
+			$db_reason = stripslashes( sanitize_textarea_field( $reason ) );
 			$n = $wpdb->update(
 				$wpdb->prefix . "gglcptch_whitelist",
 				array( 'add_reason' => $db_reason ),

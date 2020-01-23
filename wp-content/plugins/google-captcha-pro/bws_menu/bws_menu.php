@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 2.2.3
+* Version: 2.2.5-pro
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -16,8 +16,8 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 		 * @deprecated 1.9.8 (15.12.2016)
 		 */
 		$is_main_page = in_array( $_GET['page'], array( 'bws_panel', 'bws_themes', 'bws_system_status' ) );
-		$page = esc_attr( $_GET['page'] );
-		$tab = isset( $_GET['tab'] ) ? esc_attr( $_GET['tab'] ) : '';
+		$page = wp_unslash( $_GET['page'] );
+		$tab = isset( $_GET['tab'] ) ? wp_unslash( $_GET['tab'] ) : '';
 
 		if ( $is_main_page )
 			$current_page = 'admin.php?page=' . $page;
@@ -382,16 +382,12 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 
 						$uploadDir = wp_upload_dir();
 						$zip_name = explode( '/', $bws_license_plugin );
-
-						if ( !function_exists( 'curl_init' ) ) {
-							$received_content = file_get_contents( $url );
-						} else {
-							$args = array(
-								'method' 	  => 'POST',
-								'timeout'     => 100
-							);
-							$received_content = wp_remote_post( $url, $args );
-						}
+						
+						$args = array(
+							'method' 	  => 'POST',
+							'timeout'     => 100
+						);
+						$received_content = wp_remote_post( $url, $args );
 
 						if ( ! $received_content['body'] ) {
 							$error = __( "Failed to download the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
@@ -577,7 +573,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 												<?php } elseif ( $is_installed ) { ?>
                                                     <a class="button button-secondary" href="<?php echo esc_url( wp_nonce_url( self_admin_url( $current_page . '&bws_activate_plugin=' . $key_plugin ), 'bws_activate_plugin' . $key_plugin ) ); ?>" title="<?php _e( 'Activate this plugin', 'bestwebsoft' ); ?>"><?php _e( 'Activate', 'bestwebsoft' ); ?></a>
 												<?php } else {
-													$install_url = isset( $value_plugin['install_url'] ) ? $value_plugin['install_url'] : self_admin_url( 'plugin-install.php?tab=search&type=term&s=' . str_replace( ' ', '+', str_replace( '-', ' ', $value_plugin['name'] ) ) . '+BestWebSoft&plugin-search-input=Search+Plugins' ); ?>
+													$install_url = isset( $value_plugin['install_url'] ) ? $value_plugin['install_url'] : self_admin_url( 'plugin-install.php?tab=search&type=term&s=' . str_replace( array( ' ', '-' ), '+', $value_plugin['name'] ) . '+BestWebSoft&plugin-search-input=Search+Plugins' ); ?>
                                                     <a class="button button-secondary" href="<?php echo esc_url( $install_url ); ?>" title="<?php _e( 'Install this plugin', 'bestwebsoft' ); ?>" target="_blank"><?php _e( 'Install Now', 'bestwebsoft' ); ?></a>
 												<?php }
 											} ?>

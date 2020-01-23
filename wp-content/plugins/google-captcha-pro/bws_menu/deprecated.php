@@ -654,7 +654,7 @@ if ( ! function_exists( 'bws_custom_code_tab' ) ) {
 /**
 * Function display GO PRO tab
 * @deprecated 1.9.8 (15.12.2016)
-* @todo add notice and remove functional after 01.01.2018. Remove function after 01.01.2019
+* @todo add notice and remove functional after 01.12.2020. Remove function after 01.12.2021
 */
 if ( ! function_exists( 'bws_go_pro_tab_show' ) ) {
 	function bws_go_pro_tab_show( $bws_hide_premium_options_check, $plugin_info, $plugin_basename, $page, $pro_page, $bws_license_plugin, $link_slug, $link_key, $link_pn, $pro_plugin_is_activated = false, $trial_days_number = false ) {
@@ -716,6 +716,124 @@ if ( ! function_exists( 'bws_go_pro_tab_show' ) ) {
 					</p>
 				<?php } ?>
 			</form>
+		<?php }
+	}
+}
+
+/**
+* Function display GO PRO Banner (inline in 'admin_notices' action )
+* @deprecated 2.2.5 (29.11.2019)
+* @todo add notice and remove functional after 01.12.2020. Remove function after 01.12.2021
+*/
+if ( ! function_exists( 'bws_plugin_banner' ) ) {
+	function bws_plugin_banner( $plugin_info, $this_banner_prefix, $link_slug, $link_key, $link_pn, $banner_url_or_slug ) {
+		global $wp_version, $bstwbsftwppdtplgns_cookie_add, $bstwbsftwppdtplgns_banner_array;
+
+		if ( empty( $bstwbsftwppdtplgns_banner_array ) ) {
+			if ( ! function_exists( 'bws_get_banner_array' ) )
+				require_once( dirname( __FILE__ ) . '/bws_menu.php' );
+			bws_get_banner_array();
+		}
+
+		if ( false == strrpos( $banner_url_or_slug, '/' ) ) {
+			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-128x128.png';
+		}
+
+		if ( ! function_exists( 'is_plugin_active' ) )
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+		$all_plugins = get_plugins();
+
+		$this_banner = $this_banner_prefix . '_hide_banner_on_plugin_page';
+		foreach ( $bstwbsftwppdtplgns_banner_array as $key => $value ) {
+			if ( $this_banner == $value[0] ) {
+				if ( ! isset( $bstwbsftwppdtplgns_cookie_add ) ) {
+					echo '<script type="text/javascript" src="' . bws_menu_url( 'js/c_o_o_k_i_e.js' ) . '"></script>';
+					$bstwbsftwppdtplgns_cookie_add = true;
+				} ?>
+				<script type="text/javascript">
+					(function($) {
+						$(document).ready( function() {
+							var hide_message = $.cookie( '<?php echo $this_banner_prefix; ?>_hide_banner_on_plugin_page' );
+							if ( hide_message == "true" ) {
+								$( ".<?php echo $this_banner_prefix; ?>_message" ).css( "display", "none" );
+							} else {
+								$( ".<?php echo $this_banner_prefix; ?>_message" ).css( "display", "block" );
+							};
+							$( ".<?php echo $this_banner_prefix; ?>_close_icon" ).click( function() {
+								$( ".<?php echo $this_banner_prefix; ?>_message" ).css( "display", "none" );
+								$.cookie( "<?php echo $this_banner_prefix; ?>_hide_banner_on_plugin_page", "true", { expires: 32 } );
+							});
+						});
+					})(jQuery);
+				</script>
+				<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
+					<div class="<?php echo $this_banner_prefix; ?>_message bws_banner_on_plugin_page bws_go_pro_banner" style="display: none;">
+						<button class="<?php echo $this_banner_prefix; ?>_close_icon close_icon notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
+						<div class="icon">
+							<img title="" src="<?php echo esc_attr( $banner_url_or_slug ); ?>" alt="" />
+						</div>
+						<div class="text">
+							<?php _e( 'It’s time to upgrade your', 'bestwebsoft' ); ?> <strong><?php echo $plugin_info['Name']; ?> plugin</strong> <?php _e( 'to', 'bestwebsoft' ); ?> <strong>Pro</strong> <?php _e( 'version!', 'bestwebsoft' ); ?><br />
+							<span><?php _e( 'Extend standard plugin functionality with new great options.', 'bestwebsoft' ); ?></span>
+						</div>
+						<div class="button_div">
+							<a class="button" target="_blank" href="<?php echo esc_url( 'https://bestwebsoft.com/products/wordpress/plugins/' . $link_slug . '/?k=' . $link_key . '&pn=' . $link_pn . '&v=' . $plugin_info["Version"] . '&wp_v=' . $wp_version ); ?>"><?php _e( 'Learn More', 'bestwebsoft' ); ?></a>
+						</div>
+					</div>
+				</div>
+				<?php break;
+			}
+			if ( isset( $all_plugins[ $value[1] ] ) && $all_plugins[ $value[1] ]["Version"] >= $value[2] && is_plugin_active( $value[1] ) && ! isset( $_COOKIE[ $value[0] ] ) ) {
+				break;
+			}
+		}
+	}
+}
+
+/**
+* Function display timeout PRO Banner (inline in 'admin_notices' action )
+* @deprecated 2.2.5 (29.11.2019)
+* @todo Remove notice after 01.12.2021
+*/
+if ( ! function_exists ( 'bws_plugin_banner_timeout' ) ) {
+	function bws_plugin_banner_timeout( $plugin_key, $plugin_prefix, $plugin_name, $banner_url_or_slug = false ) {
+		global $bstwbsftwppdtplgns_options, $bstwbsftwppdtplgns_cookie_add;
+		if ( isset( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) < strtotime( date("m/d/Y") . '+1 month' ) ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) > strtotime( date("m/d/Y") ) ) ) {
+
+			if ( $banner_url_or_slug && false == strrpos( $banner_url_or_slug, '/' ) ) {
+				$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-128x128.png';
+			}
+
+			if ( ! isset( $bstwbsftwppdtplgns_cookie_add ) ) {
+				echo '<script type="text/javascript" src="' . bws_menu_url( 'js/c_o_o_k_i_e.js' ) . '"></script>';
+				$bstwbsftwppdtplgns_cookie_add = true;
+			} ?>
+			<script type="text/javascript">
+				(function($) {
+					$(document).ready( function() {
+						var hide_message = $.cookie( "<?php echo $plugin_prefix; ?>_timeout_hide_banner_on_plugin_page" );
+						if ( hide_message == "true" ) {
+							$( ".<?php echo $plugin_prefix; ?>_message_timeout" ).css( "display", "none" );
+						} else {
+							$( ".<?php echo $plugin_prefix; ?>_message_timeout" ).css( "display", "block" );
+						}
+						$( ".<?php echo $plugin_prefix; ?>_close_icon" ).click( function() {
+							$( ".<?php echo $plugin_prefix; ?>_message_timeout" ).css( "display", "none" );
+							$.cookie( "<?php echo $plugin_prefix; ?>_timeout_hide_banner_on_plugin_page", "true", { expires: 30 } );
+						});
+					});
+				})(jQuery);
+			</script>
+			<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
+				<div class="<?php echo $plugin_prefix; ?>_message_timeout bws_banner_on_plugin_page bws_banner_timeout" style="display:none;">
+					<button class="<?php echo $plugin_prefix; ?>_close_icon close_icon notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
+					<div class="icon">
+						<img title="" src="<?php echo esc_attr( $banner_url_or_slug ); ?>" alt="" />
+					</div>
+					<div class="text"><?php printf( __( "Your license key for %s expires on %s and you won't be granted TOP-PRIORITY SUPPORT or UPDATES.", 'bestwebsoft' ), '<strong>' . $plugin_name . '</strong>', $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ); ?> <a target="_new" href="https://support.bestwebsoft.com/entries/53487136"><?php _e( "Learn more", 'bestwebsoft' ); ?></a></div>
+				</div>
+			</div>
 		<?php }
 	}
 }

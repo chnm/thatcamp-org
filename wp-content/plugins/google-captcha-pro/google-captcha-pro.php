@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Google Captcha Pro (reCAPTCHA) by BestWebSoft
+Plugin Name: reCaptcha Pro by BestWebSoft
 Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/google-captcha/
 Description: Protect WordPress website forms from spam entries with Google Captcha (reCaptcha).
 Author: BestWebSoft
 Text Domain: google-captcha-pro
 Domain Path: /languages
-Version: 1.54
+Version: 1.55
 Author URI: https://bestwebsoft.com/
 License: Proprietary
 */
@@ -22,8 +22,8 @@ if ( file_exists( ABSPATH . 'wp-content/plugins/ninja-forms/includes/Abstracts/F
 if ( ! function_exists( 'gglcptch_add_admin_menu' ) ) {
 	function gglcptch_add_admin_menu() {
 		$settings_page = add_menu_page(
-			__( 'Google Captcha Settings', 'google-captcha-pro' ),
-			'Google Captcha',
+			__( 'reCaptcha Settings', 'google-captcha-pro' ),
+			'reCaptcha',
 			'manage_options',
 			'google-captcha-pro.php',
 			'gglcptch_settings_page',
@@ -32,7 +32,7 @@ if ( ! function_exists( 'gglcptch_add_admin_menu' ) ) {
 
 		add_submenu_page(
 			'google-captcha-pro.php',
-			__( 'Google Captcha Settings', 'google-captcha-pro' ),
+			__( 'reCaptcha Settings', 'google-captcha-pro' ),
 			__( 'Settings', 'google-captcha-pro' ),
 			'manage_options',
 			'google-captcha-pro.php',
@@ -42,7 +42,7 @@ if ( ! function_exists( 'gglcptch_add_admin_menu' ) ) {
 		if ( ! is_network_admin() ) {
 			$whitelist_page = add_submenu_page(
 				'google-captcha-pro.php',
-				__( 'Google Captcha Whitelist', 'google-captcha-pro' ),
+				__( 'reCaptcha Whitelist', 'google-captcha-pro' ),
 				__( 'Whitelist', 'google-captcha-pro' ),
 				'manage_options',
 				'google-captcha-whitelist.php',
@@ -192,10 +192,15 @@ if ( ! function_exists( 'gglcptch_pro_plugin_activate' ) ) {
 
 if ( ! function_exists( 'gglcptch_admin_init' ) ) {
 	function gglcptch_admin_init() {
-		global $bws_plugin_info, $gglcptch_plugin_info, $gglcptch_options, $wp_version;
+		global $pagenow, $bws_plugin_info, $gglcptch_plugin_info, $gglcptch_options, $wp_version;
 
 		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '281', 'version' => $gglcptch_plugin_info["Version"] );
+		}
+
+		if ( 'plugins.php' == $pagenow ) {
+			if ( function_exists( 'bws_add_plugin_banner_timeout' ) )
+				bws_add_plugin_banner_timeout( 'google-captcha-pro/google-captcha-pro.php', 'gglcptch', $gglcptch_plugin_info['Name'], 'google-captcha' );
 		}
 
 		/*
@@ -372,7 +377,6 @@ if ( ! function_exists( 'gglcptch_get_default_pro_options' ) ) {
 			'woocommerce_register'      => 0,
 			'woocommerce_lost_password' => 0,
 			'woocommerce_checkout'      => 0,
-			'theme'                     => 'red',
 			'theme_v2'                  => 'light',
 			'recaptcha_version'         => 'v2',
 			'language'                  => 'en',
@@ -399,7 +403,7 @@ if ( ! function_exists( 'gglcptch_get_default_pro_options' ) ) {
 	}
 }
 
-/* Add google captcha styles */
+/* Add reCaptcha styles */
 if ( ! function_exists( 'gglcptch_add_admin_script_styles' ) ) {
 	function gglcptch_add_admin_script_styles() {
 		global $gglcptch_plugin_info, $gglcptch_options;
@@ -431,7 +435,7 @@ if ( ! function_exists( 'gglcptch_add_admin_script_styles' ) ) {
 	}
 }
 
-/* Add google captcha admin styles for  test key  */
+/* Add reCaptcha admin styles for  test key  */
 if ( ! function_exists( 'gglcptch_admin_footer' ) ) {
 	function gglcptch_admin_footer() {
 		global $gglcptch_plugin_info, $gglcptch_options;
@@ -477,7 +481,7 @@ if ( ! function_exists( 'gglcptch_remove_dublicate_scripts' ) ) {
 }
 
 /**
- * Add google captcha styles
+ * Add reCaptcha styles
  */
 if ( ! function_exists( 'gglcptch_add_styles' ) ) {
 	function gglcptch_add_styles() {
@@ -511,7 +515,7 @@ if ( ! function_exists( 'gglcptch_add_styles' ) ) {
 }
 
 /**
- * Add google captcha js scripts
+ * Add reCaptcha js scripts
  */
 if ( ! function_exists( 'gglcptch_add_scripts' ) ) {
 	function gglcptch_add_scripts() {
@@ -544,30 +548,26 @@ if ( ! function_exists( 'gglcptch_add_scripts' ) ) {
 			wp_enqueue_script( 'gglcptch_buddypress' );
 		}
 
-		$language = gglcptch_get_language();
-		$version  = '';
-		$size     = null;
+		$options = array(
+			'version'           => $gglcptch_options['recaptcha_version'],
+			'sitekey'           => $gglcptch_options['public_key'],
+			'lang'              => gglcptch_get_language(),
+			'error'             => sprintf( '<strong>%s</strong>:&nbsp;%s', __( 'Warning', 'google-captcha-pro' ), gglcptch_get_message( 'multiple_blocks' ) ),
+			'divi_contact_form' => ( $gglcptch_options['divi_contact_form'] ) ? 1 : 0,
+			'divi_login'        => $gglcptch_options['divi_login'],
+			'whitelisted'       => gglcptch_whitelisted_ip(),
+			'disable'           => $gglcptch_options['disable_submit_button']
+		);
 
-		if ( 'v2' == $gglcptch_options['recaptcha_version'] ) {
-			$version = '_v2';
-			$size    = $gglcptch_options['size_v2'];
+		if ( $gglcptch_options['recaptcha_version'] == 'v2' ) {
+			$options['theme'] = $gglcptch_options['theme_v2'];
+			$options['size'] = $gglcptch_options['size_v2'];
 		} elseif ( 'invisible' == $gglcptch_options['recaptcha_version'] ) {
-			$size = 'invisible';
+			$options['size'] = 'invisible';
 		}
 
 		wp_localize_script( 'gglcptch_script', 'gglcptch', array(
-			'options' => array(
-				'version'           => $gglcptch_options['recaptcha_version'],
-				'sitekey'           => $gglcptch_options['public_key'],
-				'theme'             => $gglcptch_options[ 'theme' . $version ],
-				'size'              => $size,
-				'lang'              => $language,
-				'error'             => sprintf( '<strong>%s</strong>:&nbsp;%s', __( 'Warning', 'google-captcha-pro' ), gglcptch_get_message( 'multiple_blocks' ) ),
-				'divi_contact_form' => ( $gglcptch_options['divi_contact_form'] ) ? 1 : 0,
-				'divi_login'        => $gglcptch_options['divi_login'],
-				'whitelisted'       => gglcptch_whitelisted_ip(),
-				'disable'           => $gglcptch_options['disable_submit_button']
-			),
+			'options' => $options,
 			'vars'    => array(
 				'visibility' => ( 'login_footer' == current_filter() )
 			),
@@ -689,9 +689,11 @@ if ( ! function_exists( 'gglcptch_settings_page' ) ) {
 		global $gglcptch_plugin_info; ?>
 		<div class="wrap">
 			<?php if ( 'google-captcha-pro.php' == $_GET['page'] ) {
+				if ( ! class_exists( 'Bws_Settings_Tabs' ) )
+					require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 				require_once( dirname( __FILE__ ) . '/includes/class-gglcptch-settings-tabs.php' );
 				$page = new Gglcptch_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
-				<h1><?php _e( 'Google Captcha Pro Settings', 'google-captcha-pro' ); ?></h1>
+				<h1><?php _e( 'reCaptcha Pro Settings', 'google-captcha-pro' ); ?></h1>
                 <noscript><div class="error below-h2"><p><strong><?php _e( "Please enable JavaScript in your browser.", 'google-captcha-pro' ); ?></strong></p></div></noscript>
 				<?php $page->display_content();
 			} else {
@@ -784,7 +786,7 @@ if ( ! function_exists( 'gglcptch_is_recaptcha_required' ) ) {
 	}
 }
 
-/* Display google captcha via shortcode */
+/* Display reCaptcha */
 if ( ! function_exists( 'gglcptch_display' ) ) {
 	function gglcptch_display(  $content = false ) {
 		global $gglcptch_options, $gglcptch_count, $gglcptch_plugin_info, $bstwbsftwppdtplgns_options;
@@ -815,7 +817,7 @@ if ( ! function_exists( 'gglcptch_display' ) ) {
 				if ( current_user_can( 'manage_options' ) ) {
 					$recaptcha_content .= sprintf(
 						'<strong>%s <a target="_blank" href="https://www.google.com/recaptcha/admin#list">%s</a>%s<a target="_blank" href="%s">%s</a>.</strong>',
-						__( 'To use Google Captcha you must get the keys from', 'google-captcha-pro' ),
+						__( 'To use reCaptcha you must get the keys from', 'google-captcha-pro' ),
 						__( 'here', 'google-captcha-pro' ),
 						__( 'and enter them on the', 'google-captcha-pro' ),
 						admin_url( '/admin.php?page=google-captcha-pro.php' ),
@@ -852,16 +854,7 @@ if ( ! function_exists( 'gglcptch_display' ) ) {
 				</noscript>';
 				$deps = ( ! empty( $gglcptch_options['disable_submit'] ) ) ? array( 'gglcptch_pre_api' ) : array( 'jquery' );
 			} elseif ( isset( $gglcptch_options['recaptcha_version'] ) &&  'v3' == $gglcptch_options['recaptcha_version'] ) {
-                $action = 'BWS_reCaptcha_pro';
 			    $content .= '<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"> ';
-                $content .= '<script src="' . $api_url . '"></script>
-                            <script>
-                                grecaptcha.ready(function() {
-                                  grecaptcha.execute(\'' . $publickey . '\', {action: \'' . $action . '\'}).then(function(token) {
-                                    document.querySelectorAll( "#g-recaptcha-response" ).forEach( elem => ( elem.value = token ) );
-                                  });
-                              });    
-                             </script>';
             }
 			$recaptcha_content .= '</div>';
 			$gglcptch_count ++;
@@ -869,7 +862,7 @@ if ( ! function_exists( 'gglcptch_display' ) ) {
 			/* register reCAPTCHA script */
 			if ( ! wp_script_is( 'gglcptch_api', 'registered' ) ) {
                 if ( isset( $gglcptch_options['recaptcha_version'] ) && 'v3' == $gglcptch_options['recaptcha_version'] ) {
-                    wp_register_script( 'gglcptch_api', $api_url,false, null, false );
+                    wp_register_script( 'gglcptch_api', $api_url, false, null, false );
                 } else {
                     wp_register_script('gglcptch_api', $api_url, $deps, $gglcptch_plugin_info['Version'], true);
                 }
@@ -914,7 +907,7 @@ if ( ! function_exists( 'gglcptch_display' ) ) {
 	}
 }
 
-/* Return google captcha content for custom form */
+/* Return reCaptcha content for custom form */
 if ( ! function_exists( 'gglcptch_display_custom' ) ) {
 	function gglcptch_display_custom( $content = '', $form_slug = '' ) {
 		if ( gglcptch_is_recaptcha_required( $form_slug ) ) {
@@ -965,7 +958,7 @@ if ( ! function_exists( 'gglcptch_get_response' ) ) {
 		$args = array(
 			'body'      => array(
 				'secret'   => $privatekey,
-				'response' => stripslashes( esc_html( $_POST["g-recaptcha-response"] ) ),
+				'response' => stripslashes( sanitize_text_field( $_POST["g-recaptcha-response"] ) ),
 				'remoteip' => $remote_ip,
 			),
 			'sslverify' => false
@@ -976,7 +969,7 @@ if ( ! function_exists( 'gglcptch_get_response' ) ) {
 	}
 }
 
-/* Check google captcha */
+/* Check reCaptcha */
 if ( ! function_exists( 'gglcptch_check' ) ) {
 	function gglcptch_check( $form = 'general', $debug = false ) {
 
@@ -1113,7 +1106,7 @@ if ( ! function_exists( 'gglcptch_limit_attempts_check' ) ) {
 }
 
 /**
- * Check google captcha for custom form
+ * Check reCaptcha for custom form
  * @since 1.32
  *
  * @param bool $allow (Optional) initial value wheter the previous verification is passed
@@ -1297,7 +1290,7 @@ if ( ! function_exists( 'gglcptch_is_woocommerce_page' ) ) {
 	}
 }
 
-/* Check Google Captcha in shortcode and contact form */
+/* Check reCaptcha in shortcode and contact form */
 if ( ! function_exists( 'gglcptch_captcha_check' ) ) {
 	function gglcptch_captcha_check() {
 
@@ -1307,7 +1300,7 @@ if ( ! function_exists( 'gglcptch_captcha_check' ) ) {
 	}
 }
 
-/* Check Google Captcha in divi */
+/* Check reCaptcha in divi */
 if ( ! function_exists( 'gglcptch_captcha_check_for_divi' ) ) {
 	function gglcptch_captcha_check_for_divi() {
 
@@ -1525,7 +1518,7 @@ if ( ! function_exists( 'gglcptch_plugin_banner' ) ) {
 					<p>
 						<?php printf(
 							'<strong>%s <a target="_blank" href="https://www.google.com/recaptcha/admin#list">%s</a> %s <a target="_blank" href="%s">%s</a>.</strong>',
-							__( 'To use Google Captcha you must get the keys from', 'google-captcha-pro' ),
+							__( 'To use reCaptcha you must get the keys from', 'google-captcha-pro' ),
 							__( 'here', 'google-captcha-pro' ),
 							__( 'and enter them on the', 'google-captcha-pro' ),
 							admin_url( '/admin.php?page=google-captcha-pro.php' ),
@@ -1534,7 +1527,7 @@ if ( ! function_exists( 'gglcptch_plugin_banner' ) ) {
 					</p>
 				</div>
 			<?php }
-			bws_plugin_banner_timeout( 'google-captcha-pro/google-captcha-pro.php', 'gglcptch', $gglcptch_plugin_info['Name'], '//ps.w.org/google-captcha/assets/icon-128x128.png' );
+			
 			bws_plugin_banner_to_settings( $gglcptch_plugin_info, 'gglcptch_options', 'google-captcha', 'admin.php?page=google-captcha-pro.php' );
 		}
 
