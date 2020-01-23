@@ -21,6 +21,7 @@ wp-content/sunrise.php
 wp-content/wp-cache-config.php
 wp-content/w3tc-config/*
 wp-content/wpvividbackups/*
+wp-content/wflogs
 
 # Exclude debug logs (which shouldn't be saved in web-accessible directories anyway)
 error_log
