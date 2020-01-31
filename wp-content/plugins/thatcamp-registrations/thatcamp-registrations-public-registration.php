@@ -44,10 +44,13 @@ class Thatcamp_Registrations_Public_Registration {
         // Define some alerts if there are errors with the form.
         if ( !empty($_POST) ) {
             // Registration text is required.
-            if ( empty( $_POST['application_text']) ) {
+/**            if ( empty( $_POST['application_text']) ) {
                 $alerts['application_text'] = __('Please tell us why you want to come to THATCamp. What you write here will NOT be publicly displayed.', 'thatcamp-registrations');
             }
-
+**/
+            if ( empty( $_POST['application_text']) ) {
+                $alerts['application_text'] = __('Please check the box.', 'thatcamp-registrations');
+            }
         if ( ! empty( $_POST['tcppl-field'] ) ) {
             $alerts['spammer'] = __( "It looks like you filled in the spammer field. No account for you!", 'thatcamp-registrations' );
         }
@@ -92,11 +95,11 @@ class Thatcamp_Registrations_Public_Registration {
         }
         // If the currently authenticated user has submitted a registration.
         elseif (is_user_logged_in() && $existingApp = thatcamp_registrations_get_registration_by_user_id($this->current_user()->ID)) {
-            echo '<div>'.__('You have already submitted the form.','thatcamp-registrations').'</div>';
+            echo '<div style="font-style:italic; background-color:lightyellow; padding:20px;">'.__('You have already submitted a registration request.','thatcamp-registrations').'</div>';
         }
         elseif ((!empty($_POST)) && empty($alerts)) {
             thatcamp_registrations_add_registration();
-            echo '<p>The information you submitted has been saved.</p>';
+            echo '<p style="font-style:italic; background-color:lightyellow; padding:20px;">You have successfully sent a request to be registered for this site. When the site administrator has approved the request, you will be notified by email.</p>';
         }
         else {
 
@@ -110,8 +113,8 @@ class Thatcamp_Registrations_Public_Registration {
 
             // Nudge the user to log in
             if ( ! is_user_logged_in() ) {
-              echo "<h3>" . __( "Already have a THATCamp account?", 'thatcamp-registrations' ) . "</h3>";
-              echo "<p>" . sprintf( __( "If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <a href='%s'>Log in</a> and we'll pre-fill some of your information for you.", 'thatcamp-registrations' ), $login_link ) . "</p>";
+              echo "<h4>" . __( "Already have a THATCamp account?", 'thatcamp-registrations' ) . "</h4>";
+              echo "<p>" . sprintf( __( "If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <strong><a href='%s'>Log in</a></strong> and we'll pre-fill some of your information for you.", 'thatcamp-registrations' ), $login_link ) . "</p>";
             } else {
               echo "<h3>" . __( "Welcome back!", 'thatcamp-registrations' ) . "</h3>";
               echo "<p>" . sprintf( __( 'You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong>', 'thatcamp-registrations' ), $this->current_user()->display_name, $this->current_user()->user_email ) . "</p>";
@@ -218,7 +221,7 @@ class Thatcamp_Registrations_Public_Registration {
 
     function _application_form() {
 	?>
-	<fieldset>
+<!--	<fieldset>
 	<legend>Registration Information</legend>
 	<div>
 	<label for="application_text"><?php _e('Why do you want to come to THATCamp?', 'thatcamp-registrations'); ?>* (required)</label><br />
@@ -234,7 +237,16 @@ class Thatcamp_Registrations_Public_Registration {
 	</div>
 	<input type="hidden" name="date" value="<?php echo current_time('mysql'); ?>">
 
-	</fieldset>
+	</fieldset> -->
+	<fieldset>
+	<legend>Registration Information</legend>
+	<div>
+<!--	<label for="application_text"><?php _e('Yes, I would like to contribute a 500-word reflection on THATCamp', 'thatcamp-registrations'); ?>* (required)</label><br />-->
+	<input type="checkbox" name="application_text" value="yes" checked> Yes, I would like to contribute a 500-word reflection on THATCamp
+	</div>
+	<input type="hidden" name="date" value="<?php echo current_time('mysql'); ?>">
+
+	</fieldset>	
 	<?php
     }
 }
