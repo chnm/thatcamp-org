@@ -113,11 +113,11 @@ class Thatcamp_Registrations_Public_Registration {
 
             // Nudge the user to log in
             if ( ! is_user_logged_in() ) {
-              echo "<h4>" . __( "Already have a THATCamp account?", 'thatcamp-registrations' ) . "</h4>";
-              echo "<p>" . sprintf( __( "If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <strong><a href='%s'>Log in</a></strong> and we'll pre-fill some of your information for you.", 'thatcamp-registrations' ), $login_link ) . "</p>";
+              echo "<h3>" . __( "Already have a THATCamp account?", 'thatcamp-registrations' ) . "</h3>";
+              echo "<p>" . sprintf( __( "If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <strong><a href='%s'>Log in</a></strong> and we'll pre-fill your information for you.", 'thatcamp-registrations' ), $login_link ) . "</p>";
             } else {
               echo "<h3>" . __( "Welcome back!", 'thatcamp-registrations' ) . "</h3>";
-              echo "<p>" . sprintf( __( 'You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong>', 'thatcamp-registrations' ), $this->current_user()->display_name, $this->current_user()->user_email ) . "</p>";
+              echo "<p style='font-style:italic; background-color:lightyellow; padding:20px;'>" . sprintf( __( 'You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong>. Be sure to click the Submit Registration button below to complete your registration.', 'thatcamp-registrations' ), $this->current_user()->display_name, $this->current_user()->user_email ) . "</p>";
             }
 
             echo '<form method="post" action="">';
@@ -238,15 +238,13 @@ class Thatcamp_Registrations_Public_Registration {
 	<input type="hidden" name="date" value="<?php echo current_time('mysql'); ?>">
 
 	</fieldset> -->
-	<fieldset>
-	<legend>Registration Information</legend>
+<!--	<legend>Registration Information</legend> -->
 	<div>
 <!--	<label for="application_text"><?php _e('Yes, I would like to contribute a 500-word reflection on THATCamp', 'thatcamp-registrations'); ?>* (required)</label><br />-->
-	<input type="checkbox" name="application_text" value="yes" checked> Yes, I would like to contribute a 500-word reflection on THATCamp
+	<input type="hidden" name="application_text" value="yes" checked>
 	</div>
 	<input type="hidden" name="date" value="<?php echo current_time('mysql'); ?>">
 
-	</fieldset>	
 	<?php
     }
 }
