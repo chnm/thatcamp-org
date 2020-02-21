@@ -502,6 +502,11 @@ if (!wfConfig::liveTrafficEnabled($overridden)):
 					$('#wf-live-traffic').toggleClass('wf-live-traffic-display-expanded', isOn);
 				});
 			});
+			
+			$(document).on('heartbeat-tick', function(heartbeat) {
+				WFAD.serverMicrotime = heartbeat.timeStamp / 1000;
+				WFAD.updateTimeAgo();
+			})
 		});
 	})(jQuery);
 </script>

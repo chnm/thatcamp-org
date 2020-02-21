@@ -498,6 +498,11 @@ class wfScanner {
 				);
 				break;
 			case self::STAGE_SERVER_STATE:
+				if ($this->scanType() != self::SCAN_TYPE_QUICK) {
+					$always = array(
+						'checkSkippedFiles',
+					);
+				}
 				$options = array(
 					'scansEnabled_checkHowGetIPs',
 					'scansEnabled_diskSpace',
@@ -520,11 +525,6 @@ class wfScanner {
 				);
 				break;
 			case self::STAGE_MALWARE_SCAN:
-				if ($this->scanType() != self::SCAN_TYPE_QUICK) {
-					$always = array(
-						'checkSkippedFiles',
-					);
-				}
 				$options = array(
 					'scansEnabled_malware',
 					'scansEnabled_fileContents',

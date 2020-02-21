@@ -85,7 +85,7 @@ class WP_Mailto_Links_Validate{
 
         $filtered_content = $filtered_head . $htmlSplit[1] . $filtered_body;
 
-        //Revalidate filtered emails that should not bbe encoded
+        //Revalidate filtered emails that should not be encoded
         $filtered_content = $this->temp_encode_at_symbol( $filtered_content, true );
 
         return $filtered_content;
@@ -222,7 +222,7 @@ class WP_Mailto_Links_Validate{
                 $protected_return = $replace_by;
             }
 
-            // mark link as successfullly encoded (for admin users)
+            // mark link as successfully encoded (for admin users)
             if ( current_user_can( WPMT()->settings->get_admin_cap( 'frontend-display-security-check' ) ) && $security_check ) {
                 $protected_return .= '<i class="wpml-encoded dashicons-before dashicons-lock" title="' . WPMT()->helpers->translate( 'Email encoded successfully!', 'frontend-security-check-title' ) . '"></i>';
             }
@@ -501,7 +501,7 @@ class WP_Mailto_Links_Validate{
         $inputWithDataAttr .= ' data-enc-email="' . $this->get_encoded_email( $email ) . '"';
         $inputWithDataAttr .= substr( $input, 6 );
 
-        // mark link as successfullly encoded (for admin users)
+        // mark link as successfully encoded (for admin users)
         if ( current_user_can( WPMT()->settings->get_admin_cap( 'frontend-display-security-check' ) ) && $security_check ) {
             $inputWithDataAttr .= '<i class="wpml-encoded dashicons-before dashicons-lock" title="' . WPMT()->helpers->translate( 'Email encoded successfully!', 'frontend-security-check-title' ) . '"></i>';
         }
@@ -598,7 +598,7 @@ class WP_Mailto_Links_Validate{
         // just in case there are still email addresses f.e. within title-tag
         $link = $this->filter_plain_emails( $link, null, 'char_encode' );
 
-        // mark link as successfullly encoded (for admin users)
+        // mark link as successfully encoded (for admin users)
         if ( current_user_can( WPMT()->settings->get_admin_cap( 'frontend-display-security-check' ) ) && $security_check ) {
             $link .= '<i class="wpml-encoded dashicons-before dashicons-lock" title="' . WPMT()->helpers->translate( 'Email encoded successfully!', 'frontend-security-check-title' ) . '"></i>';
         }

@@ -2,7 +2,7 @@
 /*
 * Plugin Name: bbPress Notify (No-Spam)
 * Description: Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a> 
-* Version:	   2.8
+* Version:	   2.8.1
 * Author: 	   <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:     GNU General Public License, v2 ( or newer )
 * License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -12,12 +12,12 @@
 * 
 * Based on MVC Starter Plugin v1.2.4 by UseStrict Consulting
 *
-* Copyright (C) 2012-2019 usestrict.net, released under the GNU General Public License.
+* Copyright (C) 2012-2020 usestrict.net, released under the GNU General Public License.
 */
 
 class bbPress_Notify_noSpam 
 {
-	const VERSION = '2.8';
+	const VERSION = '2.8.1';
 	
 	/**
 	 * The singletons

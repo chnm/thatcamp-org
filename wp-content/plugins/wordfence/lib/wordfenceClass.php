@@ -281,14 +281,14 @@ class wordfence {
 
 		self::trimWfHits();
 
-		$maxRows = 1000; //affects stuff further down too
+		$maxRows = absint(wfConfig::get('liveTraf_maxRows', 2000));; //affects stuff further down too
 		
 		$table_wfLogins = wfDB::networkTable('wfLogins');
 		$count2 = $wfdb->querySingle("select count(*) as cnt from {$table_wfLogins}");
 		if($count2 > 20000){
 			$wfdb->truncate($table_wfLogins); //in case of Dos
 		} else if($count2 > $maxRows){
-			$wfdb->queryWrite("delete from {$table_wfLogins} order by ctime asc limit %d", ($count2 - 100));
+			$wfdb->queryWrite("delete from {$table_wfLogins} order by ctime asc limit %d", ($count2 - $maxRows));
 		}
 		
 		$table_wfReverseCache = wfDB::networkTable('wfReverseCache');

@@ -3,8 +3,8 @@ Contributors: ironikus
 Tags: hide, email, email address, mailto, antispam, protect, spambot, encode, encrypt, obfuscate, email link, protection
 Requires at least: 4.7
 Tested up to: 5.3.2
-Stable tag: 3.1.1
-Requires PHP: 5.3
+Stable tag: 3.1.2
+Requires PHP: 5.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,11 @@ Filter given content to protect mailto links, shortcodes and plain emails (accor
 ?>`
 
 == Changelog ==
+
+= 3.1.2 = 
+* Feature: We fully removed all external marketing advertisements! Enjoy our plugin without distractions! :)
+* Feature: Full support for Oxygen builder
+* Tweak: Optimize PHPDocs and comments
 
 = 3.1.1 = 
 * Feature: Soft-Encode all HTML tags + new settings item (This will prevent complex plugins from breaking)

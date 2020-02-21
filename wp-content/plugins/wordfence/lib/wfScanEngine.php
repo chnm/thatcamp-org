@@ -825,7 +825,7 @@ class wfScanEngine {
 	private function scan_checkSkippedFiles() {
 		$haveIssues = wfIssues::STATUS_SECURE;
 		$status = wfIssues::statusStart("Checking for paths skipped due to scan settings");
-		$this->scanController->startStage(wfScanner::STAGE_MALWARE_SCAN);
+		$this->scanController->startStage(wfScanner::STAGE_SERVER_STATE);
 		
 		$paths = $this->_scannedSkippedPaths();
 		if (!empty($paths['skipped'])) {
@@ -868,7 +868,7 @@ class wfScanEngine {
 		}
 		
 		wfIssues::statusEnd($status, $haveIssues);
-		$this->scanController->completeStage(wfScanner::STAGE_MALWARE_SCAN, $haveIssues);
+		$this->scanController->completeStage(wfScanner::STAGE_SERVER_STATE, $haveIssues);
 	}
 	private function scan_knownFiles_init(){
 		$paths = $this->_scannedSkippedPaths();

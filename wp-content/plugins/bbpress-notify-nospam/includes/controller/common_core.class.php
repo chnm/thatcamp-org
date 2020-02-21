@@ -24,6 +24,8 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
         $this->bbpress_topic_post_type = $this->get_topic_post_type();
         $this->bbpress_reply_post_type = $this->get_reply_post_type();
         
+        $this->doing_cron = (defined('DOING_CRON') && DOING_CRON);
+        
         // 		$this->settings = apply_filters( $this->domain . '_settings', array() );
         $this->settings = $this->load_lib('dal/settings_dao')->load();
         
@@ -326,33 +328,6 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
     
     
     /**
-     * Embeds images into message
-     * @param PHPMailer $phpmailer
-     * @deprecated No longer used as of 2.2.
-     */
-//     public function embed_images( $phpmailer )
-//     {
-//         if ( empty( $this->cid_ary ) )
-//         {
-//             return;
-//         }
-            
-//         foreach ( $this->cid_ary as $el )
-//         {
-//             if ( false === $el )
-//             {
-//                 continue;
-//             }
-                
-//             $filepath = $el['filepath'];
-//             $name     = $el['filename'];
-//             $cid      = $el['cid'];
-
-//             $phpmailer->addEmbeddedImage( $filepath, $cid, $name );
-//         }
-//     }
-    
-    /**
      * @since 1.14
      * @param WP_Error $wp_error
      */
@@ -360,93 +335,6 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
     {
         $this->wp_mail_error = $wp_error;
     }
-    
-    
-    /**
-     * Process images to embed in the email.
-     * @param string $text
-     * @deprecated No longer used as of 2.2.
-     * @return string
-     */
-//     public function prep_image_cid( $text )
-//     {
-//         if ( ! isset( $this->cid_ary ) )
-//         {
-//             $this->cid_ary = array();
-//         }
-        
-//         $dom            = new DOMDocument();
-//         $previous_value = libxml_use_internal_errors(TRUE);
-//         if ( function_exists( 'mb_convert_encoding' ) )
-//         {
-//             $dom->loadHTML( mb_convert_encoding($text, 'HTML-ENTITIES', $this->charset ) );
-//         }
-//         else
-//         {
-//             $dom->loadHTML( htmlspecialchars_decode(utf8_decode(htmlentities($text, ENT_COMPAT, $this->charset, false))) );
-//         }
-//         libxml_use_internal_errors( $previous_value );
-        
-//         $images = $dom->getElementsByTagName('img');
-        
-//         foreach ( $images as $img )
-//         {
-//             $src = $img->getAttribute('src');
-            
-//             if ( $src && ! isset( $this->cid_ary[$src] ) )
-//             {
-//                 $path = ABSPATH . substr( $src, strlen( $this->site_url ) );
-
-//                 /**
-//                  * Only parse local images for safety.
-//                  * Also check that the image exists.
-//                  */
-//                 if ( preg_match( '@^'.preg_quote($this->site_url).'@', $src ) && file_exists( $path ) )
-//                 {
-//                     $parts    = pathinfo( $path );
-//                     $ext      = strtolower( $parts['extension'] );
-//                     $basename = $parts['basename'];
-
-//                     // We only allow images
-//                     if ( in_array( $ext, array( 'jpg', 'jpeg', 'png', 'gif' ) ) )
-//                     {
-//                         $cid = uniqid();
-//                         $this->cid_ary[$src] = array( 'cid' => $cid, 'filepath' => $path, 'filename' => $basename );
-//                     }
-//                     else
-//                     {
-//                         $this->cid_ary[$src] = false;
-//                     }
-//                 }
-//             }
-            
-//             if ( isset( $this->cid_ary[$src] ) &&  false !== $this->cid_ary[$src] )
-//             {
-//                 // We no longer embed images, but we still need the cid_ary in some places.
-//                 $img->setAttribute( 'src', 'cid:' . $this->cid_ary[$src]['cid'] );
-//             }
-//         }
-        
-//         if ( $images->length )
-//         {
-//             if ( $this->supports_node )
-//             {
-//                 $text = $dom->saveHTML($dom->documentElement->lastChild);
-//                 $text = preg_replace('@^<body>|</body>$@i', '', $text );
-//             }
-//             else
-//             {
-//                 $text = $dom->saveHTML();
-//                 preg_match('@<body>(.*)?</body>@ims', $text, $matches );
-//                 if ( isset( $matches[1] ) )
-//                 {
-//                     $text = $matches[1];
-//                 }
-//             }
-//         }
-        
-//         return $text;
-//     }
     
     
     /**
@@ -488,18 +376,6 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
                 {
                     $img_text = $alt;
                 }
-//                 elseif ( 'cid:' === substr( $src, 0, 4) )
-//                 {
-//                     $cid = substr( $src, 3 );
-//                     foreach ( $this->cid_ary as $osrc => $el )
-//                     {
-//                         if ( $osrc === $src )
-//                         {
-//                             $img_text = $el['filename'];
-//                             break;
-//                         }
-//                     }
-//                 }
                 else
                 {
                     $img_text = basename( $src );
@@ -526,18 +402,6 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
             {
                 $img_text = $alt;
             }
-//             elseif ( 'cid:' === substr( $src, 0, 4) )
-//             {
-//                 $cid = substr( $src, 3 );
-//                 foreach ( $this->cid_ary as $osrc => $el )
-//                 {
-//                     if ( $osrc === $src )
-//                     {
-//                         $img_text = $el['filename'];
-//                         break;
-//                     }
-//                 }
-//             }
             else
             {
                 $img_text = basename( $src );
@@ -1009,6 +873,11 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
             $topic_author = bbp_get_topic_author_id( $topic_id );
         }
         
+        if ( $this->doing_cron )
+        {
+            wp_set_current_user( $topic_author );
+        }
+        
         $recipients = $this->get_recipients( $forum_id, 'topic', $topic_id, $topic_author );
         
         /**
@@ -1072,6 +941,11 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
         if ( ! $reply_author )
         {
             $reply_author = bbp_get_reply_author_id( $reply_id );
+        }
+        
+        if ( $this->doing_cron )
+        {
+            wp_set_current_user( $reply_author );
         }
         
         $recipients = $this->get_recipients( $forum_id, 'reply', $topic_id, $reply_author );
@@ -1177,14 +1051,11 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
         add_filter( "bbp_forum_subscription_user_ids", array( $this, 'filter_queued_recipients' ), 10, 1 );
         add_filter( "bbp_topic_subscription_user_ids", array( $this, 'filter_queued_recipients' ), 10, 1 );
         
-        $this->doing_cron = (defined('DOING_CRON') && DOING_CRON);
-        
         // Try to bypass timeout issues
         if ( $this->doing_cron )
         {
             $old_time_limit = ini_get('max_execution_time');
             set_time_limit(0);
-            $this->orig_user_id = get_current_user_id();
         }
         
         // Maybe auto-subscribe user, but only when saving a new topic from the front-end.
@@ -1230,12 +1101,6 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
             
             if ( ! empty( $email ) && false === $is_dry_run )
             {
-                if ( $this->doing_cron )
-                {
-                    // Only set this if running in the background for security purposes.
-                    wp_set_current_user( $recipient_id );
-                }
-                
                 $this->wp_mail_error = null;
                 
                 /**
@@ -1332,7 +1197,6 @@ class bbPress_Notify_noSpam_Controller_Common_Core extends bbPress_Notify_noSpam
         if ( $this->doing_cron )
         {
             set_time_limit( $old_time_limit );
-            wp_set_current_user( $this->orig_user_id );
         }
         
         do_action( 'bbpnns_after_email_sent_all_users', $recipients, $subject, $body );

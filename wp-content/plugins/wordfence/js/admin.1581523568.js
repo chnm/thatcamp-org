@@ -1197,6 +1197,7 @@
 						self.liveTrafficUpdatePending = false;
 					}, true);
 				}
+				this.liveTrafficUpdatePending = false;
 			},
 			handleLiveTrafficReturn: function(res) {
 				this.liveTrafficUpdatePending = false;

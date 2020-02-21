@@ -5,11 +5,11 @@ Author URI: https://www.usestrict.net/
 Plugin URI: https://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 5.3.1
+Tested up to: 5.3.2
 Text Domain: bbPress_Notify_noSpam
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.8
+Stable tag: 2.8.1
 Requires PHP: 5.6
 
 
@@ -22,7 +22,7 @@ Give bbPress notifications your personal touch by deciding who gets the emails a
  * Override bbPress' core subscription messages with your own;
  * Set Notification recipient roles for new topics;
  * Set Notification recipient roles for new replies;
- * Set Notification e-mail's subject and body templates for both new topics and replies;
+ * Set Notification e-mail subject and body templates for both new topics and replies;
  * Send Background Notifications (to avoid delays in loading pages for large user databases);
  * Extensible through almost 40 actions and filters;
 
@@ -34,8 +34,8 @@ Give bbPress notifications your personal touch by deciding who gets the emails a
 Take your notifications to the next level with one or more of these add-ons.
 
 <ul>
+    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-reply-email/" target="_new">Reply by Email Add-on</a>: Users can create new topics or replies directly from their mailbox. No need to click links or open the forums in a browser. Heck, they can even dictate their topics/replies if they want!</li>
 	<li><a href="https://usestrict.net/product/bbpress-notify-no-spam-bulk-mailer/" target="_new">Bulk Mailer Add-on</a>: Having trouble with mailout timouts because you have too many users? This is the solution. Integrate bbpnns with Mailgun or SendGrid and send messages in batches of 1000 instead of one-by-one.</li>
-    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-reply-email/" target="_new">Reply by Email Add-on</a>: Users can reply directly from their mailbox. No need to click links or open the forums in a browser. Heck, they can even dictate their replies if they want!</li>
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/" target="_new">Opt-out Add-on</a>: Users can choose not to receive any notifications, or simply unsubscribe from the thread with a single click. A must-have for CAN-SPAM and CASL laws!</li>
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-digests/" target="_new">Digest Add-on</a>: Users can choose to receive daily, weekly, or monthly digests.</li>
     <li><a href="https://usestrict.net/product/bbpress-moderation-plugin-add-on/" target="_new">bbPress Moderation Integration</a>: Make bbpnns work with <a href="https://wordpress.org/plugins/bbpressmoderation/" target="_new">bbPress Moderation</a>.</li>
@@ -45,9 +45,6 @@ Take your notifications to the next level with one or more of these add-ons.
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-ultimate-member-bridge/" target="_new">Ultimate Member Integration</a>: Make sure your members have access to Opt Out and Digest settings in their Ultimate Member profile screens.</li>
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-accessally-bridge/" target="_new">AccessAlly Integration</a>: A must for those using AccessAlly, so their users won't receive notifications for forums they don't have access to.</li>
 </ul>
-
-= Partnerships =
-We've made a parnership with ISIPP.com, securing their SuretyMail Email certification (to make sure the email you send gets delivered to the inbox instead of the junk folder) for a fraction of the full price, and without the need to have a dedicated IP. Learn more about it <a href="https://usestrict.net/go/suretymail4wp" target="_new">here</a>.
 
 </blockquote>
 
@@ -66,7 +63,7 @@ We've made a parnership with ISIPP.com, securing their SuretyMail Email certific
 * As of version 2.0, the settings are no longer in the Forums screen but have their own location in the Admin menu area.
 
 = People are getting timeouts when posting a new Topic or Reply. Why? =
-* When a new Topic or Reply is created, bbpnns is triggered to send notifications regarding that new post. If there are too many recipients, it may take too long for bbpnns to iterate through the recipient list and the webserver will throw a timeout message and the person posting it will think their message didn't get saved. To get around this problem, turn on the option to send messages in the background. That will create a scheduled action for the next time the wp-cron runs, and bbpnns will try to override any time limits while running.
+* When a new Topic or Reply is created, bbpnns is triggered to send notifications regarding that new post. If there are too many recipients, it may take too long for bbpnns to iterate through the recipient list and the webserver will throw a timeout message; the person posting it will think their message didn't get saved. To get around this problem, turn on the option to send messages in the background. That will create a scheduled action for the next time the wp-cron runs, and bbpnns will try to override any time limits while running.
 
 = Why are some of my users not getting notified? =
 * If you have *not* turned on Background Notifications, see the FAQ item above. If you have turned it on and some users are still not getting notified, it could be that your host is not letting bbpnns finish doing its thing, even though the timeout settings have been overridden. Some hosts will have scripts monitoring long running processes and have them killed, regardless of the PHP timeout values. A solution for this is to have bbpnns work faster, and for that we've released the [Bulk Mailer add-on](https://usestrict.net/product/bbpress-notify-no-spam-bulk-mailer) which connects with an existing Mailgun or SendGrid account and sends notifications to up to 1000 recipients in the time it would otherwise take to send to a single one.
@@ -95,6 +92,9 @@ We've made a parnership with ISIPP.com, securing their SuretyMail Email certific
 
 
 == Changelog ===
+= 2.8.1 =
+* Enhancement - better user control when running in the background.
+
 = 2.8 =
 * Added new feature - Auto subscribe forum users to newly created topic so they also get replies notifications. See bbPress Notify (No-Spam) > Settings > Topics tab > bbPress Forums Subscriptions Override section.
 * Added i18n files. 
