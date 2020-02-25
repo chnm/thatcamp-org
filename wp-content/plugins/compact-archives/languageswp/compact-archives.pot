@@ -1,0 +1,104 @@
+# Copyright (C) 2019 WPBeginner
+# This file is distributed under the same license as the WPBeginner's Compact Archives plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WPBeginner's Compact Archives 3.0.9\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/compact-archives\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-07-31T21:56:07-04:00\n"
+"PO-Revision-Date: 2019-07-31T21:56:07-04:00\n"
+"X-Generator: WP-CLI 2.0.1\n"
+"X-Domain: compact-archives\n"
+
+#. Plugin Name of the plugin
+msgid "WPBeginner's Compact Archives"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "http://www.wpbeginner.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "Displays a compact monthly archive instead of the default long list. Either display it as a block suitable for the body of a page or in a form compact enough for a sidebar."
+msgstr ""
+
+#. Author of the plugin
+msgid "WPBeginner"
+msgstr ""
+
+#: compact.php:189
+msgid "Create a widget for Compact Archives plugin"
+msgstr ""
+
+#: compact.php:191
+msgid "Compact Archives Widget"
+msgstr ""
+
+#: compact.php:245
+msgid "%3$sNotice.%4$s<br />The %3$sCompact Archives Widget%4$s plugin is active on your WordPress and it's not needed anymore . Please, %1$sdeactivate it from here%2$s."
+msgstr ""
+
+#: compact.php:255
+msgid "Title:"
+msgstr ""
+
+#: compact.php:262
+msgid "Select the style:"
+msgstr ""
+
+#: compact.php:266
+msgid "Initials"
+msgstr ""
+
+#: compact.php:269
+#: compact.php:330
+msgid "Block"
+msgstr ""
+
+#: compact.php:272
+#: compact.php:331
+msgid "Numeric"
+msgstr ""
+
+#: compact.php:279
+msgid "Transform text:"
+msgstr ""
+
+#: compact.php:283
+msgid "None transformation"
+msgstr ""
+
+#: compact.php:286
+#: compact.php:336
+msgid "UPPERCASE"
+msgstr ""
+
+#: compact.php:289
+#: compact.php:335
+msgid "Capitalize"
+msgstr ""
+
+#: compact.php:329
+msgid "Initial"
+msgstr ""
+
+#: compact.php:332
+msgid "Select Archive Type"
+msgstr ""
+
+#: compact.php:333
+msgid "Transform Text"
+msgstr ""
+
+#: compact.php:334
+msgid "None"
+msgstr ""
+
+#: compact.php:337
+msgid "Enter a title (Leave empty to disable)"
+msgstr ""

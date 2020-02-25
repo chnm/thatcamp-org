@@ -1,0 +1,94 @@
+# Copyright (C) 2015 WPBeginner's Compact Archives
+# This file is distributed under the same license as the WPBeginner's Compact Archives package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WPBeginner's Compact Archives 3.0.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/compact-archives\n"
+"POT-Creation-Date: 2015-03-26 11:32:59+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: compact.php:104
+msgid "Archive is empty"
+msgstr ""
+
+#: compact.php:183
+msgid "Create a widget for Compact Archives plugin"
+msgstr ""
+
+#: compact.php:185
+msgid "Compact Archives Widget"
+msgstr ""
+
+#: compact.php:226
+msgid "Archives by Month"
+msgstr ""
+
+#: compact.php:242
+msgid ""
+"%3$sNotice.%4$s<br />The %3$sCompact Archives Widget%4$s plugin is active on "
+"your WordPress and it's not needed anymore . Please, %1$sdeactivate it from "
+"here%2$s."
+msgstr ""
+
+#: compact.php:252
+msgid "Title:"
+msgstr ""
+
+#: compact.php:259
+msgid "Select the style:"
+msgstr ""
+
+#: compact.php:263
+msgid "Initials"
+msgstr ""
+
+#: compact.php:266
+msgid "Block"
+msgstr ""
+
+#: compact.php:269
+msgid "Numeric"
+msgstr ""
+
+#: compact.php:276
+msgid "Transform text:"
+msgstr ""
+
+#: compact.php:280
+msgid "None transformation"
+msgstr ""
+
+#: compact.php:283
+msgid "UPPERCASE"
+msgstr ""
+
+#: compact.php:286
+msgid "Capitalize"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WPBeginner's Compact Archives"
+msgstr ""
+
+#. #-#-#-#-#  compact-archives.pot (WPBeginner's Compact Archives 3.0.3)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  compact-archives.pot (WPBeginner's Compact Archives 3.0.3)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://www.wpbeginner.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Displays a compact monthly archive instead of the default long list. Either "
+"display it as a block suitable for the body of a page or in a form compact "
+"enough for a sidebar."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPBeginner"
+msgstr ""
