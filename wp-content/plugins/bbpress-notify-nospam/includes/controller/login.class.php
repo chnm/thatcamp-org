@@ -64,6 +64,8 @@ class bbPress_Notify_noSpam_Controller_Login extends bbPress_Notify_noSpam {
      */
     public function maybe_add_redirect( $url, $post_id, $title, $forum_id='' )
     {
+        $post_url = $url;
+        
         if ( ! $forum_id )
         {
             $forum_id = get_post_meta( $post_id, '_bbp_forum_id', true );
@@ -77,6 +79,7 @@ class bbPress_Notify_noSpam_Controller_Login extends bbPress_Notify_noSpam {
         if ( 'publish' !== $this->forums[$forum_id] )
         {
             $url = esc_url_raw( add_query_arg( array('bbpnns-login' => 1, 'redirect_to' => esc_url( $url ) ), home_url( '/' ) ) );
+            $url = apply_filters( 'bbpnns_redirect_url', $url, $post_url, $post_id, $title, $forum_id );
         }
         
         return $url;

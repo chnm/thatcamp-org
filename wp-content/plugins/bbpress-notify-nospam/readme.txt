@@ -9,7 +9,7 @@ Tested up to: 5.3.2
 Text Domain: bbPress_Notify_noSpam
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.8.1
+Stable tag: 2.8.2
 Requires PHP: 5.6
 
 
@@ -92,6 +92,9 @@ Take your notifications to the next level with one or more of these add-ons.
 
 
 == Changelog ===
+= 2.8.2 =
+* Added filter bbpnns_redirect_url to allow adjusting the redirect URL for non-public forums.
+
 = 2.8.1 =
 * Enhancement - better user control when running in the background.
 
